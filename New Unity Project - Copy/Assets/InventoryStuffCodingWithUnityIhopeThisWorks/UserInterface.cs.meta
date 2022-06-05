@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2cb448a9a5a45024eb94dcb15a793b01
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - inventory: {fileID: 11400000, guid: bd88b05129bc72a44bab80758da3caba, type: 2}
+  - inGameItemPrefab: {fileID: 386471724354918239, guid: 308d7422a3149914593630286d7f5ab1, type: 3}
+  - Instantiator: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
