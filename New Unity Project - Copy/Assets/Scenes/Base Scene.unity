@@ -4197,8 +4197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 683c99466c821164ab9a89fc0a2bbf73, type: 2}
-  inGameItemPrefab: {fileID: 0}
-  Instantiator: {fileID: 0}
+  inGameItemPrefab: {fileID: 386471724354918239, guid: 308d7422a3149914593630286d7f5ab1, type: 3}
+  Instantiator: {fileID: 1221565426}
   slots:
   - {fileID: 1922858183}
   - {fileID: 1548340134}
