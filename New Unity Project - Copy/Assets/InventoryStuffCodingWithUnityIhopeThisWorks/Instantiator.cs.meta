@@ -3,7 +3,11 @@ guid: 39ca2379ba5ca9542bc87f790858f134
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - inGameItemPrefab: {instanceID: 0}
+  - inGameSpellPrefab: {instanceID: 0}
+  - inGameWeaponPrefab: {instanceID: 0}
+  - inGameCharmPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

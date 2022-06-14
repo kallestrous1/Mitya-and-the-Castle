@@ -16,6 +16,8 @@ public class PlayerInventory : MonoBehaviour
             equipment.GetSlots[i].OnAfterUpdate += OnAfterSlotUpdate;
             equipment.GetSlots[i].OnBeforeUpdated += OnBeforeSlotUpdate;
         }
+        inventory.Load();
+        equipment.Load();
     }
 
     public void OnBeforeSlotUpdate(InventorySlotObject slot)
@@ -58,12 +60,16 @@ public class PlayerInventory : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Interact"))
+        if (Input.GetButton("Interact"))
         {
             pickupRequest = true;
         }
+        else
+        {
+            pickupRequest = false;
+        }
 
-            if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             Debug.Log("Inventory saved from PlayerInventory");
             inventory.Save();
@@ -79,16 +85,16 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        var item = collision.GetComponent<ItemInGame>();
+        var item = collision.GetComponentInChildren<ItemInGame>();
         if (item)
         {
-            SuperItem thisItem = new SuperItem(item.item);
             if (pickupRequest)
             {
+                SuperItem thisItem = new SuperItem(item.item);
                 pickupRequest = false;
                 if (inventory.AddItem(thisItem))
                 {
-                    Destroy(collision.gameObject);
+                    Destroy(collision.transform.parent.gameObject);
                 }
             }
         }

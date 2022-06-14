@@ -9,6 +9,7 @@ TagManager:
   - Charm
   - Item
   - Instantiator
+  - ItemDetailsInterface
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - UI
   - CamConfiner
   - Background
-  - 
-  - 
+  - Item
+  - Player
   - 
   - 
   - 

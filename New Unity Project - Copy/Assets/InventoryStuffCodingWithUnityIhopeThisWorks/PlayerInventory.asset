@@ -23,28 +23,12 @@ MonoBehaviour:
         name: 
     - AllowedItems: 
       item:
-        Id: 0
-        name: DashCharm
+        Id: -1
+        name: 
     - AllowedItems: 
       item:
-        Id: 0
-        name: New TurtleCharm
-    - AllowedItems: 
-      item:
-        Id: 0
-        name: New TurtleCharm
-    - AllowedItems: 
-      item:
-        Id: 0
-        name: New TurtleCharm
-    - AllowedItems: 
-      item:
-        Id: 0
-        name: New TurtleCharm
-    - AllowedItems: 
-      item:
-        Id: 0
-        name: New TurtleCharm
+        Id: -1
+        name: 
     - AllowedItems: 
       item:
         Id: -1
@@ -67,7 +51,7 @@ MonoBehaviour:
         name: 
     - AllowedItems: 
       item:
-        Id: 0
+        Id: -1
         name: 
     - AllowedItems: 
       item:

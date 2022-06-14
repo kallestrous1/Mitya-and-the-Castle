@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 public abstract class UserInterface : MonoBehaviour
 {
+    public ItemDetailsInterface ItemDetailsInterface;
     public InventoryObject inventory;
     public Dictionary<GameObject, InventorySlotObject> slotsOnInterface = new Dictionary<GameObject, InventorySlotObject>();
 
@@ -34,12 +35,14 @@ public abstract class UserInterface : MonoBehaviour
         if (slot.item.Id >= 0)
         {
             slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = slot.ItemObject.uiDisplay;
-            //code for full slot background // slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite.color = new Color(1, 1, 1, 1);
-            slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "1";
+            //code for full slot background //
+            slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+            slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
         else
         {
             slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+            slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
             //code for empty slot background // slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite.color = new Color(1, 1, 1, 0);
             slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
@@ -61,6 +64,9 @@ public abstract class UserInterface : MonoBehaviour
     public void OnEnter(GameObject obj)
     {
         MouseData.slotHoveredOver = obj;
+        ItemDetailsInterface = GameObject.FindGameObjectWithTag("ItemDetailsInterface").GetComponent<ItemDetailsInterface>();
+        if (slotsOnInterface[obj].item.Id >= 0)
+            ItemDetailsInterface.setInterface(slotsOnInterface[obj].ItemObject);
     }
     public void OnExit(GameObject obj)
     {
@@ -94,14 +100,7 @@ public abstract class UserInterface : MonoBehaviour
         if(MouseData.interfaceMouseIsOver == null)
         {
             Instantiator.CreateItem(slotsOnInterface[obj].ItemObject);
-            // var test = inGameItemPrefab.GetComponent<ItemInGame>();// = slotsOnInterface[obj].ItemObject;
             slotsOnInterface[obj].RemoveItem();
-            Debug.Log("item being removed from userinterface");
-         //   testItem = Instantiate(inGameItemPrefab);
-          //  testItem.GetComponent<Transform>().position = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
-           // Instantiate(inGameItemPrefab, transform);
-          //  newInGameObject.GetComponent<ItemInGame>().item = 
-           // newInGameObject.GetComponent<RectTransform>().localPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
             return;
         }
 
