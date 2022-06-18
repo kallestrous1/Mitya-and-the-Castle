@@ -16,8 +16,8 @@ public class PlayerInventory : MonoBehaviour
             equipment.GetSlots[i].OnAfterUpdate += OnAfterSlotUpdate;
             equipment.GetSlots[i].OnBeforeUpdated += OnBeforeSlotUpdate;
         }
-        inventory.Load();
         equipment.Load();
+        inventory.Load();
     }
 
     public void OnBeforeSlotUpdate(InventorySlotObject slot)
@@ -71,13 +71,11 @@ public class PlayerInventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("Inventory saved from PlayerInventory");
             inventory.Save();
             equipment.Save();
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            Debug.Log("Inventory loaded from PlayerInventory");
             inventory.Load();
             equipment.Load();
         }

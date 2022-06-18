@@ -102,6 +102,8 @@ public class InventoryObject : ScriptableObject
     [ContextMenu("Save")]
     public void Save()
     {
+        Debug.Log(savePath +" saved from inventoryobject");
+
         //string saveData = JsonUtility.ToJson(Container, true);
         //BinaryFormatter bf = new BinaryFormatter();
         //FileStream file = File.Create(string.Concat(Application.persistentDataPath, savePath));
@@ -119,6 +121,7 @@ public class InventoryObject : ScriptableObject
     {
         if (File.Exists(string.Concat(Application.persistentDataPath, savePath)))
         {
+            Debug.Log(savePath +" loaded from inventoryobject");
             //BinaryFormatter bf = new BinaryFormatter();
             //FileStream file = File.Open(string.Concat(Application.persistentDataPath, savePath), FileMode.Open);
             //JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), this);
@@ -179,6 +182,7 @@ public class InventorySlotObject
         {
             if(item.Id >= 0)
             {
+              //  Debug.Log(parent);
                 return parent.inventory.database.GetItem[item.Id];
             }
             return null;

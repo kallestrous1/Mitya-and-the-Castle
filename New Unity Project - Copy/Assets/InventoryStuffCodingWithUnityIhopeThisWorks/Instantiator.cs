@@ -25,7 +25,6 @@ public class Instantiator : MonoBehaviour
                 break;
 
         }
-        //item = Instantiate(inGameItemPrefab);
         item.GetComponentInChildren<ItemInGame>().item = itemObject;
         item.GetComponent<Transform>().position = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
         Rigidbody2D rb = item.GetComponent<Rigidbody2D>();
