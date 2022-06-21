@@ -182,7 +182,6 @@ public class InventorySlotObject
         {
             if(item.Id >= 0)
             {
-              //  Debug.Log(parent);
                 return parent.inventory.database.GetItem[item.Id];
             }
             return null;

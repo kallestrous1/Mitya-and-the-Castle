@@ -13,6 +13,7 @@ public abstract class ItemObject : ScriptableObject
 {
    // public ItemScript playerItem;
     public Sprite uiDisplay;
+    public GameObject characterDisplay; 
     public ItemType type;
     [TextArea (15,20)]
     public string description;

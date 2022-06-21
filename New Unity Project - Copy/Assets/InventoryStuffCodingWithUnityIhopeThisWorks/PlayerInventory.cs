@@ -7,22 +7,37 @@ public class PlayerInventory : MonoBehaviour
     public InventoryObject inventory;
     public InventoryObject equipment;
 
+    public BoneCombiner boneCombiner;
+
     private bool pickupRequest;
+
+    private Transform charm;
+    private Transform weapon;
+    private Transform spell;
+
+    ItemType type = default;
 
     private void Start()
     {
+        boneCombiner = new BoneCombiner(gameObject);
         for (int i = 0; i < equipment.GetSlots.Length; i++)
         {
-            equipment.GetSlots[i].OnAfterUpdate += OnAfterSlotUpdate;
-            equipment.GetSlots[i].OnBeforeUpdated += OnBeforeSlotUpdate;
+            equipment.GetSlots[i].OnAfterUpdate += OnRemoveItem;
+            equipment.GetSlots[i].OnBeforeUpdated += OnAddItem;
         }
-        equipment.Load();
         inventory.Load();
+        equipment.Load();
     }
 
-    public void OnBeforeSlotUpdate(InventorySlotObject slot)
+    public void OnAddItem(InventorySlotObject slot)
     {
-        if(slot.ItemObject == null)
+
+        if (slot.ItemObject)
+        {
+            type = slot.ItemObject.type;
+        }
+
+        if (slot.ItemObject == null)
         {
             return;
         }
@@ -37,13 +52,18 @@ public class PlayerInventory : MonoBehaviour
             default:
                 break;
         }
+
     }
 
-    public void OnAfterSlotUpdate(InventorySlotObject slot)
+    public void OnRemoveItem(InventorySlotObject slot)
     {
         if (slot.ItemObject == null)
         {
             return;
+        }
+        else
+        {
+            type = slot.ItemObject.type;
         }
 
         switch (slot.parent.inventory.interfaceType)
@@ -52,6 +72,23 @@ public class PlayerInventory : MonoBehaviour
                 break;
             case InterfaceType.Equipment:
                 slot.ItemObject.EquipItem();
+                if (slot.ItemObject.characterDisplay != null)
+                {
+                    switch (type)
+                    {
+                        case ItemType.Weapon:
+                            weapon = boneCombiner.AddLimb(slot.ItemObject.characterDisplay);
+                            break;
+                        case ItemType.Spell:
+                            spell = boneCombiner.AddLimb(slot.ItemObject.characterDisplay);
+                            break;
+                        case ItemType.Charm:
+                            charm = boneCombiner.AddLimb(slot.ItemObject.characterDisplay);
+                            break;
+                        default:
+                            break;
+                    }
+                }
                 break;
             default:
                 break;

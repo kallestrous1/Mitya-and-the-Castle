@@ -10,14 +10,16 @@ public abstract class UserInterface : MonoBehaviour
 {
     public ItemDetailsInterface ItemDetailsInterface;
     public InventoryObject inventory;
+    public InventoryObject equipment;
     public Dictionary<GameObject, InventorySlotObject> slotsOnInterface = new Dictionary<GameObject, InventorySlotObject>();
 
     public GameObject inGameItemPrefab;
     GameObject testItem;
     public Instantiator Instantiator;
 
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         CreateSlots();
         for (int i = 0; i < inventory.GetSlots.Length; i++)
@@ -37,14 +39,14 @@ public abstract class UserInterface : MonoBehaviour
             slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = slot.ItemObject.uiDisplay;
             //code for full slot background //
             slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-            slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
+           // slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
         else
         {
             slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
             slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
             //code for empty slot background // slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite.color = new Color(1, 1, 1, 0);
-            slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
+           // slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
     }
 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DashCharm
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: c31e532a606e31b409ea72691a445795, type: 3}
+  characterDisplay: {fileID: 7914809734473697626, guid: eff26dbeadd90a7429fc9e847173cd00, type: 3}
   type: 0
   description: faster faster faster!
   data:
