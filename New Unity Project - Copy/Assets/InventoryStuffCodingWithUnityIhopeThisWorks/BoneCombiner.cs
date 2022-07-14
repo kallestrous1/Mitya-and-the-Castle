@@ -19,6 +19,7 @@ public class BoneCombiner
     {
         Transform limb= ProcessBonedObject(bonedObj.GetComponentInChildren<SkinnedMeshRenderer>());
         limb.SetParent(playerTransform);
+        Debug.Log(limb);
         return playerTransform;
     }
 
