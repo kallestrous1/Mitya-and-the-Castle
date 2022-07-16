@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 403685490702071668}
   - component: {fileID: 9041932859305814352}
   - component: {fileID: 3949306870111658794}
+  - component: {fileID: 2916935323370496864}
   m_Layer: 9
   m_Name: bone_7
   m_TagString: Untagged
@@ -70,7 +71,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403685490702071669}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -101,6 +102,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6595ad7214153e40a575af23a0a0138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAttacks: {fileID: 0}
+  bloodEffectTest: {fileID: 3133542132048655781, guid: 4effa2e61bcb73744b81567d44f49d61, type: 3}
+--- !u!50 &2916935323370496864
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403685490702071669}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &403685490986014986
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +565,7 @@ GameObject:
   - component: {fileID: 403685491848748716}
   - component: {fileID: 403685491848748717}
   - component: {fileID: 20678588680141480}
+  - component: {fileID: 5288524570132474603}
   m_Layer: 9
   m_Name: niceguySpriteSheet
   m_TagString: Player
@@ -698,6 +723,7 @@ MonoBehaviour:
   dashTime: 0.2
   dashPower: 300
   DASHCOUNT: 2
+  recoilMagnitude: 500
 --- !u!50 &403685491848748705
 Rigidbody2D:
   serializedVersion: 4
@@ -798,6 +824,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341b6022eef597f4f8ca006f06c7eb64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5288524570132474603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403685491848748714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00de0be1c0a18e24e8c91b6277360939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  invincibilityTime: 0
+  recovering: 0
 --- !u!1 &403685491891853108
 GameObject:
   m_ObjectHideFlags: 0

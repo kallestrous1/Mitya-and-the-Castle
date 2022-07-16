@@ -6,20 +6,24 @@ public class PlayerHealth : MonoBehaviour
 {
     public static int maxHealth=5;
     public int health=5;
-    public float invincibilityTime;
+    public float invincibilityTime=1;
     float invincibilityTimer;
+    public bool recovering;
     // Start is called before the first frame update
     void Start()
     {
-        PlayerData data = SaveSystem.loadPlayer();
-        health=data.health;
-       // health = maxHealth;
+        health = maxHealth;
     }
     private void Update()
     {
         if (invincibilityTimer > 0)
         {
             invincibilityTimer -= Time.deltaTime;
+            recovering = true;
+        }
+        else
+        {
+            recovering = false;
         }
     }
 
@@ -30,12 +34,11 @@ public class PlayerHealth : MonoBehaviour
         {
             invincibilityTimer = invincibilityTime;
             health += change;
-         //   Debug.Log(health);
         }
     }
+
     public int getHealth()
     {
         return health;
     }
-
 }

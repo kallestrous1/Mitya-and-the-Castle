@@ -7,11 +7,15 @@ public class PlayerAttacks : MonoBehaviour
     Animator ani;
     float holdDuration;
     bool resetWeapon;
-    
+
+    PlayerSword playerSword;
+
     void Start()
     {
         StartCoroutine(ChargeWeapon());
-        ani = GetComponent<Animator>();      
+        ani = GetComponent<Animator>();
+        playerSword = transform.GetComponentInChildren<PlayerSword>();
+
     }
 
     // Update is called once per frame
@@ -93,6 +97,11 @@ public class PlayerAttacks : MonoBehaviour
     {
         if (ani.GetFloat("ChargeWeapon") < 1.0f)
         ani.SetFloat("ChargeWeapon", ani.GetFloat("ChargeWeapon")+0.01f);       
+    }
+
+    public void setSwordColliderState(float state)
+    {
+        playerSword.SetSwordState(state);
     }
 
 }

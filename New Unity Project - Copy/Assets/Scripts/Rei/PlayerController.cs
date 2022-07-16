@@ -38,12 +38,17 @@ public class PlayerController : MonoBehaviour
     public float DASHCOUNT;
     float dashCount;
 
+    public float recoilMagnitude = 500;
+
     bool flipped = false;
+
+    PlayerHealth playerHealth;
 
     void Start()
     {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         ani = this.gameObject.GetComponent<Animator>();
+        playerHealth = this.gameObject.GetComponent<PlayerHealth>();
 
     }
     private void Update()
@@ -197,5 +202,19 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Enemy")
+        {
+            if (!playerHealth.recovering)
+            {
+                playerHealth.changeHealth(-1);
+                var force = transform.position - collision.transform.position;
+                force.Normalize();
+                rb.AddForce(force * recoilMagnitude, ForceMode2D.Impulse);
+            }
+        }
+    }
 
 }
