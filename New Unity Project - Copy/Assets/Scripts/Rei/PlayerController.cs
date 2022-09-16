@@ -78,6 +78,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(DialogueManager.getInstance().dialogueIsPlaying)
+        {
+            return;
+        }
+
         XMovement();
 
         if (isGrounded == true)
