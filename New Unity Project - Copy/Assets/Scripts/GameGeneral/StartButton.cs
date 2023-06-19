@@ -8,7 +8,7 @@ public class StartButton : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
-        SceneManager.LoadScene("RoomOne", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
 
         NewManager.manager.unloadScene(3);
     }

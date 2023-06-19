@@ -1,4 +1,5 @@
 using Ink.Runtime;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,6 +12,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     private Story currentStory;
+    private string currentStoryName;
+    private string currentStorySavePath = null;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -54,13 +57,23 @@ public class DialogueManager : MonoBehaviour
         {
             ContinueStory();
         }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow)){
+            StartCoroutine(ExitDialogueMode());
+        }
+
     }
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
         currentStory = new Story(inkJSON.text);
+        currentStoryName = inkJSON.name;
+        currentStory = DeserializeCurrentStory(ref currentStory);
+        currentStorySavePath = Application.persistentDataPath + "/" + currentStoryName + "currentStoryState.json";
+
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+
         ContinueStory();
     }
 
@@ -73,8 +86,9 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            dialogueText.text = currentStory.currentText;
             Debug.Log("can continue is false");
-            StartCoroutine(ExitDialogueMode());
+            //StartCoroutine(ExitDialogueMode());
         }
     }
 
@@ -82,7 +96,10 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        Debug.Log("exiting dialoguemode");
+        Debug.Log("exiting dialoguemode, exiting "+ currentStoryName);
+
+        SerializeCurrentStory(currentStory);
+
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
@@ -100,18 +117,20 @@ public class DialogueManager : MonoBehaviour
         int index = 0;
         foreach(Choice choice in currentchoices)
         {
-            choices[index].gameObject.SetActive(true);
+            choices[index].gameObject.transform.parent.gameObject.SetActive(true);
             choicesText[index].text = choice.text;
             index++;
         }
         for (int i = index; i < choices.Length; i++)
         {
-            choices[i].gameObject.SetActive(false);
+            choices[i].gameObject.transform.parent.gameObject.SetActive(false);
+           // choices[i].gameObject.SetActive(false);
         }
     }
 
     public void MakeChoice(int choiceIndex)
     {
+        Debug.Log(choiceIndex);
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
     }
@@ -120,4 +139,32 @@ public class DialogueManager : MonoBehaviour
     {
         return instance;
     }
+
+    private void SerializeCurrentStory(Story currentStory)
+    {
+        File.WriteAllText(currentStorySavePath, currentStory.state.ToJson());
+    }
+
+    private Story DeserializeCurrentStory(ref Story enteredStory)
+    {
+        // Create internal JSON string.
+        string JSONContents;
+
+        // Does the file exist?
+        if (File.Exists(currentStorySavePath))
+        {
+            Debug.Log("story found at " + currentStorySavePath);
+            // Read the entire file.
+            JSONContents = File.ReadAllText(currentStorySavePath);
+            // Overwrite current Story based on saved StoryState data.
+            enteredStory.state.LoadJson(JSONContents);
+        }
+        else
+        {
+            Debug.Log("story save file not found");
+        }
+
+        return enteredStory;
+    }
+
 }

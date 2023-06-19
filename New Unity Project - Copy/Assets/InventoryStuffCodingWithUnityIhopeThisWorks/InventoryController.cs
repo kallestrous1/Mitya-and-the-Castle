@@ -6,10 +6,10 @@ public class InventoryController : MonoBehaviour
 {
     bool inventoryActive;
     public GameObject inventory;
-    CanvasGroup cg;
+    CanvasGroup inventoryCanvas;
     private void Start()
     {
-        cg = inventory.GetComponent<CanvasGroup>();
+        inventoryCanvas = inventory.GetComponent<CanvasGroup>();
 
     }
     void Update()
@@ -18,15 +18,17 @@ public class InventoryController : MonoBehaviour
         {
             if (inventoryActive)
             {
-                cg.interactable = false;
-                cg.alpha = 0;
+                inventoryCanvas.interactable = false;
+                inventoryCanvas.alpha = 0;
                 inventoryActive = false;
+                inventory.SetActive(inventoryActive);
             }
             else
             {
-                cg.interactable = true;
-                cg.alpha = 1;
+                inventoryCanvas.interactable = true;
+                inventoryCanvas.alpha = 1;
                 inventoryActive = true;
+                inventory.SetActive(inventoryActive);
             }
         }
     }

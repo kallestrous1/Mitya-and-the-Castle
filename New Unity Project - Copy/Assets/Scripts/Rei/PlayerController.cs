@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,6 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
     public float lowJumpMultiplier = 2f;
     float xInput;
-
-    public Transform pivotPoint;
 
     bool isGrounded = false;
     public Transform isGroundedChecker;
@@ -84,11 +83,10 @@ public class PlayerController : MonoBehaviour
         }
 
         XMovement();
-
         if (isGrounded == true)
         {
             ani.SetFloat("MoveX", Mathf.Abs(xInput));
-            ani.SetFloat("MoveY", 0);
+            ani.SetFloat("MoveY", 0);         
             dashCount = DASHCOUNT;
             jumpCount = JUMPCOUNT;
             coyoteTimer = coyoteTime;
@@ -128,12 +126,17 @@ public class PlayerController : MonoBehaviour
     #region XMovementandRotation
     void XMovement()
     {
+
         if (xInput > 0)
         {
             if (!flipped)
-            {
-                flipped = true;
-                this.transform.Rotate(0f, 180f, 0f, Space.Self);
+            {               
+                flipped = true;               
+              
+                this.transform.Rotate(0f, 180f, 0f);
+
+                Vector2 currentPosition = this.transform.position;
+                this.transform.position = new Vector2(currentPosition.x + 1, currentPosition.y);
             }
             rotationX = 1;
         }
@@ -141,8 +144,13 @@ public class PlayerController : MonoBehaviour
         {
             if (flipped)
             {
-                flipped = false;
-                this.transform.Rotate(0f, -180f, 0f, Space.Self);
+     
+                flipped = false;     
+                
+                this.transform.Rotate(0f, -180f, 0f);
+
+                Vector2 currentPosition = this.transform.position;
+                this.transform.position = new Vector2(currentPosition.x - 1, currentPosition.y);
             }
             rotationX = -1;
         }
@@ -184,7 +192,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
         }
-        else if (jumpCount > 0&& isDashing == false)
+        else if (jumpCount > 0 && isDashing == false)
         {
             jumpCount--;
             rb.velocity = new Vector2(rb.velocity.x, 0);

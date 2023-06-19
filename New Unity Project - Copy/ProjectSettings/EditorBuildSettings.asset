@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Base Scene.unity
-    guid: e30f4b075cd1cf0499dd1d48f5dec5ce
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Base Scene.unity
     guid: d9800be08785e1c4b916e88e43ab73e4
@@ -26,15 +26,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SuperScene.unity
     guid: 45d0936101873da47a5b8c98e7eb300c
+  - enabled: 1
+    path: Assets/Scenes/Grandpa's Farm.unity
+    guid: 3fc7b9811ca95df459a8e1a91f019466
   - enabled: 0
-    path: Assets/delete.unity
-    guid: 735366041ec7c424885dd7f4eb6fd624
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/SecondScene.unity
-    guid: 1206360e564c63b4cbda4093623abfb5
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/Scenes/BoosterRoom.unity
     guid: 8b955ac7240ac134ea4a20fd969cd90a
