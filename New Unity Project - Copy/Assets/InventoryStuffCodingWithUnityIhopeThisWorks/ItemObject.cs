@@ -1,3 +1,4 @@
+using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,9 @@ public abstract class ItemObject : ScriptableObject
 {
    // public ItemScript playerItem;
     public Sprite uiDisplay;
-    public GameObject characterDisplay; 
+    public GameObject characterDisplay;
+    [SerializeField] public TextAsset itemStory;
+
     public ItemType type;
     [TextArea (15,20)]
     public string description;

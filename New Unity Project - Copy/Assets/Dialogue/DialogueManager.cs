@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Ink.UnityIntegration;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
@@ -11,17 +12,21 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
+    [Header("Choices UI")]
+    [SerializeField] private GameObject[] choices;
+    private TextMeshProUGUI[] choicesText;
+
+    [Header("Global Ink File")]
+    [SerializeField] private InkFile globalsInkFile;
+    public bool dialogueIsPlaying { get; private set; }
+
     private Story currentStory;
     private string currentStoryName;
     private string currentStorySavePath = null;
 
-    [Header("Choices UI")]
-    [SerializeField] private GameObject[] choices;
-    private TextMeshProUGUI[] choicesText;
-    public bool dialogueIsPlaying { get; private set; }
+    public static DialogueManager instance;
 
-
-    private static DialogueManager instance;
+    public DialogueVariables dialogueVariables;
 
     private void Awake()
     {
@@ -30,6 +35,8 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("creating another dialoguemanager (not good)");
         }
         instance = this;
+
+        dialogueVariables = new DialogueVariables(globalsInkFile.filePath);
     }
 
     private void Start()
@@ -57,7 +64,7 @@ public class DialogueManager : MonoBehaviour
         {
             ContinueStory();
         }
-
+//TODO
         if (Input.GetKeyDown(KeyCode.DownArrow)){
             StartCoroutine(ExitDialogueMode());
         }
@@ -69,7 +76,10 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         currentStoryName = inkJSON.name;
         currentStory = DeserializeCurrentStory(ref currentStory);
+        dialogueVariables.VariablesToStory(currentStory);
         currentStorySavePath = Application.persistentDataPath + "/" + currentStoryName + "currentStoryState.json";
+
+        dialogueVariables.StartListening(currentStory);
 
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
@@ -99,6 +109,8 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("exiting dialoguemode, exiting "+ currentStoryName);
 
         SerializeCurrentStory(currentStory);
+
+        dialogueVariables.StopListening(currentStory);
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
@@ -166,5 +178,18 @@ public class DialogueManager : MonoBehaviour
 
         return enteredStory;
     }
+
+    public Ink.Runtime.Object GetVariableState(string variableName)
+    {
+        Ink.Runtime.Object variableValue = null;
+        dialogueVariables.inkVariables.TryGetValue(variableName, out variableValue);
+        if(variableValue == null)
+        {
+            Debug.LogWarning("Ink variable was found to be null: " + variableName);
+        }
+
+        return variableValue;
+    }
+
 
 }

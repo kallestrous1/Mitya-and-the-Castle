@@ -1,0 +1,1 @@
+VAR hasRing = false

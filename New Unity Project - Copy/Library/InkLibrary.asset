@@ -57,7 +57,22 @@ MonoBehaviour:
     includePaths: []
     includes: []
   - compileAutomatically: 0
-    inkAsset: {fileID: 102900000, guid: 761891ae5769d9246b538de0465c6dcc, type: 3}
+    inkAsset: {fileID: 102900000, guid: 8c9173e967ff3a24abdc020ed5f6a57c, type: 3}
+    jsonAssetDirectory: {fileID: 0}
+    jsonAsset: {fileID: 0}
+    unhandledCompileErrors: []
+    errors: []
+    warnings: []
+    todos: []
+    parents:
+    - {fileID: 102900000, guid: 3d1d7dda4554b574e8968d79e572e3ae, type: 3}
+    masterInkAssets:
+    - {fileID: 102900000, guid: 3d1d7dda4554b574e8968d79e572e3ae, type: 3}
+    masterInkAsset: {fileID: 0}
+    includePaths: []
+    includes: []
+  - compileAutomatically: 0
+    inkAsset: {fileID: 102900000, guid: 3d1d7dda4554b574e8968d79e572e3ae, type: 3}
     jsonAssetDirectory: {fileID: 0}
     jsonAsset: {fileID: 4900000, guid: 1b38845fb1887d348882c99b06238fe9, type: 3}
     unhandledCompileErrors: []
@@ -67,5 +82,7 @@ MonoBehaviour:
     parents: []
     masterInkAssets: []
     masterInkAsset: {fileID: 0}
-    includePaths: []
-    includes: []
+    includePaths:
+    - GlobalInkVariables.ink
+    includes:
+    - {fileID: 102900000, guid: 8c9173e967ff3a24abdc020ed5f6a57c, type: 3}
