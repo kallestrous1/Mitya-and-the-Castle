@@ -9,10 +9,7 @@ public class GrandfatherRing : ItemObject
 {
     private string hasRing= "hasRing";
     Story grandfatherStory;
-    private void Awake()
-    {
-    }
-
+   
     public override void EquipItem()
     {
         grandfatherStory = new Story(itemStory.text);

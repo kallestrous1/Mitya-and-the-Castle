@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDataPersistence
 {
+
+    public int totalJumps = 0;
+
     Rigidbody2D rb;
     Animator ani;
     public float speed;
@@ -191,6 +194,7 @@ public class PlayerController : MonoBehaviour
         {         
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+            totalJumps++;
         }
         else if (jumpCount > 0 && isDashing == false)
         {
@@ -216,6 +220,8 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region EnemyCollision
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Enemy")
@@ -228,6 +234,18 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(force * recoilMagnitude, ForceMode2D.Impulse);
             }
         }
+    }
+    #endregion
+
+
+    public void LoadData(GameData data)
+    {
+        this.totalJumps = data.totalJumps;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.totalJumps = this.totalJumps;
     }
 
 }

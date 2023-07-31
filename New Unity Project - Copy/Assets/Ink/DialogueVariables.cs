@@ -1,23 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
 using Ink.Runtime;
-using System.IO;
 using UnityEngine;
 
 public class DialogueVariables 
 {
     public Dictionary<string, Ink.Runtime.Object> inkVariables { get; set; }
-
+    Story globalVariablesStory;
 
 
     //this compiles my ink variables at runtime, this is mostly QOL so I don't have to recompile everytime I make a change, this should be 
     // adjusted in a final build as optimization
+    // UPDATE!!! SHOULD BE FIXED NOW, NO MORE SYSTEM.IO(JUNE 26 2023)
 
-    public DialogueVariables(string globalsFilePath)
+    public DialogueVariables(TextAsset loadGlobalsJSON)
     {
-        string inkFileContents = File.ReadAllText(globalsFilePath);
-        Ink.Compiler compiler = new Ink.Compiler(inkFileContents);
-        Story globalVariablesStory = compiler.Compile();
+        //create the story
+        globalVariablesStory = new Story(loadGlobalsJSON.text);
+
 
         inkVariables = new Dictionary<string, Ink.Runtime.Object>();
 
@@ -57,6 +56,16 @@ public class DialogueVariables
         {
             story.variablesState.SetGlobal(variable.Key, variable.Value);
             Debug.Log(story.variablesState);
+        }
+    }
+
+    public void SaveVariables()
+    {
+        if(globalVariablesStory != null)
+        {
+            //load the current variables to the globalvars story
+            VariablesToStory(globalVariablesStory);
+
         }
     }
 

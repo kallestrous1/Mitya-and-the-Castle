@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/BoosterRoom.unity
     guid: 8b955ac7240ac134ea4a20fd969cd90a
+  - enabled: 1
+    path: Assets/Scenes/Farm Exit.unity
+    guid: cd8063ae61f3ef1428237f9bf9ee6b54
   m_configObjects: {}

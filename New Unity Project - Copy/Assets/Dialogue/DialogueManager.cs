@@ -3,7 +3,6 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Ink.UnityIntegration;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
@@ -16,8 +15,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 
-    [Header("Global Ink File")]
-    [SerializeField] private InkFile globalsInkFile;
+    [Header("Load Globals JSON")]
+    [SerializeField] private TextAsset loadGlobalsJSON;
     public bool dialogueIsPlaying { get; private set; }
 
     private Story currentStory;
@@ -36,7 +35,7 @@ public class DialogueManager : MonoBehaviour
         }
         instance = this;
 
-        dialogueVariables = new DialogueVariables(globalsInkFile.filePath);
+        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
 
     private void Start()
@@ -68,6 +67,11 @@ public class DialogueManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow)){
             StartCoroutine(ExitDialogueMode());
         }
+        //KIND OF BUGGY, ONLY USED FOR GAMETESTING PURPOSES
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            currentStory.ResetState();
+        }
 
     }
 
@@ -75,9 +79,12 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory = new Story(inkJSON.text);
         currentStoryName = inkJSON.name;
-        currentStory = DeserializeCurrentStory(ref currentStory);
-        dialogueVariables.VariablesToStory(currentStory);
+
         currentStorySavePath = Application.persistentDataPath + "/" + currentStoryName + "currentStoryState.json";
+
+        currentStory = DeserializeCurrentStory(ref currentStory);
+
+        dialogueVariables.VariablesToStory(currentStory);
 
         dialogueVariables.StartListening(currentStory);
 
@@ -92,7 +99,6 @@ public class DialogueManager : MonoBehaviour
         if (currentStory.canContinue)
         {
             dialogueText.text = currentStory.Continue();
-            DisplayChoices();
         }
         else
         {
@@ -100,6 +106,7 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("can continue is false");
             //StartCoroutine(ExitDialogueMode());
         }
+        DisplayChoices();
     }
 
     private IEnumerator ExitDialogueMode()

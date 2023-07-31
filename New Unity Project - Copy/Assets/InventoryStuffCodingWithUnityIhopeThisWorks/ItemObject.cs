@@ -21,6 +21,7 @@ public abstract class ItemObject : ScriptableObject
     [TextArea (15,20)]
     public string description;
     public SuperItem data = new SuperItem();
+
     public abstract void EquipItem();
     public abstract void UnequipItem();
 
