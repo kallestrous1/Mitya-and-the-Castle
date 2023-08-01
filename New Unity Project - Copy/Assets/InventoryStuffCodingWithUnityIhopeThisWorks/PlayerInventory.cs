@@ -7,6 +7,8 @@ public class PlayerInventory : MonoBehaviour
     public InventoryObject inventory;
     public InventoryObject equipment;
 
+    public ItemTracker itemTracker;
+
     public BoneCombiner boneCombiner;
 
     private bool pickupRequest;
@@ -129,6 +131,8 @@ public class PlayerInventory : MonoBehaviour
                 pickupRequest = false;
                 if (inventory.AddItem(thisItem))
                 {
+                    itemTracker = FindObjectOfType<ItemTracker>();
+                    itemTracker.itemsInGame.Remove(item.item);
                     Destroy(collision.transform.parent.gameObject);
                 }
             }

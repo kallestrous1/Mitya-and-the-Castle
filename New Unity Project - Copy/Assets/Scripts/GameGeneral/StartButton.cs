@@ -9,8 +9,17 @@ public class StartButton : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
         SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
+        StartCoroutine(SetActiveScene(sceneName));
+    }
 
+    IEnumerator SetActiveScene(string sceneName)
+    {
+        Debug.Log("test");
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log(sceneName);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
         NewManager.manager.unloadScene(3);
+
     }
 
 }

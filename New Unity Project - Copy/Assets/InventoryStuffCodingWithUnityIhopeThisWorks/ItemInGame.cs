@@ -6,11 +6,12 @@ using UnityEngine;
 public class ItemInGame : MonoBehaviour
 {
     public ItemObject item;
-    public bool pickedUp = false;
+    public bool isActive = true;
+    public string homeScene;
 
     public void Start()
     {
-        if (pickedUp == true)
+        if (isActive == false)
         {
             Destroy(transform.parent.gameObject);
         }

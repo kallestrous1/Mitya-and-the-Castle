@@ -28,7 +28,8 @@ public class SceneDoorScript : MonoBehaviour
         if (!loaded)
         {
             loaded = true;
-            SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);          
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene));
         }
         if (!unloaded)
         {
@@ -36,5 +37,7 @@ public class SceneDoorScript : MonoBehaviour
             NewManager.manager.unloadScene(previousScene);
         }
     }
+    
+    
 
 }

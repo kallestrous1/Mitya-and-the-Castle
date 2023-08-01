@@ -12,7 +12,9 @@ public enum ItemType
 
 public abstract class ItemObject : ScriptableObject
 {
-   // public ItemScript playerItem;
+    // public ItemScript playerItem;
+    public bool setActive = true;
+    public string spawnScene;
     public Sprite uiDisplay;
     public GameObject characterDisplay;
     [SerializeField] public TextAsset itemStory;

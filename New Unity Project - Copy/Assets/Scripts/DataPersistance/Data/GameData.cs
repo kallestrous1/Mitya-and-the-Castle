@@ -7,7 +7,7 @@ public class GameData
 {
     public int totalJumps;
 
-    public SerializableDictionary<Vector2, ItemObject> items;
+    public SerializableDictionary<ItemObject, Vector2> activeItems;
 
     //default values:
 
