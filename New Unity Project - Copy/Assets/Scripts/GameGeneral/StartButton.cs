@@ -14,9 +14,8 @@ public class StartButton : MonoBehaviour
 
     IEnumerator SetActiveScene(string sceneName)
     {
-        Debug.Log("test");
         yield return new WaitForSeconds(0.1f);
-        Debug.Log(sceneName);
+        DataPersistenceManager.instance.SaveGame();
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
         NewManager.manager.unloadScene(3);
 

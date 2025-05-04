@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -24,15 +25,28 @@ public class DataPersistenceManager : MonoBehaviour
             Debug.LogError("Creating a second data persistence manager (not good)");        
         }       
          
-        instance = this;       
+        instance = this;
+
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        this.dataPersistanceObjects = FindAllDataPersistenceObjects(); 
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        this.dataPersistanceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }
+
 
     public void NewGame()
     {
@@ -61,7 +75,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         foreach (IDataPersistence dataPersistanceObj in dataPersistanceObjects)
         {
-            dataPersistanceObj.SaveData(ref gameData);
+            dataPersistanceObj.SaveData(gameData);
         }
 
         Debug.Log("total jumps = " + gameData.totalJumps);

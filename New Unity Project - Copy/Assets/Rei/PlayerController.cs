@@ -243,7 +243,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         this.totalJumps = data.totalJumps;
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         data.totalJumps = this.totalJumps;
     }

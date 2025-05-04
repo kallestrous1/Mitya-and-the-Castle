@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameData 
 {
     public int totalJumps;
-
+    public List<ItemObject> collectedItems;
     public SerializableDictionary<ItemObject, Vector2> activeItems;
 
     //default values:

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//OBSOLETE BUT I'M KEEPING THE CODE FOR NOW IT MIGHT COME IN HANDY IDK I DOUBT IT
+/*
 public class PlayerMovement : MonoBehaviour
 {
     private static Rigidbody2D rb;
@@ -169,3 +171,4 @@ public class PlayerMovement : MonoBehaviour
         knocked = true;
     }
 }
+*/

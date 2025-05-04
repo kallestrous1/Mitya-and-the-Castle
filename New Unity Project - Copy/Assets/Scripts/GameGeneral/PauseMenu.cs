@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+/*public class PauseMenu : MonoBehaviour
 {
     public static bool gamePaused = false;
     public GameObject pauseMenuUI;
@@ -54,7 +54,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void SaveGame()
     {
-        SaveSystem.savePlayer(playerHealth);
+       // SaveSystem.savePlayer(playerHealth);
         Debug.Log("Saved!");
     }
-}
+}*/

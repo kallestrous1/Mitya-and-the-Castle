@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//OBSOLETE FOR NOW BUT I'M KEEPING THE CODE
+/*
 public class SwordHitbox : MonoBehaviour
 {
     //CapsuleCollider2D bc;
@@ -52,3 +54,4 @@ public class SwordHitbox : MonoBehaviour
         knockTimer = knockTime;
     }
 }
+*/

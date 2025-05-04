@@ -28,16 +28,24 @@ public class SceneDoorScript : MonoBehaviour
         if (!loaded)
         {
             loaded = true;
-            SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);          
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene));
+            SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
+            StartCoroutine(SetActiveScene(nextScene));
+         //   SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene));
         }
+    }
+
+    IEnumerator SetActiveScene(string sceneName)
+    {
+        DataPersistenceManager.instance.SaveGame();
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log(sceneName);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+
         if (!unloaded)
         {
             unloaded = true;
             NewManager.manager.unloadScene(previousScene);
         }
     }
-    
-    
 
-}
+    }

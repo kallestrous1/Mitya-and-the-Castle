@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Farm Exit.unity
     guid: cd8063ae61f3ef1428237f9bf9ee6b54
+  - enabled: 1
+    path: Assets/Scenes/ringroomlarge.unity
+    guid: 8e04470a3ab872746b26a22c9ad2e33f
   m_configObjects: {}

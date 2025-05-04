@@ -20,7 +20,8 @@ public class NewManager : MonoBehaviour
         else
         {
             manager = this;
-            SceneManager.LoadScene(3, LoadSceneMode.Additive);
+            //no clue if this should be commented but it solved a weird error I just got
+            //SceneManager.LoadScene(3, LoadSceneMode.Additive);
         }
     }
     public void unloadScene(int scene)
