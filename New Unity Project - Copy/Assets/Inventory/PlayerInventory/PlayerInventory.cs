@@ -9,19 +9,10 @@ public class PlayerInventory : MonoBehaviour
 
     public ItemTracker itemTracker;
 
-    public BoneCombiner boneCombiner;
-
     private bool pickupRequest;
-
-    private Transform charm;
-    private Transform weapon;
-    private Transform spell;
-
-    ItemType type = default;
 
     private void Start()
     {
-        boneCombiner = new BoneCombiner(gameObject);
         for (int i = 0; i < equipment.GetSlots.Length; i++)
         {
             equipment.GetSlots[i].OnAfterUpdate += OnRemoveItem;
@@ -33,11 +24,6 @@ public class PlayerInventory : MonoBehaviour
 
     public void OnAddItem(InventorySlotObject slot)
     {
-
-        if (slot.ItemObject)
-        {
-            type = slot.ItemObject.type;
-        }
 
         if (slot.ItemObject == null)
         {
@@ -63,10 +49,6 @@ public class PlayerInventory : MonoBehaviour
         {
             return;
         }
-        else
-        {
-            type = slot.ItemObject.type;
-        }
 
         switch (slot.parent.inventory.interfaceType)
         {
@@ -74,23 +56,6 @@ public class PlayerInventory : MonoBehaviour
                 break;
             case InterfaceType.Equipment:
                 slot.ItemObject.EquipItem();
-                if (slot.ItemObject.characterDisplay != null)
-                {
-                    switch (type)
-                    {
-                        case ItemType.Weapon:
-                            weapon = boneCombiner.AddLimb(slot.ItemObject.characterDisplay);
-                            break;
-                        case ItemType.Spell:
-                            spell = boneCombiner.AddLimb(slot.ItemObject.characterDisplay);
-                            break;
-                        case ItemType.Charm:
-                            charm = boneCombiner.AddLimb(slot.ItemObject.characterDisplay);
-                            break;
-                        default:
-                            break;
-                    }
-                }
                 break;
             default:
                 break;

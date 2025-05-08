@@ -24,6 +24,16 @@ public class NewManager : MonoBehaviour
             //SceneManager.LoadScene(3, LoadSceneMode.Additive);
         }
     }
+
+    public void Update()
+    {
+        if (Input.GetButtonDown("SaveReset")) // save reset set to 'k' for now
+        {
+            ItemTracker itemTracker = FindObjectOfType<ItemTracker>();
+            itemTracker.ResetItems();
+        }
+    }
+
     public void unloadScene(int scene)
     {
         StartCoroutine(Unload(scene));

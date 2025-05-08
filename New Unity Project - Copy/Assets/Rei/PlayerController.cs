@@ -45,12 +45,15 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     bool flipped = false;
 
     PlayerHealth playerHealth;
+    PlayerAttacks playerAttacks;
+
 
     void Start()
     {
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         ani = this.gameObject.GetComponent<Animator>();
         playerHealth = this.gameObject.GetComponent<PlayerHealth>();
+        playerAttacks = this.gameObject.GetComponent<PlayerAttacks>();
 
     }
     private void Update()
@@ -74,6 +77,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         else
         {
             boost = false;
+        }
+
+        if (Input.GetButton("ChangeWeapon"))
+        {
+            playerAttacks.setWeapon(1);
         }
 
     }

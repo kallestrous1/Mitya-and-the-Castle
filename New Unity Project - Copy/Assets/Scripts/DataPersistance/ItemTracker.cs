@@ -36,5 +36,12 @@ public class ItemTracker : MonoBehaviour, IDataPersistence
         data.activeItems = this.itemsInGame;
     }
 
+    public void ResetItems()
+    {
+        Debug.Log("reseting items");
+        collectedItems.Clear();
+        itemsInGame.Clear();
+    }
+
 
 }

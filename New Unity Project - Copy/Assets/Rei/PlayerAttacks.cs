@@ -104,4 +104,9 @@ public class PlayerAttacks : MonoBehaviour
         playerSword.SetSwordState(state);
     }
 
+    public void setWeapon(int weaponNumber)
+    {
+        ani.SetInteger("WeaponType", weaponNumber);
+    }
+
 }

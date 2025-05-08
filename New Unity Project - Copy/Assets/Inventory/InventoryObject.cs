@@ -165,7 +165,7 @@ public delegate void SlotUpdated(InventorySlotObject slot);
 [System.Serializable]
 public class InventorySlotObject
 {
-    public ItemType[] AllowedItems = new ItemType[0];
+    public ItemType AllowedItems;
     [System.NonSerialized]
     public UserInterface parent;
     [System.NonSerialized]
@@ -216,16 +216,17 @@ public class InventorySlotObject
 
     public bool CanPlaceInSlot(ItemObject itemObject)
     {
-        if (AllowedItems.Length <= 0 ||itemObject == null || itemObject.data.Id < 0)
+        if (AllowedItems == ItemType.All ||itemObject == null || itemObject.data.Id < 0)
         {
+            Debug.Log("all");
             return true;
         }
-        for (int i = 0; i < AllowedItems.Length; i++)
-        {
-            if (itemObject.type == AllowedItems[i]){
-                return true;
+       
+        if (itemObject.type == AllowedItems){
+            Debug.Log("spec");
+            return true;
             }          
-        }
+        
         return false;
     }
 }

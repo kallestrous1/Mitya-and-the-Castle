@@ -17,11 +17,19 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: 0b3fab3b6a10af145977c3c8ecd8074d, type: 2}
   Container:
     Slots:
-    - AllowedItems: 
+    - AllowedItems: 0
       item:
         Id: -1
         name: 
-    - AllowedItems: 
+    - AllowedItems: 0
+      item:
+        Id: -1
+        name: 
+    - AllowedItems: 3
+      item:
+        Id: -1
+        name: 
+    - AllowedItems: 3
       item:
         Id: -1
         name: 

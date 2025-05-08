@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class PlayerHealth : MonoBehaviour
 {
-    public static int maxHealth=5;
+    public static int maxHealth=3;
     public int health=5;
     public float invincibilityTime=1;
     float invincibilityTimer;

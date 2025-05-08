@@ -10,6 +10,7 @@ public class PlayerHealthDisplay : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    //this seems so bad for performance for no reason, things that change health should call this class instead of searching for player every update
 
     private void Update()
     {

@@ -15,9 +15,8 @@ public class SceneItem : MonoBehaviour
 
         if (itemTracker.collectedItems.Contains(this.item))
         {
+            Debug.Log("destroying " + item);
             Destroy(transform.parent.gameObject);
         }
-
-
     }
 }

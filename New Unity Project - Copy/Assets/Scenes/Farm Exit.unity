@@ -11079,12 +11079,35 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: a15cfae61525c2b4884760e7931843bc, type: 2}
+    - target: {fileID: 5297687035991170607, guid: 7217ddd2650d5fa40880535bf63152fc, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6567174070062148410, guid: 7217ddd2650d5fa40880535bf63152fc, type: 3}
       propertyPath: m_Name
       value: CharmPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7217ddd2650d5fa40880535bf63152fc, type: 3}
+--- !u!1 &927822204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3960645727776949002, guid: 7217ddd2650d5fa40880535bf63152fc, type: 3}
+  m_PrefabInstance: {fileID: 927822203}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &927822205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927822204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9249c6ed933a4584e8edfbdaccdd1a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemTracker: {fileID: 0}
+  item: {fileID: 11400000, guid: a15cfae61525c2b4884760e7931843bc, type: 2}
 --- !u!1001 &975635392
 PrefabInstance:
   m_ObjectHideFlags: 0

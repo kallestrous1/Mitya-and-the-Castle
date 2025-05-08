@@ -19,12 +19,12 @@ public class Instantiator : MonoBehaviour
 
         switch (itemObject.type)
         {
-            case ItemType.Weapon: item = Instantiate(inGameWeaponPrefab);
+           /* case ItemType.Weapon: item = Instantiate(inGameWeaponPrefab);
                 break;
             case ItemType.Charm: item = Instantiate(inGameCharmPrefab);
                 break;
             case ItemType.Spell: item = Instantiate(inGameSpellPrefab);
-                break;
+                break;*/
             default: item = Instantiate(inGameItemPrefab);
                 break;
         }
@@ -46,7 +46,7 @@ public class Instantiator : MonoBehaviour
         GameObject item;
         switch (itemObject.type)
         {
-            case ItemType.Weapon:
+            /*case ItemType.Weapon:
                 item = Instantiate(inGameWeaponPrefab);
                 break;
             case ItemType.Charm:
@@ -54,7 +54,7 @@ public class Instantiator : MonoBehaviour
                 break;
             case ItemType.Spell:
                 item = Instantiate(inGameSpellPrefab);
-                break;
+                break;*/
             default:
                 item = Instantiate(inGameItemPrefab);
                 break;

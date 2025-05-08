@@ -11,14 +11,28 @@ public class DynamicInterface : UserInterface
     public int NUMBER_OF_COLUMNS;
     public int Y_SPACE_BETWEEN_ITEMS;
 
-    public GameObject inventoryPrefab;
+    public GameObject inventoryPrefabAll;
+    public GameObject inventoryPrefabWeapon;
+    public GameObject inventoryPrefabSpell;
+    public GameObject inventoryPrefabCharm;
+
+
+
 
     public override void CreateSlots()
     {
         slotsOnInterface = new Dictionary<GameObject, InventorySlotObject>();
         for (int i = 0; i < inventory.GetSlots.Length; i++)
         {
-            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            var obj = Instantiate(inventoryPrefabAll, Vector3.zero, Quaternion.identity, transform);
+            if (inventory.GetSlots[i].AllowedItems == ItemType.All) { 
+                obj = Instantiate(inventoryPrefabWeapon, Vector3.zero, Quaternion.identity, transform);
+            }
+            else if(inventory.GetSlots[i].AllowedItems == ItemType.Charm)
+            {
+                obj = Instantiate(inventoryPrefabCharm, Vector3.zero, Quaternion.identity, transform);
+            }
+
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
             AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
