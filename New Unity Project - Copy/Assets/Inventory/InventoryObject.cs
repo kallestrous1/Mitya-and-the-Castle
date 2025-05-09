@@ -218,12 +218,10 @@ public class InventorySlotObject
     {
         if (AllowedItems == ItemType.All ||itemObject == null || itemObject.data.Id < 0)
         {
-            Debug.Log("all");
             return true;
         }
        
         if (itemObject.type == AllowedItems){
-            Debug.Log("spec");
             return true;
             }          
         

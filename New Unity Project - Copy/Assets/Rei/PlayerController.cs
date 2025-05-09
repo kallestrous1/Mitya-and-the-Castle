@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     }
     private void Update()
     {
+        if (NewManager.manager.currentGameState == GameState.Paused)
+        {
+            return;
+        }
         CheckIfGrounded();
         xInput = Input.GetAxisRaw("Horizontal");
         ani.SetBool("IsDashing", isDashing);
@@ -196,7 +200,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     #endregion
 
     #region Jump
-    void Jump()
+    public void Jump()
     {
         if ((isGrounded || coyoteTimer>0)&&isDashing==false)
         {         

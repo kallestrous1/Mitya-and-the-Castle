@@ -4,37 +4,29 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneDoorScript : MonoBehaviour
 {
-
+    public Vector2 newPlayerPosition;
+    public bool upBoost = false;
     public string nextScene;
     public int previousScene=1;
-    int moveBoost;
     bool loaded;
     bool unloaded;
     void OnTriggerEnter2D(Collider2D other)
     {
-        Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-        if (rb.velocity.x > 0)
-        {
-            moveBoost = 1;
-        }
-        else
-        {
-            moveBoost = -1;
-        }
-
-        Vector2 prevpos = other.transform.position;
-        other.transform.position = new Vector2(prevpos.x+moveBoost, prevpos.y);
+        Rigidbody2D playerRB = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        playerRB.isKinematic = true;
+        playerRB.velocity = new Vector2(0, 0);
+        other.transform.position = newPlayerPosition;
 
         if (!loaded)
         {
             loaded = true;
-            SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
-            StartCoroutine(SetActiveScene(nextScene));
-         //   SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene));
+            NewManager.manager.moveScenes(nextScene, previousScene, upBoost);
+          /*  SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
+            StartCoroutine(SetActiveScene(nextScene));*/
         }
     }
-
-    IEnumerator SetActiveScene(string sceneName)
+    //new manager does this now
+    /*IEnumerator SetActiveScene(string sceneName)
     {
         DataPersistenceManager.instance.SaveGame();
         yield return new WaitForSeconds(0.1f);
@@ -46,6 +38,6 @@ public class SceneDoorScript : MonoBehaviour
             unloaded = true;
             NewManager.manager.unloadScene(previousScene);
         }
-    }
+    }*/
 
     }

@@ -2866,6 +2866,14 @@ PrefabInstance:
       propertyPath: previousScene
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
+      propertyPath: newPlayerPosition.x
+      value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
+      propertyPath: newPlayerPosition.y
+      value: -59
+      objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795649, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: m_Name
       value: SceneDoor
@@ -2876,11 +2884,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795650, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.42
+      value: 57.82
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795650, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -58.8
+      value: -58.752
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795650, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7715,7 +7723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087728900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.327266, y: -33.11684, z: -20}
+  m_LocalPosition: {x: 8.327259, y: -33.116932, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1763743551}

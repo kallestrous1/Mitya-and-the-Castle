@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneDoorVert : MonoBehaviour
 {
-
+    public Vector2 newPlayerPosition;
     public string nextScene;
     public int previousScene = 1;
     int moveBoost;
@@ -12,25 +12,17 @@ public class SceneDoorVert : MonoBehaviour
     bool unloaded;
     void OnTriggerEnter2D(Collider2D other)
     {
-        Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-        if (rb.velocity.y > 0)
-        {
-            moveBoost = 10;
-        }
-        else
-        {
-            moveBoost = -5;
-        }
-
-        Vector2 prevpos = other.transform.position;
-        other.transform.position = new Vector2(prevpos.x, prevpos.y+moveBoost);
+        Rigidbody2D playerRB = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        playerRB.isKinematic = true;
+        playerRB.velocity = new Vector2(0, 0);
+        other.transform.position = newPlayerPosition;
 
         if (!loaded)
         {
             loaded = true;
-            SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
-            StartCoroutine(SetActiveScene(nextScene));
-            //   SceneManager.SetActiveScene(SceneManager.GetSceneByName(nextScene));
+           // NewManager.manager.moveScenes(nextScene, previousScene, upBoost);
+            /*  SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
+              StartCoroutine(SetActiveScene(nextScene));*/
         }
     }
 

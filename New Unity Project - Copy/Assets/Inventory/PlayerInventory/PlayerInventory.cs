@@ -18,6 +18,14 @@ public class PlayerInventory : MonoBehaviour
             equipment.GetSlots[i].OnAfterUpdate += OnRemoveItem;
             equipment.GetSlots[i].OnBeforeUpdated += OnAddItem;
         }
+        //inventory.Load();
+       // equipment.Load();
+        StartCoroutine(LoadInventoryOnStartup());
+    }
+
+    IEnumerator LoadInventoryOnStartup()
+    {
+        yield return new WaitForSeconds(0.5f);
         inventory.Load();
         equipment.Load();
     }

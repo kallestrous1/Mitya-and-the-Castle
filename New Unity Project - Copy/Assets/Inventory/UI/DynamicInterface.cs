@@ -24,13 +24,21 @@ public class DynamicInterface : UserInterface
         slotsOnInterface = new Dictionary<GameObject, InventorySlotObject>();
         for (int i = 0; i < inventory.GetSlots.Length; i++)
         {
-            var obj = Instantiate(inventoryPrefabAll, Vector3.zero, Quaternion.identity, transform);
+            GameObject obj = null;
             if (inventory.GetSlots[i].AllowedItems == ItemType.All) { 
                 obj = Instantiate(inventoryPrefabWeapon, Vector3.zero, Quaternion.identity, transform);
             }
             else if(inventory.GetSlots[i].AllowedItems == ItemType.Charm)
             {
                 obj = Instantiate(inventoryPrefabCharm, Vector3.zero, Quaternion.identity, transform);
+            }
+            else if (inventory.GetSlots[i].AllowedItems == ItemType.Weapon)
+            {
+                obj = Instantiate(inventoryPrefabWeapon, Vector3.zero, Quaternion.identity, transform);
+            }
+            else if (inventory.GetSlots[i].AllowedItems == ItemType.Charm)
+            {
+                obj = Instantiate(inventoryPrefabSpell, Vector3.zero, Quaternion.identity, transform);
             }
 
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);

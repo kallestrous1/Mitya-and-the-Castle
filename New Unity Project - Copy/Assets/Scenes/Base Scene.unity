@@ -3938,7 +3938,7 @@ GameObject:
   - component: {fileID: 1221565426}
   m_Layer: 0
   m_Name: Instantiator
-  m_TagString: Untagged
+  m_TagString: Instantiator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4975,7 +4975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 403685491848748714, guid: b12ff5969ed4d0e40916f3807732c7e5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 403685491848748717, guid: b12ff5969ed4d0e40916f3807732c7e5, type: 3}
       propertyPath: m_Enabled
@@ -5773,7 +5773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 403685491848748714, guid: b12ff5969ed4d0e40916f3807732c7e5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 403685491848748717, guid: b12ff5969ed4d0e40916f3807732c7e5, type: 3}
       propertyPath: m_Enabled

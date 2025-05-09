@@ -37,7 +37,14 @@ public class Instantiator : MonoBehaviour
         rb.AddForce(transform.up * Random.Range(250.0f, 500.0f));
         rb.AddForce(transform.right * Random.Range(-500.0f, 500.0f));
         itemObject.spawnScene = itemInGame.homeScene;
-        FindCurrentItemTracker().itemsInGame.Add(itemObject, item.GetComponent<Transform>().position);
+        try
+        {
+            FindCurrentItemTracker().itemsInGame.Add(itemObject, item.GetComponent<Transform>().position);
+        }
+        catch (System.ArgumentException e)
+        {
+            Debug.LogError("Element already exists in savestate. Duplicate items re not yet accounted for");
+        }
     }
 
     //spawns in designated location without a jump

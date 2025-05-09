@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7856587554613571615}
   - component: {fileID: 3167831896464594147}
+  - component: {fileID: 1725264817534046715}
   m_Layer: 8
   m_Name: Point Light 2D
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917047505109234236}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1800, y: 939, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.352689, y: 5.1106906, z: 1}
   m_Children: []
   m_Father: {fileID: 47469186207442951}
@@ -46,10 +47,10 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.61
-  m_Color: {r: 0, g: 0.5893867, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.5882354, b: 1, a: 1}
   m_Intensity: 2
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: bbbf595800000000c97e903a
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -72,6 +73,22 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!58 &1725264817534046715
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917047505109234236}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &3476944489890319691
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.39, y: -31.62}
+  m_AnchoredPosition: {x: -410.27, y: -242.27}
   m_SizeDelta: {x: 160, y: 18.9894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1518580557744710372
@@ -178,7 +195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3579388521902307701}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.54, y: 7.6, z: 0}
+  m_LocalPosition: {x: -1798.553, y: -930.453, z: 0}
   m_LocalScale: {x: 3.8488374, y: 3.8674276, z: 1}
   m_Children: []
   m_Father: {fileID: 47469186207442951}
@@ -212,8 +229,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a13b74884d18e3e458b06de31b1b57eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemTracker: {fileID: 0}
   item: {fileID: 0}
-  pickedUp: 0
+  isActive: 0
+  homeScene: 
 --- !u!114 &2857517793368226773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +257,6 @@ GameObject:
   - component: {fileID: 47469186207442951}
   - component: {fileID: 3187319952910114807}
   - component: {fileID: 1939262330415575171}
-  - component: {fileID: 6069160919717604756}
   m_Layer: 8
   m_Name: InGameItemPrefab 1
   m_TagString: Item
@@ -265,7 +283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.78, y: -77.92}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!50 &3187319952910114807
@@ -297,22 +315,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6663298501066969413}
   m_CullTransparentMesh: 1
---- !u!58 &6069160919717604756
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6663298501066969413}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 1799.8773, y: 938.5847}
-  serializedVersion: 2
-  m_Radius: 0.8
 --- !u!1 &8896527311357565293
 GameObject:
   m_ObjectHideFlags: 0

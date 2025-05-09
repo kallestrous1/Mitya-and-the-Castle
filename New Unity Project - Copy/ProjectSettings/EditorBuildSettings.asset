@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/farmexitdrop.unity
     guid: 15b7ed2672d1dea488988c02dd3b011a
+  - enabled: 1
+    path: Assets/Scenes/LoadScreen.unity
+    guid: a7f54bd9b0879f74fb8f9072ab6c7089
   m_configObjects: {}
