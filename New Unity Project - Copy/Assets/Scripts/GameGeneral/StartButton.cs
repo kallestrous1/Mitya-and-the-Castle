@@ -5,11 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
-    public void LoadScene(string sceneName)
+
+    public string getSpawnScene()
     {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
-        SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
-        StartCoroutine(SetActiveScene(sceneName));
+        return NewManager.playerSpawnScene;
+    }
+
+    public void LoadScene(string scene)
+    {
+        if (getSpawnScene() != null)
+        {
+            string spawnScene = getSpawnScene();
+            SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
+            SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
+            StartCoroutine(SetActiveScene(spawnScene));
+        
+        }
+        else
+        {
+            Debug.Log("Using default initial spawn scene");
+            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+            SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
+            StartCoroutine(SetActiveScene(scene));
+        }
+        
     }
 
     IEnumerator SetActiveScene(string sceneName)

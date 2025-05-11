@@ -9,10 +9,13 @@ public enum GameState
     Paused
 }
 
-public class NewManager : MonoBehaviour
+public class NewManager : MonoBehaviour, IDataPersistence
 {
     public GameState currentGameState;
     static bool gameStart;
+
+    public static Vector2 playerSaveLocation;
+    public static string playerSpawnScene;
 
     public static NewManager manager;
 
@@ -30,6 +33,8 @@ public class NewManager : MonoBehaviour
             //no clue if this should be commented but it solved a weird error I just got
             //SceneManager.LoadScene(3, LoadSceneMode.Additive);
         }
+
+        
     }
 
     public void Update()
@@ -38,6 +43,8 @@ public class NewManager : MonoBehaviour
         {
             ItemTracker itemTracker = FindObjectOfType<ItemTracker>();
             itemTracker.ResetItems();
+            playerSpawnScene = "Grandpa's Farm";
+            playerSaveLocation = new Vector2(2, -59);
         }
     }
 
@@ -75,4 +82,16 @@ public class NewManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(scene);
     }
 
+    void IDataPersistence.LoadData(GameData data)
+    {
+        Debug.Log("loading data");
+        playerSaveLocation = data.playerSaveLocation;
+        playerSpawnScene = data.playerSpawnScene;
+    }
+
+    void IDataPersistence.SaveData(GameData data)
+    {
+        data.playerSaveLocation = playerSaveLocation;
+        data.playerSpawnScene = playerSpawnScene;
+    }
 }

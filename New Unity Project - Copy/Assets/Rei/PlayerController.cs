@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     void Start()
     {
+        this.transform.position = NewManager.playerSaveLocation;
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         ani = this.gameObject.GetComponent<Animator>();
         playerHealth = this.gameObject.GetComponent<PlayerHealth>();

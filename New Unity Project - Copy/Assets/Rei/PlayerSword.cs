@@ -31,7 +31,7 @@ public class PlayerSword : MonoBehaviour
     {
 
         if (collision.gameObject.tag == "Enemy")
-        {     
+        {
             GameObject blood = Instantiate(bloodEffectTest, transform.position , Quaternion.identity);
             blood.GetComponent<ParticleSystem>().Play();
 

@@ -43,6 +43,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("game being loaded from datapersistence manager");
         this.dataPersistanceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }
@@ -68,7 +69,6 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistanceObj.LoadData(gameData);
         }
 
-        Debug.Log("total jumps = " + gameData.totalJumps);
     }
 
     public void SaveGame()
@@ -77,8 +77,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistanceObj.SaveData(gameData);
         }
-
-        Debug.Log("total jumps = " + gameData.totalJumps);
 
         dataHandler.Save(gameData);
 
