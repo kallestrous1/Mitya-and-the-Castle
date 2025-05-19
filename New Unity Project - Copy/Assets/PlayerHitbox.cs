@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerHitbox : MonoBehaviour
+{
+    public string attackName;
+    public int damage;
+    public float knockback;
+
+    public GameObject hitParticleEffect;
+
+    void OnTriggerEnter2D(Collider2D trigger)
+    {
+        if (trigger.gameObject.tag == "Enemy")
+        {
+            GameObject blood = Instantiate(hitParticleEffect, transform.position, Quaternion.identity);
+            blood.GetComponent<ParticleSystem>().Play();
+            var force = trigger.transform.position - transform.position;
+            force.Normalize();
+            Rigidbody2D enemyrb = trigger.GetComponentInParent<Rigidbody2D>();
+            enemyrb.AddForce(force * knockback, ForceMode2D.Impulse);
+        }
+    }
+
+}

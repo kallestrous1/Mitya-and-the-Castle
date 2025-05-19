@@ -22,4 +22,12 @@ MonoBehaviour:
   data:
     Id: 4
     name: 
-  sword: {fileID: 21300000, guid: 1d2e8150534342745a2da9440e3d7f6d, type: 3}
+  animations: {fileID: 22100000, guid: 25d45b03b65e19048bc4ea899be8fb32, type: 2}
+  baseAnimations: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
+  inGameSprite: {fileID: 21300000, guid: 1d2e8150534342745a2da9440e3d7f6d, type: 3}
+  baseAttackDamage: 3
+  upAttackDamage: 4
+  downAttackDamage: 5
+  swingSound: {fileID: 8300000, guid: 73efbb3c23ea8f64aa84e27039fb99cd, type: 3}
+  hitParticleEffect: {fileID: 3133542132048655781, guid: 4effa2e61bcb73744b81567d44f49d61, type: 3}
+  weaponForce: 8

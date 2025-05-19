@@ -13,20 +13,21 @@ public class StartButton : MonoBehaviour
 
     public void LoadScene(string scene)
     {
+
         if (getSpawnScene() != null)
         {
             string spawnScene = getSpawnScene();
             SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
             SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
             StartCoroutine(SetActiveScene(spawnScene));
-        
+
         }
         else
         {
             Debug.Log("Using default initial spawn scene");
-            SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+            SceneManager.LoadScene("Grandpa's Farm", LoadSceneMode.Additive);
             SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
-            StartCoroutine(SetActiveScene(scene));
+            StartCoroutine(SetActiveScene("Grandpa's Farm"));
         }
         
     }

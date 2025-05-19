@@ -8,11 +8,11 @@ public class HelmetOfKicking : ItemObject
 {
     public override void EquipItem()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttacks>().setWeapon(1);
+       // GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttacks>().setWeapon(1);
     }
 
     public override void UnequipItem()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttacks>().setWeapon(0);
+       // GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttacks>().setWeapon(0);
     }
 }

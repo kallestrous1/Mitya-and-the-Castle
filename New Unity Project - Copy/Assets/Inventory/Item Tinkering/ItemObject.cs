@@ -25,6 +25,10 @@ public abstract class ItemObject : ScriptableObject
     public string description;
     public SuperItem data = new SuperItem();
 
+    public RuntimeAnimatorController animations;
+    public RuntimeAnimatorController baseAnimations;
+    public Sprite inGameSprite;
+
     public abstract void EquipItem();
     public abstract void UnequipItem();
 

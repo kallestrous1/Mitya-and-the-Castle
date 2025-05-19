@@ -8,13 +8,13 @@ public class PlayerAttacks : MonoBehaviour
     float holdDuration;
     bool resetWeapon;
 
-    PlayerSword playerSword;
+    PlayerWeapon playerSword;
 
     void Start()
     {
         StartCoroutine(ChargeWeapon());
         ani = GetComponent<Animator>();
-        playerSword = transform.GetComponentInChildren<PlayerSword>();
+        playerSword = transform.GetComponentInChildren<PlayerWeapon>();
 
     }
 
@@ -101,12 +101,7 @@ public class PlayerAttacks : MonoBehaviour
 
     public void setSwordColliderState(float state)
     {
-        playerSword.SetSwordState(state);
-    }
-
-    public void setWeapon(int weaponNumber)
-    {
-        ani.SetInteger("WeaponType", weaponNumber);
+        playerSword.SetPlayerWeaponHitboxState(state);
     }
 
 }

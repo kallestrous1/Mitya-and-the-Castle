@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadScreen.unity
     guid: a7f54bd9b0879f74fb8f9072ab6c7089
+  - enabled: 1
+    path: Assets/Scenes/antdrop.unity
+    guid: 076e93ee43d47aa4cb862c919fedc403
   m_configObjects: {}

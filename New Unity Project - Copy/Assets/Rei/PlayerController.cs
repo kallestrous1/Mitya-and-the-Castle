@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
         if (Input.GetButton("ChangeWeapon"))
         {
-            playerAttacks.setWeapon(1);
+            //playerAttacks.setWeapon(1);
         }
 
     }
@@ -237,7 +237,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        //in case touching enemies should hurt
+  /*      if(collision.tag == "Enemy")
         {
             if (!playerHealth.recovering)
             {
@@ -246,7 +247,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
                 force.Normalize();
                 rb.AddForce(force * recoilMagnitude, ForceMode2D.Impulse);
             }
-        }
+        }*/
     }
     #endregion
 
