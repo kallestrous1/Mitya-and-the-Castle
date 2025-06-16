@@ -11,10 +11,11 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D rb;
     public bool inRange;
 
-    public int health;
-
     public bool flipped = false;
+    bool facingRight;
 
+    public float TIMEBETWEENACTIONS = 3f;
+    public float currentActionRecoveryTime = 0;
 
 
     // Start is called before the first frame update
@@ -22,14 +23,31 @@ public class Enemy : MonoBehaviour
     {
         ani = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
      public virtual void Update()
     {
-        if (inRange)
+        if (currentActionRecoveryTime >= 0)
         {
-            EnemyBehaviour();
+            currentActionRecoveryTime -= Time.deltaTime;
+        }
+
+        if (target != null)
+        {              
+            facingRight = target.transform.position.x > this.transform.position.x;
+            if (facingRight && !flipped)
+            {
+                flipped = true;
+                this.transform.Rotate(0f, 180f, 0f);
+            }
+            else if(!facingRight && flipped)
+            {
+                flipped = false;
+                this.transform.Rotate(0f, -180f, 0f);
+            }
+
         }
     }
 
@@ -37,12 +55,22 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D trigger)
     {
-        if(trigger.gameObject.tag == "Player")
+        if (trigger.gameObject.tag == "Player")
         {
-            target = trigger.gameObject;
             inRange = true;
         }
     }
 
-    public virtual void doDamage(int damage) { }
+    public virtual bool checkIfReadyForAction() 
+    {
+        if (currentActionRecoveryTime <= 0)
+        {
+            currentActionRecoveryTime = TIMEBETWEENACTIONS;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

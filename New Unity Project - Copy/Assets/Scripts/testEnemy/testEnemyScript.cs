@@ -41,7 +41,7 @@ public class testEnemyScript : MonoBehaviour
             var knockBackDirection = playerRB.transform.position - this.transform.position;
             knockBackDirection.Normalize();
            // playerRB.AddForce(knockBackForce * knockBackDirection);
-            controller.changeHealth(-1);
+           // controller.changeHealth(-1);
         }
 
     }

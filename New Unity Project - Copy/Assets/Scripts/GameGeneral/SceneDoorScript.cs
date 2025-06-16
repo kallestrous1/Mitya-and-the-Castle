@@ -14,30 +14,13 @@ public class SceneDoorScript : MonoBehaviour
     {
         Rigidbody2D playerRB = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         playerRB.isKinematic = true;
-        playerRB.velocity = new Vector2(0, 0);
+        playerRB.linearVelocity = new Vector2(0, 0);
         other.transform.position = newPlayerPosition;
 
         if (!loaded)
         {
             loaded = true;
-            NewManager.manager.moveScenes(nextScene, previousScene, upBoost);
-          /*  SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Additive);
-            StartCoroutine(SetActiveScene(nextScene));*/
+            NewManager.manager.moveScenes(nextScene, previousScene, upBoost);          
         }
     }
-    //new manager does this now
-    /*IEnumerator SetActiveScene(string sceneName)
-    {
-        DataPersistenceManager.instance.SaveGame();
-        yield return new WaitForSeconds(0.1f);
-        Debug.Log(sceneName);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-
-        if (!unloaded)
-        {
-            unloaded = true;
-            NewManager.manager.unloadScene(previousScene);
-        }
-    }*/
-
     }

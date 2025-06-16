@@ -16,7 +16,7 @@ public class Hitbox : MonoBehaviour
             var force = trigger.transform.position - transform.position;
             force.Normalize();
             Rigidbody2D playerrb = trigger.GetComponent<Rigidbody2D>();
-            trigger.GetComponent<PlayerHealth>().changeHealth(-damage);
+          //  trigger.GetComponent<PlayerHealth>().changeHealth(-damage);
             playerrb.AddForce(force * knockback, ForceMode2D.Impulse);
         }
     }

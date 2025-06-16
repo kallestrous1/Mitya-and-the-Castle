@@ -21,14 +21,14 @@ public class HumanDude : Enemy
             recoveryTime -= Time.deltaTime;
         }
 
-        if(rb.velocity.x > 1  && flipped == false)
+        if(rb.linearVelocity.x > 1  && flipped == false)
         {
             this.transform.Rotate(0f, 180f, 0f);
             flipped = true;
             Vector2 currentPosition = this.transform.position;
             this.transform.position = new Vector2(currentPosition.x + 1, currentPosition.y);
         }
-        else if( rb.velocity.x < -1 && flipped == true)
+        else if( rb.linearVelocity.x < -1 && flipped == true)
         {
             this.transform.Rotate(0f, -180f, 0f);
             flipped = false;
@@ -98,11 +98,5 @@ public class HumanDude : Enemy
             ani.SetTrigger("Punch");
             recoveryTime = RECOVERYTIME;
         }
-    }
-
-    public override void doDamage(int damage)
-    {
-        this.health -= damage;
-        Debug.Log(health);
     }
 }

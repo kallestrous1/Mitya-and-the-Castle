@@ -10,12 +10,6 @@ public class SavePedestal : MonoBehaviour
 
     public AudioClip saveSound;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {

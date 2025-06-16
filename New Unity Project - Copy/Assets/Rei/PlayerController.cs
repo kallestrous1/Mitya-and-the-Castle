@@ -47,6 +47,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     PlayerHealth playerHealth;
     PlayerAttacks playerAttacks;
 
+    public AudioClip dashSound;
+
+    private KnockBack knockback;
+
 
     void Start()
     {
@@ -55,7 +59,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         ani = this.gameObject.GetComponent<Animator>();
         playerHealth = this.gameObject.GetComponent<PlayerHealth>();
         playerAttacks = this.gameObject.GetComponent<PlayerAttacks>();
-
+        knockback = this.gameObject.GetComponent<KnockBack>();
     }
     private void Update()
     {
@@ -63,6 +67,12 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         {
             return;
         }
+
+        if (knockback.isBeingKnockedBack)
+        {
+            return;
+        }
+
         CheckIfGrounded();
         xInput = Input.GetAxisRaw("Horizontal");
         ani.SetBool("IsDashing", isDashing);
@@ -75,7 +85,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         {
             dashRequest = true;
         }     
-        if ((Input.GetButton("Vertical")) && (isGrounded == false) && (rb.velocity.y > 0))
+        if ((Input.GetButton("Vertical")) && (isGrounded == false) && (rb.linearVelocity.y > 0))
         {
             boost = true;
         }
@@ -109,7 +119,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         }
         else
         {
-            if (rb.velocity.y > 0) { 
+            if (rb.linearVelocity.y > 0) { 
                 ani.SetFloat("MoveY", 1);
                 ani.SetFloat("MoveX", 0);
             }
@@ -183,8 +193,9 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         if (dashCount > 0)
         {
             dashCount--;
+            AudioManager.Instance.Play(dashSound);
             isDashing = true;
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(new Vector2(rotationX * dashPower, 0), ForceMode2D.Impulse);
             float gravity = rb.gravityScale;
             rb.gravityScale = 0;
@@ -205,14 +216,14 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     {
         if ((isGrounded || coyoteTimer>0)&&isDashing==false)
         {         
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
             totalJumps++;
         }
         else if (jumpCount > 0 && isDashing == false)
         {
             jumpCount--;
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
         }
     }

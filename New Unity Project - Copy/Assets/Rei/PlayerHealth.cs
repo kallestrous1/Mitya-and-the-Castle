@@ -5,15 +5,20 @@ public class PlayerHealth : MonoBehaviour
 {
     public static int maxHealth=5;
     public int health=5;
-    public float invincibilityTime=1;
+   // public float invincibilityTime=1;
     float invincibilityTimer;
     public bool recovering;
 
     public GameObject bloodDisplay;
+
+    public AudioClip playerDamageSound;
+
+    private KnockBack knockback;
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
+        knockback = this.gameObject.GetComponent<KnockBack>();
     }
     private void Update()
     {
@@ -28,15 +33,20 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void changeHealth(int change)
+    public void changeHealth(int change, Vector2 knockBackDirection)
     {
-        if (invincibilityTimer <= 0 || change > 0)
+        if (true)
         {
-            invincibilityTimer = invincibilityTime;
+         //   invincibilityTimer = invincibilityTime;
             health += change;
             if (change < 0)
             {
+                AudioManager.Instance.Play(playerDamageSound);
                 StartCoroutine(DisplayBlood());
+                if (!knockback.isBeingKnockedBack)
+                {
+                    knockback.StartPlayerKnockback(knockBackDirection, Vector2.up, 0f);
+                }
             }
         }
     }

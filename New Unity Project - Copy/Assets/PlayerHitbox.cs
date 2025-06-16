@@ -14,8 +14,7 @@ public class PlayerHitbox : MonoBehaviour
     {
         if (trigger.gameObject.tag == "Enemy")
         {
-            GameObject blood = Instantiate(hitParticleEffect, transform.position, Quaternion.identity);
-            blood.GetComponent<ParticleSystem>().Play();
+            trigger.GetComponent<Destructable>().changeHealth(-damage);
             var force = trigger.transform.position - transform.position;
             force.Normalize();
             Rigidbody2D enemyrb = trigger.GetComponentInParent<Rigidbody2D>();

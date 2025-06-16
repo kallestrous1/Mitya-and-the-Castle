@@ -28,7 +28,7 @@ public class actionsTestEnemy : MonoBehaviour
             awoken = true;
             InvokeRepeating("action", 0.0f, actionSpeed);
         }
-        if (rb.velocity.x>1||rb.velocity.x<-1)
+        if (rb.linearVelocity.x>1||rb.linearVelocity.x<-1)
         {
             ani.SetBool("MovingX", true);
         }
@@ -42,7 +42,7 @@ public class actionsTestEnemy : MonoBehaviour
     void action()
     {
         getDirectionToPlayer();
-        rb.velocity = new Vector2(0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
         Vector2 position = rb.position;
         Vector2 playerPosition = playerRB.position;       
         int choice = Random.Range(0, 3);  
@@ -57,7 +57,7 @@ public class actionsTestEnemy : MonoBehaviour
         }
         else if (choice == 2)
         {
-            rb.velocity = new Vector2(getDirectionToPlayer() * 5, 0);
+            rb.linearVelocity = new Vector2(getDirectionToPlayer() * 5, 0);
         }
         else
         {
@@ -72,7 +72,7 @@ public class actionsTestEnemy : MonoBehaviour
     }
     void jump()
     {
-        rb.velocity = new Vector2(getDirectionToPlayer() * 5, 17);
+        rb.linearVelocity = new Vector2(getDirectionToPlayer() * 5, 17);
     }
 
 
@@ -102,11 +102,11 @@ public class actionsTestEnemy : MonoBehaviour
     }
     void moveDirection()
     {
-        if (rb.velocity.x > 0)
+        if (rb.linearVelocity.x > 0)
         {
             ani.SetBool("FacingRight", true);
         }
-        else if (rb.velocity.x < 0)
+        else if (rb.linearVelocity.x < 0)
         {
             ani.SetBool("FacingRight", false);
         }

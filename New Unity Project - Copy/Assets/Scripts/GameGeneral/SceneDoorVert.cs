@@ -14,7 +14,7 @@ public class SceneDoorVert : MonoBehaviour
     {
         Rigidbody2D playerRB = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         playerRB.isKinematic = true;
-        playerRB.velocity = new Vector2(0, 0);
+        playerRB.linearVelocity = new Vector2(0, 0);
         other.transform.position = newPlayerPosition;
 
         if (!loaded)

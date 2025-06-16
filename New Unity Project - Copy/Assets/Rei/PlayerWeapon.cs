@@ -13,16 +13,7 @@ public class PlayerWeapon : MonoBehaviour
 
     void Start()
     {
-     //   playerrb = gameObject.transform.root.GetComponent<Rigidbody2D>();
-       // rb = transform.GetComponent<Rigidbody2D>();
         collider = transform.GetComponent<Collider2D>();
-       // rb.useFullKinematicContacts = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +23,9 @@ public class PlayerWeapon : MonoBehaviour
         {
              GameObject blood = Instantiate(activeWeapon.hitParticleEffect, transform.position , Quaternion.identity);
              blood.GetComponent<ParticleSystem>().Play();
-             collision.GetComponentInParent<Enemy>().doDamage(activeWeapon.baseAttackDamage);
+
+             collision.GetComponent<Destructable>().changeHealth(-activeWeapon.baseAttackDamage);
+
             var force = collision.transform.position - transform.position;
             force.Normalize();
             Rigidbody2D enemyrb = collision.GetComponentInParent<Rigidbody2D>();

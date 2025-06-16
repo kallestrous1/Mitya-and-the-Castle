@@ -25,7 +25,7 @@ public class FlyMovement : MonoBehaviour
             Move();
         else if(!attacked && alert)
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             Attack();
         }
     }

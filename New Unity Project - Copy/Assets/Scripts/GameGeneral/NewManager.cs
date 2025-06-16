@@ -41,7 +41,7 @@ public class NewManager : MonoBehaviour, IDataPersistence
     {
         if (Input.GetButtonDown("SaveReset")) // save reset set to 'k' for now
         {
-            ItemTracker itemTracker = FindObjectOfType<ItemTracker>();
+            ItemTracker itemTracker = FindAnyObjectByType<ItemTracker>();
             itemTracker.ResetItems();
             playerSpawnScene = "Grandpa's Farm";
             playerSaveLocation = new Vector2(2, -59);
@@ -51,6 +51,7 @@ public class NewManager : MonoBehaviour, IDataPersistence
     public void moveScenes(string newScene, int previousScene, bool upBoost)
     {
         currentGameState = GameState.Paused;
+        DataPersistenceManager.instance.SaveGame();
         unloadScene(previousScene);
         StartCoroutine(LoadingMenu(newScene, upBoost));
     }
@@ -59,7 +60,7 @@ public class NewManager : MonoBehaviour, IDataPersistence
     {
         SceneManager.LoadSceneAsync(10, LoadSceneMode.Additive);
         yield return new WaitForSeconds(0.1f);
-        SceneManager.LoadSceneAsync(newScene, LoadSceneMode.Additive);
+        SceneManager.LoadScene(newScene, LoadSceneMode.Additive);
         yield return new WaitForSeconds(0.5f);
         unloadScene(10);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(newScene));
@@ -91,6 +92,7 @@ public class NewManager : MonoBehaviour, IDataPersistence
 
     void IDataPersistence.SaveData(GameData data)
     {
+        Debug.Log("saving data");
         data.playerSaveLocation = playerSaveLocation;
         data.playerSpawnScene = playerSpawnScene;
     }
