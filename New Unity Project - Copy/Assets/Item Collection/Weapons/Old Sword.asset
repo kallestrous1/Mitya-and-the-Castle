@@ -29,5 +29,5 @@ MonoBehaviour:
   upAttackDamage: 4
   downAttackDamage: 5
   swingSound: {fileID: 8300000, guid: fae81b01a743dc242894618e36ccfe84, type: 3}
-  hitParticleEffect: {fileID: 3133542132048655781, guid: 4effa2e61bcb73744b81567d44f49d61, type: 3}
-  weaponForce: 8
+  hitParticleEffect: {fileID: 0}
+  weaponForce: 30

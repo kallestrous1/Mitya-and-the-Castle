@@ -5,13 +5,14 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "Follow Player", story: "[Agent] follows [player]", category: "Action", id: "20bfe6ad87b7faedc5f1fbb26ad74022")]
+[NodeDescription(name: "Follow Player", story: "[Agent] follows [player] at [speed]", category: "Action", id: "20bfe6ad87b7faedc5f1fbb26ad74022")]
 public partial class FollowPlayerAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<GameObject> Player;
+    [SerializeReference] public BlackboardVariable<float> Speed;
 
-    [SerializeReference] public BlackboardVariable<float> Speed = new BlackboardVariable<float>(3.5f);
+    private float stoppingDistance = 5f;
 
     protected override Status OnStart()
     {
@@ -27,13 +28,25 @@ public partial class FollowPlayerAction : Action
     {
         Vector2 playerpos = Player.Value.transform.position;
         MoveTowardsTarget(playerpos);
-        return Status.Running;
+        return Status.Success;
     
     }
 
     private void MoveTowardsTarget(Vector2 targetPos)
     {
-        Agent.Value.transform.position = Vector2.MoveTowards(Agent.Value.transform.position, targetPos, Speed * Time.deltaTime);
+        Vector2 pos = (Vector2)Agent.Value.transform.position;
+
+        float distance = Vector2.Distance(pos, targetPos);
+
+        if (distance > stoppingDistance)
+        {
+            Vector2 dir = (targetPos - pos).normalized;
+            Agent.Value.GetComponent<Rigidbody2D>().AddForce(dir * Speed.Value, ForceMode2D.Impulse);
+        }
+        else
+        {
+            Agent.Value.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero; // Stop the enemy when close to the player
+        }
     }
 }
 

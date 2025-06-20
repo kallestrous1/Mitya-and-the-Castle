@@ -1013,6 +1013,7 @@ GameObject:
   - component: {fileID: 5288524570132474603}
   - component: {fileID: -2775555598840882046}
   - component: {fileID: 2875210955906316434}
+  - component: {fileID: 7806669109662352685}
   m_Layer: 9
   m_Name: niceguySpriteSheet
   m_TagString: Player
@@ -1378,6 +1379,14 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &7806669109662352685
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403685491848748714}
+  m_Enabled: 1
 --- !u!1 &403685491891853108
 GameObject:
   m_ObjectHideFlags: 0

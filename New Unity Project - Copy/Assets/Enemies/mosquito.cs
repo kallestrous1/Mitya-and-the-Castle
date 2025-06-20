@@ -6,13 +6,16 @@ using UnityEngine;
 public class mosquito : Enemy
 {
     [SerializeField] private Transform player;
-
+    public AudioClip buzz;
+    public AudioSource source;
 
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
+        source.clip = buzz;
+        source.Play();
     }
 
     // Update is called once per frame
@@ -26,6 +29,6 @@ public class mosquito : Enemy
         Vector2 targetPos = (Vector2)target.transform.position;
         Vector2 dir = targetPos - (Vector2)transform.position;
         dir.Normalize();
-        transform.position = Vector2.MoveTowards(transform.position, targetPos, 10 * Time.deltaTime);
+        transform.GetComponent<Rigidbody2D>().AddForce(dir * 500, ForceMode2D.Impulse);
     }
 }

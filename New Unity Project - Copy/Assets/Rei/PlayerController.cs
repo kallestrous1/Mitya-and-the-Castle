@@ -244,24 +244,6 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     }
     #endregion
 
-    #region EnemyCollision
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //in case touching enemies should hurt
-  /*      if(collision.tag == "Enemy")
-        {
-            if (!playerHealth.recovering)
-            {
-                playerHealth.changeHealth(-1);
-                var force = transform.position - collision.transform.position;
-                force.Normalize();
-                rb.AddForce(force * recoilMagnitude, ForceMode2D.Impulse);
-            }
-        }*/
-    }
-    #endregion
-
 
     public void LoadData(GameData data)
     {

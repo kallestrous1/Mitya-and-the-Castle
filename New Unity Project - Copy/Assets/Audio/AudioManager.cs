@@ -5,7 +5,8 @@ using Random = System.Random;
 
 public class AudioManager : MonoBehaviour
 {
-	public AudioSource EffectsSource;
+	public AudioSource[] EffectsSources = new AudioSource[5];
+	public AudioSource[] LoopSources = new AudioSource[3];
 	public AudioSource MusicSource;
 
 	// Random pitch adjustment range.
@@ -33,8 +34,33 @@ public class AudioManager : MonoBehaviour
 	// Play a single clip through the sound effects source.
 	public void Play(AudioClip clip)
 	{
-		EffectsSource.clip = clip;
-		EffectsSource.Play();
+		foreach(AudioSource source in EffectsSources)
+        {
+            if (!source.isPlaying)
+            {
+				source.clip = clip;
+				source.Play();
+				return;
+			}
+        }
+	}
+
+	public AudioSource PlayLoop(AudioClip clip)
+    {
+		foreach (AudioSource source in LoopSources)
+		{
+			if (!source.isPlaying)
+			{
+				source.clip = clip;
+				source.Play();
+				return source;
+			}
+		}
+		Debug.Log("replacing last loopsource");
+		LoopSources[LoopSources.Length].clip = clip;
+		LoopSources[LoopSources.Length].Play();
+		return LoopSources[LoopSources.Length];
+		
 	}
 
 	// Play a single clip through the music source.
@@ -52,6 +78,6 @@ public class AudioManager : MonoBehaviour
 
 		//EffectsSource.pitch = randomPitch;
 		//EffectsSource.clip = clips[randomIndex];
-		EffectsSource.Play();
+		//EffectsSource.Play();
 	}
 }

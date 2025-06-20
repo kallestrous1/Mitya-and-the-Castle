@@ -10,18 +10,8 @@ public class AlertAreaScript : MonoBehaviour
     {
         if (other.tag == "Player") 
         {
-            Debug.Log("playerdetected");
             Player = other.gameObject;
             playerDetected = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            Debug.Log("plauer out of sight");
-            playerDetected = false;
         }
     }
 }

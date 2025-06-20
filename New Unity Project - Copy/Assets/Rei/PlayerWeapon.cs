@@ -21,8 +21,10 @@ public class PlayerWeapon : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-             GameObject blood = Instantiate(activeWeapon.hitParticleEffect, transform.position , Quaternion.identity);
-             blood.GetComponent<ParticleSystem>().Play();
+            if (activeWeapon.hitParticleEffect)
+            {
+                Instantiate(activeWeapon.hitParticleEffect, transform.position, Quaternion.identity);
+            }
 
              collision.GetComponent<Destructable>().changeHealth(-activeWeapon.baseAttackDamage);
 
