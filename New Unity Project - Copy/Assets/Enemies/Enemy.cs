@@ -73,4 +73,9 @@ public class Enemy : MonoBehaviour
             return false;
         }
     }
+
+    public void Stun()
+    {
+        ani.SetTrigger("Stun");
+    }
 }

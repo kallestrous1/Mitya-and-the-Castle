@@ -21,16 +21,18 @@ public class PlayerWeapon : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
+            Rigidbody2D enemyrb = collision.GetComponent<Rigidbody2D>();
+
             if (activeWeapon.hitParticleEffect)
             {
                 Instantiate(activeWeapon.hitParticleEffect, transform.position, Quaternion.identity);
             }
 
-             collision.GetComponent<Destructable>().changeHealth(-activeWeapon.baseAttackDamage);
-
-            var force = collision.transform.position - transform.position;
+            collision.GetComponent<Destructable>().changeHealth(-activeWeapon.baseAttackDamage);
+            collision.GetComponent<mosquito>().Stun();
+            collision.GetComponent<DamageFlash>().CallDamageFlash();
+            var force = (Vector2)collision.transform.position - (Vector2)this.gameObject.GetComponentInParent<Transform>().position;
             force.Normalize();
-            Rigidbody2D enemyrb = collision.GetComponentInParent<Rigidbody2D>();
             enemyrb.AddForce(force * activeWeapon.weaponForce, ForceMode2D.Impulse);
         }
     }

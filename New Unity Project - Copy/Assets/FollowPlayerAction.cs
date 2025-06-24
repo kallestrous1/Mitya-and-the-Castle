@@ -43,10 +43,6 @@ public partial class FollowPlayerAction : Action
             Vector2 dir = (targetPos - pos).normalized;
             Agent.Value.GetComponent<Rigidbody2D>().AddForce(dir * Speed.Value, ForceMode2D.Impulse);
         }
-        else
-        {
-            Agent.Value.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero; // Stop the enemy when close to the player
-        }
     }
 }
 
