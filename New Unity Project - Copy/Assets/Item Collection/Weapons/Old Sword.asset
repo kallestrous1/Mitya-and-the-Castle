@@ -25,6 +25,9 @@ MonoBehaviour:
   animations: {fileID: 22100000, guid: 25d45b03b65e19048bc4ea899be8fb32, type: 2}
   baseAnimations: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
   inGameSprite: {fileID: 21300000, guid: 1d2e8150534342745a2da9440e3d7f6d, type: 3}
+  swordForPlayer: {fileID: 35853237938210180, guid: 9fab8799a00bc7e42a2a6e43c842213f, type: 3}
+  PlayerWeaponContainer: {fileID: 0}
+  weaponSprite: {fileID: 21300000, guid: 1d2e8150534342745a2da9440e3d7f6d, type: 3}
   baseAttackDamage: 3
   upAttackDamage: 4
   downAttackDamage: 5

@@ -13,11 +13,12 @@ public class ItemTracker : MonoBehaviour, IDataPersistence
     {
         //0.1 seconds slower than the one that sets the correct active scene in startbutton and scenedoors, otherwise items will spawn in superscene
         yield return new WaitForSeconds(0.2f);
-        instantiator = FindObjectOfType<Instantiator>();
+        instantiator = FindAnyObjectByType<Instantiator>();
         foreach (KeyValuePair<ItemObject, Vector2> item in itemsInGame)
         {
             if (item.Key.spawnScene == SceneManager.GetActiveScene().name)
             {
+                Debug.Log("Item tracker spawning in: " + item.Key);
                 instantiator.SpawnItem(item.Key, item.Value);
             }
         }

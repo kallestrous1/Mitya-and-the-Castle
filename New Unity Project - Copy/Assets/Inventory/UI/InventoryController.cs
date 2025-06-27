@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    bool inventoryActive;
+    bool inventoryActive = true;
     public GameObject inventory;
     CanvasGroup inventoryCanvas;
     private void Start()

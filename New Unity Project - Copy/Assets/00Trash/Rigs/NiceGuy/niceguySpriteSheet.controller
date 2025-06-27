@@ -22,6 +22,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-8775191083236066212
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: fancyswordup
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 07231b4e83ae1ee42a7d9a3bb20cd94c, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-8495479261508874600
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -550,6 +576,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -5323879594381370261}
     m_Position: {x: 1215, y: 785, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -8775191083236066212}
+    m_Position: {x: 1250, y: 850, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 3759704157837772737}

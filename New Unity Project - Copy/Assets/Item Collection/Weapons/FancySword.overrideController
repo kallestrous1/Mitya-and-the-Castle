@@ -7,5 +7,9 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FancySword
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 15181536e2ebfc74fbd5be25d3f2eccf, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 24a5432837dbe804984cf681c48ed7ff, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b20928556711f21408ada61e63916501, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 214a5d9c3f44ae141b19d6dfc5b36b1c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 07231b4e83ae1ee42a7d9a3bb20cd94c, type: 2}

@@ -8,13 +8,12 @@ public class PlayerAttacks : MonoBehaviour
     float holdDuration;
     bool resetWeapon;
 
-    PlayerWeapon playerWeapon;
+    public PlayerWeapon playerWeapon;
 
     void Start()
     {
         StartCoroutine(ChargeWeapon());
         ani = GetComponent<Animator>();
-        playerWeapon = transform.GetComponentInChildren<PlayerWeapon>();
     }
 
     void Update()
@@ -22,7 +21,14 @@ public class PlayerAttacks : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            AudioManager.Instance.Play(playerWeapon.activeWeapon.swingSound);
+            playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon").GetComponent<PlayerWeapon>();
+            if (playerWeapon.activeWeapon)
+            {
+                if (playerWeapon.activeWeapon.swingSound)
+                {
+                    AudioManager.Instance.Play(playerWeapon.activeWeapon.swingSound);
+                }
+            }
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 ani.SetTrigger("UpAttack");
@@ -100,7 +106,9 @@ public class PlayerAttacks : MonoBehaviour
 
     public void setSwordColliderState(float state)
     {
+       
         playerWeapon.SetPlayerWeaponHitboxState(state);
+        
     }
 
 }

@@ -104,7 +104,7 @@ public class PlayerInventory : MonoBehaviour
                 pickupRequest = false;
                 if (inventory.AddItem(thisItem))
                 {
-                    itemTracker = FindObjectOfType<ItemTracker>();
+                    itemTracker = FindAnyObjectByType<ItemTracker>();
                     itemTracker.itemsInGame.Remove(item.item);
                     itemTracker.collectedItems.Add(item.item);
                     item.item.setActive = false;
@@ -118,8 +118,7 @@ public class PlayerInventory : MonoBehaviour
     {
         inventory.Save();
         equipment.Save();
-        inventory.Clear();
-        equipment.Clear();
+
     }
 
 }

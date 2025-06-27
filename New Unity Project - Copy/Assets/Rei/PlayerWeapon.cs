@@ -7,14 +7,10 @@ public class PlayerWeapon : MonoBehaviour
     Rigidbody2D rb;
     Rigidbody2D playerrb;
 
-    Collider2D collider;
+    Collider2D weaponCollider;
 
     public WeaponObject activeWeapon;
-
-    void Start()
-    {
-        collider = transform.GetComponent<Collider2D>();
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -44,6 +40,8 @@ public class PlayerWeapon : MonoBehaviour
         {
             stateBool = true;
         }
-        collider.enabled = stateBool;
+        weaponCollider = GetComponent<Collider2D>();
+        weaponCollider.enabled = stateBool;
+        Debug.Log(weaponCollider.enabled);
     }
 }

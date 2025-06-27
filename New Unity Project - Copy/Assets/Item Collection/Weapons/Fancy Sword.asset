@@ -12,22 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f38f9de4a871e54f8557a16c3b66cc1, type: 3}
   m_Name: Fancy Sword
   m_EditorClassIdentifier: 
-  setActive: 1
+  setActive: 0
   spawnScene: 
-  uiDisplay: {fileID: 0}
+  uiDisplay: {fileID: -2316806603652852933, guid: 3349d73052f178e4d8e0d6cac4547550, type: 3}
   characterDisplay: {fileID: 0}
   itemStory: {fileID: 0}
   type: 1
-  description: 
+  description: Fancy
   data:
-    Id: -1
+    Id: 5
     name: 
-  animations: {fileID: 0}
-  baseAnimations: {fileID: 0}
-  inGameSprite: {fileID: 0}
-  baseAttackDamage: 0
-  upAttackDamage: 0
-  downAttackDamage: 0
-  swingSound: {fileID: 0}
+  animations: {fileID: 22100000, guid: 783660dd938d00e4fa31fec07e98a6c3, type: 2}
+  baseAnimations: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
+  inGameSprite: {fileID: 7928438493215449093, guid: 357ab927cac61c649a3f3290c9847f05, type: 3}
+  swordForPlayer: {fileID: 35853237938210180, guid: 5fa28892abdade54abb389edcd259d8d, type: 3}
+  PlayerWeaponContainer: {fileID: 0}
+  weaponSprite: {fileID: 7928438493215449093, guid: 357ab927cac61c649a3f3290c9847f05, type: 3}
+  baseAttackDamage: 5
+  upAttackDamage: 5
+  downAttackDamage: 5
+  swingSound: {fileID: 8300000, guid: fae81b01a743dc242894618e36ccfe84, type: 3}
   hitParticleEffect: {fileID: 0}
-  weaponForce: 10
+  weaponForce: 200
