@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Old Sword
   m_EditorClassIdentifier: 
   setActive: 0
-  spawnScene: 
+  spawnScene: ringroomlarge
   uiDisplay: {fileID: 21300000, guid: 1d2e8150534342745a2da9440e3d7f6d, type: 3}
   characterDisplay: {fileID: 0}
   itemStory: {fileID: 0}

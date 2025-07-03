@@ -64,12 +64,13 @@ public class NewManager : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(0.5f);
         unloadScene(10);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(newScene));
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().isKinematic = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         if (upBoost)
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Jump();
         }
         currentGameState = GameState.Play;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 
 

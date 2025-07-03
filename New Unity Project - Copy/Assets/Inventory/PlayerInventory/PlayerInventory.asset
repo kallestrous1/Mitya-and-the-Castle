@@ -23,24 +23,24 @@ MonoBehaviour:
         name: 
     - AllowedItems: 0
       item:
-        Id: -1
-        name: 
+        Id: 4
+        name: Old Sword
     - AllowedItems: 0
       item:
-        Id: -1
-        name: 
+        Id: 5
+        name: Fancy Sword
     - AllowedItems: 0
       item:
-        Id: -1
-        name: 
+        Id: 1
+        name: New TurtleCharm
     - AllowedItems: 0
       item:
-        Id: -1
-        name: 
+        Id: 5
+        name: Fancy Sword
     - AllowedItems: 0
       item:
-        Id: -1
-        name: 
+        Id: 4
+        name: Old Sword
     - AllowedItems: 0
       item:
         Id: -1

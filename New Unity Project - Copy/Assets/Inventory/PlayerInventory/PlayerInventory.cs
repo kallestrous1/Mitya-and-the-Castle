@@ -25,7 +25,7 @@ public class PlayerInventory : MonoBehaviour
 
     IEnumerator LoadInventoryOnStartup()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         inventory.Load();
         equipment.Load();
     }
@@ -106,8 +106,8 @@ public class PlayerInventory : MonoBehaviour
                 {
                     itemTracker = FindAnyObjectByType<ItemTracker>();
                     itemTracker.itemsInGame.Remove(item.item);
-                    itemTracker.collectedItems.Add(item.item);
-                    item.item.setActive = false;
+                    itemTracker.collectedItems.Add(item);
+                    item.isActive = false;
                     Destroy(collision.transform.parent.gameObject);
                 }
             }

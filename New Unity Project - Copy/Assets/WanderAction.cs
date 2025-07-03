@@ -7,10 +7,12 @@ using Unity.Properties;
 using Random = UnityEngine.Random;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "Wander", story: "[Agent] wanders between [points]", category: "Action", id: "a3c251af0514cad238f6f9ec7dedf408")]
+[NodeDescription(name: "Wander", story: "[Agent] wanders between [points] [randomly]", category: "Action", id: "a3c251af0514cad238f6f9ec7dedf408")]
 public partial class WanderAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
+    [SerializeReference] public BlackboardVariable<Transform> Points;
+    [SerializeReference] public BlackboardVariable<bool> Randomly;
     [SerializeReference] public BlackboardVariable<Transform> AgentTransform;
     [SerializeReference] public BlackboardVariable<List<GameObject>> Waypoints;
 
@@ -18,7 +20,7 @@ public partial class WanderAction : Action
     private int currentPatrolPoint = 0;
     public float DistanceThreshold = 2f;
     public float speed = 2f;
-
+    private bool flipped;
 
     protected override Status OnStart()
     {
@@ -45,12 +47,39 @@ public partial class WanderAction : Action
         {
             return Status.Failure;
         }
-
         MoveTowardsTarget(Waypoints.Value[currentPatrolPoint].transform.position);
+
+        if(Waypoints.Value[currentPatrolPoint].transform.position.x - Agent.Value.transform.position.x > 0 && flipped == false)
+        {
+            flipped = true;
+            Agent.Value.transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (Waypoints.Value[currentPatrolPoint].transform.position.x - Agent.Value.transform.position.x < 0 && flipped == true)
+        {
+            flipped = false;
+            Agent.Value.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        }
+
 
         if (reachedWaypoint())
         {
-            pickRandomWaypoint();
+            if (Randomly)
+            {
+                pickRandomWaypoint();
+            }
+            else
+            {
+                
+                if (currentPatrolPoint < Waypoints.Value.Capacity-1)
+                {
+                    currentPatrolPoint += 1;
+                }
+                else
+                {
+                    currentPatrolPoint = 0;
+                }
+            }
         }
 
         return Status.Success;

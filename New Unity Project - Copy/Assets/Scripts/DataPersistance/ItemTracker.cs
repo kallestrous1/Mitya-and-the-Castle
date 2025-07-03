@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ItemTracker : MonoBehaviour, IDataPersistence
 {
-    public List <ItemObject> collectedItems;
+    public List <ItemInGame> collectedItems;
     public SerializableDictionary<ItemObject, Vector2> itemsInGame; //the fact that this is a dictionary doesn't allow for identical items
     public Instantiator instantiator;
 
@@ -24,15 +24,31 @@ public class ItemTracker : MonoBehaviour, IDataPersistence
         }
     }
 
+    IEnumerator DestroyCollectedItems()
+    {
+        yield return new WaitForSeconds(0.2f);
+        foreach(ItemInGame item in collectedItems)
+        {
+            Destroy(item.transform);
+        }
+    }
+
     public void LoadData(GameData data)
     {
+        Debug.Log(itemsInGame.Count);
+        foreach (ItemInGame item in collectedItems)
+        {
+         //   Debug.Log(item.transform.parent.gameObject);
+        }
         this.collectedItems = data.collectedItems;
         this.itemsInGame = data.activeItems;
         StartCoroutine(SpawnItems());
+        StartCoroutine(DestroyCollectedItems());
     }
 
     public void SaveData(GameData data)
     {
+        Debug.Log(itemsInGame.Count);
         data.collectedItems = this.collectedItems;
         data.activeItems = this.itemsInGame;
     }

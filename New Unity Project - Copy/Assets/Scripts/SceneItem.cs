@@ -9,7 +9,7 @@ public class SceneItem : MonoBehaviour
 //this is for items tht live in a scene, rather than the ones spawned in by instantiator
 //if the item is stored in the itemtracker delete the original right after spawning it in
 //not ideal tbh
-    public void Start()
+/*    public void Start()
     {
         itemTracker = FindObjectOfType<ItemTracker>();
 
@@ -18,5 +18,5 @@ public class SceneItem : MonoBehaviour
             Debug.Log("destroying " + item);
             Destroy(transform.parent.gameObject);
         }
-    }
+    }*/
 }

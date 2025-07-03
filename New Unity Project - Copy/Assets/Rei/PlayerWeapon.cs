@@ -25,7 +25,7 @@ public class PlayerWeapon : MonoBehaviour
             }
 
             collision.GetComponent<Destructable>().changeHealth(-activeWeapon.baseAttackDamage);
-            collision.GetComponent<mosquito>().Stun();
+            collision.GetComponent<Enemy>().processHit();
             collision.GetComponent<DamageFlash>().CallDamageFlash();
             var force = (Vector2)collision.transform.position - (Vector2)this.gameObject.GetComponentInParent<Transform>().position;
             force.Normalize();
@@ -42,6 +42,18 @@ public class PlayerWeapon : MonoBehaviour
         }
         weaponCollider = GetComponent<Collider2D>();
         weaponCollider.enabled = stateBool;
-        Debug.Log(weaponCollider.enabled);
+    }
+
+    public void castBaseActiveSpell()
+    {
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMagicJuice>().currentMagic >= activeWeapon.baseSpellMagicCost)
+        {
+            if (activeWeapon.baseSpellParticle)
+            {
+                Instantiate(activeWeapon.baseSpellParticle, transform.position, Quaternion.identity);               
+            }
+            activeWeapon.castBaseSpell();
+            gameObject.GetComponentInParent<PlayerMagicJuice>().changeMagic(-activeWeapon.baseSpellMagicCost);
+        }
     }
 }

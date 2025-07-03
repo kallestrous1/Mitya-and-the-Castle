@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setActive: 1
   spawnScene: 
-  uiDisplay: {fileID: 21300000, guid: e6c26ffb579d03045a6b5f5c5bd749ce, type: 3}
+  uiDisplay: {fileID: -5343298173519049051, guid: 8c311a802bac83043b43780b5bd80ab9, type: 3}
   characterDisplay: {fileID: 0}
   itemStory: {fileID: 4900000, guid: 7fab0cfcb10ec734db4f72705bb40e98, type: 3}
   type: 3
@@ -22,3 +22,6 @@ MonoBehaviour:
   data:
     Id: 3
     name: Golden Ring
+  animations: {fileID: 0}
+  baseAnimations: {fileID: 0}
+  inGameSprite: {fileID: 0}

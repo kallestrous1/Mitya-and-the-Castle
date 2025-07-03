@@ -16,9 +16,10 @@ public abstract class WeaponObject : ItemObject
     public AudioClip swingSound;
 
     public GameObject hitParticleEffect;
+    public GameObject baseSpellParticle;
 
     public float weaponForce = 10;
-
+    public int baseSpellMagicCost = 0;
 
     public void Awake()
     {
@@ -28,19 +29,23 @@ public abstract class WeaponObject : ItemObject
 
     public override void EquipItem()
     {
+        Debug.Log("equipping item");
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Animator>().runtimeAnimatorController = animations;
 
         PlayerWeaponContainer = GameObject.FindGameObjectWithTag("Weapon Container");
         PlayerWeaponContainer.GetComponentInChildren<SpriteRenderer>().sprite = weaponSprite;
-
+        PlayerWeaponContainer.GetComponentInChildren<PlayerWeapon>().activeWeapon = this;
     }
 
     public override void UnequipItem()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Animator>().runtimeAnimatorController = baseAnimations;
+        PlayerWeaponContainer = GameObject.FindGameObjectWithTag("Weapon Container");
         PlayerWeaponContainer.GetComponentInChildren<SpriteRenderer>().sprite = null;
-
+        PlayerWeaponContainer.GetComponentInChildren<PlayerWeapon>().activeWeapon = null;
     }
+
+    public virtual void castBaseSpell() { }
 }

@@ -6,7 +6,7 @@ using Random = System.Random;
 public class AudioManager : MonoBehaviour
 {
 	public AudioSource[] EffectsSources = new AudioSource[5];
-	public AudioSource[] LoopSources = new AudioSource[3];
+	public AudioSource[] LoopSources = new AudioSource[1];
 	public AudioSource MusicSource;
 
 	// Random pitch adjustment range.

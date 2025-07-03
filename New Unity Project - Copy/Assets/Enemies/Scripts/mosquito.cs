@@ -10,12 +10,19 @@ public class mosquito : Enemy
     public AudioSource source;
 
 
+
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         source.clip = buzz;
         source.Play();
+        flipped = true;
+    }
+
+    public override void processHit()
+    {
+        ani.SetTrigger("Stun");
     }
 
     // Update is called once per frame

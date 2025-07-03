@@ -111,4 +111,9 @@ public class PlayerAttacks : MonoBehaviour
         
     }
 
+    public void CastWeaponSpell()
+    {
+        playerWeapon.castBaseActiveSpell();
+    }
+
 }

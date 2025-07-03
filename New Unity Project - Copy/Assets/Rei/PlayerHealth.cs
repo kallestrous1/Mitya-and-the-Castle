@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
-    public static int maxHealth=5;
-    public int health=5;
+    public Slider healthSlider;
+    public Slider maxHealthSlider;
+    private RectTransform maxHealthRectTransform;
+    private Vector2 maxHealthSliderInitialSize;
+
+    public static int maxHealth=20;
+    public int health=20;
    // public float invincibilityTime=1;
     float invincibilityTimer;
     public bool recovering;
@@ -19,6 +25,10 @@ public class PlayerHealth : MonoBehaviour
     {
         health = maxHealth;
         knockback = this.gameObject.GetComponent<KnockBack>();
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = health;
+        maxHealthRectTransform = maxHealthSlider.GetComponent<RectTransform>();
+        maxHealthSliderInitialSize = maxHealthRectTransform.sizeDelta;
     }
     private void Update()
     {
@@ -33,13 +43,25 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void changeMaxHealth(int change)
+    {
+        maxHealth += change;
+        maxHealthSlider.maxValue = maxHealth;
+        maxHealthSlider.value = maxHealth;
+        UpdateSliderSize(maxHealth);
+    }
+
     public void changeHealth(int change, Vector2 knockBackDirection)
     {
-        if (true)
-        {
+
          //   invincibilityTimer = invincibilityTime;
             health += change;
-            if (change < 0)
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        healthSlider.value = health;
+        if (change < 0)
             {
                 AudioManager.Instance.Play(playerDamageSound);
                 StartCoroutine(DisplayBlood());
@@ -48,7 +70,6 @@ public class PlayerHealth : MonoBehaviour
                     knockback.StartPlayerKnockback(knockBackDirection, Vector2.up, 0f);
                 }
             }
-        }
     }
 
     IEnumerator DisplayBlood()
@@ -61,5 +82,17 @@ public class PlayerHealth : MonoBehaviour
     public int getHealth()
     {
         return health;
+    }
+
+    public void UpdateSliderSize(float newMaxValue)
+    {
+        // Determine the scaling factor based on the new max value
+        float scaleFactor = newMaxValue / 20;
+
+        // Calculate the new size of the slider
+        Vector2 newSize = new Vector2(maxHealthSliderInitialSize.x * scaleFactor, maxHealthSliderInitialSize.y);
+
+        // Apply the new size to the slider's RectTransform
+        maxHealthRectTransform.sizeDelta = newSize;
     }
 }

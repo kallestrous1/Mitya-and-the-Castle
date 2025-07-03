@@ -51,6 +51,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public virtual void processHit() { }
+
     public virtual void EnemyBehaviour() { }
 
     void OnTriggerEnter2D(Collider2D trigger)
@@ -72,10 +74,5 @@ public class Enemy : MonoBehaviour
         {
             return false;
         }
-    }
-
-    public void Stun()
-    {
-        ani.SetTrigger("Stun");
     }
 }

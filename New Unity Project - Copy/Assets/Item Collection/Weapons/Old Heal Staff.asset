@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec61646887962ea488a8dd576d15a55c, type: 3}
+  m_Name: Old Heal Staff
+  m_EditorClassIdentifier: 
+  setActive: 1
+  spawnScene: 
+  uiDisplay: {fileID: 4272171828115443790, guid: 9f478d423fc402246906381248fe4cf2, type: 3}
+  characterDisplay: {fileID: 0}
+  itemStory: {fileID: 0}
+  type: 1
+  description: 
+  data:
+    Id: 6
+    name: 
+  animations: {fileID: 22100000, guid: ecd4fc643219ef04f9b8208e83310f5a, type: 2}
+  baseAnimations: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
+  inGameSprite: {fileID: -3114624029342804824, guid: 020a8a45c667aa744a70ff2101bbb029, type: 3}
+  swordForPlayer: {fileID: 0}
+  PlayerWeaponContainer: {fileID: 0}
+  weaponSprite: {fileID: -3114624029342804824, guid: 020a8a45c667aa744a70ff2101bbb029, type: 3}
+  baseAttackDamage: 1
+  upAttackDamage: 1
+  downAttackDamage: 1
+  swingSound: {fileID: 0}
+  hitParticleEffect: {fileID: 0}
+  baseSpellParticle: {fileID: 488123722085168504, guid: 9de3c27800f763a4180c5bf206ab6a06, type: 3}
+  weaponForce: 10
+  baseSpellMagicCost: 3

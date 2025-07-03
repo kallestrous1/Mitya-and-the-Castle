@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class StartButton : MonoBehaviour
 {
 
+    bool clicked = false;
+
     public string getSpawnScene()
     {
         return NewManager.playerSpawnScene;
@@ -13,21 +15,24 @@ public class StartButton : MonoBehaviour
 
     public void LoadScene(string scene)
     {
-
-        if (getSpawnScene() != null)
+        if (!clicked)
         {
-            string spawnScene = getSpawnScene();
-            SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
-            SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
-            StartCoroutine(SetActiveScene(spawnScene));
+            clicked = true;
+            if (getSpawnScene() != null)
+            {
+                string spawnScene = getSpawnScene();
+                SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
+                SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
+                StartCoroutine(SetActiveScene(spawnScene));
 
-        }
-        else
-        {
-            Debug.Log("Using default initial spawn scene");
-            SceneManager.LoadScene("Grandpa's Farm", LoadSceneMode.Additive);
-            SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
-            StartCoroutine(SetActiveScene("Grandpa's Farm"));
+            }
+            else
+            {
+                Debug.Log("Using default initial spawn scene");
+                SceneManager.LoadScene("Grandpa's Farm", LoadSceneMode.Additive);
+                SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
+                StartCoroutine(SetActiveScene("Grandpa's Farm"));
+            }
         }
         
     }

@@ -157,12 +157,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         {
             if (!flipped)
             {               
-                flipped = true;               
-              
-                this.transform.Rotate(0f, 180f, 0f);
-
+                flipped = true;
                 Vector2 currentPosition = this.transform.position;
                 this.transform.position = new Vector2(currentPosition.x + 1, currentPosition.y);
+                this.transform.Rotate(0f, 180f, 0f);
             }
             rotationX = 1;
         }
@@ -170,13 +168,12 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         {
             if (flipped)
             {
-     
+
                 flipped = false;     
                 
-                this.transform.Rotate(0f, -180f, 0f);
-
                 Vector2 currentPosition = this.transform.position;
                 this.transform.position = new Vector2(currentPosition.x - 1, currentPosition.y);
+                this.transform.Rotate(0f, -180f, 0f);
             }
             rotationX = -1;
         }

@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setActive: 1
   spawnScene: 
-  uiDisplay: {fileID: 21300000, guid: c31e532a606e31b409ea72691a445795, type: 3}
+  uiDisplay: {fileID: 6691635439942164768, guid: 9dd32ec68accda148be9004c02f6104b, type: 3}
   characterDisplay: {fileID: 7914809734473697626, guid: eff26dbeadd90a7429fc9e847173cd00, type: 3}
   itemStory: {fileID: 0}
   type: 3
-  description: faster faster faster!
+  description: Common courier charm
   data:
     Id: 0
-    name: DashCharm
+    name: CourierCharm
+  animations: {fileID: 0}
+  baseAnimations: {fileID: 0}
+  inGameSprite: {fileID: 0}
