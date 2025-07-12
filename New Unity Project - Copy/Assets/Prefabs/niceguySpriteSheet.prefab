@@ -955,7 +955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalJumps: 0
-  speed: 8
+  speed: 18
   jumpHeight: 331
   lowJumpMultiplier: 20
   isGroundedChecker: {fileID: 403685491476643438}
@@ -1100,6 +1100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 0}
+  maxHealthSlider: {fileID: 0}
   health: 5
   recovering: 0
   bloodDisplay: {fileID: 3133542132048655781, guid: 4effa2e61bcb73744b81567d44f49d61, type: 3}

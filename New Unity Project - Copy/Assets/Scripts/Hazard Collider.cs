@@ -4,6 +4,7 @@ public class HazardCollider : MonoBehaviour
 {
     public int damage;
     public AudioClip hitSound;
+    public bool oneOff = false;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -22,7 +23,14 @@ public class HazardCollider : MonoBehaviour
                     AudioManager.Instance.Play(hitSound);
                 }
             }
-
+            if (oneOff)
+            {
+                Destroy(this.transform.gameObject);
+            }
+        }
+        else if(collision.gameObject.tag == "Ground" && oneOff)
+        {
+            Destroy(this.transform.gameObject);
         }
 
     }

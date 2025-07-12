@@ -179,7 +179,14 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         }
         if (!isDashing)
         {
-            rb.AddForce(new Vector2(xInput * speed, 0), ForceMode2D.Impulse);
+            if (isGrounded)
+            {
+                rb.AddForce(new Vector2(xInput * speed, 0), ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.AddForce(new Vector2(xInput * speed * 0.5f, 0), ForceMode2D.Impulse);
+            }
         }
     }
     #endregion

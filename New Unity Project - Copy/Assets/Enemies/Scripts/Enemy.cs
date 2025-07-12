@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public bool inRange;
 
     public bool flipped = false;
-    bool facingRight;
+    public bool facingRight;
 
     public float TIMEBETWEENACTIONS = 3f;
     public float currentActionRecoveryTime = 0;
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
             currentActionRecoveryTime -= Time.deltaTime;
         }
 
-        if (target != null)
+        /*if (target != null)
         {              
             facingRight = target.transform.position.x > this.transform.position.x;
             if (facingRight && !flipped)
@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
                 this.transform.Rotate(0f, -180f, 0f);
             }
 
-        }
+        }*/
     }
 
     public virtual void processHit() { }
@@ -73,6 +73,28 @@ public class Enemy : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    public virtual void UpdateTurnDirection()
+    {
+        if (target != null)
+        {
+            facingRight = target.transform.position.x > this.transform.position.x;
+            if (facingRight && !flipped)
+            {
+                flipped = true;
+                // this.transform.Rotate(0f, 180f, 0f);
+                this.transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else if (!facingRight && flipped)
+            {
+                flipped = false;
+                this.transform.localScale = new Vector3(1f, 1f, 1f);
+
+                // this.transform.Rotate(0f, -180f, 0f);
+            }
+
         }
     }
 }

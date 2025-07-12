@@ -61,7 +61,7 @@ public class KnockBack : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         Physics2D.IgnoreLayerCollision(9, 10, false);
-
+       
         isBeingKnockedBack = false;
     }
 

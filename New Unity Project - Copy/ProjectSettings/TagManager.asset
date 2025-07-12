@@ -12,6 +12,8 @@ TagManager:
   - ItemDetailsInterface
   - ItemTracker
   - Weapon Container
+  - Destructable
+  - Ground
   layers:
   - Default
   - TransparentFX

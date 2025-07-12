@@ -31,6 +31,14 @@ public class PlayerWeapon : MonoBehaviour
             force.Normalize();
             enemyrb.AddForce(force * activeWeapon.weaponForce, ForceMode2D.Impulse);
         }
+        else if(collision.gameObject.tag == "Destructable")
+        {
+            if (activeWeapon.hitParticleEffect)
+            {
+                Instantiate(activeWeapon.hitParticleEffect, transform.position, Quaternion.identity);
+            }
+            collision.GetComponent<Destructable>().changeHealth(-activeWeapon.baseAttackDamage);
+        }
     }
 
     public void SetPlayerWeaponHitboxState(float stateNumber)

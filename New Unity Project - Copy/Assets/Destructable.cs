@@ -9,6 +9,8 @@ public class Destructable : MonoBehaviour
     public GameObject hitParticleEffect;
     public GameObject deathParticleEffect;
 
+    public Animator ani;
+
 
     //death animation? death sound effect?
     //respawn?
@@ -32,12 +34,26 @@ public class Destructable : MonoBehaviour
             {
                 AudioManager.Instance.Play(hitSoundEffect);
             }
+            if(this.gameObject.tag == "Destructable")
+            {
+                if (ani)
+                {
+                    ani.SetTrigger("Shake");
+                }
+            }
 
             if (currentHealth <= 0)
             {
                 GameObject deathEffect = Instantiate(deathParticleEffect, transform.position, Quaternion.identity);
                 deathEffect.transform.parent = null;
-                Destroy(this.transform.parent.gameObject);
+                if (this.transform.parent)
+                {
+                    Destroy(this.transform.parent.gameObject);
+                }
+                else
+                {
+                    Destroy(this.transform.gameObject);
+                }
             }
         }
     }
