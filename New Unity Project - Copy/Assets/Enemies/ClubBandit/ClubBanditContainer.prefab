@@ -140,6 +140,34 @@ PrefabInstance:
       propertyPath: m_LinearDamping
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7230017814822905467, guid: 2560e06c24461fe429468e5187d8a20f, type: 3}
+      propertyPath: 'managedReferences[8785344512527171961]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[Destructable, Assembly-CSharp]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230017814822905467, guid: 2560e06c24461fe429468e5187d8a20f, type: 3}
+      propertyPath: managedReferences[8785344512527171961].Name
+      value: New Destructable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230017814822905467, guid: 2560e06c24461fe429468e5187d8a20f, type: 3}
+      propertyPath: m_BlackboardVariableOverridesList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230017814822905467, guid: 2560e06c24461fe429468e5187d8a20f, type: 3}
+      propertyPath: managedReferences[8785344512527171961].m_Value
+      value: 
+      objectReference: {fileID: 1377468141840061538}
+    - target: {fileID: 7230017814822905467, guid: 2560e06c24461fe429468e5187d8a20f, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[4]'
+      value: 8785344512527171961
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230017814822905467, guid: 2560e06c24461fe429468e5187d8a20f, type: 3}
+      propertyPath: managedReferences[8785344512527171961].GUID.m_Value0
+      value: 15516286622873226762
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230017814822905467, guid: 2560e06c24461fe429468e5187d8a20f, type: 3}
+      propertyPath: managedReferences[8785344512527171961].GUID.m_Value1
+      value: 5600593351383777758
+      objectReference: {fileID: 0}
     - target: {fileID: 7856481056576422354, guid: 2560e06c24461fe429468e5187d8a20f, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -161,6 +189,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2560e06c24461fe429468e5187d8a20f, type: 3}
+--- !u!114 &1377468141840061538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8635180482020350692, guid: 2560e06c24461fe429468e5187d8a20f, type: 3}
+  m_PrefabInstance: {fileID: 7263159544182656646}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2de0d4570379c04ebe9205637b0a0e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8036092081562881252 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 814591006809539170, guid: 2560e06c24461fe429468e5187d8a20f, type: 3}

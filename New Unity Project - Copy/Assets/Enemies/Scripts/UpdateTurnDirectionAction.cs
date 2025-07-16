@@ -9,6 +9,7 @@ using Unity.Properties;
 public partial class UpdateTurnDirectionAction : Action
 {
     [SerializeReference] public BlackboardVariable<Enemy> Script;
+    [SerializeReference] public BlackboardVariable<Boolean> continuous;
 
     protected override Status OnStart()
     {
@@ -18,7 +19,11 @@ public partial class UpdateTurnDirectionAction : Action
     protected override Status OnUpdate()
     {
         Script.Value.UpdateTurnDirection();
-        return Status.Running;
+        if (continuous)
+        {
+            return Status.Running;
+        }
+        return Status.Success;
     }
 
     protected override void OnEnd()

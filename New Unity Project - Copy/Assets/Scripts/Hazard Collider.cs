@@ -22,13 +22,9 @@ public class HazardCollider : MonoBehaviour
                 {
                     AudioManager.Instance.Play(hitSound);
                 }
-            }
-            if (oneOff)
-            {
-                Destroy(this.transform.gameObject);
-            }
+            }         
         }
-        else if(collision.gameObject.tag == "Ground" && oneOff)
+        if(oneOff)
         {
             Destroy(this.transform.gameObject);
         }

@@ -12,7 +12,7 @@ public partial class FollowPlayerAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> Player;
     [SerializeReference] public BlackboardVariable<float> Speed;
 
-    private float stoppingDistance = 5f;
+    private float stoppingDistance = 15f;
 
     protected override Status OnStart()
     {
@@ -27,22 +27,25 @@ public partial class FollowPlayerAction : Action
     protected override Status OnUpdate()
     {
         Vector2 playerpos = Player.Value.transform.position;
-        MoveTowardsTarget(playerpos);
-        return Status.Success;
+        return(MoveTowardsTarget(playerpos));
     
     }
 
-    private void MoveTowardsTarget(Vector2 targetPos)
+    private Status MoveTowardsTarget(Vector2 targetPos)
     {
         Vector2 pos = (Vector2)Agent.Value.transform.position;
 
         float distance = Vector2.Distance(pos, targetPos);
-
         if (distance > stoppingDistance)
         {
             Vector2 dir = (targetPos - pos).normalized;
             Agent.Value.GetComponent<Rigidbody2D>().AddForce(dir * Speed.Value, ForceMode2D.Impulse);
         }
+        else
+        {
+            return Status.Success;
+        }
+        return Status.Running;
     }
 }
 

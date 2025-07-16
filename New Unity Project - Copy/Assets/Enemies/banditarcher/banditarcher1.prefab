@@ -285,8 +285,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894368731155885280}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1884956, y: 87.28231, z: 0}
+  m_LocalRotation: {x: -0, y: -0.9998351, z: -0, w: -0.018161561}
+  m_LocalPosition: {x: 1.8905425, y: 87.28231, z: -0.04174272}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -294,7 +294,7 @@ Transform:
   - {fileID: 6346419260650941650}
   - {fileID: 4245643057347554065}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -182.081, z: 0}
 --- !u!212 &4483074900584760212
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -544,9 +544,9 @@ MonoBehaviour:
   ani: {fileID: 3632529610727039609}
   rb: {fileID: 4625294757065075584}
   inRange: 0
-  flipped: 1
-  facingRight: 1
-  TIMEBETWEENACTIONS: 3
+  flipped: 0
+  facingRight: 0
+  TIMEBETWEENACTIONS: 5
   currentActionRecoveryTime: 0
   arrowPrefab: {fileID: 2906130522095019065, guid: 6a1caa813ee79044f8166532b1987f20, type: 3}
   firePoint: {fileID: 4245643057347554065}

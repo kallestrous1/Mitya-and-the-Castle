@@ -85,12 +85,14 @@ public class Enemy : MonoBehaviour
             {
                 flipped = true;
                 // this.transform.Rotate(0f, 180f, 0f);
-                this.transform.localScale = new Vector3(-1f, 1f, 1f);
+                float xScale = this.transform.localScale.x;
+                this.transform.localScale = new Vector3(xScale * -1f, this.transform.localScale.y, this.transform.localScale.z);
             }
             else if (!facingRight && flipped)
             {
                 flipped = false;
-                this.transform.localScale = new Vector3(1f, 1f, 1f);
+                float xScale = this.transform.localScale.x;
+                this.transform.localScale = new Vector3(xScale * -1f, this.transform.localScale.y, this.transform.localScale.z);
 
                 // this.transform.Rotate(0f, -180f, 0f);
             }

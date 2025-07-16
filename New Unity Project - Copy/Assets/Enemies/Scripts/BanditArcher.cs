@@ -14,8 +14,6 @@ public class BanditArcher : Enemy
 
     public void ShootArrow()
     {
-        Debug.Log("shooting arrow!!");
-
         Vector2 shootDirection = (target.transform.position - firePoint.transform.position).normalized;
         float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
         GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.Euler(0,0 , angle));
