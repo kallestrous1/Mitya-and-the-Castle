@@ -30,4 +30,28 @@ public class HazardCollider : MonoBehaviour
         }
 
     }
+
+    private void OnParticleCollision(GameObject collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (!collision.gameObject.GetComponent<KnockBack>().isBeingKnockedBack)
+            {
+                PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+                Vector2 knockBackDirection = (collision.transform.position - transform.position).normalized;
+
+                playerHealth.changeHealth(-damage, knockBackDirection);
+
+
+                if (hitSound)
+                {
+                    AudioManager.Instance.Play(hitSound);
+                }
+            }
+        }
+        if (oneOff)
+        {
+            Destroy(this.transform.gameObject);
+        }
+    }
 }

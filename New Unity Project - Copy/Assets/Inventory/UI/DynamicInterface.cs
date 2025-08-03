@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,6 +17,7 @@ public class DynamicInterface : UserInterface
     public GameObject inventoryPrefabSpell;
     public GameObject inventoryPrefabCharm;
 
+    public GameObject itemBlockerPrefab;
 
 
 
@@ -40,16 +42,38 @@ public class DynamicInterface : UserInterface
             {
                 obj = Instantiate(inventoryPrefabSpell, Vector3.zero, Quaternion.identity, transform);
             }
-
+            if (inventory.GetSlots[i].locked)
+            {
+                itemBlockerPrefab = Instantiate(itemBlockerPrefab, Vector2.zero, Quaternion.identity, obj.transform);
+            }
+                                       
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
+           
+
             AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
             AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
             AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
             AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
+            AddEvent(obj, EventTriggerType.PointerClick, delegate { OnClick(obj); });
             inventory.GetSlots[i].slotDisplay = obj;
             slotsOnInterface.Add(obj, inventory.GetSlots[i]);
+
+            inventory.GetSlots[i].parent = this;
+            if (obj.GetComponentInChildren<TextMeshProUGUI>())
+            {
+                if (inventory.GetSlots[i].ItemObject)
+                {
+                    obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.GetSlots[i].ItemObject.price.ToString();
+                }
+              
+            }
+
+            
         }
+            inventory.Load();
+        inventory.Clear();
+        inventory.Load();
     }
     private Vector3 GetPosition(int i)
     {

@@ -29,6 +29,8 @@ public abstract class ItemObject : ScriptableObject
     public RuntimeAnimatorController baseAnimations;
     public Sprite inGameSprite;
 
+    public float price;
+
     public abstract void EquipItem();
     public abstract void UnequipItem();
 

@@ -17,9 +17,27 @@ public abstract class UserInterface : MonoBehaviour
     GameObject testItem;
     public Instantiator Instantiator;
 
+    public AudioClip hoverOverSlotSound;
+    public AudioClip dragSound;
+    public AudioClip buySound;
+    public AudioClip failToBuySound;
+
 
     // Start is called before the first frame update
     void Awake()
+    {
+        CreateSlots();
+        for (int i = 0; i < inventory.GetSlots.Length; i++)
+        {
+            inventory.GetSlots[i].parent = this;
+            inventory.GetSlots[i].OnAfterUpdate += OnSlotUpdate;
+        }
+        AddEvent(gameObject, EventTriggerType.PointerEnter, delegate { OnEnterInterface(gameObject); });
+        AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
+        Instantiator = GameObject.FindGameObjectWithTag("Instantiator").GetComponent<Instantiator>();
+    }
+
+    public void StartCreateSlots()
     {
         CreateSlots();
         for (int i = 0; i < inventory.GetSlots.Length; i++)
@@ -65,8 +83,13 @@ public abstract class UserInterface : MonoBehaviour
 
     public void OnEnter(GameObject obj)
     {
+        if (hoverOverSlotSound)
+        {
+            AudioManager.Instance.Play(hoverOverSlotSound);
+        }
         MouseData.slotHoveredOver = obj;
         ItemDetailsInterface = GameObject.FindGameObjectWithTag("ItemDetailsInterface").GetComponent<ItemDetailsInterface>();
+
         if (slotsOnInterface[obj].item.Id >= 0)
             ItemDetailsInterface.setInterface(slotsOnInterface[obj].ItemObject);
     }
@@ -76,7 +99,15 @@ public abstract class UserInterface : MonoBehaviour
     }
     public void OnDragStart(GameObject obj)
     {
-            
+        if (dragSound)
+        {
+            AudioManager.Instance.Play(dragSound);
+        }
+        MouseData.slotHoveredOver = obj;
+        if (MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver].locked)
+        {
+            return;
+        }
         MouseData.tempItemBeingDragged = CreateTempItem(obj);
     }
 
@@ -97,9 +128,13 @@ public abstract class UserInterface : MonoBehaviour
     }
     public void OnDragEnd(GameObject obj)
     {
+ 
         Destroy(MouseData.tempItemBeingDragged);
-
-        if(MouseData.interfaceMouseIsOver == null)
+        if (slotsOnInterface[obj].locked)
+        {
+            return;
+        }
+        if (MouseData.interfaceMouseIsOver == null)
         {
             //problems will brew when you introduce identical items... items are stored in itemtracker via a dictionary (no duplicate keys)
             Instantiator.CreateItem(slotsOnInterface[obj].ItemObject);
@@ -109,6 +144,9 @@ public abstract class UserInterface : MonoBehaviour
 
         if (MouseData.slotHoveredOver)
         {
+            if (MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver].locked){
+                return;
+            }
             InventorySlotObject mouseHoverSlotData = MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver];
             inventory.SwapItems(slotsOnInterface[obj], mouseHoverSlotData);
         }
@@ -116,6 +154,7 @@ public abstract class UserInterface : MonoBehaviour
     }
     public void OnDrag(GameObject obj)
     {
+    
         if (MouseData.tempItemBeingDragged != null)
         {
             MouseData.tempItemBeingDragged.GetComponent<RectTransform>().position = Input.mousePosition;
@@ -131,7 +170,37 @@ public abstract class UserInterface : MonoBehaviour
         MouseData.interfaceMouseIsOver = null;
     }
 
+    public void OnClick(GameObject obj)
+    {
 
+        if (MouseData.interfaceMouseIsOver.slotsOnInterface[obj].locked)
+        {
+            TryToUnlockSlot(obj);
+        }
+    }
+
+    public void TryToUnlockSlot(GameObject obj)
+    {
+
+        if(FindAnyObjectByType<PlayerMoney>().playerMoney >= MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject.price)
+        {
+            if (buySound)
+            {
+                AudioManager.Instance.Play(buySound);
+            }
+            FindAnyObjectByType<PlayerMoney>().ChangePlayerMoneyCount(-MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject.price);
+            MouseData.interfaceMouseIsOver.slotsOnInterface[obj].locked = false;
+            Destroy(obj.GetComponentInChildren<SpriteRenderer>().gameObject);
+            MouseData.slotHoveredOver.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        }
+        else
+        {
+            if (failToBuySound)
+            {
+                AudioManager.Instance.Play(failToBuySound);
+            }
+        }
+    }
 
 }
     public static class MouseData

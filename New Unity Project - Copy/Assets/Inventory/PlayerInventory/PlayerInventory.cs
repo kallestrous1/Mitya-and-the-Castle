@@ -28,6 +28,7 @@ public class PlayerInventory : MonoBehaviour
         yield return new WaitForSeconds(1f);
         inventory.Load();
         equipment.Load();
+        
     }
 
     public void OnAddItem(InventorySlotObject slot)

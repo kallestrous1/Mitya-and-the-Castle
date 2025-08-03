@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class ItemTracker : MonoBehaviour, IDataPersistence
     public SerializableDictionary<ItemObject, Vector2> itemsInGame; //the fact that this is a dictionary doesn't allow for identical items
     public Instantiator instantiator;
 
-    IEnumerator SpawnItems()
+    public IEnumerator SpawnItems()
     {
         //0.1 seconds slower than the one that sets the correct active scene in startbutton and scenedoors, otherwise items will spawn in superscene
         yield return new WaitForSeconds(0.2f);
@@ -29,7 +30,14 @@ public class ItemTracker : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(0.2f);
         foreach(ItemInGame item in collectedItems)
         {
-            Destroy(item.transform);
+            try
+            {
+                Destroy(item.transform);
+            }
+            catch (NullReferenceException)
+            {
+
+            }
         }
     }
 

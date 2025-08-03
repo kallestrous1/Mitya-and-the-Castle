@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class ClubBandit : Enemy
 {
+
+    public AudioSource audioSource;
+    public AudioClip clubHitGround;
+    public AudioClip clubSwing;
+    public AudioClip footStep;
+
+
     public override void Update()
     {
         if (currentActionRecoveryTime >= 0)
@@ -11,7 +18,31 @@ public class ClubBandit : Enemy
         }
     }
 
- 
+    public void playFootStep()
+    {
+        if (footStep)
+        {
+            audioSource.clip = footStep;
+            audioSource.Play();
+        }
+    }
+    public void playClubSwing()
+    {
+        if (clubSwing)
+        {
+            audioSource.clip = clubSwing;
+            audioSource.Play();
+        }
+    }
+
+    public void playClubHitGround()
+    {
+        if (clubHitGround)
+        {
+            audioSource.clip = clubHitGround;
+            audioSource.Play();
+        }
+    }
 
     public void Jump()
     {

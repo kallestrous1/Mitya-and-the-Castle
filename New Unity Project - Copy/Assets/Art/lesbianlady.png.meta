@@ -1,0 +1,1142 @@
+fileFormatVersion: 2
+guid: 0ca1907a1059e04468f3e53722ec5ff0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7370273390913224506
+    second: lesbianlady_0
+  - first:
+      213: 613880934172240395
+    second: lesbianlady_1
+  - first:
+      213: 461207156621333502
+    second: lesbianlady_2
+  - first:
+      213: -2911434810103028891
+    second: lesbianlady_3
+  - first:
+      213: 2058744100341237957
+    second: lesbianlady_4
+  - first:
+      213: -3852487703058152021
+    second: lesbianlady_5
+  - first:
+      213: 8054641083434027470
+    second: lesbianlady_6
+  - first:
+      213: 4623072973428636727
+    second: lesbianlady_7
+  - first:
+      213: -6215989631236328693
+    second: lesbianlady_8
+  - first:
+      213: 6772987488045355434
+    second: lesbianlady_9
+  - first:
+      213: 2121727932669957889
+    second: lesbianlady_10
+  - first:
+      213: 7999663148482794604
+    second: lesbianlady_11
+  - first:
+      213: 3427771428010084536
+    second: lesbianlady_12
+  - first:
+      213: 2851330907213865845
+    second: lesbianlady_13
+  - first:
+      213: -8319970599517274327
+    second: lesbianlady_14
+  - first:
+      213: 3069470573818535355
+    second: lesbianlady_15
+  - first:
+      213: -1768010961372713952
+    second: lesbianlady_16
+  - first:
+      213: -1711056585482389250
+    second: lesbianlady_17
+  - first:
+      213: 5614383431169248588
+    second: lesbianlady_18
+  - first:
+      213: -1804595032062075132
+    second: lesbianlady_19
+  - first:
+      213: -8841922325106601584
+    second: lesbianlady_20
+  - first:
+      213: 2532877225481838849
+    second: lesbianlady_21
+  - first:
+      213: 3084607652222137732
+    second: lesbianlady_22
+  - first:
+      213: -8755281509988707789
+    second: lesbianlady_23
+  - first:
+      213: -2299046899896506476
+    second: lesbianlady_24
+  - first:
+      213: 1820088894307077592
+    second: lesbianlady_25
+  - first:
+      213: -2666794136118861901
+    second: lesbianlady_26
+  - first:
+      213: 5935512285783821103
+    second: lesbianlady_27
+  - first:
+      213: 940668836937281636
+    second: lesbianlady_28
+  - first:
+      213: 2666265556549977331
+    second: lesbianlady_29
+  - first:
+      213: -565688877528069765
+    second: lesbianlady_30
+  - first:
+      213: 985386138653876818
+    second: lesbianlady_31
+  - first:
+      213: 2879648281355301501
+    second: lesbianlady_32
+  - first:
+      213: 4736790785932989469
+    second: lesbianlady_33
+  - first:
+      213: 4778413781838107061
+    second: lesbianlady_34
+  - first:
+      213: 6773445866487356569
+    second: lesbianlady_35
+  - first:
+      213: 4624812637804989582
+    second: lesbianlady_36
+  - first:
+      213: 7931586419125638703
+    second: lesbianlady_37
+  - first:
+      213: 6179502053470830172
+    second: lesbianlady_38
+  - first:
+      213: -2603061100148687700
+    second: lesbianlady_39
+  - first:
+      213: -7120934388116137191
+    second: lesbianlady_40
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: lesbianlady_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 3851
+        width: 411
+        height: 441
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3f75e28998784660800000000000000
+      internalID: 7370273390913224506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_1
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 3859
+        width: 411
+        height: 441
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0aa8b70571f48800800000000000000
+      internalID: 613880934172240395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_2
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 3879
+        width: 411
+        height: 440
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef358422779866600800000000000000
+      internalID: 461207156621333502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_3
+      rect:
+        serializedVersion: 2
+        x: 4142
+        y: 4240
+        width: 38
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5632a1537718897d0800000000000000
+      internalID: -2911434810103028891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_4
+      rect:
+        serializedVersion: 2
+        x: 4226
+        y: 4269
+        width: 54
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c845400ad0229c10800000000000000
+      internalID: 2058744100341237957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_5
+      rect:
+        serializedVersion: 2
+        x: 5795
+        y: 4151
+        width: 267
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba588ad68d6398ac0800000000000000
+      internalID: -3852487703058152021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_6
+      rect:
+        serializedVersion: 2
+        x: 6161
+        y: 4153
+        width: 239
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec94a5bd365d7cf60800000000000000
+      internalID: 8054641083434027470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_7
+      rect:
+        serializedVersion: 2
+        x: 3271
+        y: 3960
+        width: 37
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73c3cef0064782040800000000000000
+      internalID: 4623072973428636727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_8
+      rect:
+        serializedVersion: 2
+        x: 3631
+        y: 3819
+        width: 166
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b03b5a63d5e5cb9a0800000000000000
+      internalID: -6215989631236328693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_9
+      rect:
+        serializedVersion: 2
+        x: 4310
+        y: 3872
+        width: 363
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa1db1d4c3c7efd50800000000000000
+      internalID: 6772987488045355434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_10
+      rect:
+        serializedVersion: 2
+        x: 6987
+        y: 3607
+        width: 224
+        height: 609
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10711d83054e17d10800000000000000
+      internalID: 2121727932669957889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_11
+      rect:
+        serializedVersion: 2
+        x: 2637
+        y: 3785
+        width: 114
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c649910ef33840f60800000000000000
+      internalID: 7999663148482794604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_12
+      rect:
+        serializedVersion: 2
+        x: 2798
+        y: 3779
+        width: 146
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b846c1e3f3e19f20800000000000000
+      internalID: 3427771428010084536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_13
+      rect:
+        serializedVersion: 2
+        x: 2972
+        y: 3775
+        width: 153
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57323956a56f19720800000000000000
+      internalID: 2851330907213865845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_14
+      rect:
+        serializedVersion: 2
+        x: 3159
+        y: 3795
+        width: 114
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92f341222d6898c80800000000000000
+      internalID: -8319970599517274327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_15
+      rect:
+        serializedVersion: 2
+        x: 3336
+        y: 3796
+        width: 127
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbdd7f06933f89a20800000000000000
+      internalID: 3069470573818535355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_16
+      rect:
+        serializedVersion: 2
+        x: 5923
+        y: 3778
+        width: 241
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02ce160e563c677e0800000000000000
+      internalID: -1768010961372713952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_17
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 3292
+        width: 411
+        height: 442
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef8babfd91b1148e0800000000000000
+      internalID: -1711056585482389250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_18
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 3292
+        width: 411
+        height: 442
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4d8eaffbfb4aed40800000000000000
+      internalID: 5614383431169248588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_19
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 3304
+        width: 411
+        height: 441
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40f5186216ac4f6e0800000000000000
+      internalID: -1804595032062075132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_20
+      rect:
+        serializedVersion: 2
+        x: 3850
+        y: 3572
+        width: 345
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 091dc68ed7e2b4580800000000000000
+      internalID: -8841922325106601584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_21
+      rect:
+        serializedVersion: 2
+        x: 7629
+        y: 3641
+        width: 82
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 101a584ba66962320800000000000000
+      internalID: 2532877225481838849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2740
+        width: 409
+        height: 441
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 485f626115abeca20800000000000000
+      internalID: 3084607652222137732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_23
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 2717
+        width: 411
+        height: 441
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 332d398aaddfe7680800000000000000
+      internalID: -8755281509988707789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_24
+      rect:
+        serializedVersion: 2
+        x: 1355
+        y: 2717
+        width: 411
+        height: 441
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 497a4b186052810e0800000000000000
+      internalID: -2299046899896506476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_25
+      rect:
+        serializedVersion: 2
+        x: 3322
+        y: 2797
+        width: 899
+        height: 639
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dd8ec4c431424910800000000000000
+      internalID: 1820088894307077592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_26
+      rect:
+        serializedVersion: 2
+        x: 4447
+        y: 2907
+        width: 849
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bf5a8bccd4adfad0800000000000000
+      internalID: -2666794136118861901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_27
+      rect:
+        serializedVersion: 2
+        x: 5832
+        y: 2726
+        width: 675
+        height: 733
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2b8c1ae9fc2f5250800000000000000
+      internalID: 5935512285783821103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_28
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 3104
+        width: 156
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4603de4c25ded0d00800000000000000
+      internalID: 940668836937281636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_29
+      rect:
+        serializedVersion: 2
+        x: 7277
+        y: 2970
+        width: 434
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f4450fa56a700520800000000000000
+      internalID: 2666265556549977331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_30
+      rect:
+        serializedVersion: 2
+        x: 4857
+        y: 2129
+        width: 248
+        height: 750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b79cc8986f44628f0800000000000000
+      internalID: -565688877528069765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_31
+      rect:
+        serializedVersion: 2
+        x: 6176
+        y: 2344
+        width: 280
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 252ee09e87bccad00800000000000000
+      internalID: 985386138653876818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_32
+      rect:
+        serializedVersion: 2
+        x: 7046
+        y: 2216
+        width: 369
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d723f38dad096f720800000000000000
+      internalID: 2879648281355301501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_33
+      rect:
+        serializedVersion: 2
+        x: 7257
+        y: 2205
+        width: 454
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1411ea8f167cb140800000000000000
+      internalID: 4736790785932989469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_34
+      rect:
+        serializedVersion: 2
+        x: 4443
+        y: 1984
+        width: 170
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b19a487406505240800000000000000
+      internalID: 4778413781838107061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_35
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 160
+        width: 882
+        height: 797
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99c1159d02d100e50800000000000000
+      internalID: 6773445866487356569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_36
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 178
+        width: 674
+        height: 733
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8c8a1d3792ae2040800000000000000
+      internalID: 4624812637804989582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_37
+      rect:
+        serializedVersion: 2
+        x: 2334
+        y: 204
+        width: 882
+        height: 797
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f26db4923d7a21e60800000000000000
+      internalID: 7931586419125638703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_38
+      rect:
+        serializedVersion: 2
+        x: 3441
+        y: 193
+        width: 1206
+        height: 1113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5efce1906002c550800000000000000
+      internalID: 6179502053470830172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_39
+      rect:
+        serializedVersion: 2
+        x: 5121
+        y: 0
+        width: 2243
+        height: 1135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cacfff498b110ebd0800000000000000
+      internalID: -2603061100148687700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lesbianlady_40
+      rect:
+        serializedVersion: 2
+        x: 7414
+        y: 0
+        width: 297
+        height: 664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91b597ff6eb5d2d90800000000000000
+      internalID: -7120934388116137191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -5,11 +5,33 @@ public class BanditArcher : Enemy
     public GameObject arrowPrefab;
     public Transform firePoint;
     public float arrowSpeed;
+
+    public AudioSource audioSource;
+    public AudioClip drawBowSound;
+    public AudioClip shootBowSound;
     
 
     public override void processHit()
     {
         ani.SetTrigger("Stun");
+    }
+
+    public void playDrawBow()
+    {
+        if (drawBowSound)
+        {
+            audioSource.clip = drawBowSound;
+            audioSource.Play();
+        }
+    }
+
+    public void playShootBow()
+    {
+        if (shootBowSound)
+        {
+            audioSource.clip = shootBowSound;
+            audioSource.Play();
+        }
     }
 
     public void ShootArrow()

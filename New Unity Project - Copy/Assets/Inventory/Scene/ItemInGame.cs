@@ -12,7 +12,7 @@ public class ItemInGame : MonoBehaviour, IDataPersistence
     public bool isActive;
     public string homeScene;
 
-    private void Awake()
+    private void Start()
     {
         this.id = item.data.Id;
     }

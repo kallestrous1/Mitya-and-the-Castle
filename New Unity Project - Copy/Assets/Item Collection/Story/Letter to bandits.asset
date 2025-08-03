@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7966e3486f651f145859a745e2b69c5d, type: 3}
+  m_Name: Letter to bandits
+  m_EditorClassIdentifier: 
+  setActive: 1
+  spawnScene: 
+  uiDisplay: {fileID: 5668723071718756358, guid: 68b7814e402e97f4b9ea1a6933ee27d3, type: 3}
+  characterDisplay: {fileID: 0}
+  itemStory: {fileID: 0}
+  type: 0
+  description: 'Your search continues, we are waiting... this is of the utmost importance,
+    and we will soon send a representative your way to retrieve the stone, hurry....
+
+    May
+    Tata grace us all...'
+  data:
+    Id: 8
+    name: 
+  animations: {fileID: 0}
+  baseAnimations: {fileID: 0}
+  inGameSprite: {fileID: 0}

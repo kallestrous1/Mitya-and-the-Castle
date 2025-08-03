@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class PlayerMoney : MonoBehaviour
 {
-    int playerMoney = 5;
+    public float playerMoney = 5;
 
     private void Start()
     {
         PlayerMoneyDisplay.PlayerMoneyDisplayInstance.UpdateMoneyDisplay(playerMoney);
     }
 
-    public void ChangePlayerMoneyCount(int change)
+    public void ChangePlayerMoneyCount(float change)
     {
         playerMoney += change;
         PlayerMoneyDisplay.PlayerMoneyDisplayInstance.UpdateMoneyDisplay(playerMoney);

@@ -43,6 +43,8 @@ public class AudioManager : MonoBehaviour
 				return;
 			}
         }
+		EffectsSources[0].clip = clip;
+		EffectsSources[0].Play();
 	}
 
 	public AudioSource PlayLoop(AudioClip clip)

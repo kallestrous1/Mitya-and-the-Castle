@@ -16,7 +16,7 @@ public class PlayerMoneyDisplay : MonoBehaviour
         PlayerMoneyDisplayInstance = this;
     }
 
-    public void UpdateMoneyDisplay(int currentMoneyCount)
+    public void UpdateMoneyDisplay(float currentMoneyCount)
     {
         moneyDisplay.text = currentMoneyCount.ToString();
     }

@@ -61,15 +61,16 @@ public class NewManager : MonoBehaviour, IDataPersistence
         SceneManager.LoadSceneAsync(10, LoadSceneMode.Additive);
         yield return new WaitForSeconds(0.1f);
         SceneManager.LoadScene(newScene, LoadSceneMode.Additive);
+        currentGameState = GameState.Play;
         yield return new WaitForSeconds(0.5f);
         unloadScene(10);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(newScene));
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+      //  GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         if (upBoost)
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Jump();
         }
-        currentGameState = GameState.Play;
+        DataPersistenceManager.instance.LoadGame();
         GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 

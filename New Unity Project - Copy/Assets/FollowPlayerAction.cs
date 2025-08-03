@@ -12,7 +12,7 @@ public partial class FollowPlayerAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> Player;
     [SerializeReference] public BlackboardVariable<float> Speed;
 
-    private float stoppingDistance = 15f;
+    private float stoppingDistance = 10f;
 
     protected override Status OnStart()
     {

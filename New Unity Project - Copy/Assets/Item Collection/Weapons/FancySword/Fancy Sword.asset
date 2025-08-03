@@ -25,6 +25,7 @@ MonoBehaviour:
   animations: {fileID: 22100000, guid: 783660dd938d00e4fa31fec07e98a6c3, type: 2}
   baseAnimations: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
   inGameSprite: {fileID: 7928438493215449093, guid: 357ab927cac61c649a3f3290c9847f05, type: 3}
+  price: 4
   swordForPlayer: {fileID: 35853237938210180, guid: 5fa28892abdade54abb389edcd259d8d, type: 3}
   PlayerWeaponContainer: {fileID: 0}
   weaponSprite: {fileID: 7928438493215449093, guid: 357ab927cac61c649a3f3290c9847f05, type: 3}
@@ -33,4 +34,6 @@ MonoBehaviour:
   downAttackDamage: 5
   swingSound: {fileID: 8300000, guid: fae81b01a743dc242894618e36ccfe84, type: 3}
   hitParticleEffect: {fileID: 0}
+  baseSpellParticle: {fileID: 0}
   weaponForce: 200
+  baseSpellMagicCost: 0

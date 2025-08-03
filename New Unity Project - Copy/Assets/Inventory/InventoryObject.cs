@@ -9,7 +9,8 @@ using System.Runtime.Serialization;
 public enum InterfaceType
 {
     Inventory,
-    Equipment
+    Equipment,
+    Shop
 }
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory/Inventory")]
@@ -166,6 +167,8 @@ public delegate void SlotUpdated(InventorySlotObject slot);
 public class InventorySlotObject
 {
     public ItemType AllowedItems;
+    public bool locked;
+    public float price;
     [System.NonSerialized]
     public UserInterface parent;
     [System.NonSerialized]
@@ -175,11 +178,11 @@ public class InventorySlotObject
     [System.NonSerialized]
     public SlotUpdated OnBeforeUpdated;
     public SuperItem item;
-
     public ItemObject ItemObject
     {
         get
         {
+      
             if(item.Id >= 0)
             {
                 return parent.inventory.database.GetItem[item.Id];
@@ -198,6 +201,7 @@ public class InventorySlotObject
     }
     public void UpdateSlot(SuperItem item)
     {
+ 
         if(OnBeforeUpdated != null)
         {
             OnBeforeUpdated.Invoke(this);
