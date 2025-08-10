@@ -819,6 +819,7 @@ GameObject:
   - component: {fileID: 1909346578554942272}
   - component: {fileID: 5992557922381808075}
   - component: {fileID: -6305479014406111521}
+  - component: {fileID: 8927405593207764433}
   m_Layer: 9
   m_Name: niceguySpriteSheet
   m_TagString: Player
@@ -930,7 +931,7 @@ Animator:
   m_GameObject: {fileID: 403685491848748714}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
+  m_Controller: {fileID: 22100000, guid: 25d45b03b65e19048bc4ea899be8fb32, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -973,6 +974,7 @@ MonoBehaviour:
   DASHCOUNT: 5
   recoilMagnitude: 500
   dashSound: {fileID: 8300000, guid: fae81b01a743dc242894618e36ccfe84, type: 3}
+  doubleJumpEffect: {fileID: 5552915612537782573, guid: 05c2d778d1c9592498349939cbed0570, type: 3}
 --- !u!50 &403685491848748705
 Rigidbody2D:
   serializedVersion: 5
@@ -1161,6 +1163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bad54f20e0384f46abe750a36464982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMoney: 5
 --- !u!114 &5992557922381808075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,6 +1215,24 @@ CapsuleCollider2D:
   m_Offset: {x: -3.6014652, y: 1.0338346}
   m_Size: {x: 7.7029634, y: 31.553286}
   m_Direction: 0
+--- !u!114 &8927405593207764433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403685491848748714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c980af6bb8ab04d9f7ca7be067f191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpSound: {fileID: 8300000, guid: 605c662d307a7b34b888af9b17685eb3, type: 3}
+  dashSound: {fileID: 8300000, guid: fae81b01a743dc242894618e36ccfe84, type: 3}
+  extraJumpSound: {fileID: 8300000, guid: 1b9f8f7c771b1cc44b2bc3ccdf67501a, type: 3}
+  footStepOne: {fileID: 8300000, guid: 9189a12c7dbc360419b72fcf19d6c63e, type: 3}
+  footStepTwo: {fileID: 8300000, guid: 277b67862280bfe48ac981ba1a2d2de1, type: 3}
+  pickUpItemSound: {fileID: 8300000, guid: 15525d2269013c64e91377a33f0ccdd5, type: 3}
 --- !u!1 &403685491891853108
 GameObject:
   m_ObjectHideFlags: 0

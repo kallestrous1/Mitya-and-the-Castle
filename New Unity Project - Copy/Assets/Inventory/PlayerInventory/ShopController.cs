@@ -8,33 +8,33 @@ public class ShopController : MonoBehaviour
     public DynamicInterface shopInterface;
     public GameObject shop;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+ 
+
+    public void SetShop(InventoryObject newShop)
     {
-        StartCoroutine(SetShop(currentShop));
+        StartCoroutine(SetShopCoroutine(newShop));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public IEnumerator SetShop(InventoryObject newShop)
-    {
-        yield return new WaitForSeconds(1f);
+    public IEnumerator SetShopCoroutine(InventoryObject newShop)
+    {       
         shopInterface.inventory = newShop;
         shopInterface.StartCreateSlots();
         newShop.Load();
+        Debug.Log("setting shop to new shop: " + newShop.name);
+        currentShop = newShop;
+        yield return new WaitForSeconds(1f);
     }
 
     public void setShopActive()
     {
+        Debug.Log(currentShop);
+        currentShop.Load();
         shop.SetActive(true);
     }
 
     public void setShopInactive()
     {
         shop.SetActive(false);
+        currentShop.Save();
     }
 }   

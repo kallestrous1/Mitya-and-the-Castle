@@ -16,7 +16,7 @@ public partial class RunToPlayerAction : Action
 
     private Rigidbody2D rb;
     private Enemy enemy;
-    public float runSpeed = 200f;
+    public float runSpeed = 100f;
 
     protected override Status OnStart()
     {

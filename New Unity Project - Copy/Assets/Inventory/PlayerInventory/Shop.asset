@@ -19,51 +19,61 @@ MonoBehaviour:
     Slots:
     - AllowedItems: 0
       locked: 1
-      item:
-        Id: 5
-        name: Fancy Sword
-    - AllowedItems: 0
-      locked: 1
-      item:
-        Id: 0
-        name: DashCharm
-    - AllowedItems: 0
-      locked: 1
-      item:
-        Id: 5
-        name: Fancy Sword
-    - AllowedItems: 0
-      locked: 1
-      item:
-        Id: 5
-        name: Fancy Sword
-    - AllowedItems: 0
-      locked: 0
+      price: 5
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
-      item:
-        Id: 4
-        name: Old Sword
-    - AllowedItems: 0
-      locked: 0
+      price: 0
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
+      price: 0
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
+      price: 0
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
+      price: 0
+      item:
+        Id: -1
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      item:
+        Id: -1
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      item:
+        Id: -1
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      item:
+        Id: -1
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      item:
+        Id: -1
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
       item:
         Id: -1
         name: 

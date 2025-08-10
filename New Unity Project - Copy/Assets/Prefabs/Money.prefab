@@ -381,6 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBox: {fileID: 9079745949545856528}
   Value: 10
+  pickUpMoneySound: {fileID: 8300000, guid: 440aa7c470b66414f90a258c5be99b87, type: 3}
 --- !u!1 &9079745949545856528
 GameObject:
   m_ObjectHideFlags: 0

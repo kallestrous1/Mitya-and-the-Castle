@@ -8,6 +8,7 @@ public class ClubBandit : Enemy
     public AudioClip clubHitGround;
     public AudioClip clubSwing;
     public AudioClip footStep;
+    public AudioClip yell;
 
 
     public override void Update()
@@ -16,6 +17,12 @@ public class ClubBandit : Enemy
         {
             currentActionRecoveryTime -= Time.deltaTime;
         }
+    }
+
+    public void PlayYell()
+    {
+        audioSource.clip = yell;
+        audioSource.Play();
     }
 
     public void playFootStep()

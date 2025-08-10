@@ -21,7 +21,7 @@ public class ItemInGame : MonoBehaviour, IDataPersistence
     {
         foreach (int ID in data.itemsToDestroy)
         {
-            if(ID == this.id)
+            if (ID == this.id)
             {
                 //Destroy(this.transform.parent.gameObject);
             }
@@ -30,10 +30,13 @@ public class ItemInGame : MonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data)
     {
-        if (!isActive)
-        {
-            data.itemsToDestroy.Add(id);
-        }
+      
+            if (!isActive)
+            {
+                data.itemsToDestroy.Add(id);
+            }
+        
+
     }
 }
 

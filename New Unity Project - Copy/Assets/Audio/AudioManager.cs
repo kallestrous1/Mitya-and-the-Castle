@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System;
 using Random = System.Random;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -81,5 +82,30 @@ public class AudioManager : MonoBehaviour
 		//EffectsSource.pitch = randomPitch;
 		//EffectsSource.clip = clips[randomIndex];
 		//EffectsSource.Play();
+	}
+
+	public void fadeMusic(float duration, AudioClip newMusic)
+    {
+		StartCoroutine(FadeOutMusic(duration, newMusic));
+    }
+
+	public static IEnumerator FadeOutMusic(float duration, AudioClip newMusic)
+    {
+		float currentTime = 0;
+		float start = AudioManager.Instance.MusicSource.volume;
+		while(currentTime < duration)
+        {
+			currentTime += Time.deltaTime;
+			AudioManager.Instance.MusicSource.volume = Mathf.Lerp(start, 0, currentTime / duration);
+			yield return null;
+		}
+		AudioManager.Instance.MusicSource.Stop();
+		AudioManager.Instance.MusicSource.volume = start;
+        if (newMusic)
+        {
+			AudioManager.Instance.PlayMusic(newMusic);
+        }
+
+
 	}
 }

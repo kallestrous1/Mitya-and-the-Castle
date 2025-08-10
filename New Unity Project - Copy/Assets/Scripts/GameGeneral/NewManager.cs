@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum GameState
 {
@@ -18,6 +19,10 @@ public class NewManager : MonoBehaviour, IDataPersistence
     public static string playerSpawnScene;
 
     public static NewManager manager;
+
+    public GameObject loadingScreenPanel;
+
+    public Slider loadingBar;
 
     private void Start()
     {
@@ -52,26 +57,99 @@ public class NewManager : MonoBehaviour, IDataPersistence
     {
         currentGameState = GameState.Paused;
         DataPersistenceManager.instance.SaveGame();
+        StartCoroutine(LoadingMenu(newScene, upBoost, false));
         unloadScene(previousScene);
-        StartCoroutine(LoadingMenu(newScene, upBoost));
     }
 
-    IEnumerator LoadingMenu(string newScene, bool upBoost)
+    public void addScene(string newScene, bool upBoost)
     {
-        SceneManager.LoadSceneAsync(10, LoadSceneMode.Additive);
+        currentGameState = GameState.Paused;
+        DataPersistenceManager.instance.SaveGame();
+        StartCoroutine(LoadingMenu(newScene, upBoost, false));
+    }
+
+    public void NewGame()
+    {
+        DataPersistenceManager.instance.NewGame();
+        //I do this in gamedata now
+       // playerSpawnScene = "Grandpa's Farm";
+        playerSaveLocation = new Vector2(2, -59);
+
+        addScene("Base Scene", false);
+        StartCoroutine(ResetStories());
+        currentGameState = GameState.Paused;
+        StartCoroutine(LoadingMenu("Grandpa's Farm", false, true));
+        unloadScene(3);
+        
+    }
+
+    IEnumerator ResetStories()
+    {
+        yield return new WaitForSeconds(10.0f);
+        DialogueManager.instance.ResetAllStories();
+    }
+
+    IEnumerator LoadingMenu(string newScene, bool upBoost, bool newGame)
+    {
+        //SceneManager.LoadSceneAsync(10, LoadSceneMode.Additive);
+        loadingScreenPanel.SetActive(true);
+
         yield return new WaitForSeconds(0.1f);
-        SceneManager.LoadScene(newScene, LoadSceneMode.Additive);
+        AsyncOperation loadScene = SceneManager.LoadSceneAsync(newScene, LoadSceneMode.Additive);
+        loadScene.allowSceneActivation = false;
+        while (!loadScene.isDone)
+        {
+            float progress = Mathf.Clamp01(loadScene.progress); // Normalize progress to 0-1
+            loadingBar.value = progress;
+       
+            if (loadScene.progress >= 0.9f)
+            {
+                // Optionally add a delay or fade-out effect here
+                loadScene.allowSceneActivation = true;
+            }
+
+            yield return null; // Wait for next frame
+        }
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+
+        }
+        // SceneManager.LoadScene(newScene, LoadSceneMode.Additive);
         currentGameState = GameState.Play;
-        yield return new WaitForSeconds(0.5f);
-        unloadScene(10);
+     //   yield return new WaitForSeconds(0.5f);
+      //  unloadScene(10);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(newScene));
-      //  GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         if (upBoost)
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Jump();
         }
         DataPersistenceManager.instance.LoadGame();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        loadingScreenPanel.SetActive(false);
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            if(newScene.Equals("Base Scene"))
+            {
+                yield return new WaitForSeconds(1f);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().SetToSavedLocation();             
+
+            }
+            if (newGame)
+            {
+                if (FindAnyObjectByType<ItemTracker>())
+                    FindAnyObjectByType<ItemTracker>().ResetItems();
+                if (FindAnyObjectByType<PlayerInventory>())
+                {
+                    PlayerInventory playerInventory = FindAnyObjectByType<PlayerInventory>();
+                    playerInventory.inventory.Clear();
+                    playerInventory.equipment.Clear();
+                    playerInventory.inventory.Save();
+                    playerInventory.equipment.Save();
+                }
+            }
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+        }
     }
 
 

@@ -105,6 +105,7 @@ public class PlayerInventory : MonoBehaviour
                 pickupRequest = false;
                 if (inventory.AddItem(thisItem))
                 {
+                    GetComponent<PlayerSound>().PlayPickUpItem();
                     itemTracker = FindAnyObjectByType<ItemTracker>();
                     itemTracker.itemsInGame.Remove(item.item);
                     itemTracker.collectedItems.Add(item);

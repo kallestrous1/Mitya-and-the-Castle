@@ -19,6 +19,7 @@ public abstract class UserInterface : MonoBehaviour
 
     public AudioClip hoverOverSlotSound;
     public AudioClip dragSound;
+    public AudioClip dropSound;
     public AudioClip buySound;
     public AudioClip failToBuySound;
 
@@ -39,6 +40,11 @@ public abstract class UserInterface : MonoBehaviour
 
     public void StartCreateSlots()
     {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            Destroy(child);
+        }
         CreateSlots();
         for (int i = 0; i < inventory.GetSlots.Length; i++)
         {
@@ -128,7 +134,10 @@ public abstract class UserInterface : MonoBehaviour
     }
     public void OnDragEnd(GameObject obj)
     {
- 
+        if (dropSound)
+        {
+            AudioManager.Instance.Play(dropSound);
+        }
         Destroy(MouseData.tempItemBeingDragged);
         if (slotsOnInterface[obj].locked)
         {

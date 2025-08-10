@@ -4,6 +4,7 @@ public class Boss : Enemy
 {
     public bool fightStarted = false;
     public GameObject[] BossWalls;
+    public AudioClip bossMusic;
 
     public void StartFight()
     {
@@ -12,6 +13,7 @@ public class Boss : Enemy
         {
             wall.SetActive(true);
         }
+        AudioManager.Instance.fadeMusic(3f, bossMusic);
     }
 
     public void EndFight()
@@ -20,6 +22,12 @@ public class Boss : Enemy
         {
             wall.SetActive(false);
         }
+        if (GetComponent<StateChangingObject>())
+        {
+            GetComponent<StateChangingObject>().active = false;
+            DataPersistenceManager.instance.SaveGame();
+        }
+        AudioManager.Instance.fadeMusic(10f, null);
     }
 
 /*    public override void UpdateTurnDirection()

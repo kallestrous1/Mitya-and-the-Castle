@@ -344,12 +344,13 @@ MonoBehaviour:
   inRange: 0
   flipped: 0
   facingRight: 0
-  TIMEBETWEENACTIONS: 3
+  TIMEBETWEENACTIONS: 4
   currentActionRecoveryTime: 0
   audioSource: {fileID: 5787341936917731425}
   clubHitGround: {fileID: 8300000, guid: 31ff38e9de22e5f41aef23f9f9b4226d, type: 3}
   clubSwing: {fileID: 8300000, guid: 0d27ffa90e152c44e8a9355ed051a8cf, type: 3}
   footStep: {fileID: 8300000, guid: 440aa7c470b66414f90a258c5be99b87, type: 3}
+  yell: {fileID: 8300000, guid: 81b63d331a33a144b88b10d5d4eb8359, type: 3}
 --- !u!50 &6184721685073297131
 Rigidbody2D:
   serializedVersion: 5

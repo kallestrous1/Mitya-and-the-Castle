@@ -27,6 +27,14 @@ public class DialogueManager : MonoBehaviour
 
     public DialogueVariables dialogueVariables;
 
+    public GameObject shopPanel;
+    public ShopController shopController;
+
+    public InventoryObject townLadyShop;
+    public InventoryObject littleWizardShop;
+
+    public TextAsset[] allStories;
+
     private void Awake()
     {
         if (instance != null)
@@ -91,7 +99,34 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
+        currentStory.BindExternalFunction("triggerGameEvent", (string eventName) =>
+        {
+            Debug.Log($"Ink triggered event: {eventName}");
+            // Call your Unity event or method here based on eventName
+            TriggerUnityEvent(eventName);
+        });
+
         ContinueStory();
+    }
+
+    void TriggerUnityEvent(string eventName)
+    {
+        switch (eventName)
+        {
+            case "CloseShop":
+                shopController.setShopInactive();
+                break;
+            case "OpenTownShop":
+                shopController.SetShop(townLadyShop);
+                shopController.setShopActive();
+
+                break;
+
+            case "OpenLittleWizardShop":
+                shopController.SetShop(littleWizardShop);
+                shopController.setShopActive();
+                break;
+        }
     }
 
     private void ContinueStory()
@@ -122,6 +157,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+        shopController.setShopInactive();
     }
 
     private void DisplayChoices()
@@ -196,6 +232,20 @@ public class DialogueManager : MonoBehaviour
         }
 
         return variableValue;
+    }
+
+
+    public void ResetAllStories()
+    {
+        for(int i =0; i<allStories.Length; i++)
+        {
+            Story story = new Story(allStories[i].text);
+            currentStoryName = allStories[i].name;
+            currentStorySavePath = Application.persistentDataPath + "/" + currentStoryName + "currentStoryState.json";
+            story = DeserializeCurrentStory(ref story);
+            story.ResetState();
+            SerializeCurrentStory(story);
+        }
     }
 
 

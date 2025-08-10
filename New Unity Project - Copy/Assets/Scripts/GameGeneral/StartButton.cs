@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class StartButton : MonoBehaviour, IPointerEnterHandler
+public class StartButton : BasicButton, IPointerEnterHandler
 {
 
     bool clicked = false;
     public AudioClip startGameSound;
-    public AudioClip buttonHoverSound;
+
 
     public string getSpawnScene()
     {
@@ -18,19 +18,24 @@ public class StartButton : MonoBehaviour, IPointerEnterHandler
 
     public void LoadScene(string scene)
     {
+
         if (!clicked)
         {
             clicked = true;
             if (startGameSound)
             {
-                AudioManager.Instance.MusicSource.Stop();
                 AudioManager.Instance.Play(startGameSound);
             }
             if (getSpawnScene() != null)
             {             
                 string spawnScene = getSpawnScene();
-                SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
-                SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
+                // SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
+                NewManager.manager.addScene("Base Scene", false);
+
+                NewManager.manager.moveScenes(spawnScene, 3, false);
+
+
+                //    SceneManager.LoadSceneAsync("Base Scene", LoadSceneMode.Additive);
                 StartCoroutine(SetActiveScene(spawnScene));
 
             }
@@ -43,14 +48,6 @@ public class StartButton : MonoBehaviour, IPointerEnterHandler
             }
         }
         
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (buttonHoverSound)
-        {
-            AudioManager.Instance.Play(buttonHoverSound);
-        }
     }
 
     IEnumerator SetActiveScene(string sceneName)

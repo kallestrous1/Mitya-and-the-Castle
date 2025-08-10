@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 8198599405285686768}
   - component: {fileID: 7254254404880226225}
   - component: {fileID: 8457498553888641343}
+  - component: {fileID: 6322989756285368097}
   m_Layer: 0
   m_Name: banditboss
   m_TagString: Enemy
@@ -528,6 +529,7 @@ MonoBehaviour:
   currentActionRecoveryTime: 0
   fightStarted: 0
   BossWalls: []
+  bossMusic: {fileID: 0}
   jumpForce: 800
   lateralJumpForce: 0
   shockWave: {fileID: 6449085744604008227, guid: a23e2a0e3d2e74a4fa0beaf78cffe4a7, type: 3}
@@ -537,6 +539,12 @@ MonoBehaviour:
   smashGroundSound: {fileID: 8300000, guid: 6b009f43c36b8f543993835155890eaa, type: 3}
   footStep: {fileID: 8300000, guid: fe319744cbf3ddf47b819a8aff736ef7, type: 3}
   swordSwing: {fileID: 8300000, guid: 0d27ffa90e152c44e8a9355ed051a8cf, type: 3}
+  laughs:
+  - {fileID: 8300000, guid: d7bd8e768e92c3549bf1801369827414, type: 3}
+  - {fileID: 8300000, guid: 7144d3d1391633e4fbc55bc71101121f, type: 3}
+  - {fileID: 8300000, guid: cbb9c12d0f055994cbd7dade5135b9d6, type: 3}
+  - {fileID: 8300000, guid: 3bd45dffb0db396479b713a034ec03af, type: 3}
+  evilChant: {fileID: 8300000, guid: 8d11942fad7d557428b45499a85f17b0, type: 3}
 --- !u!61 &5616332262876562762
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -688,6 +696,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashTime: 0.25
+--- !u!114 &6322989756285368097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510021261969893080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 939734b182651dc498a8dcf26dcb04ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  newgameState: 1
+  objectName: boss bandit
 --- !u!1 &6034362972689509006
 GameObject:
   m_ObjectHideFlags: 0

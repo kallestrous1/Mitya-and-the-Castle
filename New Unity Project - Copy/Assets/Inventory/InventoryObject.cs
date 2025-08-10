@@ -133,7 +133,7 @@ public class InventoryObject : ScriptableObject
             SuperInventory newContainer = (SuperInventory)formatter.Deserialize(stream);
             for (int i = 0; i < GetSlots.Length; i++)
             {
-                GetSlots[i].UpdateSlot(newContainer.Slots[i].item);
+                GetSlots[i].UpdateSlot(newContainer.Slots[i].item, newContainer.Slots[i].locked, newContainer.Slots[i].price);
             }
             stream.Close();
         }
@@ -207,6 +207,22 @@ public class InventorySlotObject
             OnBeforeUpdated.Invoke(this);
         }
         this.item = item;
+        if (OnAfterUpdate != null)
+        {
+            OnAfterUpdate.Invoke(this);
+        }
+    }
+
+    public void UpdateSlot(SuperItem item, bool locked, float price)
+    {
+
+        if (OnBeforeUpdated != null)
+        {
+            OnBeforeUpdated.Invoke(this);
+        }
+        this.item = item;
+        this.locked = locked;
+        this.price = price;
         if (OnAfterUpdate != null)
         {
             OnAfterUpdate.Invoke(this);

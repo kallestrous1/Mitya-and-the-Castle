@@ -18,22 +18,20 @@ MonoBehaviour:
   Container:
     Slots:
     - AllowedItems: 0
+      locked: 0
+      price: 8
       item:
-        Id: 4
-        name: Old Sword
+        Id: 7
+        name: OldHealthCharm
     - AllowedItems: 0
-      item:
-        Id: 4
-        name: Old Sword
-    - AllowedItems: 0
-      item:
-        Id: 4
-        name: Old Sword
-    - AllowedItems: 0
+      locked: 0
+      price: 3
       item:
         Id: -1
         name: 
     - AllowedItems: 0
+      locked: 0
+      price: 0
       item:
         Id: -1
         name: 

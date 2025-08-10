@@ -30,8 +30,7 @@ public class InventoryController : MonoBehaviour
                 inventoryCanvas.interactable = false;
                 inventoryCanvas.alpha = 0;
                 inventoryActive = false;
-                inventory.SetActive(inventoryActive);
-                shop.SetActive(inventoryActive);
+                inventory.SetActive(inventoryActive);          
             }
             else
             {
@@ -43,7 +42,7 @@ public class InventoryController : MonoBehaviour
                 inventoryCanvas.alpha = 1;
                 inventoryActive = true;
                 inventory.SetActive(inventoryActive);
-                shop.SetActive(inventoryActive);
+
             }
         }
     }

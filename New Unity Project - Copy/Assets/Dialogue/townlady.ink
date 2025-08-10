@@ -1,5 +1,6 @@
 
 VAR knotProgression = -> Start
+EXTERNAL triggerGameEvent(ShopName)
 
 -> knotProgression
 
@@ -39,7 +40,10 @@ but it feels like I'm the only one holding this place togethere
 -> repeat
 
 ===repeat===
+care to see some of what I've got?
+~ triggerGameEvent("OpenTownShop")
 anyways... you should get home before nightfall
+~ triggerGameEvent("CloseShop")
 it truly isn't safe around here
 there's bandits everywhere..
 and creatures in the woods...

@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 17073436}
   - component: {fileID: 17073435}
   - component: {fileID: 17073434}
+  - component: {fileID: 17073437}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -252,6 +253,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17073432}
   m_CullTransparentMesh: 1
+--- !u!114 &17073437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17073432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28da1235c26e2e6488bf54babcfc125c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHoverSound: {fileID: 8300000, guid: eb86820397028d64d90acd75a28d74aa, type: 3}
+  scaleMultiplier: 1.1
 --- !u!1 &27558587
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &27558588
 RectTransform:
   m_ObjectHideFlags: 0
@@ -289,7 +304,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 386, y: -199}
+  m_AnchoredPosition: {x: 391, y: -186}
   m_SizeDelta: {x: 163.7463, y: 366.0153}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &27558590
@@ -360,8 +375,9 @@ MonoBehaviour:
   equipment: {fileID: 0}
   inGameItemPrefab: {fileID: 386471724354918239, guid: 308d7422a3149914593630286d7f5ab1, type: 3}
   Instantiator: {fileID: 1221565426}
-  hoverOverSlotSound: {fileID: 8300000, guid: 6f5c2819f5fe99641844728f1bce5a69, type: 3}
-  dragSound: {fileID: 8300000, guid: a1ed6375c176a8546a43bf014d695622, type: 3}
+  hoverOverSlotSound: {fileID: 8300000, guid: eb86820397028d64d90acd75a28d74aa, type: 3}
+  dragSound: {fileID: 8300000, guid: 45826ca4b4441724eb51a0257e4a0501, type: 3}
+  dropSound: {fileID: 8300000, guid: 1287a82fafe8ec14fae175c5ff45d1e6, type: 3}
   buySound: {fileID: 8300000, guid: 15525d2269013c64e91377a33f0ccdd5, type: 3}
   failToBuySound: {fileID: 8300000, guid: c01f9c0f581d309439b28f6e6bf041e3, type: 3}
   X_START: -46
@@ -1205,6 +1221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGameState: 0
+  loadingScreenPanel: {fileID: 0}
+  loadingBar: {fileID: 0}
 --- !u!1 &157204488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1768,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 81176808982c34547976766eb28ad51e, type: 3}
     m_FontSize: 37
     m_FontStyle: 0
     m_BestFit: 0
@@ -2401,7 +2419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10261071064e9c48a82ce6fb27d666f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentShop: {fileID: 11400000, guid: acaef4c8a39dbde4daa740e682467788, type: 2}
+  currentShop: {fileID: 0}
   shopInterface: {fileID: 27558593}
   shop: {fileID: 27558587}
 --- !u!1 &352523645
@@ -3160,6 +3178,7 @@ GameObject:
   - component: {fileID: 555050593}
   - component: {fileID: 555050592}
   - component: {fileID: 555050591}
+  - component: {fileID: 555050594}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -3281,6 +3300,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555050589}
   m_CullTransparentMesh: 1
+--- !u!114 &555050594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555050589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28da1235c26e2e6488bf54babcfc125c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHoverSound: {fileID: 8300000, guid: eb86820397028d64d90acd75a28d74aa, type: 3}
+  scaleMultiplier: 1.1
 --- !u!1 &574126609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3946,6 +3979,7 @@ MonoBehaviour:
   DASHCOUNT: 2
   recoilMagnitude: 500
   dashSound: {fileID: 0}
+  doubleJumpEffect: {fileID: 0}
 --- !u!114 &864578190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4147,8 +4181,9 @@ MonoBehaviour:
   equipment: {fileID: 11400000, guid: 683c99466c821164ab9a89fc0a2bbf73, type: 2}
   inGameItemPrefab: {fileID: 386471724354918239, guid: 308d7422a3149914593630286d7f5ab1, type: 3}
   Instantiator: {fileID: 1221565426}
-  hoverOverSlotSound: {fileID: 8300000, guid: 6f5c2819f5fe99641844728f1bce5a69, type: 3}
-  dragSound: {fileID: 8300000, guid: a1ed6375c176a8546a43bf014d695622, type: 3}
+  hoverOverSlotSound: {fileID: 8300000, guid: eb86820397028d64d90acd75a28d74aa, type: 3}
+  dragSound: {fileID: 8300000, guid: 45826ca4b4441724eb51a0257e4a0501, type: 3}
+  dropSound: {fileID: 8300000, guid: 1287a82fafe8ec14fae175c5ff45d1e6, type: 3}
   buySound: {fileID: 8300000, guid: 15525d2269013c64e91377a33f0ccdd5, type: 3}
   failToBuySound: {fileID: 8300000, guid: c01f9c0f581d309439b28f6e6bf041e3, type: 3}
   X_START: -90
@@ -4323,6 +4358,7 @@ GameObject:
   - component: {fileID: 1009146150}
   - component: {fileID: 1009146149}
   - component: {fileID: 1009146148}
+  - component: {fileID: 1009146151}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -4444,6 +4480,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009146146}
   m_CullTransparentMesh: 1
+--- !u!114 &1009146151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009146146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28da1235c26e2e6488bf54babcfc125c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHoverSound: {fileID: 8300000, guid: eb86820397028d64d90acd75a28d74aa, type: 3}
+  scaleMultiplier: 1.1
 --- !u!1001 &1060923734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5209,7 +5259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1196118545
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5913,6 +5963,16 @@ MonoBehaviour:
   - {fileID: 1149741467}
   - {fileID: 1949440800}
   loadGlobalsJSON: {fileID: 4900000, guid: f83ea1f11b17afa4ea416ae5cb0692e7, type: 3}
+  shopPanel: {fileID: 27558587}
+  shopController: {fileID: 349747796}
+  townLadyShop: {fileID: 11400000, guid: acaef4c8a39dbde4daa740e682467788, type: 2}
+  littleWizardShop: {fileID: 11400000, guid: bae8cc59a01e42741ba8d09f76060e99, type: 2}
+  allStories:
+  - {fileID: 4900000, guid: 31dac59a029a69f46a699001cae6db6b, type: 3}
+  - {fileID: 4900000, guid: 2e1b53a8ff758f8459c7578d976aca3e, type: 3}
+  - {fileID: 4900000, guid: be388f4977608de4e9a208d2a28bee30, type: 3}
+  - {fileID: 4900000, guid: 1e8b557b5661aa44680b26bd8a3bc80d, type: 3}
+  - {fileID: 4900000, guid: 1b38845fb1887d348882c99b06238fe9, type: 3}
 --- !u!4 &1378698122
 Transform:
   m_ObjectHideFlags: 0
@@ -6514,7 +6574,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 81176808982c34547976766eb28ad51e, type: 3}
     m_FontSize: 37
     m_FontStyle: 0
     m_BestFit: 0
@@ -6688,6 +6748,7 @@ MonoBehaviour:
   DASHCOUNT: 2
   recoilMagnitude: 500
   dashSound: {fileID: 0}
+  doubleJumpEffect: {fileID: 0}
 --- !u!1 &1646310941
 GameObject:
   m_ObjectHideFlags: 0
@@ -7308,7 +7369,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_Font: {fileID: 12800000, guid: 81176808982c34547976766eb28ad51e, type: 3}
     m_FontSize: 37
     m_FontStyle: 0
     m_BestFit: 0
@@ -7547,6 +7608,10 @@ PrefabInstance:
       propertyPath: currentBackPack
       value: 
       objectReference: {fileID: 11400000, guid: 947df06244c037d479e5c7853768c8ab, type: 2}
+    - target: {fileID: 403685491848748718, guid: b12ff5969ed4d0e40916f3807732c7e5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 15181536e2ebfc74fbd5be25d3f2eccf, type: 2}
     - target: {fileID: 403685491848748719, guid: b12ff5969ed4d0e40916f3807732c7e5, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -7601,6 +7666,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 403685491848748719, guid: b12ff5969ed4d0e40916f3807732c7e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447181534036295042, guid: b12ff5969ed4d0e40916f3807732c7e5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447181534036295042, guid: b12ff5969ed4d0e40916f3807732c7e5, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5288524570132474603, guid: b12ff5969ed4d0e40916f3807732c7e5, type: 3}
@@ -8634,8 +8707,9 @@ MonoBehaviour:
   equipment: {fileID: 11400000, guid: 683c99466c821164ab9a89fc0a2bbf73, type: 2}
   inGameItemPrefab: {fileID: 386471724354918239, guid: 308d7422a3149914593630286d7f5ab1, type: 3}
   Instantiator: {fileID: 1221565426}
-  hoverOverSlotSound: {fileID: 8300000, guid: 6f5c2819f5fe99641844728f1bce5a69, type: 3}
-  dragSound: {fileID: 0}
+  hoverOverSlotSound: {fileID: 8300000, guid: eb86820397028d64d90acd75a28d74aa, type: 3}
+  dragSound: {fileID: 8300000, guid: 45826ca4b4441724eb51a0257e4a0501, type: 3}
+  dropSound: {fileID: 8300000, guid: 1287a82fafe8ec14fae175c5ff45d1e6, type: 3}
   buySound: {fileID: 0}
   failToBuySound: {fileID: 0}
   X_START: 0

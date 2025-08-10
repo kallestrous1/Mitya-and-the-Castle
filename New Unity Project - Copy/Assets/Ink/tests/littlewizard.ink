@@ -1,4 +1,5 @@
 INCLUDE GlobalInkVariables.ink
+EXTERNAL triggerGameEvent(ShopName)
 
 VAR knotProgression = -> Start
 
@@ -8,7 +9,6 @@ VAR knotProgression = -> Start
 Hey buddy do you want to buy anything?
     +[yes]
     take a look!
-        ~ openShop = true
     ->Shop
     +[no]
     maybe next time!
@@ -16,13 +16,15 @@ Hey buddy do you want to buy anything?
     ->Goodbye
 
 ===Shop===
+~ triggerGameEvent("OpenLittleWizardShop")
 Here's all my wares:
     ~ knotProgression = ->Start
-        ~ openShop = false
 ->Goodbye
 
 ===Goodbye===
+~ triggerGameEvent("CloseShop")
 GoodBye!
+
 ->Start
 
     -> END

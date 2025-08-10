@@ -46,8 +46,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     PlayerHealth playerHealth;
     PlayerAttacks playerAttacks;
+    PlayerSound playerSound;
 
     public AudioClip dashSound;
+
+    public GameObject doubleJumpEffect;
 
     private KnockBack knockback;
 
@@ -55,11 +58,13 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     void Start()
     {
         this.transform.position = NewManager.playerSaveLocation;
+        Debug.Log(NewManager.playerSaveLocation);
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         ani = this.gameObject.GetComponent<Animator>();
         playerHealth = this.gameObject.GetComponent<PlayerHealth>();
         playerAttacks = this.gameObject.GetComponent<PlayerAttacks>();
         knockback = this.gameObject.GetComponent<KnockBack>();
+        this.playerSound = this.gameObject.GetComponent<PlayerSound>();
     }
     private void Update()
     {
@@ -197,7 +202,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         if (dashCount > 0)
         {
             dashCount--;
-            AudioManager.Instance.Play(dashSound);
+            playerSound.PlayDashSound();
             isDashing = true;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(new Vector2(rotationX * dashPower, 0), ForceMode2D.Impulse);
@@ -219,7 +224,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public void Jump()
     {
         if ((isGrounded || coyoteTimer>0)&&isDashing==false)
-        {         
+        {
+            playerSound.PlayJumpSound();
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
             totalJumps++;
@@ -227,6 +233,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         else if (jumpCount > 0 && isDashing == false)
         {
             jumpCount--;
+            if (doubleJumpEffect)
+            {
+                Instantiate(doubleJumpEffect, isGroundedChecker.position, Quaternion.identity);
+            }
+            playerSound.PlayExtraJumpSound();
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
         }
@@ -248,6 +259,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     }
     #endregion
 
+    public void SetToSavedLocation()
+    {
+        this.transform.position = NewManager.playerSaveLocation;
+    }
 
     public void LoadData(GameData data)
     {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -12,5 +13,8 @@ public class MainMenuController : MonoBehaviour
         }
         DataPersistenceManager.instance.SaveGame();
         Application.Quit();
+ 
     }
 }
+
+

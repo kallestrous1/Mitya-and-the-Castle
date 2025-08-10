@@ -15,6 +15,21 @@ public class BanditBoss : Boss
     public AudioClip smashGroundSound;
     public AudioClip footStep;
     public AudioClip swordSwing;
+    public AudioClip[] laughs;
+    public AudioClip evilChant;
+
+
+
+    public void PlayEvilChant()
+    {
+        AudioManager.Instance.Play(evilChant);
+
+    }
+
+    public void playLaughSound()
+    {
+        AudioManager.Instance.Play(laughs[Random.Range(0, laughs.Length)]);
+    }
 
     public void playSwordSwing()
     {
