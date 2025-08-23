@@ -78,13 +78,21 @@ public class InventoryObject : ScriptableObject
         return null;
     }
 
-    public void SwapItems(InventorySlotObject itemOne, InventorySlotObject itemTwo)
+    public void SwapItems(InventorySlotObject draggedObj, InventorySlotObject itemTwo)
     {
-        if (itemTwo.CanPlaceInSlot(itemOne.ItemObject) && itemOne.CanPlaceInSlot(itemTwo.ItemObject)) 
+        if (itemTwo.CanPlaceInSlot(draggedObj.ItemObject) && draggedObj.CanPlaceInSlot(itemTwo.ItemObject)) 
         {
             InventorySlotObject temp = new InventorySlotObject(itemTwo.item);
-            itemTwo.UpdateSlot(itemOne.item);
-            itemOne.UpdateSlot(temp.item);
+            if(draggedObj.parent.inventory.interfaceType == itemTwo.parent.inventory.interfaceType)
+            {
+                itemTwo.UpdateSlot(draggedObj.item, true);
+                draggedObj.UpdateSlot(temp.item, true);
+            }
+            else
+            {
+                itemTwo.UpdateSlot(draggedObj.item);
+                draggedObj.UpdateSlot(temp.item);
+            }
 
         }
     }
@@ -144,6 +152,19 @@ public class InventoryObject : ScriptableObject
     {
         Container.Clear();
     }
+
+    [ContextMenu("Default")]
+    public void Reset()
+    {
+        if (this.interfaceType == InterfaceType.Shop)
+        {
+            Container.Reset();
+        }
+        else
+        {
+            Container.Clear();
+        }
+    }
 }
 
 [System.Serializable]
@@ -159,9 +180,17 @@ public class SuperInventory
             Slots[i].RemoveItem();
         }
     }
+
+    public void Reset()
+    {
+        for (int i = 0; i < Slots.Length; i++)
+        {
+            Slots[i].ResetToDefault();
+        }
+    }
 }
 
-public delegate void SlotUpdated(InventorySlotObject slot);
+public delegate void SlotUpdated(InventorySlotObject slot, bool ignoreEquip);
 
 [System.Serializable]
 public class InventorySlotObject
@@ -169,6 +198,7 @@ public class InventorySlotObject
     public ItemType AllowedItems;
     public bool locked;
     public float price;
+    public SuperItem DefaultItem;
     [System.NonSerialized]
     public UserInterface parent;
     [System.NonSerialized]
@@ -185,6 +215,7 @@ public class InventorySlotObject
       
             if(item.Id >= 0)
             {
+                Debug.Log(parent);
                 return parent.inventory.database.GetItem[item.Id];
             }
             return null;
@@ -204,12 +235,25 @@ public class InventorySlotObject
  
         if(OnBeforeUpdated != null)
         {
-            OnBeforeUpdated.Invoke(this);
+            OnBeforeUpdated.Invoke(this, false);
         }
         this.item = item;
         if (OnAfterUpdate != null)
         {
-            OnAfterUpdate.Invoke(this);
+            OnAfterUpdate.Invoke(this, false);
+        }
+    }
+
+    public void UpdateSlot(SuperItem item, bool sameInterface)
+    {
+        if (OnBeforeUpdated != null)
+        {
+            OnBeforeUpdated.Invoke(this , true);
+        }
+        this.item = item;
+        if (OnAfterUpdate != null)
+        {
+            OnAfterUpdate.Invoke(this, true);
         }
     }
 
@@ -218,20 +262,26 @@ public class InventorySlotObject
 
         if (OnBeforeUpdated != null)
         {
-            OnBeforeUpdated.Invoke(this);
+            OnBeforeUpdated.Invoke(this, false);
         }
         this.item = item;
         this.locked = locked;
         this.price = price;
         if (OnAfterUpdate != null)
         {
-            OnAfterUpdate.Invoke(this);
+            OnAfterUpdate.Invoke(this, false);
         }
     }
 
     public void RemoveItem()
     {
         UpdateSlot(new SuperItem());
+    }
+
+    public void ResetToDefault()
+    {
+        Debug.Log(DefaultItem);
+        UpdateSlot(DefaultItem, true, price);
     }
 
     public bool CanPlaceInSlot(ItemObject itemObject)

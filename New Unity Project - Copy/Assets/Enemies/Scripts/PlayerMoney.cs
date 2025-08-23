@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerMoney : MonoBehaviour
+public class PlayerMoney : MonoBehaviour, IDataPersistence
 {
-    public float playerMoney = 5;
+    public float playerMoney = 0;
 
     private void Start()
     {
@@ -13,5 +13,15 @@ public class PlayerMoney : MonoBehaviour
     {
         playerMoney += change;
         PlayerMoneyDisplay.PlayerMoneyDisplayInstance.UpdateMoneyDisplay(playerMoney);
+    }
+
+    public void LoadData(GameData data)
+    {
+        playerMoney = data.playerMoney;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.playerMoney = playerMoney;
     }
 }

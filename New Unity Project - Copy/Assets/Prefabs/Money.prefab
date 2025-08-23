@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 6487867968260316480}
   - component: {fileID: 2338178496199591573}
   - component: {fileID: 2971422664326194641}
+  - component: {fileID: 1163303139657677215}
   m_Layer: 8
   m_Name: Money
   m_TagString: Item
@@ -298,6 +299,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4025469343134816399}
   m_CullTransparentMesh: 1
+--- !u!114 &1163303139657677215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4025469343134816399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 939734b182651dc498a8dcf26dcb04ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  newgameState: 1
+  objectName: money
 --- !u!1 &5080240323408976810
 GameObject:
   m_ObjectHideFlags: 0

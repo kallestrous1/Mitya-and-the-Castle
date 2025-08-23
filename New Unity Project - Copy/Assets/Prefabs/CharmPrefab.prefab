@@ -129,7 +129,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1986807810640032877, guid: 55dfdf015c60ab849afc8ca41e428ab7, type: 3}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986807810640032877, guid: 55dfdf015c60ab849afc8ca41e428ab7, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986807810640032877, guid: 55dfdf015c60ab849afc8ca41e428ab7, type: 3}
+      propertyPath: newgameState
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3167831896464594147, guid: 55dfdf015c60ab849afc8ca41e428ab7, type: 3}

@@ -18,18 +18,38 @@ MonoBehaviour:
   Container:
     Slots:
     - AllowedItems: 1
+      locked: 0
+      price: 0
+      DefaultItem:
+        Id: -1
+        name: 
+      item:
+        Id: 4
+        name: Old Sword
+    - AllowedItems: 3
+      locked: 0
+      price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 3
-      item:
+      locked: 0
+      price: 0
+      DefaultItem:
         Id: -1
         name: 
-    - AllowedItems: 3
       item:
+        Id: 3
+        name: GrandfatherRing
+    - AllowedItems: 3
+      locked: 0
+      price: 0
+      DefaultItem:
         Id: -1
         name: 
-    - AllowedItems: 3
       item:
         Id: -1
         name: 

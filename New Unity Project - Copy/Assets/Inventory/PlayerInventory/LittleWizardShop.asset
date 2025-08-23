@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98db688a23c2b864697c2f8651373e8c, type: 3}
   m_Name: LittleWizardShop
   m_EditorClassIdentifier: 
-  interfaceType: 0
+  interfaceType: 2
   savePath: /littlewizardshop.save
   database: {fileID: 11400000, guid: 0b3fab3b6a10af145977c3c8ecd8074d, type: 2}
   Container:
@@ -20,18 +20,27 @@ MonoBehaviour:
     - AllowedItems: 0
       locked: 0
       price: 8
-      item:
+      DefaultItem:
         Id: 7
         name: OldHealthCharm
-    - AllowedItems: 0
-      locked: 0
-      price: 3
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
+      price: 3
+      DefaultItem:
+        Id: 6
+        name: Old Heal Staff
+      item:
+        Id: -1
+        name: 
+    - AllowedItems: 0
+      locked: 1
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 

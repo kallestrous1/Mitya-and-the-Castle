@@ -64,6 +64,7 @@ public class DynamicInterface : UserInterface
             {
                 if (inventory.GetSlots[i].ItemObject)
                 {
+                    Debug.Log(inventory.GetSlots[i].ItemObject.price.ToString());
                     obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.GetSlots[i].ItemObject.price.ToString();
                 }
               
@@ -71,7 +72,7 @@ public class DynamicInterface : UserInterface
 
             
         }
-            inventory.Load();
+            inventory.Save();
         inventory.Clear();
         inventory.Load();
     }

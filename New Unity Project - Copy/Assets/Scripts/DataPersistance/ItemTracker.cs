@@ -32,7 +32,7 @@ public class ItemTracker : MonoBehaviour, IDataPersistence
         {
             try
             {
-                Destroy(item.transform);
+            //    Destroy(item.transform);
             }
             catch (NullReferenceException)
             {
@@ -43,15 +43,11 @@ public class ItemTracker : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        Debug.Log(itemsInGame.Count);
-        foreach (ItemInGame item in collectedItems)
-        {
-         //   Debug.Log(item.transform.parent.gameObject);
-        }
-        this.collectedItems = data.collectedItems;
-        this.itemsInGame = data.activeItems;
+   
+   //     this.collectedItems = data.collectedItems;
+      //  this.itemsInGame = data.activeItems;
         StartCoroutine(SpawnItems());
-        StartCoroutine(DestroyCollectedItems());
+       // StartCoroutine(DestroyCollectedItems());
     }
 
     public void SaveData(GameData data)

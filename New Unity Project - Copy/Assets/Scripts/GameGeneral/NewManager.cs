@@ -21,8 +21,11 @@ public class NewManager : MonoBehaviour, IDataPersistence
     public static NewManager manager;
 
     public GameObject loadingScreenPanel;
+    public GameObject endGamePanel;
 
     public Slider loadingBar;
+
+    public InventoryObject[] shops;
 
     private void Start()
     {
@@ -42,15 +45,10 @@ public class NewManager : MonoBehaviour, IDataPersistence
         
     }
 
-    public void Update()
+    public void TriggerEndGame()
     {
-        if (Input.GetButtonDown("SaveReset")) // save reset set to 'k' for now
-        {
-            ItemTracker itemTracker = FindAnyObjectByType<ItemTracker>();
-            itemTracker.ResetItems();
-            playerSpawnScene = "Grandpa's Farm";
-            playerSaveLocation = new Vector2(2, -59);
-        }
+        Debug.Log("the end!");
+        endGamePanel.SetActive(true);
     }
 
     public void moveScenes(string newScene, int previousScene, bool upBoost)
@@ -137,7 +135,11 @@ public class NewManager : MonoBehaviour, IDataPersistence
             if (newGame)
             {
                 if (FindAnyObjectByType<ItemTracker>())
+                {
                     FindAnyObjectByType<ItemTracker>().ResetItems();
+                    Debug.Log("resetting items");
+                }
+                    
                 if (FindAnyObjectByType<PlayerInventory>())
                 {
                     PlayerInventory playerInventory = FindAnyObjectByType<PlayerInventory>();
@@ -146,6 +148,12 @@ public class NewManager : MonoBehaviour, IDataPersistence
                     playerInventory.inventory.Save();
                     playerInventory.equipment.Save();
                 }
+                foreach(InventoryObject shop in shops)
+                {
+                    shop.Reset();
+                    shop.Save();
+                }
+
             }
             GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 

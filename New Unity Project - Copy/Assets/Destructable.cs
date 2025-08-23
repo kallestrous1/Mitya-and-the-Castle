@@ -48,10 +48,12 @@ public class Destructable : MonoBehaviour
                 deathEffect.transform.parent = null;
                 if (this.transform.parent)
                 {
+                    this.transform.parent.gameObject.SetActive(false);
                     Destroy(this.transform.parent.gameObject);
                 }
                 else
                 {
+                    this.transform.gameObject.SetActive(false);
                     Destroy(this.transform.gameObject);
                 }
             }

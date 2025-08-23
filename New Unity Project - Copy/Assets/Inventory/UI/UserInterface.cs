@@ -22,6 +22,7 @@ public abstract class UserInterface : MonoBehaviour
     public AudioClip dropSound;
     public AudioClip buySound;
     public AudioClip failToBuySound;
+    public AudioClip failToDropSound;
 
 
     // Start is called before the first frame update
@@ -56,7 +57,7 @@ public abstract class UserInterface : MonoBehaviour
         Instantiator = GameObject.FindGameObjectWithTag("Instantiator").GetComponent<Instantiator>();
     }
 
-    private void OnSlotUpdate(InventorySlotObject slot)
+    private void OnSlotUpdate(InventorySlotObject slot, bool ignoreEquip)
     {
         if (slot.item.Id >= 0)
         {
@@ -143,15 +144,22 @@ public abstract class UserInterface : MonoBehaviour
         {
             return;
         }
+
         if (MouseData.interfaceMouseIsOver == null)
         {
-            //problems will brew when you introduce identical items... items are stored in itemtracker via a dictionary (no duplicate keys)
-            Instantiator.CreateItem(slotsOnInterface[obj].ItemObject);
-            slotsOnInterface[obj].RemoveItem();
-            return;
+            AudioManager.Instance.Play(failToDropSound);
         }
 
-        if (MouseData.slotHoveredOver)
+            // deleting the functionality to drop items for now it is tooo much work and unneccersary august 12 2025
+            /*  if (MouseData.interfaceMouseIsOver == null)
+              {
+                  //problems will brew when you introduce identical items... items are stored in itemtracker via a dictionary (no duplicate keys)
+                  Instantiator.CreateItem(slotsOnInterface[obj].ItemObject);
+                  slotsOnInterface[obj].RemoveItem();
+                  return;
+              }*/
+
+            if (MouseData.slotHoveredOver)
         {
             if (MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver].locked){
                 return;

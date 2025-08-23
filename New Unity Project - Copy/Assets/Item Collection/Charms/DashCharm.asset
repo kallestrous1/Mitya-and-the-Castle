@@ -25,3 +25,4 @@ MonoBehaviour:
   animations: {fileID: 0}
   baseAnimations: {fileID: 0}
   inGameSprite: {fileID: 0}
+  price: 2

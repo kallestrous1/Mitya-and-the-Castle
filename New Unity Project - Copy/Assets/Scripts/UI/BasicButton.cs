@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class BasicButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public AudioClip buttonHoverSound;
+    public AudioClip buttonClickSound;
     private Vector3 originalScale;
     public float scaleMultiplier = 1.1f;
 
@@ -11,6 +12,12 @@ public class BasicButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     void Awake()
     {
         originalScale = transform.localScale;
+    }
+
+    public virtual void OnClicked() 
+    {
+        if(buttonClickSound)
+        AudioManager.Instance.Play(buttonClickSound);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

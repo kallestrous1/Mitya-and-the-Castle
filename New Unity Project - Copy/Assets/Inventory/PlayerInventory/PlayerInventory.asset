@@ -20,120 +20,180 @@ MonoBehaviour:
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
+      item:
+        Id: 1
+        name: New TurtleCharm
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        Id: -1
+        name: 
+      item:
+        Id: 0
+        name: DashCharm
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
+      DefaultItem:
+        Id: -1
+        name: 
       item:
         Id: -1
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
-      item:
+      DefaultItem:
         Id: -1
         name: 
-    - AllowedItems: 0
-      locked: 0
-      price: 0
-      item:
-        Id: -1
-        name: 
-    - AllowedItems: 0
-      locked: 0
-      price: 0
       item:
         Id: -1
         name: 

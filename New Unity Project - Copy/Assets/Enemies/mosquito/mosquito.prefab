@@ -436,6 +436,7 @@ MonoBehaviour:
   rb: {fileID: 6283770342537197237}
   inRange: 1
   flipped: 0
+  facingRight: 0
   TIMEBETWEENACTIONS: 3
   currentActionRecoveryTime: 0
   player: {fileID: 0}
@@ -585,6 +586,7 @@ MonoBehaviour:
   hitSoundEffect: {fileID: 8300000, guid: 2ae0ee7337955c14cb70938e5e90bd4a, type: 3}
   hitParticleEffect: {fileID: 3133542132048655781, guid: e05151e2294018a43989bc0789f77a1f, type: 3}
   deathParticleEffect: {fileID: 1652303154395731078, guid: 00cbd5ef58763a2468ddad603864e24c, type: 3}
+  ani: {fileID: 0}
 --- !u!114 &3911878789195017340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,6 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   hitSound: {fileID: 8300000, guid: 464acc7809d4498438db8084783f8694, type: 3}
+  oneOff: 0
 --- !u!70 &5307105469108853902
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -645,7 +648,7 @@ AudioSource:
   m_GameObject: {fileID: 6283770342537197233}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2128681681833933580, guid: dc5d02566bbdc8e4cafdc3585da86b20, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1

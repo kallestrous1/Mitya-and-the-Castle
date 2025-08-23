@@ -9,20 +9,18 @@ public class GrandfatherRing : ItemObject
 {
     private string hasRing= "hasRing";
     Story grandfatherStory;
+
    
     public override void EquipItem()
     {
         grandfatherStory = new Story(itemStory.text);
-        Debug.Log(grandfatherStory);
-        Debug.Log(grandfatherStory.variablesState[hasRing]);
         grandfatherStory.variablesState[hasRing] = true;
-        Debug.Log(grandfatherStory.variablesState[hasRing]);
         DialogueManager.instance.dialogueVariables.ChangeVariable(hasRing, new Ink.Runtime.BoolValue(true));
 }
 
     public override void UnequipItem()
     {
-        Debug.Log("Ring unequipped");
+        grandfatherStory = new Story(itemStory.text);
         grandfatherStory.variablesState[hasRing] = false;
         DialogueManager.instance.dialogueVariables.ChangeVariable(hasRing, new Ink.Runtime.BoolValue(false));
     }

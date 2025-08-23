@@ -77,6 +77,10 @@ public class BanditBoss : Boss
 
     private void OnDestroy()
     {
+        if (DataPersistenceManager.instance.gameData.stateChangingObjects.ContainsKey("grandpa"))
+        {
+            DataPersistenceManager.instance.gameData.stateChangingObjects["grandpa"] = false;
+        }
         EndFight();
     }
     private IEnumerator ApplyJumpForce()

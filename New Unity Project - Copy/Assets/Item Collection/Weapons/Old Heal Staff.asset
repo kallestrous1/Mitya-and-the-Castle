@@ -25,6 +25,7 @@ MonoBehaviour:
   animations: {fileID: 22100000, guid: ecd4fc643219ef04f9b8208e83310f5a, type: 2}
   baseAnimations: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
   inGameSprite: {fileID: -3114624029342804824, guid: 020a8a45c667aa744a70ff2101bbb029, type: 3}
+  price: 8
   swordForPlayer: {fileID: 0}
   PlayerWeaponContainer: {fileID: 0}
   weaponSprite: {fileID: -3114624029342804824, guid: 020a8a45c667aa744a70ff2101bbb029, type: 3}

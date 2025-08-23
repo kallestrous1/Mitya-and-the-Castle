@@ -10,7 +10,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     [SerializeField] private string fileName;
 
-    private GameData gameData;
+    public GameData gameData;
 
     private List<IDataPersistence> dataPersistanceObjects;
 
@@ -68,8 +68,9 @@ public class DataPersistenceManager : MonoBehaviour
             Debug.Log("No data found, creating new game");
             NewGame();
         }
+        this.dataPersistanceObjects = FindAllDataPersistenceObjects();
 
-        foreach(IDataPersistence dataPersistanceObj in dataPersistanceObjects)
+        foreach (IDataPersistence dataPersistanceObj in dataPersistanceObjects)
         {
             dataPersistanceObj.LoadData(gameData);
         }
@@ -89,7 +90,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
-        IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
+        IEnumerable<IDataPersistence> dataPersistenceObjects = Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<IDataPersistence>();
 
         return new List<IDataPersistence>(dataPersistenceObjects);
      }

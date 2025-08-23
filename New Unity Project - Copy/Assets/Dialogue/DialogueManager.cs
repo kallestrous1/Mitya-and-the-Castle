@@ -35,6 +35,10 @@ public class DialogueManager : MonoBehaviour
 
     public TextAsset[] allStories;
 
+    public AudioClip enterDialogueMode;
+    public AudioClip exitDialogueMode;
+    public AudioClip nextDialogue;
+
     private void Awake()
     {
         if (instance != null)
@@ -71,15 +75,15 @@ public class DialogueManager : MonoBehaviour
         {
             ContinueStory();
         }
-//TODO
+
         if (Input.GetKeyDown(KeyCode.DownArrow)){
             StartCoroutine(ExitDialogueMode());
         }
         //KIND OF BUGGY, ONLY USED FOR GAMETESTING PURPOSES
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+       /* if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             currentStory.ResetState();
-        }
+        }*/
 
     }
 
@@ -99,10 +103,11 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
+        AudioManager.Instance.Play(enterDialogueMode);
+
         currentStory.BindExternalFunction("triggerGameEvent", (string eventName) =>
         {
             Debug.Log($"Ink triggered event: {eventName}");
-            // Call your Unity event or method here based on eventName
             TriggerUnityEvent(eventName);
         });
 
@@ -134,6 +139,7 @@ public class DialogueManager : MonoBehaviour
         if (currentStory.canContinue)
         {
             dialogueText.text = currentStory.Continue();
+            AudioManager.Instance.Play(nextDialogue);
         }
         else
         {
@@ -156,6 +162,7 @@ public class DialogueManager : MonoBehaviour
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+        AudioManager.Instance.Play(exitDialogueMode);
         dialogueText.text = "";
         shopController.setShopInactive();
     }

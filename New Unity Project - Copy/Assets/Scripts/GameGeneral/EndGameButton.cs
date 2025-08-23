@@ -1,0 +1,14 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class EndGameButton : BasicButton
+{
+    public override void OnClicked()
+    {
+        base.OnClicked();
+        NewManager.manager.currentGameState = GameState.Play;
+        NewManager.manager.moveScenes("Menu", SceneManager.GetActiveScene().buildIndex, false);
+        SceneManager.UnloadSceneAsync("Base Scene");
+        this.transform.gameObject.SetActive(false);
+    }
+}
