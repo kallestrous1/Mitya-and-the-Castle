@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
@@ -16,8 +17,10 @@ public class PlayerHealth : MonoBehaviour
     public bool recovering;
 
     public GameObject bloodDisplay;
+    public GameObject deathDisplay;
 
     public AudioClip playerDamageSound;
+    public AudioClip playerDeathSound;
 
     private KnockBack knockback;
     // Start is called before the first frame update
@@ -61,7 +64,13 @@ public class PlayerHealth : MonoBehaviour
             health = maxHealth;
         }
         healthSlider.value = health;
-        if (change < 0)
+        if (health + change <= 0)
+        {
+            AudioManager.Instance.Play(playerDeathSound);
+            StartCoroutine(DisplayBlood());
+            StartCoroutine(ResetPlayerToSpawnpoint());
+        }
+        else if (change < 0)
             {
                 AudioManager.Instance.Play(playerDamageSound);
                 StartCoroutine(DisplayBlood());
@@ -94,5 +103,52 @@ public class PlayerHealth : MonoBehaviour
 
         // Apply the new size to the slider's RectTransform
         maxHealthRectTransform.sizeDelta = newSize;
+    }
+
+    public string getSpawnScene()
+    {
+        return NewManager.playerSpawnScene;
+    }
+
+    public IEnumerator ResetPlayerToSpawnpoint()
+    {
+
+        deathDisplay.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+            
+            if (getSpawnScene() != null)
+            {
+                string spawnScene = getSpawnScene();
+            // SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
+                Time.timeScale = 0f;
+                NewManager.manager.addScene("Base Scene", false);
+                SceneManager.UnloadSceneAsync("Base Scene");           
+
+                NewManager.manager.moveScenes(spawnScene, SceneManager.GetActiveScene().buildIndex, false);
+
+                Time.timeScale = 1f;
+
+                //    SceneManager.LoadSceneAsync("Base Scene", LoadSceneMode.Additive);
+            StartCoroutine(SetActiveScene(spawnScene));
+
+            }
+            else
+            {
+                Debug.Log("Using default initial spawn scene");
+                SceneManager.LoadScene("Grandpa's Farm", LoadSceneMode.Additive);
+                SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
+                StartCoroutine(SetActiveScene("Grandpa's Farm"));
+            }
+        
+
+    }
+
+    IEnumerator SetActiveScene(string sceneName)
+    {
+        yield return new WaitForSeconds(0.1f);
+        DataPersistenceManager.instance.SaveGame();
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+        NewManager.manager.unloadScene(3);
+
     }
 }

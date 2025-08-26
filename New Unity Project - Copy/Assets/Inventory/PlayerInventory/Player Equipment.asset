@@ -24,15 +24,6 @@ MonoBehaviour:
         Id: -1
         name: 
       item:
-        Id: 4
-        name: Old Sword
-    - AllowedItems: 3
-      locked: 0
-      price: 0
-      DefaultItem:
-        Id: -1
-        name: 
-      item:
         Id: -1
         name: 
     - AllowedItems: 3
@@ -42,8 +33,17 @@ MonoBehaviour:
         Id: -1
         name: 
       item:
-        Id: 3
-        name: GrandfatherRing
+        Id: -1
+        name: 
+    - AllowedItems: 3
+      locked: 0
+      price: 0
+      DefaultItem:
+        Id: -1
+        name: 
+      item:
+        Id: -1
+        name: 
     - AllowedItems: 3
       locked: 0
       price: 0

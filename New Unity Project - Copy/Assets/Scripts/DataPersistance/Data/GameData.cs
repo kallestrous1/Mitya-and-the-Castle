@@ -7,7 +7,7 @@ public class GameData
 {
     public int totalJumps;
     public  Vector2 playerSaveLocation;
-    public  string playerSpawnScene;
+    public  string playerSpawnScene = "Grandpa's Farm";
     public float playerMoney = 0f;
 
     public List<ItemInGame> collectedItems;

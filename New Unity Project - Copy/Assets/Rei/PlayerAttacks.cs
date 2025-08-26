@@ -19,7 +19,7 @@ public class PlayerAttacks : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetMouseButtonDown(0))
         {
             playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon").GetComponent<PlayerWeapon>();
             if (playerWeapon.activeWeapon)
@@ -43,7 +43,7 @@ public class PlayerAttacks : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.V))
+        /*if (Input.GetKey(KeyCode.V))
         {
             holdDuration += Time.deltaTime;
         }
@@ -71,7 +71,7 @@ public class PlayerAttacks : MonoBehaviour
                 StartCoroutine(ResetWeapon());
             }
             holdDuration = 0;
-        }
+        }*/
     }
 
     IEnumerator ChargeWeapon()

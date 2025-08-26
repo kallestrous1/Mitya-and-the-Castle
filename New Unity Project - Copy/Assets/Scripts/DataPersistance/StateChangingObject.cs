@@ -13,10 +13,10 @@ public class StateChangingObject : MonoBehaviour, IDataPersistence
         this.gameObject.SetActive(active);
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         active = false;
-     //   DataPersistenceManager.instance.SaveGame();
+        DataPersistenceManager.instance.SaveGame();
     }
 
     public void LoadData(GameData data)

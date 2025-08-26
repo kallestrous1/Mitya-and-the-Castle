@@ -15,8 +15,8 @@ public class NewManager : MonoBehaviour, IDataPersistence
     public GameState currentGameState;
     static bool gameStart;
 
-    public static Vector2 playerSaveLocation;
-    public static string playerSpawnScene;
+    public static Vector2 playerSaveLocation = new Vector2(2, -59);
+    public static string playerSpawnScene = "Grandpa's Farm";
 
     public static NewManager manager;
 
@@ -32,7 +32,7 @@ public class NewManager : MonoBehaviour, IDataPersistence
         if (!gameStart)
         {
             manager = this;
-            SceneManager.LoadScene(3, LoadSceneMode.Additive);
+            SceneManager.LoadScene(4, LoadSceneMode.Additive);
             gameStart = true;
         }
         else
@@ -77,7 +77,7 @@ public class NewManager : MonoBehaviour, IDataPersistence
         StartCoroutine(ResetStories());
         currentGameState = GameState.Paused;
         StartCoroutine(LoadingMenu("Grandpa's Farm", false, true));
-        unloadScene(3);
+        unloadScene(4);
         
     }
 
@@ -175,6 +175,7 @@ public class NewManager : MonoBehaviour, IDataPersistence
     {
         Debug.Log("loading data");
         playerSaveLocation = data.playerSaveLocation;
+        Debug.Log(data.playerSpawnScene);
         playerSpawnScene = data.playerSpawnScene;
     }
 
@@ -183,5 +184,18 @@ public class NewManager : MonoBehaviour, IDataPersistence
         Debug.Log("saving data");
         data.playerSaveLocation = playerSaveLocation;
         data.playerSpawnScene = playerSpawnScene;
+    }
+
+    void IDataPersistence.ResetData(GameData data)
+    {
+        playerSaveLocation = new Vector2(2, -59);
+        playerSpawnScene = "Grandpa's Farm";
+        data.playerSaveLocation = playerSaveLocation;
+        data.playerSpawnScene = playerSpawnScene;
+    }
+
+    private void OnApplicationQuit()
+    {
+        DataPersistenceManager.instance.SaveGame();
     }
 }

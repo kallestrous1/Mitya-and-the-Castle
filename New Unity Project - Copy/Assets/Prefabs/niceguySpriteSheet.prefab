@@ -1061,6 +1061,7 @@ MonoBehaviour:
   recovering: 0
   bloodDisplay: {fileID: 3133542132048655781, guid: 4effa2e61bcb73744b81567d44f49d61, type: 3}
   playerDamageSound: {fileID: 0}
+  playerDeathSound: {fileID: 8300000, guid: 940a99d275640234dac79cced850e411, type: 3}
 --- !u!114 &-2775555598840882046
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -76,7 +76,7 @@ public class DialogueManager : MonoBehaviour
             ContinueStory();
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow)){
+        if (Input.GetKeyDown(KeyCode.S)){
             StartCoroutine(ExitDialogueMode());
         }
         //KIND OF BUGGY, ONLY USED FOR GAMETESTING PURPOSES

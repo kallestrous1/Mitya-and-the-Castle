@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     void Start()
     {
-        this.transform.position = NewManager.playerSaveLocation;
+       
         Debug.Log(NewManager.playerSaveLocation);
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         ani = this.gameObject.GetComponent<Animator>();
@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         playerAttacks = this.gameObject.GetComponent<PlayerAttacks>();
         knockback = this.gameObject.GetComponent<KnockBack>();
         this.playerSound = this.gameObject.GetComponent<PlayerSound>();
+        Debug.Log(NewManager.playerSaveLocation);
+        this.transform.position = NewManager.playerSaveLocation;
     }
     private void Update()
     {

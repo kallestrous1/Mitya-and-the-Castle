@@ -9,6 +9,6 @@ public class EndGameButton : BasicButton
         NewManager.manager.currentGameState = GameState.Play;
         NewManager.manager.moveScenes("Menu", SceneManager.GetActiveScene().buildIndex, false);
         SceneManager.UnloadSceneAsync("Base Scene");
-        this.transform.gameObject.SetActive(false);
+        this.transform.parent.gameObject.SetActive(false);
     }
 }

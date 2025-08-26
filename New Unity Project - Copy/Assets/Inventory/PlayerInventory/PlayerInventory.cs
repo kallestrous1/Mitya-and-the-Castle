@@ -30,7 +30,9 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnDisable()
     {
-        Save(new Scene());
+        inventory.Save();
+        equipment.Save();
+
         SceneManager.sceneUnloaded -= Save;
 
     }
@@ -140,12 +142,28 @@ public class PlayerInventory : MonoBehaviour
 
     public void Save(Scene scene)
     {
+        Debug.Log("saving inventory");
         inventory.Save();
         equipment.Save();
     }
 
-    private void OnApplicationQuit()
+    public void Save()
     {
+        Debug.Log("saving inventory");
+        inventory.Save();
+        equipment.Save();
+    }
+
+    public void Load()
+    {
+        Debug.Log("loading inventory");
+        inventory.Load();
+        equipment.Load();
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("saving inventory");
         inventory.Save();
         equipment.Save();
 

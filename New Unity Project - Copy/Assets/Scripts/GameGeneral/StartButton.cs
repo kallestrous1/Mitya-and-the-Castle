@@ -32,7 +32,7 @@ public class StartButton : BasicButton, IPointerEnterHandler
                 // SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
                 NewManager.manager.addScene("Base Scene", false);
 
-                NewManager.manager.moveScenes(spawnScene, 3, false);
+                NewManager.manager.moveScenes(spawnScene, 4, false);
 
 
                 //    SceneManager.LoadSceneAsync("Base Scene", LoadSceneMode.Additive);
