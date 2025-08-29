@@ -6,7 +6,7 @@ public class SceneDoorVert : MonoBehaviour
 {
     public Vector2 newPlayerPosition;
     public string nextScene;
-    public int previousScene = 1;
+    public string previousScene;
     int moveBoost;
     bool loaded;
     bool unloaded;

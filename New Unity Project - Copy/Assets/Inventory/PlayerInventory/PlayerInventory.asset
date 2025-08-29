@@ -24,17 +24,8 @@ MonoBehaviour:
         Id: -1
         name: 
       item:
-        Id: 1
-        name: New TurtleCharm
-    - AllowedItems: 0
-      locked: 0
-      price: 0
-      DefaultItem:
-        Id: -1
-        name: 
-      item:
-        Id: 0
-        name: DashCharm
+        Id: 8
+        name: Letter to bandits
     - AllowedItems: 0
       locked: 0
       price: 0
@@ -44,6 +35,15 @@ MonoBehaviour:
       item:
         Id: 1
         name: New TurtleCharm
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        Id: -1
+        name: 
+      item:
+        Id: -1
+        name: 
     - AllowedItems: 0
       locked: 0
       price: 0

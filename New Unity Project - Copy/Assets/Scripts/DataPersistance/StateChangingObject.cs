@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StateChangingObject : MonoBehaviour, IDataPersistence
 {
@@ -6,17 +7,33 @@ public class StateChangingObject : MonoBehaviour, IDataPersistence
     public bool newgameState;
     public string objectName = "boss bandit";
 
+    private bool sceneIsUnloading = false;
 
 
     void Start()
     {
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
         this.gameObject.SetActive(active);
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        sceneIsUnloading = true;
     }
 
     void OnDestroy()
     {
-        active = false;
-        DataPersistenceManager.instance.SaveGame();
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        if (GameObject.GetScene(this.GetInstanceID()).isLoaded)
+        {
+            active = false;
+            DataPersistenceManager.instance.SaveGame();
+        }
+     /*   if (!sceneIsUnloading)
+        {
+            active = false;
+            DataPersistenceManager.instance.SaveGame();
+        }*/
     }
 
     public void LoadData(GameData data)

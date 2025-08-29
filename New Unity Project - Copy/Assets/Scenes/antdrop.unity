@@ -74826,7 +74826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: previousScene
-      value: 11
+      value: antdrop
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: newPlayerPosition.x
@@ -76372,7 +76372,7 @@ Transform:
   m_GameObject: {fileID: 1935919002}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.2123528, y: -8.266987, z: -20}
+  m_LocalPosition: {x: -5.484873, y: -8.201253, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

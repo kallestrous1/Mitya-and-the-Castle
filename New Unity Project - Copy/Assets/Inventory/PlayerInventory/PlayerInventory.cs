@@ -23,6 +23,13 @@ public class PlayerInventory : MonoBehaviour
         StartCoroutine(LoadInventoryOnStartup());
     }
 
+
+    private void OnApplicationQuit()
+    {
+        inventory.Save();
+        equipment.Save();
+    }
+
     private void OnEnable()
     {
         SceneManager.sceneUnloaded += Save;
@@ -32,16 +39,27 @@ public class PlayerInventory : MonoBehaviour
     {
         inventory.Save();
         equipment.Save();
-
+        for (int i = 0; i < equipment.GetSlots.Length; i++)
+        {
+            equipment.GetSlots[i].OnAfterUpdate -= OnRemoveItem;
+            equipment.GetSlots[i].OnBeforeUpdated -= OnAddItem;
+        }
         SceneManager.sceneUnloaded -= Save;
 
     }
 
     IEnumerator LoadInventoryOnStartup()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         inventory.Load();
         equipment.Load();
+        foreach(InventorySlotObject slot in equipment.GetSlots)
+        {
+            if (slot.ItemObject)
+            {
+                slot.ItemObject.EquipItem();
+            }
+        }
         
     }
 
@@ -61,7 +79,6 @@ public class PlayerInventory : MonoBehaviour
             case InterfaceType.Inventory:
                 break;
             case InterfaceType.Equipment:
-                Debug.Log("Unequipping:  "+ slot.ItemObject);
                 slot.ItemObject.UnequipItem();
                 break;
             default:
@@ -87,7 +104,6 @@ public class PlayerInventory : MonoBehaviour
             case InterfaceType.Inventory:
                 break;
             case InterfaceType.Equipment:
-                Debug.Log("Equipping:  " + slot.ItemObject);
                 slot.ItemObject.EquipItem();
                 break;
             default:

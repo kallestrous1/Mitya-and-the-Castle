@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
    // public float invincibilityTime=1;
     float invincibilityTimer;
     public bool recovering;
+    private bool died = false;
 
     public GameObject bloodDisplay;
     public GameObject deathDisplay;
@@ -64,8 +65,9 @@ public class PlayerHealth : MonoBehaviour
             health = maxHealth;
         }
         healthSlider.value = health;
-        if (health + change <= 0)
+        if (health + change <= 0 && died == false)
         {
+            died = true;
             AudioManager.Instance.Play(playerDeathSound);
             StartCoroutine(DisplayBlood());
             StartCoroutine(ResetPlayerToSpawnpoint());
@@ -119,17 +121,20 @@ public class PlayerHealth : MonoBehaviour
             if (getSpawnScene() != null)
             {
                 string spawnScene = getSpawnScene();
-            // SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
                 Time.timeScale = 0f;
-                NewManager.manager.addScene("Base Scene", false);
-                SceneManager.UnloadSceneAsync("Base Scene");           
-
-                NewManager.manager.moveScenes(spawnScene, SceneManager.GetActiveScene().buildIndex, false);
-
-                Time.timeScale = 1f;
-
-                //    SceneManager.LoadSceneAsync("Base Scene", LoadSceneMode.Additive);
+            
+            NewManager.manager.moveScenes("Base Scene", "Base Scene", false);
+            NewManager.manager.moveScenes(spawnScene, SceneManager.GetActiveScene().name, false);
             StartCoroutine(SetActiveScene(spawnScene));
+
+            //  NewManager.manager.moveScenes("Base Scene", "Base Scene", false);
+
+            // NewManager.manager.moveScenes(spawnScene, SceneManager.GetActiveScene().ToString(), false);
+
+            Time.timeScale = 1f;
+
+                    
+           
 
             }
             else
@@ -145,10 +150,8 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator SetActiveScene(string sceneName)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
         DataPersistenceManager.instance.SaveGame();
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-        NewManager.manager.unloadScene(3);
-
     }
 }

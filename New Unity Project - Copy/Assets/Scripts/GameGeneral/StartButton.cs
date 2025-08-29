@@ -32,7 +32,7 @@ public class StartButton : BasicButton, IPointerEnterHandler
                 // SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
                 NewManager.manager.addScene("Base Scene", false);
 
-                NewManager.manager.moveScenes(spawnScene, 4, false);
+                NewManager.manager.moveScenes(spawnScene, "Menu", false);
 
 
                 //    SceneManager.LoadSceneAsync("Base Scene", LoadSceneMode.Additive);
@@ -55,7 +55,7 @@ public class StartButton : BasicButton, IPointerEnterHandler
         yield return new WaitForSeconds(0.1f);
         DataPersistenceManager.instance.SaveGame();
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-        NewManager.manager.unloadScene(3);
+        NewManager.manager.unloadScene("Menu");
 
     }
 

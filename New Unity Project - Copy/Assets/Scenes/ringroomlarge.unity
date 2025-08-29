@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: previousScene
-      value: 8
+      value: ringroomlarge
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: newPlayerPosition.x
@@ -2162,7 +2162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 1d1d0a10dbdf17f49948d79640a8fceb, type: 3}
       propertyPath: previousScene
-      value: 8
+      value: ringroomlarge
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 1d1d0a10dbdf17f49948d79640a8fceb, type: 3}
       propertyPath: newPlayerPosition.x
@@ -2436,7 +2436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: previousScene
-      value: 8
+      value: ringroomlarge
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: newPlayerPosition.x
@@ -125309,7 +125309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 168432e37bd895c4f8bcf9b5c266af34, type: 3}
       propertyPath: previousScene
-      value: 8
+      value: ringroomlarge
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 168432e37bd895c4f8bcf9b5c266af34, type: 3}
       propertyPath: newPlayerPosition.x
@@ -127236,7 +127236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: previousScene
-      value: 8
+      value: ringroomlarge
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: newPlayerPosition.x

@@ -13854,7 +13854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: previousScene
-      value: 6
+      value: Grandpa's Farm
       objectReference: {fileID: 0}
     - target: {fileID: 7280317139968795648, guid: 9d9f6c69ec6b2c24a9d065db9ff84128, type: 3}
       propertyPath: newPlayerPosition.x

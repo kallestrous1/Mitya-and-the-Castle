@@ -51,7 +51,7 @@ public class NewManager : MonoBehaviour, IDataPersistence
         endGamePanel.SetActive(true);
     }
 
-    public void moveScenes(string newScene, int previousScene, bool upBoost)
+    public void moveScenes(string newScene, string previousScene, bool upBoost)
     {
         currentGameState = GameState.Paused;
         DataPersistenceManager.instance.SaveGame();
@@ -77,7 +77,7 @@ public class NewManager : MonoBehaviour, IDataPersistence
         StartCoroutine(ResetStories());
         currentGameState = GameState.Paused;
         StartCoroutine(LoadingMenu("Grandpa's Farm", false, true));
-        unloadScene(4);
+        unloadScene("Menu");
         
     }
 
@@ -161,14 +161,15 @@ public class NewManager : MonoBehaviour, IDataPersistence
     }
 
 
-    public void unloadScene(int scene)
+    public void unloadScene(string scene)
     {
         StartCoroutine(Unload(scene));
     }
-    IEnumerator Unload(int scene)
+    IEnumerator Unload(string scene)
     {
-        yield return null;
+        Debug.Log(scene);
         SceneManager.UnloadSceneAsync(scene);
+        yield return null;
     }
 
     void IDataPersistence.LoadData(GameData data)

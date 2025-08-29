@@ -7,7 +7,7 @@ public class SceneDoorScript : MonoBehaviour
     public Vector2 newPlayerPosition;
     public bool upBoost = false;
     public string nextScene;
-    public int previousScene=1;
+    public string previousScene;
     bool loaded;
     bool unloaded;
     void OnTriggerEnter2D(Collider2D other)

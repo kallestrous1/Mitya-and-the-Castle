@@ -72,7 +72,7 @@ public class DynamicInterface : UserInterface
 
             
         }
-            inventory.Save();
+        inventory.Save();
         inventory.Clear();
         inventory.Load();
     }

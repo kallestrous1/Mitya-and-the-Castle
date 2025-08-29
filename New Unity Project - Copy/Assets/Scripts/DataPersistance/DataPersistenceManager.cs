@@ -75,6 +75,11 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistanceObj.LoadData(gameData);
         }
 
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().Load();
+        }
+
     }
 
     public void SaveGame()

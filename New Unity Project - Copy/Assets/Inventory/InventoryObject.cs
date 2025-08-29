@@ -23,6 +23,8 @@ public class InventoryObject : ScriptableObject
     public SuperInventory Container;
     public InventorySlotObject[] GetSlots{ get {return Container.Slots;}}
 
+
+
     public bool AddItem(SuperItem item)
     {
         if (EmptySlotCount <= 0)
@@ -111,7 +113,7 @@ public class InventoryObject : ScriptableObject
     [ContextMenu("Save")]
     public void Save()
     {
-        Debug.Log(savePath +" saved from inventoryobject");
+       // Debug.Log(savePath +" saved from inventoryobject");
 
         //string saveData = JsonUtility.ToJson(Container, true);
         //BinaryFormatter bf = new BinaryFormatter();
@@ -130,7 +132,7 @@ public class InventoryObject : ScriptableObject
     {
         if (File.Exists(string.Concat(Application.persistentDataPath, savePath)))
         {
-            Debug.Log(savePath +" loaded from inventoryobject");
+            //Debug.Log(savePath +" loaded from inventoryobject");
             //BinaryFormatter bf = new BinaryFormatter();
             //FileStream file = File.Open(string.Concat(Application.persistentDataPath, savePath), FileMode.Open);
             //JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), this);
@@ -228,7 +230,7 @@ public class InventorySlotObject
     }
     public InventorySlotObject(SuperItem item)
     {
-        UpdateSlot(item);
+        UpdateSlot(item, true);
     }
     public void UpdateSlot(SuperItem item)
     {

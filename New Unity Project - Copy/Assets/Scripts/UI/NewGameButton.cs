@@ -29,7 +29,7 @@ public class NewGameButton : BasicButton
         yield return new WaitForSeconds(0.1f);
         DataPersistenceManager.instance.SaveGame();
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-        NewManager.manager.unloadScene(4);
+        NewManager.manager.unloadScene("Menu");
 
     }
 
