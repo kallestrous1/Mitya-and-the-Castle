@@ -24,8 +24,8 @@ MonoBehaviour:
         Id: -1
         name: 
       item:
-        Id: 8
-        name: Letter to bandits
+        Id: -1
+        name: 
     - AllowedItems: 0
       locked: 0
       price: 0
@@ -33,8 +33,8 @@ MonoBehaviour:
         Id: -1
         name: 
       item:
-        Id: 1
-        name: New TurtleCharm
+        Id: -1
+        name: 
     - AllowedItems: 0
       locked: 0
       price: 0

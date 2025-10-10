@@ -113,6 +113,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             return;
         }
 
+        if (knockback.isBeingKnockedBack)
+        {
+            return;
+        }
+
         XMovement();
         if (isGrounded == true)
         {

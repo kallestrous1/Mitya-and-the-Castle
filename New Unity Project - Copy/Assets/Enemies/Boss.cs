@@ -20,12 +20,15 @@ public class Boss : Enemy
     {
         foreach (GameObject wall in BossWalls)
         {
-            wall.SetActive(false);
+            if (wall)
+            {
+                wall.SetActive(false);
+            }
         }
         if (GetComponent<StateChangingObject>())
         {
-            GetComponent<StateChangingObject>().active = false;
-            DataPersistenceManager.instance.SaveGame();
+            GetComponent<StateChangingObject>().ChangeObjectState(false);
+           // DataPersistenceManager.instance.SaveGame();
         }
         AudioManager.Instance.fadeMusic(10f, null);
     }

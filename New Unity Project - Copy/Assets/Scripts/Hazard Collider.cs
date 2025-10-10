@@ -13,10 +13,11 @@ public class HazardCollider : MonoBehaviour
             if (!collision.gameObject.GetComponent<KnockBack>().isBeingKnockedBack)
             {
                 PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+                KnockBack knockBack = collision.gameObject.GetComponent<KnockBack>();
                 Vector2 knockBackDirection = (collision.transform.position - transform.position).normalized;
 
-                playerHealth.changeHealth(-damage, knockBackDirection);
-                
+                playerHealth.changeHealth(-damage);
+                knockBack.StartPlayerKnockback(knockBackDirection);
 
                 if (hitSound)
                 {
@@ -38,9 +39,12 @@ public class HazardCollider : MonoBehaviour
             if (!collision.gameObject.GetComponent<KnockBack>().isBeingKnockedBack)
             {
                 PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+                KnockBack knockBack = collision.gameObject.GetComponent<KnockBack>();
+
                 Vector2 knockBackDirection = (collision.transform.position - transform.position).normalized;
 
-                playerHealth.changeHealth(-damage, knockBackDirection);
+                playerHealth.changeHealth(-damage);
+                knockBack.StartPlayerKnockback(knockBackDirection);
 
 
                 if (hitSound)

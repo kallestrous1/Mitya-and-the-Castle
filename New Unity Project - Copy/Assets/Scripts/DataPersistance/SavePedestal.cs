@@ -30,7 +30,7 @@ public class SavePedestal : MonoBehaviour
                 this.GetComponentInChildren<ParticleSystem>().Simulate(0.0f, true, true);
                 this.GetComponentInChildren<ParticleSystem>().Play();
                 AudioManager.Instance.Play(saveSound);
-                FindAnyObjectByType<PlayerHealth>().changeHealth(PlayerHealth.maxHealth, new Vector2(0,0));
+                FindAnyObjectByType<PlayerHealth>().changeHealth(PlayerHealth.maxHealth);
                 FindAnyObjectByType<PlayerMagicJuice>().changeMagic(PlayerMagicJuice.maxMagic);
                 NewManager.playerSaveLocation = playerSpawnPoint;
                 NewManager.playerSpawnScene = this.playerSpawnScene;

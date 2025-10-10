@@ -55,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
         UpdateSliderSize(maxHealth);
     }
 
-    public void changeHealth(int change, Vector2 knockBackDirection)
+    public void changeHealth(int change)
     {
 
          //   invincibilityTimer = invincibilityTime;
@@ -76,10 +76,6 @@ public class PlayerHealth : MonoBehaviour
             {
                 AudioManager.Instance.Play(playerDamageSound);
                 StartCoroutine(DisplayBlood());
-                if (!knockback.isBeingKnockedBack)
-                {
-                    knockback.StartPlayerKnockback(knockBackDirection, Vector2.up, 0f);
-                }
             }
     }
 

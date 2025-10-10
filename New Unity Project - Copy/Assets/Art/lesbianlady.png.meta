@@ -216,6 +216,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1134,7 +1147,48 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lesbianlady_0: 7370273390913224506
+      lesbianlady_1: 613880934172240395
+      lesbianlady_10: 2121727932669957889
+      lesbianlady_11: 7999663148482794604
+      lesbianlady_12: 3427771428010084536
+      lesbianlady_13: 2851330907213865845
+      lesbianlady_14: -8319970599517274327
+      lesbianlady_15: 3069470573818535355
+      lesbianlady_16: -1768010961372713952
+      lesbianlady_17: -1711056585482389250
+      lesbianlady_18: 5614383431169248588
+      lesbianlady_19: -1804595032062075132
+      lesbianlady_2: 461207156621333502
+      lesbianlady_20: -8841922325106601584
+      lesbianlady_21: 2532877225481838849
+      lesbianlady_22: 3084607652222137732
+      lesbianlady_23: -8755281509988707789
+      lesbianlady_24: -2299046899896506476
+      lesbianlady_25: 1820088894307077592
+      lesbianlady_26: -2666794136118861901
+      lesbianlady_27: 5935512285783821103
+      lesbianlady_28: 940668836937281636
+      lesbianlady_29: 2666265556549977331
+      lesbianlady_3: -2911434810103028891
+      lesbianlady_30: -565688877528069765
+      lesbianlady_31: 985386138653876818
+      lesbianlady_32: 2879648281355301501
+      lesbianlady_33: 4736790785932989469
+      lesbianlady_34: 4778413781838107061
+      lesbianlady_35: 6773445866487356569
+      lesbianlady_36: 4624812637804989582
+      lesbianlady_37: 7931586419125638703
+      lesbianlady_38: 6179502053470830172
+      lesbianlady_39: -2603061100148687700
+      lesbianlady_4: 2058744100341237957
+      lesbianlady_40: -7120934388116137191
+      lesbianlady_5: -3852487703058152021
+      lesbianlady_6: 8054641083434027470
+      lesbianlady_7: 4623072973428636727
+      lesbianlady_8: -6215989631236328693
+      lesbianlady_9: 6772987488045355434
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

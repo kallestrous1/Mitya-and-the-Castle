@@ -174,7 +174,6 @@ public class NewManager : MonoBehaviour, IDataPersistence
 
     void IDataPersistence.LoadData(GameData data)
     {
-        Debug.Log("loading data");
         playerSaveLocation = data.playerSaveLocation;
         Debug.Log(data.playerSpawnScene);
         playerSpawnScene = data.playerSpawnScene;
@@ -182,7 +181,6 @@ public class NewManager : MonoBehaviour, IDataPersistence
 
     void IDataPersistence.SaveData(GameData data)
     {
-        Debug.Log("saving data");
         data.playerSaveLocation = playerSaveLocation;
         data.playerSpawnScene = playerSpawnScene;
     }

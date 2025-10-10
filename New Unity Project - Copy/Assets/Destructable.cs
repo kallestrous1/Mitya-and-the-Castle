@@ -46,13 +46,22 @@ public class Destructable : MonoBehaviour
             {
                 GameObject deathEffect = Instantiate(deathParticleEffect, transform.position, Quaternion.identity);
                 deathEffect.transform.parent = null;
+              
                 if (this.transform.parent)
                 {
+                    if (this.transform.parent.GetComponent<StateChangingObject>())
+                    {
+                        GetComponent<StateChangingObject>().ChangeObjectState(false);
+                    }
                     this.transform.parent.gameObject.SetActive(false);
                     Destroy(this.transform.parent.gameObject);
                 }
                 else
                 {
+                    if (GetComponent<StateChangingObject>())
+                    {
+                        GetComponent<StateChangingObject>().ChangeObjectState(false);
+                    }
                     this.transform.gameObject.SetActive(false);
                     Destroy(this.transform.gameObject);
                 }

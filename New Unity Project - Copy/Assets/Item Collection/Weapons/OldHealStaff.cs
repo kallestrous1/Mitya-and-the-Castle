@@ -7,6 +7,6 @@ public class OldHealStaff : WeaponObject
 {
     public override void castBaseSpell()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().changeHealth(5, new Vector2(0,0));
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().changeHealth(5);
     }
 }

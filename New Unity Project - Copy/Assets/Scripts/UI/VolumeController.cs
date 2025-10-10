@@ -14,22 +14,15 @@ public class VolumeController : MonoBehaviour, IDataPersistence
     public string musicVolume;
     public string effectsVolume;
 
-    public void OnEnable()
-    {
-        DataPersistenceManager.instance.LoadGame();
-    }
-
     public void SetMusicVolume(float sliderValue)
     {
         musicMixer.SetFloat(musicVolume, Mathf.Log10(sliderValue) * 20);
-        DataPersistenceManager.instance.SaveGame();
 
     }
 
     public void SetEffectsVolume(float sliderValue)
     {
         effectsMixer.SetFloat(effectsVolume, Mathf.Log10(sliderValue) * 20);
-        DataPersistenceManager.instance.SaveGame();
     }
 
     public void SetMusicVolumeInternal(float value)

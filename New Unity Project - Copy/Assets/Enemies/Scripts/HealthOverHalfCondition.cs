@@ -13,7 +13,7 @@ public partial class HealthOverHalfCondition : Condition
 
     public override bool IsTrue()
     {
-        if (Health.Value.currentHealth > Health.Value.maxHealth - healthLost.Value)
+        if (Health.Value.currentHealth >= Health.Value.maxHealth - healthLost.Value)
         {
             return true;
         }
