@@ -7,6 +7,7 @@ public class PlayerHitbox : MonoBehaviour
     public string attackName;
     public int damage;
     public float knockback;
+    public bool oneOff = false;
 
     public GameObject hitParticleEffect;
 
@@ -19,6 +20,10 @@ public class PlayerHitbox : MonoBehaviour
             force.Normalize();
             Rigidbody2D enemyrb = trigger.GetComponentInParent<Rigidbody2D>();
             enemyrb.AddForce(force * knockback, ForceMode2D.Impulse);
+            if (oneOff)
+            {
+                Destroy(this.transform.gameObject);
+            }
         }
     }
 

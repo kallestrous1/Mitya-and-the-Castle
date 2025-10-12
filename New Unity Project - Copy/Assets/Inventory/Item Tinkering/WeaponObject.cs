@@ -47,5 +47,5 @@ public abstract class WeaponObject : ItemObject
         PlayerWeaponContainer.GetComponentInChildren<PlayerWeapon>().activeWeapon = null;
     }
 
-    public virtual void castBaseSpell() { }
+    public virtual void CastBaseWeaponSpell() { }
 }

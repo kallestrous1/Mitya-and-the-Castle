@@ -13,10 +13,11 @@ public partial class RunToPlayerAction : Action
     [SerializeReference] public BlackboardVariable<Animator> Animator;
     [SerializeReference] public BlackboardVariable<string> Run;
     [SerializeReference] public BlackboardVariable<bool> True;
+    [SerializeReference] public BlackboardVariable<float> runSpeed;
+
 
     private Rigidbody2D rb;
     private Enemy enemy;
-    public float runSpeed = 100f;
 
     protected override Status OnStart()
     {
@@ -43,7 +44,7 @@ public partial class RunToPlayerAction : Action
             directionMultiplier = -1;
         }
         Animator.Value.SetBool(Run.Value, true);
-        rb.AddForce(new Vector2(runSpeed * directionMultiplier, 0));
+        rb.AddForce(new Vector2(runSpeed.Value * directionMultiplier, 0));
 
         return Status.Running;
     }

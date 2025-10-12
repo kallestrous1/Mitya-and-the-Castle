@@ -75454,8 +75454,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2de0d4570379c04ebe9205637b0a0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 35
-  maxHealth: 35
+  currentHealth: 25
+  maxHealth: 25
   hitSoundEffect: {fileID: 8300000, guid: 464acc7809d4498438db8084783f8694, type: 3}
   hitParticleEffect: {fileID: 0}
   deathParticleEffect: {fileID: 7861685905955422791, guid: 42b1e676dc6494f41b4f24555d688c2b, type: 3}
@@ -76875,7 +76875,7 @@ Transform:
   m_GameObject: {fileID: 1935919002}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.666267, y: 76.982796, z: -20}
+  m_LocalPosition: {x: 8.884973, y: 70.71499, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

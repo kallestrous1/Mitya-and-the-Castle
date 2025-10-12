@@ -51,7 +51,7 @@ public class Destructable : MonoBehaviour
                 {
                     if (this.transform.parent.GetComponent<StateChangingObject>())
                     {
-                        GetComponent<StateChangingObject>().ChangeObjectState(false);
+                        this.transform.parent.GetComponent<StateChangingObject>().ChangeObjectState(false);
                     }
                     this.transform.parent.gameObject.SetActive(false);
                     Destroy(this.transform.parent.gameObject);

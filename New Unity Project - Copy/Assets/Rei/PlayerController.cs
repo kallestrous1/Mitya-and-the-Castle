@@ -242,6 +242,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             {
                 Instantiate(doubleJumpEffect, isGroundedChecker.position, Quaternion.identity);
             }
+            ani.SetTrigger("DoubleJump");
             playerSound.PlayExtraJumpSound();
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
@@ -263,6 +264,16 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         }
     }
     #endregion
+
+    public void FreezeMidAir()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+
+    public void UnfreezeMidAir()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
 
     public void SetToSavedLocation()
     {

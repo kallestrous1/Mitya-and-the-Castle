@@ -13,6 +13,7 @@ public partial class UpdateTurnDirectionAction : Action
 
     protected override Status OnStart()
     {
+        continuous = continuous ?? new BlackboardVariable<Boolean>(false);
         return Status.Running;
     }
 

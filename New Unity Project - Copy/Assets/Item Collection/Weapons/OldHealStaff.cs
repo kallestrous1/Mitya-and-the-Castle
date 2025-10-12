@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class OldHealStaff : WeaponObject
 {
-    public override void castBaseSpell()
+    public override void CastBaseWeaponSpell()
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().changeHealth(5);
     }

@@ -22,6 +22,18 @@ public class PlayerAttacks : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon").GetComponent<PlayerWeapon>();
+            if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                if(playerWeapon.activeWeapon)
+                {
+                   /* if(playerWeapon.activeWeapon.heavyAttackSound)
+                    {
+                        AudioManager.Instance.Play(playerWeapon.activeWeapon.heavyAttackSound);
+                    }*/
+                }
+                ani.SetTrigger("HeavyAttack");
+                return;
+            }
             if (playerWeapon.activeWeapon)
             {
                 if (playerWeapon.activeWeapon.swingSound)

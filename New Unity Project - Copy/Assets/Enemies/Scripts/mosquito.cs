@@ -16,8 +16,7 @@ public class mosquito : Enemy
     {
         base.Start();
         source.clip = buzz;
-        source.Play();
-        flipped = true;
+        source.Play();      
     }
 
     public override void processHit()

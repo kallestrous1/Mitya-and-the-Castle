@@ -72,8 +72,7 @@ public class DynamicInterface : UserInterface
 
             
         }
-        inventory.Save();
-        inventory.Clear();
+
         inventory.Load();
     }
     private Vector3 GetPosition(int i)

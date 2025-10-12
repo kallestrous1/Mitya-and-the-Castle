@@ -22,7 +22,7 @@ MonoBehaviour:
   data:
     Id: 4
     name: 
-  animations: {fileID: 22100000, guid: 25d45b03b65e19048bc4ea899be8fb32, type: 2}
+  animations: {fileID: 22100000, guid: f93d481c1d2c17640ba1b654deb98d6c, type: 2}
   baseAnimations: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
   inGameSprite: {fileID: 21300000, guid: 1d2e8150534342745a2da9440e3d7f6d, type: 3}
   price: 0

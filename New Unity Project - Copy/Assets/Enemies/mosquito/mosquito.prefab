@@ -356,6 +356,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -377,6 +379,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -512,6 +515,7 @@ MonoBehaviour:
   - rid: 7236404407082156523
   - rid: 7236404407082156524
   - rid: 1585657791094456618
+  - rid: 6731830581091107500
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -525,6 +529,14 @@ MonoBehaviour:
           m_Value1: 18360871183130546966
         Name: FollowPlayerSpeed
         m_Value: 2
+    - rid: 6731830581091107500
+      type: {class: 'BlackboardVariable`1[[mosquito, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 600810684884318328
+          m_Value1: 565792235794080606
+        Name: Mosquito
+        m_Value: {fileID: 6283770342537197239}
     - rid: 7236404363168055566
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:

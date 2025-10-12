@@ -23,10 +23,9 @@ public class PlayerWeapon : MonoBehaviour
             {
                 Instantiate(activeWeapon.hitParticleEffect, transform.position, Quaternion.identity);
             }
-
+            collision.GetComponent<DamageFlash>().CallDamageFlash();
             collision.GetComponent<Destructable>().changeHealth(-activeWeapon.baseAttackDamage);
             collision.GetComponent<Enemy>().processHit();
-            collision.GetComponent<DamageFlash>().CallDamageFlash();
             var force = (Vector2)collision.transform.position - (Vector2)this.gameObject.GetComponentInParent<Transform>().position;
             force.Normalize();
             enemyrb.AddForce(force * activeWeapon.weaponForce, ForceMode2D.Impulse);
@@ -60,7 +59,7 @@ public class PlayerWeapon : MonoBehaviour
             {
                 Instantiate(activeWeapon.baseSpellParticle, transform.position, Quaternion.identity);               
             }
-            activeWeapon.castBaseSpell();
+            activeWeapon.CastBaseWeaponSpell();
             gameObject.GetComponentInParent<PlayerMagicJuice>().changeMagic(-activeWeapon.baseSpellMagicCost);
         }
     }

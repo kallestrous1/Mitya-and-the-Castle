@@ -144,9 +144,6 @@ public class NewManager : MonoBehaviour, IDataPersistence
                 {
                     PlayerInventory playerInventory = FindAnyObjectByType<PlayerInventory>();
                     playerInventory.inventory.Clear();
-                    playerInventory.equipment.Clear();
-                    playerInventory.inventory.Save();
-                    playerInventory.equipment.Save();
                 }
                 foreach(InventoryObject shop in shops)
                 {
