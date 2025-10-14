@@ -24,8 +24,8 @@ MonoBehaviour:
         Id: -1
         name: 
       item:
-        Id: -1
-        name: 
+        Id: 4
+        name: Old Sword
     - AllowedItems: 3
       locked: 0
       price: 0
@@ -33,8 +33,8 @@ MonoBehaviour:
         Id: -1
         name: 
       item:
-        Id: -1
-        name: 
+        Id: 1
+        name: New TurtleCharm
     - AllowedItems: 3
       locked: 0
       price: 0
@@ -42,8 +42,8 @@ MonoBehaviour:
         Id: -1
         name: 
       item:
-        Id: -1
-        name: 
+        Id: 1
+        name: New TurtleCharm
     - AllowedItems: 3
       locked: 0
       price: 0
@@ -51,5 +51,14 @@ MonoBehaviour:
         Id: -1
         name: 
       item:
+        Id: 0
+        name: DashCharm
+    - AllowedItems: 2
+      locked: 0
+      price: 0
+      DefaultItem:
         Id: -1
         name: 
+      item:
+        Id: 9
+        name: Fireball

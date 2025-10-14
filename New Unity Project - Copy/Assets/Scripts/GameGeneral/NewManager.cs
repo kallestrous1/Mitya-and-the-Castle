@@ -95,6 +95,7 @@ public class NewManager : MonoBehaviour, IDataPersistence
         yield return new WaitForSeconds(0.1f);
         AsyncOperation loadScene = SceneManager.LoadSceneAsync(newScene, LoadSceneMode.Additive);
         loadScene.allowSceneActivation = false;
+
         while (!loadScene.isDone)
         {
             float progress = Mathf.Clamp01(loadScene.progress); // Normalize progress to 0-1
@@ -108,22 +109,26 @@ public class NewManager : MonoBehaviour, IDataPersistence
 
             yield return null; // Wait for next frame
         }
+
         if (GameObject.FindGameObjectWithTag("Player"))
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
         }
-        // SceneManager.LoadScene(newScene, LoadSceneMode.Additive);
+
         currentGameState = GameState.Play;
-     //   yield return new WaitForSeconds(0.5f);
-      //  unloadScene(10);
+
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(newScene));
+
         if (upBoost)
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Jump();
         }
+
+
         DataPersistenceManager.instance.LoadGame();
         loadingScreenPanel.SetActive(false);
+
         if (GameObject.FindGameObjectWithTag("Player"))
         {
             if(newScene.Equals("Base Scene"))
@@ -144,8 +149,11 @@ public class NewManager : MonoBehaviour, IDataPersistence
                 {
                     PlayerInventory playerInventory = FindAnyObjectByType<PlayerInventory>();
                     playerInventory.inventory.Clear();
+                    playerInventory.equipment.Clear();
+                    playerInventory.inventory.Save();
+                    playerInventory.equipment.Save();
                 }
-                foreach(InventoryObject shop in shops)
+                foreach (InventoryObject shop in shops)
                 {
                     shop.Reset();
                     shop.Save();

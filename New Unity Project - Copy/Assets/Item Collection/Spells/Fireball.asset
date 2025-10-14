@@ -26,5 +26,7 @@ MonoBehaviour:
   baseAnimations: {fileID: 9100000, guid: 001bf31f34376784fa9b5c8db0dce452, type: 2}
   inGameSprite: {fileID: 0}
   price: 0
-  BaseParticleEffect: {fileID: 2294379943787814407, guid: 241d638f9023a78479ce098f0c09bb11, type: 3}
-  spellSpeed: 30
+  BaseParticleEffect: {fileID: 2659240962462058314, guid: 20000892e914f1f4eb59391c3ed26630, type: 3}
+  spellSpeed: 8
+  manaCost: 10
+  chargeTime: 1

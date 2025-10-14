@@ -850,6 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpells
   currentSpell: {fileID: 11400000, guid: 98ceb84a61ce0b64fa27e584d1ff58e2, type: 2}
+  spawnLocation: {fileID: 6234167785519442656}
 --- !u!1 &403685491848748714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,7 +1652,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: kick
   damage: 1
+  stayDamage: 0
   knockback: 100
+  oneOff: 0
   hitParticleEffect: {fileID: 6463661466912164934, guid: 2de56f705b63f0a49a653ff60f7c3572, type: 3}
 --- !u!1 &3861459775772869028
 GameObject:

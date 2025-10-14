@@ -38,7 +38,7 @@ public class DynamicInterface : UserInterface
             {
                 obj = Instantiate(inventoryPrefabWeapon, Vector3.zero, Quaternion.identity, transform);
             }
-            else if (inventory.GetSlots[i].AllowedItems == ItemType.Charm)
+            else if (inventory.GetSlots[i].AllowedItems == ItemType.Spell)
             {
                 obj = Instantiate(inventoryPrefabSpell, Vector3.zero, Quaternion.identity, transform);
             }
