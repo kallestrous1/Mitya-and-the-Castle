@@ -8,6 +8,10 @@ public class PlayerWeapon : MonoBehaviour
     Rigidbody2D playerrb;
 
     Collider2D weaponCollider;
+    public GameObject PlayerWeaponContainer;
+    public RuntimeAnimatorController baseAnimations;
+
+
 
     public WeaponObject activeWeapon;
     
@@ -63,4 +67,24 @@ public class PlayerWeapon : MonoBehaviour
             gameObject.GetComponentInParent<PlayerMagicJuice>().changeMagic(-activeWeapon.baseSpellMagicCost);
         }
     }
+
+    public void LoadData(GameData data)
+    {
+        
+    }
+
+    public void SaveData(GameData data)
+    {
+        
+    }
+
+    public void Reset()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<Animator>().runtimeAnimatorController = baseAnimations;
+        PlayerWeaponContainer = GameObject.FindGameObjectWithTag("Weapon Container");
+        PlayerWeaponContainer.GetComponentInChildren<SpriteRenderer>().sprite = null;
+        PlayerWeaponContainer.GetComponentInChildren<PlayerWeapon>().activeWeapon = null;
+    }
+
 }

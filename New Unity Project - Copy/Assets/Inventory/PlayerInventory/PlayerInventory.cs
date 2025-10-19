@@ -32,7 +32,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneManager.sceneUnloaded += Save;
+        //SceneManager.sceneUnloaded += Save;
     }
 
     private void OnDisable()
@@ -44,7 +44,7 @@ public class PlayerInventory : MonoBehaviour
             equipment.GetSlots[i].OnAfterUpdate -= OnRemoveItem;
             equipment.GetSlots[i].OnBeforeUpdated -= OnAddItem;
         }
-        SceneManager.sceneUnloaded -= Save;
+       // SceneManager.sceneUnloaded -= Save;
 
     }
 
@@ -121,17 +121,6 @@ public class PlayerInventory : MonoBehaviour
         {
             pickupRequest = false;
         }
-
-       /* if (Input.GetKeyDown(KeyCode.S))
-        {
-            inventory.Save();
-            equipment.Save();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            inventory.Load();
-            equipment.Load();
-        }*/
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -179,10 +168,9 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("saving inventory");
-        inventory.Save();
-        equipment.Save();
-
+      //  Debug.Log("saving inventory");
+     //   inventory.Save();
+     //   equipment.Save();
     }
 
 }

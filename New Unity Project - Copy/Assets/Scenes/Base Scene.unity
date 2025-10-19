@@ -374,6 +374,7 @@ MonoBehaviour:
   ItemDetailsInterface: {fileID: 0}
   inventory: {fileID: 0}
   equipment: {fileID: 0}
+  playerInventory: {fileID: 11400000, guid: bd88b05129bc72a44bab80758da3caba, type: 2}
   inGameItemPrefab: {fileID: 386471724354918239, guid: 308d7422a3149914593630286d7f5ab1, type: 3}
   Instantiator: {fileID: 1221565426}
   hoverOverSlotSound: {fileID: 8300000, guid: eb86820397028d64d90acd75a28d74aa, type: 3}
@@ -4214,6 +4215,7 @@ MonoBehaviour:
   ItemDetailsInterface: {fileID: 0}
   inventory: {fileID: 11400000, guid: bd88b05129bc72a44bab80758da3caba, type: 2}
   equipment: {fileID: 11400000, guid: 683c99466c821164ab9a89fc0a2bbf73, type: 2}
+  playerInventory: {fileID: 0}
   inGameItemPrefab: {fileID: 386471724354918239, guid: 308d7422a3149914593630286d7f5ab1, type: 3}
   Instantiator: {fileID: 1221565426}
   hoverOverSlotSound: {fileID: 8300000, guid: eb86820397028d64d90acd75a28d74aa, type: 3}
@@ -8313,7 +8315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5294118}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.56078434}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9160,6 +9162,7 @@ MonoBehaviour:
   ItemDetailsInterface: {fileID: 0}
   inventory: {fileID: 11400000, guid: 683c99466c821164ab9a89fc0a2bbf73, type: 2}
   equipment: {fileID: 11400000, guid: 683c99466c821164ab9a89fc0a2bbf73, type: 2}
+  playerInventory: {fileID: 0}
   inGameItemPrefab: {fileID: 386471724354918239, guid: 308d7422a3149914593630286d7f5ab1, type: 3}
   Instantiator: {fileID: 1221565426}
   hoverOverSlotSound: {fileID: 8300000, guid: eb86820397028d64d90acd75a28d74aa, type: 3}

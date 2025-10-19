@@ -11,6 +11,7 @@ public abstract class UserInterface : MonoBehaviour
     public ItemDetailsInterface ItemDetailsInterface;
     public InventoryObject inventory;
     public InventoryObject equipment;
+    public InventoryObject playerInventory;
     public Dictionary<GameObject, InventorySlotObject> slotsOnInterface = new Dictionary<GameObject, InventorySlotObject>();
 
     public GameObject inGameItemPrefab;
@@ -102,6 +103,8 @@ public abstract class UserInterface : MonoBehaviour
     }
     public void OnExit(GameObject obj)
     {
+        if (slotsOnInterface[obj].item.Id >= 0)
+            ItemDetailsInterface.ResetInterface();
         MouseData.slotHoveredOver = null;
     }
     public void OnDragStart(GameObject obj)
@@ -149,15 +152,19 @@ public abstract class UserInterface : MonoBehaviour
         {
             AudioManager.Instance.Play(failToDropSound);
         }
-
+        if (MouseData.interfaceMouseIsOver == null)
+        {            
+            return;
+        }
+        
             // deleting the functionality to drop items for now it is tooo much work and unneccersary august 12 2025
-            /*  if (MouseData.interfaceMouseIsOver == null)
-              {
-                  //problems will brew when you introduce identical items... items are stored in itemtracker via a dictionary (no duplicate keys)
-                  Instantiator.CreateItem(slotsOnInterface[obj].ItemObject);
-                  slotsOnInterface[obj].RemoveItem();
-                  return;
-              }*/
+        /*  if (MouseData.interfaceMouseIsOver == null)
+          {
+              //problems will brew when you introduce identical items... items are stored in itemtracker via a dictionary (no duplicate keys)
+              Instantiator.CreateItem(slotsOnInterface[obj].ItemObject);
+              slotsOnInterface[obj].RemoveItem();
+              return;
+          }*/
 
             if (MouseData.slotHoveredOver)
         {
@@ -206,8 +213,9 @@ public abstract class UserInterface : MonoBehaviour
                 AudioManager.Instance.Play(buySound);
             }
             FindAnyObjectByType<PlayerMoney>().ChangePlayerMoneyCount(-MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject.price);
+            playerInventory.AddItem(MouseData.interfaceMouseIsOver.slotsOnInterface[obj].item);
             MouseData.interfaceMouseIsOver.slotsOnInterface[obj].locked = false;
-            Destroy(obj.GetComponentInChildren<SpriteRenderer>().gameObject);
+            MouseData.interfaceMouseIsOver.slotsOnInterface[obj].UpdateSlot(new SuperItem());
             MouseData.slotHoveredOver.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
         else

@@ -23,7 +23,20 @@ public class InventoryObject : ScriptableObject
     public SuperInventory Container;
     public InventorySlotObject[] GetSlots{ get {return Container.Slots;}}
 
-
+    public bool IsFull
+    {
+        get
+        {
+            for (int i = 0; i < GetSlots.Length; i++)
+            {
+                if (GetSlots[i].item == null)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 
     public bool AddItem(SuperItem item)
     {
@@ -207,7 +220,7 @@ public class InventorySlotObject
       
             if(item.Id >= 0)
             {
-                Debug.Log(parent);
+              //  Debug.Log(parent);
                 return parent.inventory.database.GetItem[item.Id];
             }
             return null;
@@ -216,7 +229,7 @@ public class InventorySlotObject
 
     public InventorySlotObject()
     {
-        UpdateSlot(new SuperItem());
+        UpdateSlot(new SuperItem(), true);
     }
     public InventorySlotObject(SuperItem item)
     {
@@ -267,7 +280,7 @@ public class InventorySlotObject
 
     public void RemoveItem()
     {
-        UpdateSlot(new SuperItem());
+        UpdateSlot(new SuperItem(), true);
     }
 
     public void ResetToDefault()

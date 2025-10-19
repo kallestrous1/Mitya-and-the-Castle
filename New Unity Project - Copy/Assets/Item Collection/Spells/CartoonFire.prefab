@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7498812350118014267
 Transform:
   m_ObjectHideFlags: 0
@@ -4957,7 +4957,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -10031,7 +10031,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10085,7 +10085,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0.3764706}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10732,7 +10732,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -10785,7 +10785,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -11170,8 +11170,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.9238702, b: 0, a: 1}
-        key1: {r: 1, g: 0.02376917, b: 0, a: 1}
+        key0: {r: 0.9811321, g: 0.9248817, b: 0.5784977, a: 1}
+        key1: {r: 0.990566, g: 0.6577271, b: 0.6494749, a: 1}
         key2: {r: 0.19157314, g: 0.02821459, b: 0.011524745, a: 0}
         key3: {r: 0.1509434, g: 0.028438007, b: 0.012103953, a: 0}
         key4: {r: 0.18867922, g: 0.13972943, b: 0.13972943, a: 0}
@@ -14128,7 +14128,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0.0019813152
-          value: 0.399355
+          value: 0.15407377
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -14137,7 +14137,7 @@ ParticleSystem:
           outWeight: 0
         - serializedVersion: 3
           time: 0.311564
-          value: 0.32316393
+          value: 0.19109148
           inSlope: 0.1085974
           outSlope: 0.1085974
           tangentMode: 0

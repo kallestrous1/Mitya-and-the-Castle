@@ -125,8 +125,14 @@ public class NewManager : MonoBehaviour, IDataPersistence
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Jump();
         }
 
-
-        DataPersistenceManager.instance.LoadGame();
+        if (newGame)
+        {
+            DataPersistenceManager.instance.NewGame();
+        }
+        else
+        {
+            DataPersistenceManager.instance.LoadGame();
+        }
         loadingScreenPanel.SetActive(false);
 
         if (GameObject.FindGameObjectWithTag("Player"))
