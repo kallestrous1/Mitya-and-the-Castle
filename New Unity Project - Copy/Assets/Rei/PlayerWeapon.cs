@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWeapon : MonoBehaviour
+public class PlayerWeapon : MonoBehaviour, IDataPersistence
 {
     Rigidbody2D rb;
     Rigidbody2D playerrb;
@@ -78,7 +78,7 @@ public class PlayerWeapon : MonoBehaviour
         
     }
 
-    public void Reset()
+    public void ResetData(GameData data)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Animator>().runtimeAnimatorController = baseAnimations;
