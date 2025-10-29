@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638957144129193686
-    m_Hash: 2273985332
+      ticks: 638971885639874578
+    m_Hash: 4172996306
   m_LockFileStatus:
     m_FilePath: C:/Users/Kalle/Documents/The-Unity-Game/New Unity Project - Copy/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638957144638951150
-    m_Hash: 1280392102
+      ticks: 638971885639897657
+    m_Hash: 51807689
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -182,6 +182,8 @@ m_ResolvedPackages:
     - 12.0.1
     - 12.0.2
     - 13.0.0
+    - 13.0.1
+    - 14.0.0
     compatible:
     - 12.0.2
     recommended: 12.0.2
@@ -200,34 +202,34 @@ m_ResolvedPackages:
   resolvedDependencies:
   - name: com.unity.2d.common
     version: 11.0.1
-  - name: com.unity.2d.sprite
-    version: 1.0.0
+  - name: com.unity.burst
+    version: 1.8.25
   - name: com.unity.mathematics
     version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.2d.sprite
+    version: 1.0.0
+  - name: com.unity.modules.animation
+    version: 1.0.0
   - name: com.unity.modules.uielements
     version: 1.0.0
   - name: com.unity.modules.ui
     version: 1.0.0
   - name: com.unity.modules.imgui
     version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
   - name: com.unity.modules.hierarchycore
     version: 1.0.0
   - name: com.unity.modules.physics
     version: 1.0.0
-  - name: com.unity.modules.animation
-    version: 1.0.0
-  - name: com.unity.burst
-    version: 1.8.25
   - name: com.unity.collections
     version: 2.5.7
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.5
   - name: com.unity.test-framework
     version: 1.6.0
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.5
   - name: com.unity.test-framework.performance
     version: 3.2.0
   keywords:
@@ -360,7 +362,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638775664687690000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.2d.pixel-perfect@5.1/manual/index.html
@@ -596,6 +598,7 @@ m_ResolvedPackages:
     - 12.0.0
     - 12.0.1
     - 13.0.0
+    - 14.0.0
     compatible:
     - 12.0.1
     recommended: 12.0.1
@@ -610,26 +613,26 @@ m_ResolvedPackages:
   resolvedDependencies:
   - name: com.unity.2d.common
     version: 11.0.1
-  - name: com.unity.2d.sprite
-    version: 1.0.0
+  - name: com.unity.burst
+    version: 1.8.25
   - name: com.unity.mathematics
     version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.2d.sprite
+    version: 1.0.0
+  - name: com.unity.modules.animation
+    version: 1.0.0
   - name: com.unity.modules.uielements
     version: 1.0.0
   - name: com.unity.modules.ui
     version: 1.0.0
   - name: com.unity.modules.imgui
     version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
   - name: com.unity.modules.hierarchycore
     version: 1.0.0
   - name: com.unity.modules.physics
     version: 1.0.0
-  - name: com.unity.modules.animation
-    version: 1.0.0
-  - name: com.unity.burst
-    version: 1.8.25
   - name: com.unity.modules.physics2d
     version: 1.0.0
   keywords:
@@ -935,7 +938,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: Animation
-  type: 
+  type: asset
   description: Animation Rigging toolkit using Unity's Animation C# Jobs
   errors: []
   versions:
@@ -999,7 +1002,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638110143470000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.animation.rigging@1.3/manual/index.html
@@ -1086,6 +1089,7 @@ m_ResolvedPackages:
     - 1.0.10
     - 1.0.11
     - 1.0.12
+    - 1.0.13
     compatible:
     - 1.0.0-pre.1
     - 1.0.0
@@ -1101,7 +1105,8 @@ m_ResolvedPackages:
     - 1.0.10
     - 1.0.11
     - 1.0.12
-    recommended: 
+    - 1.0.13
+    recommended: 1.0.13
     deprecated: []
   dependencies:
   - name: com.unity.burst
@@ -1151,12 +1156,12 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.collections
     version: 2.5.7
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.5
   - name: com.unity.test-framework
     version: 1.6.0
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.5
   - name: com.unity.test-framework.performance
     version: 3.2.0
   - name: com.unity.modules.audio
@@ -1203,10 +1208,10 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 
     nextVersion: 
-    recommendedVersion: 
+    recommendedVersion: 1.0.0
     isDeprecated: 0
     deprecationMessage: 
-    isDiscoverable: 0
+    isDiscoverable: 1
   isDeprecated: 0
   deprecationMessage: 
   git:
@@ -1383,6 +1388,7 @@ m_ResolvedPackages:
     - 3.1.2
     - 3.1.3
     - 3.1.4
+    - 3.1.5
     compatible:
     - 2.10.4
     - 2.10.5
@@ -1399,7 +1405,8 @@ m_ResolvedPackages:
     - 3.1.2
     - 3.1.3
     - 3.1.4
-    recommended: 2.10.5
+    - 3.1.5
+    recommended: 3.1.5
     deprecated: []
   dependencies:
   - name: com.unity.test-framework
@@ -1462,7 +1469,7 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 2.10.4
     nextVersion: 
-    recommendedVersion: 
+    recommendedVersion: 3.1.0
     isDeprecated: 0
     deprecationMessage: 
     isDiscoverable: 1
@@ -1666,6 +1673,122 @@ m_ResolvedPackages:
       scopePatternExpression: 
       message: 
       readMoreLink: 
+- packageId: com.unity.connect.share@4.2.3
+  testable: 0
+  isDirectDependency: 1
+  version: 4.2.3
+  source: 1
+  resolvedPath: C:\Users\Kalle\Documents\The-Unity-Game\New Unity Project - Copy\Library\PackageCache\com.unity.connect.share@2f75d100c2a4
+  assetPath: Packages/com.unity.connect.share
+  name: com.unity.connect.share
+  displayName: WebGL Publisher
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: tool
+  description: This tool allows you to make a WebGL build of your current project
+    and upload it to Unity's website, where it can be shared with others.
+  errors: []
+  versions:
+    all:
+    - 1.0.0-preview
+    - 1.0.1-preview
+    - 1.0.2-preview
+    - 1.0.3-preview
+    - 1.0.4-preview
+    - 1.0.5-preview
+    - 1.0.6-preview.2
+    - 1.0.7-preview
+    - 1.0.8-preview
+    - 1.0.9-preview
+    - 1.0.10-preview
+    - 1.1.0-preview.1
+    - 1.2.0-preview.1
+    - 2.0.1-preview
+    - 2.0.2-preview.3
+    - 2.0.2-preview.4
+    - 2.0.3
+    - 2.0.5
+    - 2.0.6
+    - 2.1.0
+    - 3.0.0
+    - 4.0.1
+    - 4.0.2
+    - 4.0.3
+    - 4.1.0
+    - 4.1.1
+    - 4.2.1
+    - 4.2.2
+    - 4.2.3
+    compatible:
+    - 4.2.3
+    recommended: 4.2.3
+    deprecated: []
+  dependencies:
+  - name: com.unity.editorcoroutines
+    version: 1.0.0
+  - name: com.unity.settings-manager
+    version: 1.0.2
+  resolvedDependencies:
+  - name: com.unity.editorcoroutines
+    version: 1.0.0
+  - name: com.unity.settings-manager
+    version: 2.1.0
+  keywords:
+  - webgl
+  - share
+  - connect
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637695698090000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.connect.share.git
+    revision: 9a66a825d48494378f81fc94289eddd505df1c40
+    path: 
+  unityLifecycle:
+    version: 4.2.3
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 1
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: 
+  assetStore:
+    productId: 
+  fingerprint: 2f75d100c2a4b2dde614abc1b56dc52f96a7ed91
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 4.2.3
+    minimumUnityVersion: 2019.3.0a1
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
 - packageId: com.unity.ide.rider@3.0.38
   testable: 0
   isDirectDependency: 1
@@ -1760,7 +1883,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638938045127600000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.rider@3.0/manual/index.html
@@ -1875,7 +1998,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638786696173840000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.visualstudio@2.0/manual/index.html
@@ -2325,12 +2448,12 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.collections
     version: 2.5.7
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.5
   - name: com.unity.test-framework
     version: 1.6.0
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.5
   - name: com.unity.test-framework.performance
     version: 3.2.0
   - name: com.unity.modules.physics
@@ -5692,12 +5815,12 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.collections
     version: 2.5.7
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.5
   - name: com.unity.test-framework
     version: 1.6.0
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.5
   - name: com.unity.test-framework.performance
     version: 3.2.0
   - name: com.unity.modules.physics
@@ -5806,12 +5929,12 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.collections
     version: 2.5.7
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.5
   - name: com.unity.test-framework
     version: 1.6.0
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.5
   - name: com.unity.test-framework.performance
     version: 3.2.0
   - name: com.unity.modules.physics
@@ -5916,12 +6039,12 @@ m_ResolvedPackages:
     version: 1.0.0
   - name: com.unity.collections
     version: 2.5.7
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.5
   - name: com.unity.test-framework
     version: 1.6.0
   - name: com.unity.ext.nunit
     version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.5
   - name: com.unity.test-framework.performance
     version: 3.2.0
   - name: com.unity.modules.physics
@@ -5974,6 +6097,184 @@ m_ResolvedPackages:
     compatibilityLevel: 0
     minimumPackageVersion: 17.0.3
     minimumUnityVersion: 6000.0.0a1
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
+- packageId: com.unity.editorcoroutines@1.0.0
+  testable: 0
+  isDirectDependency: 0
+  version: 1.0.0
+  source: 1
+  resolvedPath: C:\Users\Kalle\Documents\The-Unity-Game\New Unity Project - Copy\Library\PackageCache\com.unity.editorcoroutines@7d48783e7b8c
+  assetPath: Packages/com.unity.editorcoroutines
+  name: com.unity.editorcoroutines
+  displayName: Editor Coroutines
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: asset
+  description: 'The editor coroutines package allows developers to start constructs
+    similar to Unity''s monobehaviour based coroutines within the editor using abitrary
+    objects. '
+  errors: []
+  versions:
+    all:
+    - 0.0.1-preview.3
+    - 0.0.1-preview.4
+    - 0.0.1-preview.5
+    - 0.0.2-preview.1
+    - 0.1.0-preview.1
+    - 0.1.0-preview.2
+    - 1.0.0
+    - 1.0.1
+    compatible:
+    - 1.0.0
+    - 1.0.1
+    recommended: 1.0.1
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - coroutine
+  - coroutines
+  - editor
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637232611380000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.editorcoroutines.git
+    revision: f67fc9992bbc7a553b17375de53a8b2db136528e
+    path: 
+  unityLifecycle:
+    version: 1.0.0
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 1
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: 
+  assetStore:
+    productId: 
+  fingerprint: 7d48783e7b8cfcee5f8ef9ba787ed0d9dad4ebca
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.0.0
+    minimumUnityVersion: 2018.1.0a1
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
+- packageId: com.unity.settings-manager@2.1.0
+  testable: 0
+  isDirectDependency: 0
+  version: 2.1.0
+  source: 1
+  resolvedPath: C:\Users\Kalle\Documents\The-Unity-Game\New Unity Project - Copy\Library\PackageCache\com.unity.settings-manager@41738c275190
+  assetPath: Packages/com.unity.settings-manager
+  name: com.unity.settings-manager
+  displayName: Settings Manager
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: A framework for making any serializable field a setting, complete
+    with a pre-built settings interface.
+  errors: []
+  versions:
+    all:
+    - 0.1.0-preview.4
+    - 0.1.0-preview.8
+    - 1.0.0
+    - 1.0.1
+    - 1.0.2
+    - 1.0.3
+    - 2.0.0
+    - 2.0.1
+    - 2.1.0
+    - 2.1.1
+    compatible:
+    - 2.1.0
+    - 2.1.1
+    recommended: 2.1.1
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 0
+  isAssetStorePackage: 0
+  datePublishedTicks: 638792046006940000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.settings-manager@2.1/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.settings-manager.git
+    revision: 6eb5ed85eaf3276cc09f0cc4fc3311c72f0fc196
+    path: 
+  unityLifecycle:
+    version: 2.1.0
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 0
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Changes\n\n- Enable Auto Reference on main assembly.\n\n###
+    Bug Fixes\n\n- [case: PBLD-56] Added tooltip to \"Options\" gear icon to specify
+    that context menu items are relevant only to the selected category."}'
+  assetStore:
+    productId: 
+  fingerprint: 41738c27519039c335849eb78949382f4d7a3544
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 2.1.0
+    minimumUnityVersion: 2022.3.0a1
   compliance:
     status: 0
     violation:
@@ -6168,7 +6469,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638936354350140000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.burst@1.8/manual/index.html
@@ -6591,10 +6892,10 @@ m_ResolvedPackages:
     version: 1.8.19
   - name: com.unity.mathematics
     version: 1.3.2
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.5
   - name: com.unity.test-framework
     version: 1.4.6
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.5
   - name: com.unity.test-framework.performance
     version: 3.0.3
   resolvedDependencies:
@@ -6604,14 +6905,14 @@ m_ResolvedPackages:
     version: 1.3.2
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.5
   - name: com.unity.test-framework
     version: 1.6.0
   - name: com.unity.ext.nunit
     version: 2.0.5
   - name: com.unity.modules.imgui
     version: 1.0.0
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.5
   - name: com.unity.test-framework.performance
     version: 3.2.0
   keywords:
@@ -6631,7 +6932,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638803020568560000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.collections@2.5/manual/index.html
@@ -6716,9 +7017,11 @@ m_ResolvedPackages:
     - 3.1.0
     - 3.2.0
     - 3.2.1
+    - 3.2.2
     compatible:
     - 3.2.1
-    recommended: 3.2.1
+    - 3.2.2
+    recommended: 3.2.2
     deprecated: []
   dependencies: []
   resolvedDependencies: []
@@ -6736,7 +7039,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638186318800000000
   documentationUrl: 
@@ -6862,42 +7165,44 @@ m_ResolvedPackages:
     - 11.0.0
     - 11.0.1
     - 12.0.0
+    - 12.0.1
+    - 13.0.0
     compatible:
     - 11.0.1
     recommended: 11.0.1
     deprecated: []
   dependencies:
+  - name: com.unity.burst
+    version: 1.8.4
   - name: com.unity.2d.sprite
     version: 1.0.0
   - name: com.unity.mathematics
     version: 1.1.0
+  - name: com.unity.modules.animation
+    version: 1.0.0
   - name: com.unity.modules.uielements
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.burst
+    version: 1.8.25
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.2d.sprite
     version: 1.0.0
   - name: com.unity.modules.animation
     version: 1.0.0
-  - name: com.unity.burst
-    version: 1.8.4
-  resolvedDependencies:
-  - name: com.unity.2d.sprite
-    version: 1.0.0
-  - name: com.unity.mathematics
-    version: 1.3.2
   - name: com.unity.modules.uielements
     version: 1.0.0
   - name: com.unity.modules.ui
     version: 1.0.0
   - name: com.unity.modules.imgui
     version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
   - name: com.unity.modules.hierarchycore
     version: 1.0.0
   - name: com.unity.modules.physics
     version: 1.0.0
-  - name: com.unity.modules.animation
-    version: 1.0.0
-  - name: com.unity.burst
-    version: 1.8.25
   keywords:
   - 2d
   registry:
@@ -6913,7 +7218,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638840901264720000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.2d.common@11.0/manual/index.html
@@ -6963,7 +7268,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: assets
   description: Unity's C# SIMD math library providing vector types and math functions
     with a shader like syntax.
   errors: []
@@ -7011,7 +7316,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638409134840000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.mathematics@1.3/manual/index.html
@@ -7087,10 +7392,12 @@ m_ResolvedPackages:
     - 4.9.1
     - 4.9.2
     - 4.9.3
+    - 4.9.4
     compatible:
     - 4.9.2
     - 4.9.3
-    recommended: 4.9.3
+    - 4.9.4
+    recommended: 4.9.4
     deprecated: []
   dependencies: []
   resolvedDependencies: []
@@ -7188,14 +7495,14 @@ m_ResolvedPackages:
     version: 1.3.2
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
-  - name: com.unity.nuget.mono-cecil
-    version: 1.11.5
   - name: com.unity.test-framework
     version: 1.6.0
   - name: com.unity.ext.nunit
     version: 2.0.5
   - name: com.unity.modules.imgui
     version: 1.0.0
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.5
   - name: com.unity.test-framework.performance
     version: 3.2.0
   - name: com.unity.modules.terrain
@@ -7310,7 +7617,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638729992509040000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.nuget.mono-cecil@1.11/manual/index.html
@@ -7455,7 +7762,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638936561440790000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.test-framework.performance@3.2/manual/index.html
