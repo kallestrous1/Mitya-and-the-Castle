@@ -735,6 +735,7 @@ Transform:
   - {fileID: 403685491082461727}
   - {fileID: 403685491095327815}
   - {fileID: 403685490371711137}
+  - {fileID: 3402955668377655869}
   m_Father: {fileID: 403685491848748719}
   m_LocalEulerAnglesHint: {x: 2.312, y: -1.64, z: -272.272}
 --- !u!212 &5900323149560310124
@@ -850,7 +851,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpells
   currentSpell: {fileID: 11400000, guid: 98ceb84a61ce0b64fa27e584d1ff58e2, type: 2}
-  spawnLocation: {fileID: 6234167785519442656}
+  minScale: 0.1
+  maxScale: 0.6
+  lifeTime: 3
+  spawnLocation: {fileID: 4465506969894529095}
 --- !u!1 &403685491848748714
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +879,7 @@ GameObject:
   - component: {fileID: 5992557922381808075}
   - component: {fileID: -6305479014406111521}
   - component: {fileID: 8927405593207764433}
+  - component: {fileID: 8857305377544588257}
   m_Layer: 9
   m_Name: niceguySpriteSheet
   m_TagString: Player
@@ -1113,10 +1118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00de0be1c0a18e24e8c91b6277360939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 20
+  invincibilityDuration: 1
   healthSlider: {fileID: 0}
   maxHealthSlider: {fileID: 0}
-  health: 5
-  recovering: 0
+  maxHealthRectTransform: {fileID: 0}
   bloodDisplay: {fileID: 3133542132048655781, guid: 4effa2e61bcb73744b81567d44f49d61, type: 3}
   deathDisplay: {fileID: 0}
   playerDamageSound: {fileID: 0}
@@ -1303,6 +1309,18 @@ MonoBehaviour:
   footStepOne: {fileID: 8300000, guid: 9189a12c7dbc360419b72fcf19d6c63e, type: 3}
   footStepTwo: {fileID: 8300000, guid: 277b67862280bfe48ac981ba1a2d2de1, type: 3}
   pickUpItemSound: {fileID: 8300000, guid: 15525d2269013c64e91377a33f0ccdd5, type: 3}
+--- !u!114 &8857305377544588257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403685491848748714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0c30ae97aef534681242b40c41afa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawnManager
 --- !u!1 &403685491891853108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,6 +1705,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 403685491111838444}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 16.846}
+--- !u!1 &4465506969894529095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3402955668377655869}
+  m_Layer: 9
+  m_Name: spellspawnpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3402955668377655869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4465506969894529095}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.3, y: -16.5, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 403685491723188155}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5272563026931669246
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ItemTracker : MonoBehaviour, IDataPersistence
+public class ItemTracker : DataPersistenceBehaviour
 {
     public List <ItemInGame> collectedItems;
     public SerializableDictionary<ItemObject, Vector2> itemsInGame; //the fact that this is a dictionary doesn't allow for identical items
@@ -41,28 +41,32 @@ public class ItemTracker : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void LoadData(GameData data)
+    public override void LoadData(GameData data)
     {
    
    //     this.collectedItems = data.collectedItems;
       //  this.itemsInGame = data.activeItems;
-        StartCoroutine(SpawnItems());
-       // StartCoroutine(DestroyCollectedItems());
+      //  StartCoroutine(SpawnItems());
+     //   StartCoroutine(DestroyCollectedItems());
     }
 
-    public void SaveData(GameData data)
+    public override void SaveData(GameData data)
     {
-        Debug.Log(itemsInGame.Count);
+       /* Debug.Log(itemsInGame.Count);
         data.collectedItems = this.collectedItems;
-        data.activeItems = this.itemsInGame;
+        data.activeItems = this.itemsInGame;*/
     }
 
     public void ResetItems()
     {
-        Debug.Log("reseting items");
+      /*  Debug.Log("reseting items");
         collectedItems.Clear();
-        itemsInGame.Clear();
+        itemsInGame.Clear();*/
     }
 
+    public override void ResetData(GameData data)
+    {
+        ResetItems();
+    }
 
 }

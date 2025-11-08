@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16697f9d19a71404ebd296a279283c24, type: 3}
   m_Name: DashCharm
   m_EditorClassIdentifier: 
+  itemID: ffba221b-7e8e-4e9c-8481-bd91de0ecdeb
   setActive: 1
   spawnScene: 
   uiDisplay: {fileID: 6691635439942164768, guid: 9dd32ec68accda148be9004c02f6104b, type: 3}
   characterDisplay: {fileID: 7914809734473697626, guid: eff26dbeadd90a7429fc9e847173cd00, type: 3}
-  itemStory: {fileID: 0}
-  type: 3
-  description: Common courier charm
-  data:
-    Id: 0
-    name: CourierCharm
   animations: {fileID: 0}
   baseAnimations: {fileID: 0}
   inGameSprite: {fileID: 0}
+  itemStory: {fileID: 0}
+  description: Common courier charm
+  type: 3
   price: 2
+  data:
+    itemID: 
+    name: CourierCharm

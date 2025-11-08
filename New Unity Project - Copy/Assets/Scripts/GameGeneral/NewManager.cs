@@ -4,103 +4,134 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum GameState
-{
-    Play,
-    Paused
-}
+public enum GameState { Play, Paused }
 
-public class NewManager : MonoBehaviour, IDataPersistence
+public class NewManager : DataPersistenceBehaviour
 {
+    #region Singleton
+    public static NewManager manager { get; private set; }
+    private void Awake()
+    {
+        if (manager != null && manager != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        manager = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    #endregion
+
+    #region Serialized Settings
+    [Header("UI")]
+    [SerializeField] public GameObject loadingScreenPanel;
+    [SerializeField] public Slider loadingBar;
+    [SerializeField] public GameObject endGamePanel;
+
+    [Header("Spawn Settings")]
+    [SerializeField] public Vector2 defaultPlayerLocation { get; set; } = new Vector2(2, -59);
+    [SerializeField] public string defaultPlayerScene { get; set; } = "Grandpa's Farm";
+
+    [Header("Shop Data")]
+    [SerializeField] public InventoryObject[] shops;
+    #endregion
+
+    #region Runtime state
     public GameState currentGameState;
-    static bool gameStart;
-
-    public static Vector2 playerSaveLocation = new Vector2(2, -59);
-    public static string playerSpawnScene = "Grandpa's Farm";
-
-    public static NewManager manager;
-
-    public GameObject loadingScreenPanel;
-    public GameObject endGamePanel;
-
-    public Slider loadingBar;
-
-    public InventoryObject[] shops;
+    static bool gameStarted = false;
+    private GameObject player;
+    private bool respawnHandled = false;
+    #endregion
 
     private void Start()
     {
-        if (!gameStart)
+        if (!gameStarted)
         {
-            manager = this;
-            SceneManager.LoadScene(4, LoadSceneMode.Additive);
-            gameStart = true;
+            gameStarted = true;
+            SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
         }
-        else
-        {
-            manager = this;
-            //no clue if this should be commented but it solved a weird error I just got
-            //SceneManager.LoadScene(3, LoadSceneMode.Additive);
-        }
-
-        
+        CachePlayerReference();
     }
+
+    private void CachePlayerReference()
+    {
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    #region Public API
 
     public void TriggerEndGame()
     {
-        Debug.Log("the end!");
         endGamePanel.SetActive(true);
-    }
-
-    public void moveScenes(string newScene, string previousScene, bool upBoost)
-    {
-        currentGameState = GameState.Paused;
-        DataPersistenceManager.instance.SaveGame();
-        StartCoroutine(LoadingMenu(newScene, upBoost, false));
-        unloadScene(previousScene);
-    }
-
-    public void addScene(string newScene, bool upBoost)
-    {
-        currentGameState = GameState.Paused;
-        DataPersistenceManager.instance.SaveGame();
-        StartCoroutine(LoadingMenu(newScene, upBoost, false));
     }
 
     public void NewGame()
     {
         DataPersistenceManager.instance.NewGame();
-        //I do this in gamedata now
-       // playerSpawnScene = "Grandpa's Farm";
-        playerSaveLocation = new Vector2(2, -59);
-
-        addScene("Base Scene", false);
-        StartCoroutine(ResetStories());
+        StartCoroutine(ResetStoriesDelayed());
         currentGameState = GameState.Paused;
-        StartCoroutine(LoadingMenu("Grandpa's Farm", false, true));
-        unloadScene("Menu");
-        
+
+        defaultPlayerLocation = new Vector2(2, -59);
+
+        // Load base scene first and then the player spawn scene
+        StartCoroutine(SceneTransition("Base Scene", false, true, previousSceneToUnload: "Menu"));
+        StartCoroutine(SceneTransition("Grandpa's Farm", false, true));
     }
 
-    IEnumerator ResetStories()
+    /// <summary>
+    /// Public entry to move to a scene. previousScene will be unloaded after the new scene finishes loading.
+    /// </summary>
+    public void MoveToScene(string newScene, string previousScene, bool upBoost)
     {
-        yield return new WaitForSeconds(10.0f);
-        DialogueManager.instance.ResetAllStories();
+        currentGameState = GameState.Paused;
+        DataPersistenceManager.instance.SaveGame();
+        // Pass the previous scene so we unload it after the transition finishes.
+        StartCoroutine(SceneTransition(newScene, upBoost, false, previousScene));
     }
 
-    IEnumerator LoadingMenu(string newScene, bool upBoost, bool newGame)
+    public void AddScene(string newScene, bool upBoost)
     {
-        //SceneManager.LoadSceneAsync(10, LoadSceneMode.Additive);
-        loadingScreenPanel.SetActive(true);
+        currentGameState = GameState.Paused;
+        DataPersistenceManager.instance.SaveGame();
+        StartCoroutine(SceneTransition(newScene, upBoost, false, previousSceneToUnload: null)); // keep previous
+    }
 
-        yield return new WaitForSeconds(0.1f);
+    public void UnloadScenePublic(string sceneName)
+    {
+        StartCoroutine(UnloadScene(sceneName));
+    }
+
+    #endregion
+
+    #region Scene Loading
+
+    /// <summary>
+    /// Loads a scene additively, waits until it is activated, then safely waits for the player and finalizes.
+    /// Optionally unloads previousScene after finish.
+    /// </summary>
+    private IEnumerator SceneTransition(string newScene, bool upBoost, bool newGame = false, string previousSceneToUnload = null)
+    {
+        CachePlayerReference();
+        if (loadingScreenPanel) loadingScreenPanel.SetActive(true);
+
+        // begin async load of the scene
         AsyncOperation loadScene = SceneManager.LoadSceneAsync(newScene, LoadSceneMode.Additive);
+        if (loadScene == null)
+        {
+            Debug.LogError($"Failed to start loading scene: {newScene}");
+            yield break;
+        }
+
         loadScene.allowSceneActivation = false;
 
+        // update loading bar while loading
         while (!loadScene.isDone)
         {
             float progress = Mathf.Clamp01(loadScene.progress); // Normalize progress to 0-1
-            loadingBar.value = progress;
-       
+            if (loadingBar) loadingBar.value = progress;
+
             if (loadScene.progress >= 0.9f)
             {
                 // Optionally add a delay or fade-out effect here
@@ -110,102 +141,202 @@ public class NewManager : MonoBehaviour, IDataPersistence
             yield return null; // Wait for next frame
         }
 
-        if (GameObject.FindGameObjectWithTag("Player"))
+        // new scene is now active (loaded additively)
+        Scene loadedScene = SceneManager.GetSceneByName(newScene);
+        if (!loadedScene.IsValid())
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-
-        }
-
-        currentGameState = GameState.Play;
-
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(newScene));
-
-        if (upBoost)
-        {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Jump();
-        }
-
-        if (newGame)
-        {
-            DataPersistenceManager.instance.NewGame();
+            Debug.LogError($"Loaded scene is not valid: {newScene}");
         }
         else
         {
+            SceneManager.SetActiveScene(loadedScene);
+        }
+
+        // Allow one frame for scene root objects to initialize
+        yield return null;
+
+        // Wait for player to exist and finalize placement, with timeout to avoid infinite loops
+        yield return StartCoroutine(HandlePlayerAfterSceneLoad_Coroutine(newScene, upBoost, newGame));
+
+        // Unload previous scene only after new scene is loaded & player handled (if requested)
+        if (!string.IsNullOrEmpty(previousSceneToUnload))
+        {
+            // only attempt unload if scene exists and is loaded
+            Scene prev = SceneManager.GetSceneByName(previousSceneToUnload);
+            if (prev.IsValid() && prev.isLoaded && prev.name != newScene)
+            {
+                yield return UnloadScene(previousSceneToUnload);
+            }
+        }
+
+        if (loadingScreenPanel) loadingScreenPanel.SetActive(false);
+
+        currentGameState = GameState.Play;
+    }
+
+
+    private IEnumerator HandlePlayerAfterSceneLoad_Coroutine(string sceneName, bool launchUp, bool isNewGame)
+    {
+        // Wait for player to be available, but avoid infinite wait by using a timeout.
+        const float maxWaitSeconds = 5f;
+        float waited = 0f;
+
+        while (player == null && waited < maxWaitSeconds)
+        {
+            CachePlayerReference();
+            if (player != null) break;
+            waited += Time.deltaTime;
+            yield return null;
+        }
+
+        if (player == null)
+        {
+            // As a last resort, try finding by tag across scenes
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        if (player == null)
+        {
+            Debug.LogWarning($"Player object not found after loading scene '{sceneName}' (waited {waited:F2}s). Aborting player-specific steps.");
+            yield break;
+        }
+
+        // Temporarily make player static while we place/load data
+        var body = player.GetComponent<Rigidbody2D>();
+        if (body != null) body.bodyType = RigidbodyType2D.Static;
+
+        // Launch up if requested
+        var playerController = player.GetComponent<PlayerController>();
+        if (launchUp && playerController != null)
+        {
+            playerController.Jump();
+        }
+
+        if (isNewGame)
+        {
+            // Reset data when player components are ready
+            StartCoroutine(ResetNewGameDataWhenReady());
+        }
+        else
+        {
+            // Delay a frame to let objects initialize before load
+            yield return null;
             DataPersistenceManager.instance.LoadGame();
         }
-        loadingScreenPanel.SetActive(false);
 
-        if (GameObject.FindGameObjectWithTag("Player"))
+        if (sceneName == "Base Scene" && !respawnHandled)
         {
-            if(newScene.Equals("Base Scene"))
-            {
-                yield return new WaitForSeconds(1f);
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().SetToSavedLocation();             
+            respawnHandled = true;
+            StartCoroutine(SetPlayerToSavedLocationDelayed());
+        }
+        else if (sceneName != "Base Scene")
+        {
+            respawnHandled = false;
+        }
 
-            }
-            if (newGame)
-            {
-                if (FindAnyObjectByType<ItemTracker>())
-                {
-                    FindAnyObjectByType<ItemTracker>().ResetItems();
-                    Debug.Log("resetting items");
-                }
-                    
-                if (FindAnyObjectByType<PlayerInventory>())
-                {
-                    PlayerInventory playerInventory = FindAnyObjectByType<PlayerInventory>();
-                    playerInventory.inventory.Clear();
-                    playerInventory.equipment.Clear();
-                    playerInventory.inventory.Save();
-                    playerInventory.equipment.Save();
-                }
-                foreach (InventoryObject shop in shops)
-                {
-                    shop.Reset();
-                    shop.Save();
-                }
+        if (body != null) body.bodyType = RigidbodyType2D.Dynamic;
+    }
 
-            }
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-
+    private IEnumerator SetPlayerToSavedLocationDelayed()
+    {
+        yield return new WaitForSeconds(1f);
+        if (player != null)
+        {
+            var pc = player.GetComponent<PlayerController>();
+            pc?.SetToSavedLocation();
         }
     }
 
+    private IEnumerator UnloadScene(string sceneName)
+    {
+        Scene s = SceneManager.GetSceneByName(sceneName);
+        if (!s.IsValid() || !s.isLoaded)
+        {
+            yield break;
+        }
 
-    public void unloadScene(string scene)
-    {
-        StartCoroutine(Unload(scene));
+        AsyncOperation unload = SceneManager.UnloadSceneAsync(sceneName);
+        if (unload == null)
+        {
+            Debug.LogWarning($"UnloadSceneAsync returned null for '{sceneName}'");
+            yield break;
+        }
+
+        while (!unload.isDone)
+            yield return null;
     }
-    IEnumerator Unload(string scene)
+    #endregion
+
+    #region Game Reset & save/load
+
+    private IEnumerator ResetStoryDelayed()
     {
-        Debug.Log(scene);
-        SceneManager.UnloadSceneAsync(scene);
-        yield return null;
+        yield return new WaitForSeconds(1f);
+        DialogueManager.instance.ResetAllStories();
     }
 
-    void IDataPersistence.LoadData(GameData data)
+    private IEnumerator ResetNewGameDataWhenReady()
     {
-        playerSaveLocation = data.playerSaveLocation;
-        Debug.Log(data.playerSpawnScene);
-        playerSpawnScene = data.playerSpawnScene;
+        PlayerInventory inv = null;
+
+        // Wait until PlayerInventory appears in scene (but safe timeout)
+        const float maxWait = 5f;
+        float waited = 0f;
+        while (inv == null && waited < maxWait)
+        {
+            inv = FindAnyObjectByType<PlayerInventory>();
+            if (inv != null) break;
+            waited += Time.deltaTime;
+            yield return null;
+        }
+
+        if (inv == null)
+        {
+            Debug.LogWarning("PlayerInventory not found when resetting new-game data.");
+            yield break;
+        }
+
+        inv.inventory.Clear();
+        inv.equipment.Clear();
+        inv.inventory.Save();
+        inv.equipment.Save();
+
+        foreach (var shop in shops)
+        {
+            shop.Reset();
+            shop.Save();
+        }
     }
 
-    void IDataPersistence.SaveData(GameData data)
+    public override void LoadData(GameData data)
     {
-        data.playerSaveLocation = playerSaveLocation;
-        data.playerSpawnScene = playerSpawnScene;
+        defaultPlayerLocation = data.playerSaveLocation;
+        defaultPlayerScene = data.playerSpawnScene;
     }
 
-    void IDataPersistence.ResetData(GameData data)
+    public override void SaveData(GameData data)
     {
-        playerSaveLocation = new Vector2(2, -59);
-        playerSpawnScene = "Grandpa's Farm";
-        data.playerSaveLocation = playerSaveLocation;
-        data.playerSpawnScene = playerSpawnScene;
+        data.playerSaveLocation = defaultPlayerLocation;
+        data.playerSpawnScene = defaultPlayerScene;
+    }
+
+    public override void ResetData(GameData data)
+    {
+        defaultPlayerLocation = new Vector2(2, -59);
+        defaultPlayerScene = "Grandpa's Farm";
+        SaveData(data);
     }
 
     private void OnApplicationQuit()
     {
         DataPersistenceManager.instance.SaveGame();
     }
+
+    IEnumerator ResetStoriesDelayed()
+    {
+        yield return new WaitForSeconds(10.0f);
+        DialogueManager.instance.ResetAllStories();
+    }
+
+    #endregion
 }

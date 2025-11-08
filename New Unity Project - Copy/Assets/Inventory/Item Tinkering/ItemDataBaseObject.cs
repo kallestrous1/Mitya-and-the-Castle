@@ -1,25 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item Database", menuName = "Inventory/Items/Database")]
 
-public class ItemDataBaseObject : ScriptableObject, ISerializationCallbackReceiver
+public class ItemDataBaseObject : ScriptableObject
 {
     public ItemObject[] ItemObjects;
-    public Dictionary<int, ItemObject> GetItem = new Dictionary<int, ItemObject>();
+    public Dictionary<string, ItemObject> GetItem = new Dictionary<string, ItemObject>();
 
-    public void OnAfterDeserialize()
+#if UNITY_EDITOR
+    [ContextMenu("Generate GUIDs")]
+    private void GenerateGUIDs()
     {
-        for (int i = 0; i < ItemObjects.Length; i++)
+        foreach (var item in ItemObjects)
         {
-            ItemObjects[i].data.Id = i;
-            GetItem.Add(i, ItemObjects[i]);
+            if (item != null && string.IsNullOrEmpty(item.itemID))
+            {
+                item.itemID = System.Guid.NewGuid().ToString();
+                EditorUtility.SetDirty(item); // mark it dirty so it saves
+            }
         }
     }
+#endif
 
-    public void OnBeforeSerialize()
+    public ItemObject GetItemByID(string id)
     {
-        GetItem = new Dictionary<int, ItemObject>();
+        if (GetItem.Count == 0) PopulateDictionary();
+        if (GetItem.TryGetValue(id, out var obj))
+            return obj;
+        Debug.LogWarning($"Item with ID {id} not found in database.");
+        return null;
+    }
+
+    private void PopulateDictionary()
+    {
+        GetItem.Clear();
+        foreach (var item in ItemObjects)
+        {
+            if (item == null || string.IsNullOrEmpty(item.itemID))
+            {
+                Debug.LogError("Item missing GUID: " + item?.name);
+                continue;
+            }
+            GetItem[item.itemID] = item;
+        }
     }
 }

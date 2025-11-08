@@ -6,61 +6,86 @@ public class PlayerSpells : MonoBehaviour
 
     public SpellObject currentSpell;
 
+    public float minScale = 0.1f;       // starting size
+    public float maxScale = 0.6f;       // size when fully charged
+    public float lifeTime = 3.0f;          // lifetime of the spell after being cast
     private float currentChargeTime = 0.0f;
     private bool isCharging = false;
-    GameObject spellInGame;
+    GameObject spellInGameParticle;
     public GameObject spawnLocation;
-
+    bool spellFullyCharged = false;
 
     private void Update()
-    {   
-        if(Input.GetKeyDown(KeyCode.Mouse1) && currentSpell)
+    {
+        // Start charging (instantiate at key down)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && currentSpell)
         {
-            GetComponentInParent<PlayerController>().FreezeMidAir();
-            // Instantiate the spell prefab at the player's position
-            Vector2 spawnPoint = spawnLocation.transform.position; 
-            spellInGame = Instantiate(currentSpell.BaseParticleEffect, spawnPoint, Quaternion.LookRotation(Vector3.up, Vector3.up));
-        }
-        if (Input.GetKey(KeyCode.Mouse1))
-        {
-            if (!isCharging)
+            // instantiate at spawnLocation position
+            Vector3 spawnPoint = spawnLocation ? spawnLocation.transform.position : transform.position;
+
+            if (currentSpell.BaseParticleEffect)
             {
-                isCharging = true;
-                currentChargeTime = 0.0f; // Start or reset the charge timer              
+                spellInGameParticle = Instantiate(currentSpell.BaseParticleEffect, spawnPoint, Quaternion.identity);
+                // force starting scale to minScale
+                spellInGameParticle.transform.localScale = new Vector3(minScale, minScale, 1f);
+
+                Rigidbody2D rb = spellInGameParticle.GetComponent<Rigidbody2D>();
+                if (rb) rb.gravityScale = 0f;
             }
 
-            currentChargeTime += Time.deltaTime; // Increment the charge timer
+            // begin charging state
+            GetComponentInParent<PlayerController>().FreezeMidAir();
+            isCharging = true;
+            spellFullyCharged = false;
+            currentChargeTime = 0f;
 
+            // optional: freeze player mid-air if you want
+            // GetComponentInParent<PlayerController>().FreezeMidAir();
+        }
 
-            // Check if the required charge time has been met
+        // While holding the button -> charge + scale
+        if (Input.GetKey(KeyCode.Mouse1) && isCharging && currentSpell)
+        {
+            currentChargeTime += Time.deltaTime;
+
+            // Scale spell while charging
+            float t = Mathf.Clamp01(currentChargeTime / currentSpell.chargeTime);
+            float scale = Mathf.Lerp(minScale, maxScale, t);
+            if (spellInGameParticle)
+            {
+                spellInGameParticle.transform.localScale = new Vector3(scale, scale, 1f);
+            }
+
+            // Fully charged: cast the spell
             if (currentChargeTime >= currentSpell.chargeTime)
             {
-                // Perform the charged ability action here
+                spellFullyCharged = true;
                 CastCurrentSpell();
+
+                // mark charging finished
                 GetComponentInParent<PlayerController>().UnfreezeMidAir();
-                isCharging = false; // Reset for next charge
-                currentChargeTime = 0.0f;
+                isCharging = false;
+                currentChargeTime = 0f;
             }
         }
-        else
-        {
-            // If the player releases the button before the charge time is met, reset the charge
-            if (isCharging)
-            {
-                isCharging = false; // Reset charging state
-                currentChargeTime = 0.0f;             
-            }
-        }
-        // Check if the charge button was released
+
+        // Button released (key up) handling
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
-                GetComponentInParent<PlayerController>().UnfreezeMidAir();
-                Destroy(spellInGame);
-                if (isCharging)
-                 {
-                isCharging = false; // Reset charging state
-                currentChargeTime = 0.0f;             
-                }
+            // Unfreeze player if you froze them
+            GetComponentInParent<PlayerController>().UnfreezeMidAir();
+
+            // If we were charging and didn't reach full charge -> cancel & destroy the orb
+            if (!spellFullyCharged && spellInGameParticle)
+            {
+                Destroy(spellInGameParticle);
+                spellInGameParticle = null;
+            }
+
+            // reset charging flags
+            isCharging = false;
+            currentChargeTime = 0f;
+            spellFullyCharged = false;
         }
     }
     
@@ -75,11 +100,25 @@ public class PlayerSpells : MonoBehaviour
             // Set the Z-component of mouseScreenPos to the desired world Z-coordinate (or player's Z)
             mouseScreenPos.z = transform.position.z;
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 spawnPoint =  transform.position; 
-            Vector2 direction = (mouseWorldPos - spawnPoint).normalized;
-           // StartCoroutine(FreezeMidAirCoroutine(0.5f));
-            spellInGame.GetComponent<Rigidbody2D>().linearVelocity = direction * currentSpell.spellSpeed; 
+            Vector2 spawnPoint =  transform.position;
+            Vector2 targetDir = ((Vector2)mouseWorldPos - spawnPoint).normalized;
+
+            // Add arc by boosting vertical aim a little
+            targetDir.y += 0.35f; // tweak between 0–0.6
+            Vector2 direction = targetDir.normalized;
+            // StartCoroutine(FreezeMidAirCoroutine(0.5f));
+            Rigidbody2D rb = spellInGameParticle.GetComponent<Rigidbody2D>();
+            if (rb)
+            {
+                rb.gravityScale = 1.5f; // whatever gravity you want for throw
+                rb.linearVelocity = Vector2.zero; // reset in case it's floating with scale animations
+                rb.AddForce(direction * currentSpell.spellSpeed);
+            }
+            // spellInGameParticle.GetComponent<Rigidbody2D>().linearVelocity = direction * currentSpell.spellSpeed;         
+            //spellInGameParticle.GetComponent<Rigidbody2D>().AddForce(direction * currentSpell.spellSpeed, ForceMode2D.Impulse);
             GetComponent<Animator>().SetTrigger("CastSpell");
+            GetComponentInParent<PlayerController>().UnfreezeMidAir();
+            Destroy(spellInGameParticle, lifeTime);
         }
     }
 

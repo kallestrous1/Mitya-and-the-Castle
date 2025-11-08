@@ -20,7 +20,7 @@ public class SceneDoorScript : MonoBehaviour
         if (!loaded)
         {
             loaded = true;
-            NewManager.manager.moveScenes(nextScene, previousScene, upBoost);          
+            NewManager.manager.MoveToScene(nextScene, previousScene, upBoost);          
         }
     }
     }

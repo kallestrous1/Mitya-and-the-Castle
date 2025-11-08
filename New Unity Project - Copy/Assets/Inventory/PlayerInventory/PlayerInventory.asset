@@ -11,9 +11,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98db688a23c2b864697c2f8651373e8c, type: 3}
   m_Name: PlayerInventory
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryObject
   interfaceType: 0
-  savePath: /inventory.save
+  savePath: /playerinventory.save
   database: {fileID: 11400000, guid: 0b3fab3b6a10af145977c3c8ecd8074d, type: 2}
   Container:
     Slots:
@@ -21,179 +21,215 @@ MonoBehaviour:
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: 8
-        name: Letter to bandits
-    - AllowedItems: 0
-      locked: 0
-      price: 0
-      DefaultItem:
-        Id: -1
-        name: 
-      item:
-        Id: 3
-        name: GrandfatherRing
-    - AllowedItems: 0
-      locked: 0
-      price: 0
-      DefaultItem:
-        Id: -1
-        name: 
-      item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
         name: 

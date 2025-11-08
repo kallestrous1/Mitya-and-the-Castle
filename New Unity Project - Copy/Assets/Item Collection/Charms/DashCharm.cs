@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "DashCharm", menuName = "Inventory/Charms/DashCharm")]
 
-public class DashCharm : ItemObject
+public class DashCharm : CharmObject
 {
     public override void EquipItem()
     {

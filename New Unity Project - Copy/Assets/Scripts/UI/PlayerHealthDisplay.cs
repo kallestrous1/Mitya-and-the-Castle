@@ -12,7 +12,7 @@ public class PlayerHealthDisplay : MonoBehaviour
     public Sprite emptyHeart;
     //this seems so bad for performance for no reason, things that change health should call this class instead of searching for player every update
 
-    private void Update()
+/*    private void Update()
     {
         PlayerHealth playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         health = playerHealth.getHealth();
@@ -37,5 +37,5 @@ public class PlayerHealthDisplay : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
-    }
+    }*/
 }

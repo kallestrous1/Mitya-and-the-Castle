@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StateChangingObject : MonoBehaviour, IDataPersistence
+public class StateChangingObject : DataPersistenceBehaviour         
 {
     public bool active;
     public bool newgameState;
@@ -13,7 +13,7 @@ public class StateChangingObject : MonoBehaviour, IDataPersistence
         active = newState;
     }
 
-    public void LoadData(GameData data)
+    public override void LoadData(GameData data)
     {
         
         if (data.stateChangingObjects.ContainsKey(objectName))
@@ -28,7 +28,7 @@ public class StateChangingObject : MonoBehaviour, IDataPersistence
         this.gameObject.SetActive(active);
     }
 
-    public void SaveData(GameData data)
+    public override void SaveData(GameData data)
     {
         if (data.stateChangingObjects.ContainsKey(objectName))
             {
@@ -41,7 +41,7 @@ public class StateChangingObject : MonoBehaviour, IDataPersistence
         
     }
 
-    public void ResetData(GameData data)
+    public override void ResetData(GameData data)
     {
         active = newgameState;
 

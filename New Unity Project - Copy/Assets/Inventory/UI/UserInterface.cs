@@ -60,7 +60,7 @@ public abstract class UserInterface : MonoBehaviour
 
     private void OnSlotUpdate(InventorySlotObject slot, bool ignoreEquip)
     {
-        if (slot.item.Id >= 0)
+        if (!string.IsNullOrEmpty(slot.item.itemID))
         {
             slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = slot.ItemObject.uiDisplay;
             //code for full slot background //
@@ -98,12 +98,12 @@ public abstract class UserInterface : MonoBehaviour
         MouseData.slotHoveredOver = obj;
         ItemDetailsInterface = GameObject.FindGameObjectWithTag("ItemDetailsInterface").GetComponent<ItemDetailsInterface>();
 
-        if (slotsOnInterface[obj].item.Id >= 0)
+        if (!string.IsNullOrEmpty(slotsOnInterface[obj].item.itemID))
             ItemDetailsInterface.setInterface(slotsOnInterface[obj].ItemObject);
     }
     public void OnExit(GameObject obj)
     {
-        if (slotsOnInterface[obj].item.Id >= 0)
+        if (!string.IsNullOrEmpty(slotsOnInterface[obj].item.itemID))
             ItemDetailsInterface.ResetInterface();
         MouseData.slotHoveredOver = null;
     }
@@ -124,7 +124,7 @@ public abstract class UserInterface : MonoBehaviour
     public GameObject CreateTempItem(GameObject obj)
     {
         GameObject tempItem = null;
-        if(slotsOnInterface[obj].item.Id >= 0)
+        if(!string.IsNullOrEmpty(slotsOnInterface[obj].item.itemID))
         {
             tempItem = new GameObject();
             var rt = tempItem.AddComponent<RectTransform>();
@@ -215,7 +215,7 @@ public abstract class UserInterface : MonoBehaviour
             FindAnyObjectByType<PlayerMoney>().ChangePlayerMoneyCount(-MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject.price);
             playerInventory.AddItem(MouseData.interfaceMouseIsOver.slotsOnInterface[obj].item);
             MouseData.interfaceMouseIsOver.slotsOnInterface[obj].locked = false;
-            MouseData.interfaceMouseIsOver.slotsOnInterface[obj].UpdateSlot(new SuperItem());
+            MouseData.interfaceMouseIsOver.slotsOnInterface[obj].UpdateSlot(new ItemData());
             MouseData.slotHoveredOver.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
         else
@@ -241,7 +241,7 @@ public static class ExtensionMethods
     {
         foreach (KeyValuePair<GameObject, InventorySlotObject> slot in slotsOnInterface)
         {
-            if (slot.Value.item.Id >= 0)
+            if (!string.IsNullOrEmpty(slot.Value.item.itemID))
             {
                 slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = slot.Value.ItemObject.uiDisplay;
                 //code for full slot background // slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite.color = new Color(1, 1, 1, 1);

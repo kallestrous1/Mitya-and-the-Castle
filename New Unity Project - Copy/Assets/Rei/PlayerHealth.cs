@@ -5,34 +5,51 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
-    public Slider healthSlider;
-    public Slider maxHealthSlider;
-    private RectTransform maxHealthRectTransform;
+    [Header("Health Settings")]
+    [SerializeField] public int maxHealth = 20;
+    [SerializeField] private float invincibilityDuration = 1f;
+
+    [Header("UI")]
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private Slider maxHealthSlider;
+    [SerializeField] private RectTransform maxHealthRectTransform;
     private Vector2 maxHealthSliderInitialSize;
 
-    public static int maxHealth=20;
-    public int health=20;
-   // public float invincibilityTime=1;
-    float invincibilityTimer;
-    public bool recovering;
+    [Header("Displays")]
+    [SerializeField] private GameObject bloodDisplay;
+    [SerializeField] private GameObject deathDisplay;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip playerDamageSound;
+    [SerializeField] private AudioClip playerDeathSound;
+
+    private int health;
+    private float invincibilityTimer;
     private bool died = false;
-
-    public GameObject bloodDisplay;
-    public GameObject deathDisplay;
-
-    public AudioClip playerDamageSound;
-    public AudioClip playerDeathSound;
-
+    private bool recovering = false;
     private KnockBack knockback;
+
+    public int CurrentHealth => health;
+    public int MaxHealth => maxHealth;
+    public bool IsInvincible => invincibilityTimer > 0;
+
+    public event System.Action<int, int> OnHealthChanged;
+
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
-        knockback = this.gameObject.GetComponent<KnockBack>();
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = health;
-        maxHealthRectTransform = maxHealthSlider.GetComponent<RectTransform>();
-        maxHealthSliderInitialSize = maxHealthRectTransform.sizeDelta;
+        knockback = GetComponent<KnockBack>();
+        if (maxHealthRectTransform != null)
+            maxHealthSliderInitialSize = maxHealthRectTransform.sizeDelta;
+
+        UpdateUI();
+        /* health = maxHealth;
+         knockback = this.gameObject.GetComponent<KnockBack>();
+         healthSlider.maxValue = maxHealth;
+         healthSlider.value = health;
+         maxHealthRectTransform = maxHealthSlider.GetComponent<RectTransform>();
+         maxHealthSliderInitialSize = maxHealthRectTransform.sizeDelta;*/
     }
     private void Update()
     {
@@ -50,36 +67,48 @@ public class PlayerHealth : MonoBehaviour
     public void changeMaxHealth(int change)
     {
         maxHealth += change;
-        maxHealthSlider.maxValue = maxHealth;
+        health = Mathf.Min(health, maxHealth);
+        UpdateUI();
+       /* maxHealthSlider.maxValue = maxHealth;
         maxHealthSlider.value = maxHealth;
-        UpdateSliderSize(maxHealth);
+        UpdateSliderSize(maxHealth);*/
     }
 
-    public void changeHealth(int change)
+    public void changeHealth(int amount)
     {
 
-         //   invincibilityTimer = invincibilityTime;
-            health += change;
-        if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
-        healthSlider.value = health;
-        if (health + change <= 0 && died == false)
+        if (IsInvincible && amount < 0) return;
+
+        health += amount;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        UpdateUI();
+
+        if (amount < 0) invincibilityTimer = invincibilityDuration;
+
+        if (health <= 0 && !died)
         {
             died = true;
             AudioManager.Instance.Play(playerDeathSound);
-            StartCoroutine(DisplayBlood());
-            StartCoroutine(ResetPlayerToSpawnpoint());
+            StartCoroutine(DeathRoutine());
         }
-        else if (change < 0)
-            {
-                AudioManager.Instance.Play(playerDamageSound);
-                StartCoroutine(DisplayBlood());
-            }
+        else if (amount < 0)
+        {
+            AudioManager.Instance.Play(playerDamageSound);
+            StartCoroutine(BloodFlash());
+        }
+
+        OnHealthChanged?.Invoke(health, maxHealth);
     }
 
-    IEnumerator DisplayBlood()
+    private IEnumerator DeathRoutine()
+    {
+        deathDisplay.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        deathDisplay.SetActive(false);
+        PlayerRespawnManager.Instance.RespawnPlayer();
+    }
+
+    private IEnumerator BloodFlash()
     {
         bloodDisplay.SetActive(true);
         yield return new WaitForSeconds(0.5f);
@@ -91,63 +120,30 @@ public class PlayerHealth : MonoBehaviour
         return health;
     }
 
-    public void UpdateSliderSize(float newMaxValue)
+    private void UpdateUI()
     {
-        // Determine the scaling factor based on the new max value
-        float scaleFactor = newMaxValue / 20;
+        if (healthSlider)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = health;
+        }
 
-        // Calculate the new size of the slider
-        Vector2 newSize = new Vector2(maxHealthSliderInitialSize.x * scaleFactor, maxHealthSliderInitialSize.y);
+        if (maxHealthSlider)
+            maxHealthSlider.maxValue = maxHealth;
 
-        // Apply the new size to the slider's RectTransform
+        UpdateMaxHealthUI();
+    }
+
+    public void UpdateMaxHealthUI()
+    {
+        if (maxHealthRectTransform == null) return;
+
+        float scaleFactor = (float)maxHealth / 20f; // 20 = base health
+        Vector2 newSize = new Vector2(
+            maxHealthSliderInitialSize.x * scaleFactor,
+            maxHealthSliderInitialSize.y
+        );
+
         maxHealthRectTransform.sizeDelta = newSize;
-    }
-
-    public string getSpawnScene()
-    {
-        return NewManager.playerSpawnScene;
-    }
-
-    public IEnumerator ResetPlayerToSpawnpoint()
-    {
-
-        deathDisplay.SetActive(true);
-        yield return new WaitForSeconds(2.0f);
-            
-            if (getSpawnScene() != null)
-            {
-                string spawnScene = getSpawnScene();
-                Time.timeScale = 0f;
-            
-            NewManager.manager.moveScenes("Base Scene", "Base Scene", false);
-            NewManager.manager.moveScenes(spawnScene, SceneManager.GetActiveScene().name, false);
-            StartCoroutine(SetActiveScene(spawnScene));
-
-            //  NewManager.manager.moveScenes("Base Scene", "Base Scene", false);
-
-            // NewManager.manager.moveScenes(spawnScene, SceneManager.GetActiveScene().ToString(), false);
-
-            Time.timeScale = 1f;
-
-                    
-           
-
-            }
-            else
-            {
-                Debug.Log("Using default initial spawn scene");
-                SceneManager.LoadScene("Grandpa's Farm", LoadSceneMode.Additive);
-                SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
-                StartCoroutine(SetActiveScene("Grandpa's Farm"));
-            }
-        
-
-    }
-
-    IEnumerator SetActiveScene(string sceneName)
-    {
-        yield return null;
-        DataPersistenceManager.instance.SaveGame();
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
     }
 }

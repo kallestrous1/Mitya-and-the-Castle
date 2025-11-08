@@ -26,6 +26,25 @@ public class PlayerHitbox : MonoBehaviour
                 Destroy(this.transform.gameObject);
             }
         }
+        else if(trigger.gameObject.tag == "Destructable")
+        {
+            trigger.GetComponent<Destructable>().changeHealth(-damage);
+            if (hitParticleEffect)
+            {
+                Instantiate(hitParticleEffect, trigger.transform.position, Quaternion.identity);
+            }
+            if (oneOff)
+            {
+                Destroy(this.transform.gameObject);
+            }
+        }
+        else if(trigger.gameObject.tag == "Ground")
+        {
+           if (oneOff)
+            {
+                Destroy(this.transform.gameObject);
+            }
+        }
     }
 
     private void OnTriggerStay2D(Collider2D trigger)

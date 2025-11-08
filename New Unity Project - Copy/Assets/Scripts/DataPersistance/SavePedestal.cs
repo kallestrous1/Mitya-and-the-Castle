@@ -4,38 +4,78 @@ using UnityEngine;
 
 public class SavePedestal : MonoBehaviour
 {
+    [Header("Spawn Settings")]
     public Vector2 playerSpawnPoint;
     public string playerSpawnScene;
+
+
+    [Header("Effects")]
+    [SerializeField] ParticleSystem saveEffect;
+    [SerializeField] AudioClip saveSound;
+
     bool saveRequest;
+    private bool playerInRange = false;
 
-    public AudioClip saveSound;
+    private void Awake()
+    {
+        // Cache reference 
+        if (saveEffect == null)
+            saveEffect = GetComponentInChildren<ParticleSystem>();
+    }
 
-    // Update is called once per frame
     void Update()
     {
+        if (!playerInRange) return;
+
         if (Input.GetButtonDown("Interact"))
         {
-            saveRequest = true;
-            
+            PerformSave();
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<PlayerController>())
         {
-            if (saveRequest)
-            {
-                saveRequest = false;
-                this.GetComponentInChildren<ParticleSystem>().Simulate(0.0f, true, true);
-                this.GetComponentInChildren<ParticleSystem>().Play();
-                AudioManager.Instance.Play(saveSound);
-                FindAnyObjectByType<PlayerHealth>().changeHealth(PlayerHealth.maxHealth);
-                FindAnyObjectByType<PlayerMagicJuice>().changeMagic(PlayerMagicJuice.maxMagic);
-                NewManager.playerSaveLocation = playerSpawnPoint;
-                NewManager.playerSpawnScene = this.playerSpawnScene;
-                
-            }
+            playerInRange = true;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<PlayerController>())
+        {
+            playerInRange = false;
+        }
+    }
+
+    private void PerformSave()
+    {
+        // Visuals
+        if (saveEffect != null)
+        {
+            saveEffect.Simulate(0f, true, true);
+            saveEffect.Play();
+        }
+
+        // Audio
+        if (saveSound != null)
+            AudioManager.Instance.Play(saveSound);
+
+        // Heal Player
+        var playerHealth = FindAnyObjectByType<PlayerHealth>();
+        if (playerHealth != null)
+            playerHealth.changeHealth(playerHealth.maxHealth);
+
+        var playerMagic = FindAnyObjectByType<PlayerMagicJuice>();
+        if (playerMagic != null)
+            playerMagic.changeMagic(PlayerMagicJuice.maxMagic);
+
+        // Set respawn point using your manager
+        NewManager.manager.defaultPlayerLocation = playerSpawnPoint;
+        NewManager.manager.defaultPlayerScene = playerSpawnScene;
+
+        // Save to persistence system
+        DataPersistenceManager.instance.SaveGame();
     }
 }

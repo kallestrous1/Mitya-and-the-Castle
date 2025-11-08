@@ -6,9 +6,5 @@ public interface IDataPersistence
 {
     void LoadData(GameData data);
     void SaveData(GameData data);
-
-    void ResetData(GameData data)
-    {
-        Debug.Log("");
-    }
+    void ResetData(GameData data);
 }

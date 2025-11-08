@@ -12,3 +12,14 @@ public class Fireball : SpellObject
        
     }
 }
+
+[CreateAssetMenu(fileName = "CopyOfFireball", menuName = "Inventory/Spells/CopyOfFireball")]
+
+public class CopyOfFireball : SpellObject
+{
+
+    public override void Cast()
+    {
+
+    }
+}

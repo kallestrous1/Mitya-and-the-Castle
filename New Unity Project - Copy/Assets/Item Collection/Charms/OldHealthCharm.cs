@@ -2,7 +2,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "OldHealthCharm", menuName = "Inventory/Charms/OldHealthCharm")]
 
-public class OldHealthCharm : ItemObject
+public class OldHealthCharm : CharmObject
 {
     public override void EquipItem()
     {

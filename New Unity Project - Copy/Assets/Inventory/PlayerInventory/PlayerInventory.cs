@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerInventory : MonoBehaviour
+public class PlayerInventory : DataPersistenceBehaviour
 {
     public InventoryObject inventory;
     public InventoryObject equipment;
@@ -130,7 +130,7 @@ public class PlayerInventory : MonoBehaviour
         {
             if (pickupRequest)
             {
-                SuperItem thisItem = new SuperItem(item.item);
+                ItemData thisItem = new ItemData(item.item);
                 pickupRequest = false;
                 if (inventory.AddItem(thisItem))
                 {
@@ -147,30 +147,24 @@ public class PlayerInventory : MonoBehaviour
 
     public void Save(Scene scene)
     {
-        Debug.Log("saving inventory");
         inventory.Save();
         equipment.Save();
     }
 
-    public void Save()
+    public override void SaveData(GameData data)
     {
-        Debug.Log("saving inventory");
         inventory.Save();
         equipment.Save();
     }
 
-    public void Load()
+    public override void LoadData(GameData data)
     {
-        Debug.Log("loading inventory");
         inventory.Load();
         equipment.Load();
     }
-
-    private void OnDestroy()
+    public override void ResetData(GameData data)
     {
-      //  Debug.Log("saving inventory");
-     //   inventory.Save();
-     //   equipment.Save();
+        inventory.Clear();
+        equipment.Clear();
     }
-
 }

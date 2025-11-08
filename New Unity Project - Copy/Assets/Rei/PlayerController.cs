@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDataPersistence
+public class PlayerController : DataPersistenceBehaviour
 {
 
     public int totalJumps = 0;
@@ -57,14 +57,14 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     void Start()
     {
-       
+
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         ani = this.gameObject.GetComponent<Animator>();
         playerHealth = this.gameObject.GetComponent<PlayerHealth>();
         playerAttacks = this.gameObject.GetComponent<PlayerAttacks>();
         knockback = this.gameObject.GetComponent<KnockBack>();
         this.playerSound = this.gameObject.GetComponent<PlayerSound>();
-        this.transform.position = NewManager.playerSaveLocation;
+        this.transform.position = NewManager.manager.defaultPlayerLocation;
     }
     private void Update()
     {
@@ -86,10 +86,10 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         {
             jumpRequest = true;
         }
-        if (Input.GetButtonDown("Dash")&& !isDashing)
+        if (Input.GetButtonDown("Dash") && !isDashing)
         {
             dashRequest = true;
-        }     
+        }
         if ((Input.GetButton("Vertical")) && (isGrounded == false) && (rb.linearVelocity.y > 0))
         {
             boost = true;
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     void FixedUpdate()
     {
-        if(DialogueManager.getInstance().dialogueIsPlaying)
+        if (DialogueManager.getInstance().dialogueIsPlaying)
         {
             return;
         }
@@ -122,14 +122,15 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         if (isGrounded == true)
         {
             ani.SetFloat("MoveX", Mathf.Abs(xInput));
-            ani.SetFloat("MoveY", 0);         
+            ani.SetFloat("MoveY", 0);
             dashCount = DASHCOUNT;
             jumpCount = JUMPCOUNT;
             coyoteTimer = coyoteTime;
         }
         else
         {
-            if (rb.linearVelocity.y > 0) { 
+            if (rb.linearVelocity.y > 0)
+            {
                 ani.SetFloat("MoveY", 1);
                 ani.SetFloat("MoveX", 0);
             }
@@ -148,7 +149,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             coyoteTimer = 0;
             jumpRequest = false;
         }
-        if (boost==true)
+        if (boost == true)
         {
             rb.AddForce(new Vector2(0, lowJumpMultiplier), ForceMode2D.Impulse);
         }
@@ -166,7 +167,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         if (xInput > 0)
         {
             if (!flipped)
-            {               
+            {
                 flipped = true;
                 Vector2 currentPosition = this.transform.position;
                 this.transform.position = new Vector2(currentPosition.x + 1, currentPosition.y);
@@ -174,13 +175,13 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             }
             rotationX = 1;
         }
-        else if (xInput< 0)
+        else if (xInput < 0)
         {
             if (flipped)
             {
 
-                flipped = false;     
-                
+                flipped = false;
+
                 Vector2 currentPosition = this.transform.position;
                 this.transform.position = new Vector2(currentPosition.x - 1, currentPosition.y);
                 this.transform.Rotate(0f, -180f, 0f);
@@ -219,7 +220,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         }
     }
     void Dashx()
-    { 
+    {
         rb.AddForce(new Vector2(rotationX * dashPower, 0), ForceMode2D.Impulse);
 
     }
@@ -228,7 +229,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     #region Jump
     public void Jump()
     {
-        if ((isGrounded || coyoteTimer>0)&&isDashing==false)
+        if ((isGrounded || coyoteTimer > 0) && isDashing == false)
         {
             playerSound.PlayJumpSound();
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
@@ -277,17 +278,22 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
     public void SetToSavedLocation()
     {
-        this.transform.position = NewManager.playerSaveLocation;
+        this.transform.position = NewManager.manager.defaultPlayerLocation;
     }
 
-    public void LoadData(GameData data)
+    public override void LoadData(GameData data)
     {
         this.totalJumps = data.totalJumps;
     }
 
-    public void SaveData(GameData data)
+    public override void SaveData(GameData data)
     {
         data.totalJumps = this.totalJumps;
+    }
+
+    public override void ResetData(GameData data)
+    {
+        data.totalJumps = 0;
     }
 
 }

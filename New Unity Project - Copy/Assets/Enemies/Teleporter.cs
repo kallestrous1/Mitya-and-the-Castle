@@ -4,44 +4,53 @@ using System.Collections.Generic;
 
 public class Teleporter : Interactable
 {
-    bool teleRequest;
-    public AudioClip teleSound;
-    public Vector2 teleLocation;
+    [SerializeField] private AudioClip teleSound;
+    [SerializeField] private Vector2 teleLocation;
+    [SerializeField] private float delay = 0.5f;
+
+    private bool teleRequest = false;
+    private PlayerController playerInRange;
 
     void Update()
     {
+        if (playerInRange == null) return;
+
         if (Input.GetButtonDown("Interact"))
-        {
             teleRequest = true;
 
-        }
         if (Input.GetButtonUp("Interact"))
-        {
             teleRequest = false;
 
-        }
-
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.GetComponent<PlayerController>())
+        if (teleRequest)
         {
-            if (teleRequest)
-            {
-                teleRequest = false;
-                if (teleSound)
-                {
-                    AudioManager.Instance.Play(teleSound);
-                }
-                StartCoroutine(teleport(collision.GetComponent<Transform>()));
-            }
+            teleRequest = false;
+            StartCoroutine(Teleport(playerInRange.transform));
         }
+
     }
 
-    private IEnumerator teleport(Transform player)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        yield return new WaitForSeconds(0.5f);
-       player.position = teleLocation;
+        PlayerController player = collision.GetComponent<PlayerController>();
+        if (player != null)
+            playerInRange = player;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        PlayerController player = collision.GetComponent<PlayerController>();
+        if (player != null && player == playerInRange)
+            playerInRange = null;
+    }
+
+    private IEnumerator Teleport(Transform player)
+    {
+        if (teleSound != null)
+            AudioManager.Instance.Play(teleSound);
+
+        yield return new WaitForSeconds(delay);
+
+        if (player != null)
+            player.position = teleLocation;
     }
 }

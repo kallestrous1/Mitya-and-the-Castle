@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54e853e07dd91543b398169511d89d0, type: 3}
   m_Name: OldHealthCharm
   m_EditorClassIdentifier: 
+  itemID: 7cb947d6-4a5a-40c9-9755-0be56328f006
   setActive: 1
   spawnScene: 
   uiDisplay: {fileID: -5987019726159470202, guid: 6d590034ab46de84c828e0d3ab1e2c45, type: 3}
   characterDisplay: {fileID: 0}
-  itemStory: {fileID: 0}
-  type: 3
-  description: 
-  data:
-    Id: 7
-    name: 
   animations: {fileID: 0}
   baseAnimations: {fileID: 0}
   inGameSprite: {fileID: 0}
+  itemStory: {fileID: 0}
+  description: 
+  type: 3
   price: 4
+  data:
+    itemID: 
+    name: 

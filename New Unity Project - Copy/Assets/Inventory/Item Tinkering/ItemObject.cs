@@ -1,4 +1,5 @@
 using Ink.Runtime;
+using NUnit.Framework.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,23 +14,56 @@ public enum ItemType
 
 public abstract class ItemObject : ScriptableObject
 {
-    // public ItemScript playerItem;
+    public string itemID; // GUID string
+
+    [ContextMenu("Generate GUID")]
+    private void GenerateGUID()
+    {
+        if (string.IsNullOrEmpty(itemID))
+        {
+            itemID = System.Guid.NewGuid().ToString();
+#if UNITY_EDITOR
+            UnityEditor.EditorUtility.SetDirty(this);
+#endif
+        }
+    }
+
+    [Header("Active / Scene")]
     public bool setActive = true;
     public string spawnScene;
+
+    [Header("Visuals")]
     public Sprite uiDisplay;
     public GameObject characterDisplay;
-    [SerializeField] public TextAsset itemStory;
-
-    public ItemType type;
-    [TextArea (15,20)]
-    public string description;
-    public SuperItem data = new SuperItem();
-
     public RuntimeAnimatorController animations;
     public RuntimeAnimatorController baseAnimations;
     public Sprite inGameSprite;
 
+    [Header("Story & Description")]
+    [SerializeField] public TextAsset itemStory;
+    [TextArea(15, 20)]
+    public string description;
+
+    [Header("Gameplay & Economy")]
+    public ItemType type;
     public float price;
+
+    [Header("Runtime Data")]
+    public ItemData data;
+
+    private void OnValidate()
+    {
+        if (data == null)
+        {
+            data = new ItemData();
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (data == null)
+            data = new ItemData();
+    }
 
     public abstract void EquipItem();
     public abstract void UnequipItem();
@@ -38,18 +72,14 @@ public abstract class ItemObject : ScriptableObject
 
 [System.Serializable]
 //he calls this Item
-public class SuperItem
+public class ItemData
 {
-    public int Id = -1;
+    public string itemID;
     public string name;
-    public SuperItem()
+    public ItemData(){}
+    public ItemData(ItemObject item)
     {
-        name = "";
-        Id = -1;
-    }
-    public SuperItem(ItemObject item)
-    {
-        Id = item.data.Id;
+        itemID = item.itemID;
         name = item.name;
     }
 }

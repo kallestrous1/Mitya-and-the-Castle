@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using System.Linq;
+using static UnityEditor.Progress;
 
-public class ItemInGame : MonoBehaviour, IDataPersistence
+public class ItemInGame : DataPersistenceBehaviour
 {
     public ItemTracker itemTracker;
     public int id;
@@ -26,13 +27,14 @@ public class ItemInGame : MonoBehaviour, IDataPersistence
     public void ChangeState(bool state)
     {
         active = state;
-        DataPersistenceManager.instance.SaveGame();
+        EventManager.OnItemStateChanged.Invoke(itemName, state);
     }
 
-    public void LoadData(GameData data)
+    public override void LoadData(GameData data)
     {
         if (data.itemStates.ContainsKey(itemName))
         {
+            Debug.Log("Loading item state for " + itemName + ": " + data.itemStates[itemName]);
             active = data.itemStates[itemName];
         }
         this.transform.parent.gameObject.SetActive(active);
@@ -53,7 +55,7 @@ public class ItemInGame : MonoBehaviour, IDataPersistence
          }*/
     }
 
-    public void SaveData(GameData data)
+    public override void SaveData(GameData data)
     {
         if (this)
         {
@@ -76,7 +78,7 @@ public class ItemInGame : MonoBehaviour, IDataPersistence
 
     }
 
-    public void ResetData(GameData data)
+    public override void ResetData(GameData data)
     {
         active = newgameState;
         if (this)
@@ -92,5 +94,3 @@ public class ItemInGame : MonoBehaviour, IDataPersistence
         }
     }
 }
-
-

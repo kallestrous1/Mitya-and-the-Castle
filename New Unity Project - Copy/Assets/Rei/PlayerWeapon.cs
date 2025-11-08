@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWeapon : MonoBehaviour, IDataPersistence
+public class PlayerWeapon : DataPersistenceBehaviour
 {
     Rigidbody2D rb;
     Rigidbody2D playerrb;
@@ -68,19 +68,22 @@ public class PlayerWeapon : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void LoadData(GameData data)
+    public override void LoadData(GameData data)
     {
         
     }
 
-    public void SaveData(GameData data)
+    public override void SaveData(GameData data)
     {
         
     }
 
-    public void ResetData(GameData data)
+    public override void ResetData(GameData data)
     {
+        if(activeWeapon == null) return;
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if(player == null) return;
         player.GetComponent<Animator>().runtimeAnimatorController = baseAnimations;
         PlayerWeaponContainer = GameObject.FindGameObjectWithTag("Weapon Container");
         PlayerWeaponContainer.GetComponentInChildren<SpriteRenderer>().sprite = null;

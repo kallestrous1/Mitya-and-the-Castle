@@ -12,20 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec61646887962ea488a8dd576d15a55c, type: 3}
   m_Name: Old Heal Staff
   m_EditorClassIdentifier: 
+  itemID: 30dc1af7-e3c6-4f82-9cef-11da30288353
   setActive: 1
   spawnScene: 
   uiDisplay: {fileID: 4272171828115443790, guid: 9f478d423fc402246906381248fe4cf2, type: 3}
   characterDisplay: {fileID: 0}
-  itemStory: {fileID: 0}
-  type: 1
-  description: 
-  data:
-    Id: 6
-    name: 
   animations: {fileID: 22100000, guid: ecd4fc643219ef04f9b8208e83310f5a, type: 2}
   baseAnimations: {fileID: 9100000, guid: d4bae300959137441979cf8fc674baf6, type: 2}
   inGameSprite: {fileID: -3114624029342804824, guid: 020a8a45c667aa744a70ff2101bbb029, type: 3}
+  itemStory: {fileID: 0}
+  description: 
+  type: 1
   price: 8
+  data:
+    itemID: 
+    name: 
   swordForPlayer: {fileID: 0}
   PlayerWeaponContainer: {fileID: 0}
   weaponSprite: {fileID: -3114624029342804824, guid: 020a8a45c667aa744a70ff2101bbb029, type: 3}

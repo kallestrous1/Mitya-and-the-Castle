@@ -13,7 +13,7 @@ public class StartButton : BasicButton, IPointerEnterHandler
 
     public string getSpawnScene()
     {
-        return NewManager.playerSpawnScene;
+        return NewManager.manager.defaultPlayerScene;
     }
 
     public void LoadScene(string scene)
@@ -30,9 +30,9 @@ public class StartButton : BasicButton, IPointerEnterHandler
             {             
                 string spawnScene = getSpawnScene();
                 // SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
-                NewManager.manager.addScene("Base Scene", false);
+                NewManager.manager.AddScene("Base Scene", false);
 
-                NewManager.manager.moveScenes(spawnScene, "Menu", false);
+                NewManager.manager.MoveToScene(spawnScene, "Menu", false);
 
 
                 //    SceneManager.LoadSceneAsync("Base Scene", LoadSceneMode.Additive);
@@ -55,7 +55,7 @@ public class StartButton : BasicButton, IPointerEnterHandler
         yield return new WaitForSeconds(0.1f);
         DataPersistenceManager.instance.SaveGame();
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-        NewManager.manager.unloadScene("Menu");
+        NewManager.manager.UnloadScenePublic("Menu");
 
     }
 

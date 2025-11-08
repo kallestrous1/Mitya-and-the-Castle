@@ -8,21 +8,29 @@ public class DataPersistenceManager : MonoBehaviour
 {
     [Header("File Storage Configuration")]
 
-    [SerializeField] private string fileName;
+    [SerializeField] private string fileName = "saveData.json";
+
+    public static DataPersistenceManager instance { get; private set; }
+
+ 
+    private FileDataHandler dataHandler;
+    private List<IDataPersistence> dataPersistanceObjects;
+    private readonly List<IDataPersistence> registeredObjects = new List<IDataPersistence>();
+
 
     public GameData gameData;
+    private bool saveRequested = false;
+    public bool isNewGame = false;
 
-    private List<IDataPersistence> dataPersistanceObjects;
-
-    private FileDataHandler dataHandler; 
-    public static DataPersistenceManager instance { get; private set; }
 
 
     private void Awake()
     {
         if (instance != null)
         {
-            Debug.LogError("Creating a second data persistence manager (not good)");        
+            Debug.LogError("Creating a second data persistence manager (not good)");
+            Destroy(gameObject);
+            return;
         }       
          
         instance = this;
@@ -33,66 +41,92 @@ public class DataPersistenceManager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        EventManager.OnItemStateChanged += UpdateItemState;
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        EventManager.OnItemStateChanged -= UpdateItemState;
+
     }
 
-
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        this.dataPersistanceObjects = FindAllDataPersistenceObjects();
+        StartCoroutine(LoadAfterSceneLoaded());
+    }
+
+    private IEnumerator LoadAfterSceneLoaded()
+    {
+        // Wait one frame so all IDataPersistence objects register
+        yield return null;
+
         LoadGame();
     }
 
-
     public void NewGame()
     {
+        Debug.Log("Starting new game");
+        isNewGame = true;
         this.gameData = new GameData();
-        foreach (IDataPersistence dataPersistanceObj in dataPersistanceObjects)
-        {
-            dataPersistanceObj.ResetData(gameData);
-        }
-
+        FindAllDataPersistenceObjects();
+        foreach (var obj in registeredObjects)
+            obj.ResetData(gameData);
+        SaveGame();
+        isNewGame = false;
     }
 
     public void LoadGame()
     {
         this.gameData = dataHandler.Load();
+        Debug.Log("loading game");
 
-        if (this.gameData == null)
+        if (gameData == null)
         {
             Debug.Log("No data found, creating new game");
             NewGame();
-        }
-        this.dataPersistanceObjects = FindAllDataPersistenceObjects();
-
-        foreach (IDataPersistence dataPersistanceObj in dataPersistanceObjects)
-        {
-            dataPersistanceObj.LoadData(gameData);
+            return;
         }
 
-        if (GameObject.FindGameObjectWithTag("Player"))
-        {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().Load();
-        }
+        foreach (var obj in registeredObjects)
+            obj.LoadData(gameData);
 
     }
 
     public void SaveGame()
     {
-        foreach (IDataPersistence dataPersistanceObj in dataPersistanceObjects)
-        {
-            dataPersistanceObj.SaveData(gameData);
-        }
-        if (GameObject.FindGameObjectWithTag("Player"))
-        {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().Save();
-        }
+        Debug.Log("Saving game");
+        foreach (var obj in registeredObjects)
+            obj.SaveData(gameData);
         dataHandler.Save(gameData);
+    }
+    public static void Register(IDataPersistence obj)
+    {
+        if (instance == null) return;
 
+        if (!instance.registeredObjects.Contains(obj))
+            instance.registeredObjects.Add(obj);
+    }
+
+    public static void Unregister(IDataPersistence obj)
+    {
+        if (instance == null) return;
+
+        instance.registeredObjects.Remove(obj);
+    }
+
+    private void LateUpdate()
+    {
+        if (saveRequested)
+        {
+            SaveGame();
+            saveRequested = false;
+        }
+    }
+    private void UpdateItemState(string itemID, bool state)
+    {
+        gameData.itemStates[itemID] = state;
+        saveRequested = true;
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
@@ -103,9 +137,6 @@ public class DataPersistenceManager : MonoBehaviour
      }
 
 
-    private void OnApplicationQuit()
-    {
-        SaveGame();
-    }
+    private void OnApplicationQuit() =>  SaveGame();
 
 }

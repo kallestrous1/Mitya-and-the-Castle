@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMoney : MonoBehaviour, IDataPersistence
+public class PlayerMoney :  DataPersistenceBehaviour
 {
     public float playerMoney = 0;
 
@@ -15,13 +15,18 @@ public class PlayerMoney : MonoBehaviour, IDataPersistence
         PlayerMoneyDisplay.PlayerMoneyDisplayInstance.UpdateMoneyDisplay(playerMoney);
     }
 
-    public void LoadData(GameData data)
+    public override void LoadData(GameData data)
     {
         playerMoney = data.playerMoney;
     }
 
-    public void SaveData(GameData data)
+    public override void SaveData(GameData data)
     {
         data.playerMoney = playerMoney;
+    }
+
+    public override void ResetData(GameData data)
+    {
+        playerMoney = 0;
     }
 }

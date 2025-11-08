@@ -12,20 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7966e3486f651f145859a745e2b69c5d, type: 3}
   m_Name: Letter to bandits
   m_EditorClassIdentifier: 
+  itemID: 9002f996-bc63-4598-84a1-49d8568699de
   setActive: 1
   spawnScene: 
   uiDisplay: {fileID: 5668723071718756358, guid: 68b7814e402e97f4b9ea1a6933ee27d3, type: 3}
   characterDisplay: {fileID: 0}
+  animations: {fileID: 0}
+  baseAnimations: {fileID: 0}
+  inGameSprite: {fileID: 0}
   itemStory: {fileID: 0}
-  type: 0
   description: 'Your search continues, we are waiting... this is of the utmost importance,
     and we will soon send a representative your way to retrieve the stone, hurry....
 
     May
     Tata grace us all...'
+  type: 0
+  price: 0
   data:
-    Id: 8
+    itemID: 
     name: 
-  animations: {fileID: 0}
-  baseAnimations: {fileID: 0}
-  inGameSprite: {fileID: 0}

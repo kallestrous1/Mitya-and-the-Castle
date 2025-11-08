@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New TurtleCharm", menuName = "Inventory/Charms/TurtleCharm")]
 
-public class TurtleCharm : ItemObject
+public class TurtleCharm : CharmObject
 {    
     public override void EquipItem()
     {

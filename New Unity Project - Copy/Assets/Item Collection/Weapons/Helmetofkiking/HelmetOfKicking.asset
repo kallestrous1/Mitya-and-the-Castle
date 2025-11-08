@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e712a95ce7bcd41bce9187ea8f53f1, type: 3}
   m_Name: HelmetOfKicking
   m_EditorClassIdentifier: 
+  itemID: f2f647d2-668c-4c96-a9ae-da1e60ccece5
   setActive: 0
   spawnScene: 
   uiDisplay: {fileID: 6449144874727008578, guid: bc2fc98f89182b74f96154e8b208573b, type: 3}
   characterDisplay: {fileID: 0}
+  animations: {fileID: 0}
+  baseAnimations: {fileID: 0}
+  inGameSprite: {fileID: 0}
   itemStory: {fileID: 0}
-  type: 1
   description: Gain the power of kicking through this magical helmet
+  type: 1
+  price: 0
   data:
-    Id: 2
+    itemID: 
     name: 

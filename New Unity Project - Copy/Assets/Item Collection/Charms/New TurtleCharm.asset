@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7afad1257771d784481cf030229a1bd2, type: 3}
   m_Name: New TurtleCharm
   m_EditorClassIdentifier: 
+  itemID: c663c723-8c4e-48f5-a597-0cba60e46eb0
   setActive: 0
   spawnScene: 
   uiDisplay: {fileID: -2940032562595488798, guid: a9e478e19c5258742b037b7c12168231, type: 3}
   characterDisplay: {fileID: 7914809734473697626, guid: eff26dbeadd90a7429fc9e847173cd00, type: 3}
-  itemStory: {fileID: 0}
-  type: 3
-  description: Her world born anew she cast it all aside for him
-  data:
-    Id: 1
-    name: Jumping Charm
   animations: {fileID: 0}
   baseAnimations: {fileID: 0}
   inGameSprite: {fileID: 0}
+  itemStory: {fileID: 0}
+  description: Her world born anew she cast it all aside for him
+  type: 3
+  price: 0
+  data:
+    itemID: 
+    name: Jumping Charm

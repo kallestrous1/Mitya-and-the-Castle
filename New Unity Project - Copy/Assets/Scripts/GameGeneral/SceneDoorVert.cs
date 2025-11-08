@@ -25,19 +25,4 @@ public class SceneDoorVert : MonoBehaviour
               StartCoroutine(SetActiveScene(nextScene));*/
         }
     }
-
-    IEnumerator SetActiveScene(string sceneName)
-    {
-        DataPersistenceManager.instance.SaveGame();
-        yield return new WaitForSeconds(0.1f);
-        Debug.Log(sceneName);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-
-        if (!unloaded)
-        {
-            unloaded = true;
-            NewManager.manager.unloadScene(previousScene);
-        }
-    }
-
 }

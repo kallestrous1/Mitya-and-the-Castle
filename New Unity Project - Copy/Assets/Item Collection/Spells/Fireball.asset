@@ -12,21 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1cc909ff791554da64fea5de7e3286, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: Assembly-CSharp::Fireball
+  itemID: d3899032-e7aa-4b1c-af61-9f4d9bc7fa38
   setActive: 1
   spawnScene: 
   uiDisplay: {fileID: -5074979047479171521, guid: 080f8dedf40eb054c8d9c4374d8d99e8, type: 3}
   characterDisplay: {fileID: 0}
-  itemStory: {fileID: 0}
-  type: 2
-  description: 
-  data:
-    Id: -1
-    name: 
   animations: {fileID: 22100000, guid: 164c9a7bcf37f4c4ebc64dd72e7f5d97, type: 2}
   baseAnimations: {fileID: 9100000, guid: 001bf31f34376784fa9b5c8db0dce452, type: 2}
   inGameSprite: {fileID: 0}
+  itemStory: {fileID: 0}
+  description: 
+  type: 2
   price: 0
-  BaseParticleEffect: {fileID: 2659240962462058314, guid: 20000892e914f1f4eb59391c3ed26630, type: 3}
-  spellSpeed: 8
+  data:
+    itemID: 
+    name: 
+  BaseParticleEffect: {fileID: 3249134206516532379, guid: df7aa967003cd1c4ab4d87e4f37e7e12, type: 3}
+  spellSpeed: 700
   manaCost: 10
   chargeTime: 1

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
-public class VolumeController : MonoBehaviour, IDataPersistence
+public class VolumeController : DataPersistenceBehaviour
 {
 
     public AudioMixer musicMixer;
@@ -39,13 +39,13 @@ public class VolumeController : MonoBehaviour, IDataPersistence
 
 
 
-    public void LoadData(GameData data)
+    public override void LoadData(GameData data)
     {
         SetMusicVolumeInternal(data.musicVolume);
         SetEffectsVolumeInternal(data.effectsVolume);
     }
 
-    public void SaveData(GameData data)
+    public override void SaveData(GameData data)
     {
         if (this)
         {
@@ -57,5 +57,10 @@ public class VolumeController : MonoBehaviour, IDataPersistence
                 data.effectsVolume = saverTwo;
             }                
         }
+    }
+    public override void ResetData(GameData data)
+    {
+        data.musicVolume = 0f; // Default volume (0 dB)
+        data.effectsVolume = 0f; // Default volume (0 dB)
     }
 }
