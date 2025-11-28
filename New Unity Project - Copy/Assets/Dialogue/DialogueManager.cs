@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
     public DialogueVariables dialogueVariables;
 
     public GameObject shopPanel;
+    public InventoryController inventoryController;
     public ShopController shopController;
 
     public InventoryObject townLadyShop;
@@ -38,6 +39,7 @@ public class DialogueManager : MonoBehaviour
     public AudioClip enterDialogueMode;
     public AudioClip exitDialogueMode;
     public AudioClip nextDialogue;
+
 
     private void Awake()
     {
@@ -119,17 +121,18 @@ public class DialogueManager : MonoBehaviour
         switch (eventName)
         {
             case "CloseShop":
-                shopController.setShopInactive();
+                shopController.SetShopInactive();
                 break;
             case "OpenTownShop":
                 shopController.SetShop(townLadyShop);
-                shopController.setShopActive();
-
+                inventoryController.OpenItemDetailDisplay();
+                shopController.SetShopActive();
                 break;
 
             case "OpenLittleWizardShop":
                 shopController.SetShop(littleWizardShop);
-                shopController.setShopActive();
+                inventoryController.OpenItemDetailDisplay();
+                shopController.SetShopActive();
                 break;
         }
     }
@@ -164,7 +167,8 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         AudioManager.Instance.Play(exitDialogueMode);
         dialogueText.text = "";
-        shopController.setShopInactive();
+        shopController.SetShopInactive();
+        inventoryController.OpenItemDetailDisplay();
     }
 
     private void DisplayChoices()

@@ -18,29 +18,29 @@ MonoBehaviour:
   Container:
     Slots:
     - AllowedItems: 0
-      locked: 0
+      locked: 1
       price: 8
       DefaultItem:
-        Id: 7
+        itemID: 
         name: OldHealthCharm
       item:
-        Id: -1
-        name: 
+        itemID: 
+        name: OldHealthCharm
     - AllowedItems: 0
-      locked: 0
+      locked: 1
       price: 3
       DefaultItem:
-        Id: 6
+        itemID: 
         name: Old Heal Staff
       item:
-        Id: -1
-        name: 
+        itemID: 
+        name: Old Heal Staff
     - AllowedItems: 0
       locked: 1
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 

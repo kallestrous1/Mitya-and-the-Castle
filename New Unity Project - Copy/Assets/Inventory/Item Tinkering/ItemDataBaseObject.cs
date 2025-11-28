@@ -34,6 +34,20 @@ public class ItemDataBaseObject : ScriptableObject
         return null;
     }
 
+    public ItemObject GetItemByName(string name)
+    {
+        foreach (var item in ItemObjects)
+        {
+            Debug.Log(item.name);
+            if (item != null && item.name == name)
+            {
+                return item;
+            }
+        }
+        Debug.LogWarning($"Item with name {name} not found in database.");
+        return null;
+    }
+
     private void PopulateDictionary()
     {
         GetItem.Clear();

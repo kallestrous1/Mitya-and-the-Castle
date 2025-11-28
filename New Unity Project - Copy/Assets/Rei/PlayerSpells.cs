@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerSpells : MonoBehaviour
 {
-
     public SpellObject currentSpell;
 
     public float minScale = 0.1f;       // starting size
@@ -15,101 +14,143 @@ public class PlayerSpells : MonoBehaviour
     public GameObject spawnLocation;
     bool spellFullyCharged = false;
 
+    [SerializeField] public Animator playerAni;
+
+    #region Input Handling
+
+    private void Start()
+    {
+
+    }
+    public void OnEnable()
+    {
+        InputManager.Instance.SpellPressed += OnSpellPressed;
+        InputManager.Instance.SpellReleased += OnSpellReleased;
+    }
+    public void OnDisable()
+    {
+        InputManager.Instance.SpellPressed -= OnSpellPressed;
+        InputManager.Instance.SpellReleased -= OnSpellReleased;
+    }
+
+    private void OnSpellPressed()
+    {
+        StartCharging();
+    }
+
+    private void OnSpellReleased()
+    {
+        ReleaseSpell();
+    }
+
+    #endregion
+
     private void Update()
     {
-        // Start charging (instantiate at key down)
-        if (Input.GetKeyDown(KeyCode.Mouse1) && currentSpell)
+        if (!isCharging) return;
+
+        currentChargeTime += Time.deltaTime;
+
+        float t = Mathf.Clamp01(currentChargeTime / currentSpell.chargeTime);
+        float scale = Mathf.Lerp(minScale, maxScale, t);
+
+        if (spellInGameParticle)
+            spellInGameParticle.transform.localScale = new Vector3(scale, scale, 1f);
+
+        if (currentChargeTime >= currentSpell.chargeTime && !spellFullyCharged)
         {
-            // instantiate at spawnLocation position
-            Vector3 spawnPoint = spawnLocation ? spawnLocation.transform.position : transform.position;
-
-            if (currentSpell.BaseParticleEffect)
-            {
-                spellInGameParticle = Instantiate(currentSpell.BaseParticleEffect, spawnPoint, Quaternion.identity);
-                // force starting scale to minScale
-                spellInGameParticle.transform.localScale = new Vector3(minScale, minScale, 1f);
-
-                Rigidbody2D rb = spellInGameParticle.GetComponent<Rigidbody2D>();
-                if (rb) rb.gravityScale = 0f;
-            }
-
-            // begin charging state
-            GetComponentInParent<PlayerController>().FreezeMidAir();
-            isCharging = true;
-            spellFullyCharged = false;
-            currentChargeTime = 0f;
-
-            // optional: freeze player mid-air if you want
-            // GetComponentInParent<PlayerController>().FreezeMidAir();
-        }
-
-        // While holding the button -> charge + scale
-        if (Input.GetKey(KeyCode.Mouse1) && isCharging && currentSpell)
-        {
-            currentChargeTime += Time.deltaTime;
-
-            // Scale spell while charging
-            float t = Mathf.Clamp01(currentChargeTime / currentSpell.chargeTime);
-            float scale = Mathf.Lerp(minScale, maxScale, t);
-            if (spellInGameParticle)
-            {
-                spellInGameParticle.transform.localScale = new Vector3(scale, scale, 1f);
-            }
-
-            // Fully charged: cast the spell
-            if (currentChargeTime >= currentSpell.chargeTime)
-            {
-                spellFullyCharged = true;
-                CastCurrentSpell();
-
-                // mark charging finished
-                GetComponentInParent<PlayerController>().UnfreezeMidAir();
-                isCharging = false;
-                currentChargeTime = 0f;
-            }
-        }
-
-        // Button released (key up) handling
-        if (Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            // Unfreeze player if you froze them
-            GetComponentInParent<PlayerController>().UnfreezeMidAir();
-
-            // If we were charging and didn't reach full charge -> cancel & destroy the orb
-            if (!spellFullyCharged && spellInGameParticle)
-            {
-                Destroy(spellInGameParticle);
-                spellInGameParticle = null;
-            }
-
-            // reset charging flags
-            isCharging = false;
-            currentChargeTime = 0f;
-            spellFullyCharged = false;
+            spellFullyCharged = true;
+            CastCurrentSpell();
+            StopCharging();
         }
     }
-    
+    private void StartCharging()
+    {
+        if (!currentSpell) return;
+
+        CreateSpell();
+
+        isCharging = true;
+        currentChargeTime = 0f;
+        spellFullyCharged = false;
+
+        GetComponentInParent<PlayerController>().FreezeMidAir();
+    }
+
+    private void ReleaseSpell()
+    {
+        if (!isCharging) return;
+
+        if (!spellFullyCharged)
+        {
+            // cancelled early -> destroy orb
+            Destroy(spellInGameParticle);
+        }
+        else
+        {
+            // if fully charged, spell was cast already in Update
+        }
+        StopCharging();
+    }
+
+    private void StopCharging()
+    {
+        playerAni.SetTrigger("Stopcast");
+        isCharging = false;
+        currentChargeTime = 0f;
+        spellFullyCharged = false;
+
+        GetComponentInParent<PlayerController>().UnfreezeMidAir();
+    }
+
+
+    private void CreateSpell()
+    {
+        Vector3 spawnPoint = spawnLocation ? spawnLocation.transform.position : transform.position;
+
+        playerAni.SetTrigger("Attack");
+        if (currentSpell.BaseParticleEffect)
+        {
+            spellInGameParticle = Instantiate(currentSpell.BaseParticleEffect, spawnPoint, Quaternion.identity);
+
+            spellInGameParticle.transform.SetParent(spawnLocation.transform, worldPositionStays: false);
+
+            spellInGameParticle.transform.localPosition = Vector3.zero;
+            spellInGameParticle.transform.localRotation = Quaternion.identity;
+            spellInGameParticle.transform.localScale = Vector3.one * minScale;
+
+            // force starting scale to minScale
+
+            Rigidbody2D rb = spellInGameParticle.GetComponent<Rigidbody2D>();
+            if (rb) rb.gravityScale = 0f;
+        }
+
+        // begin charging state
+        GetComponentInParent<PlayerController>().FreezeMidAir();
+        isCharging = true;
+        spellFullyCharged = false;
+        currentChargeTime = 0f;
+    }
 
     public void CastCurrentSpell()
     {
-        if (currentSpell)
-        {
-            //currentSpell.Cast();
-            Vector3 mouseScreenPos = Input.mousePosition;
-            // For 2D or 3D on a fixed plane (e.g., XZ plane for a top-down game)
-            // Set the Z-component of mouseScreenPos to the desired world Z-coordinate (or player's Z)
-            mouseScreenPos.z = transform.position.z;
+        if (!currentSpell) return;
+
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 spawnPoint =  transform.position;
-            Vector2 targetDir = ((Vector2)mouseWorldPos - spawnPoint).normalized;
+
+            Vector2 direction = (mouseWorldPos - (Vector2)spawnLocation.transform.position);
 
             // Add arc by boosting vertical aim a little
-            targetDir.y += 0.35f; // tweak between 0–0.6
-            Vector2 direction = targetDir.normalized;
-            // StartCoroutine(FreezeMidAirCoroutine(0.5f));
-            Rigidbody2D rb = spellInGameParticle.GetComponent<Rigidbody2D>();
+            direction.y += 0.35f; // tweak between 0–0.6
+            direction = direction.normalized;
+
+         spellInGameParticle.transform.SetParent(null, worldPositionStays: true);
+
+        // StartCoroutine(FreezeMidAirCoroutine(0.5f));
+        Rigidbody2D rb = spellInGameParticle.GetComponent<Rigidbody2D>();
             if (rb)
             {
+                spellInGameParticle.transform.SetParent(null, worldPositionStays: true);
                 rb.gravityScale = 1.5f; // whatever gravity you want for throw
                 rb.linearVelocity = Vector2.zero; // reset in case it's floating with scale animations
                 rb.AddForce(direction * currentSpell.spellSpeed);
@@ -119,7 +160,7 @@ public class PlayerSpells : MonoBehaviour
             GetComponent<Animator>().SetTrigger("CastSpell");
             GetComponentInParent<PlayerController>().UnfreezeMidAir();
             Destroy(spellInGameParticle, lifeTime);
-        }
+        
     }
 
     public void SetSpell(SpellObject newSpell)

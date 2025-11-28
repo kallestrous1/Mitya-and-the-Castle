@@ -54,6 +54,9 @@ public class PlayerController : DataPersistenceBehaviour
 
     private KnockBack knockback;
 
+    private bool checkBoost;
+
+
 
     void Start()
     {
@@ -66,59 +69,81 @@ public class PlayerController : DataPersistenceBehaviour
         this.playerSound = this.gameObject.GetComponent<PlayerSound>();
         this.transform.position = NewManager.manager.defaultPlayerLocation;
     }
-    private void Update()
+
+    protected override void OnEnable()
     {
-        if (NewManager.manager.currentGameState == GameState.Paused)
-        {
-            return;
-        }
+        base.OnEnable();
+       InputManager.Instance.OnJumpPressed += HandleJumpPressed;
+        InputManager.Instance.OnJumpReleased += HandleJumpReleased;
 
-        if (knockback.isBeingKnockedBack)
-        {
-            return;
-        }
+        InputManager.Instance.OnDashPressed += HandleDashPressed;
+    }
 
-        CheckIfGrounded();
-        xInput = Input.GetAxisRaw("Horizontal");
-        ani.SetBool("IsDashing", isDashing);
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        InputManager.Instance.OnJumpPressed -= HandleJumpPressed;
+        InputManager.Instance.OnJumpReleased -= HandleJumpReleased;
 
-        if (Input.GetButtonDown("Vertical"))
-        {
-            jumpRequest = true;
-        }
-        if (Input.GetButtonDown("Dash") && !isDashing)
+        InputManager.Instance.OnDashPressed -= HandleDashPressed;
+    }
+
+
+    #region InputHandlers
+    private void HandleJumpPressed()
+    {
+        jumpRequest = true;
+        checkBoost = true;
+    }
+
+    private void HandleDashPressed()
+    {
+        if (!isDashing)
         {
             dashRequest = true;
         }
-        if ((Input.GetButton("Vertical")) && (isGrounded == false) && (rb.linearVelocity.y > 0))
-        {
-            boost = true;
-        }
-        else
-        {
-            boost = false;
-        }
+    }
 
-        if (Input.GetButton("ChangeWeapon"))
-        {
-            //playerAttacks.setWeapon(1);
-        }
+    private void HandleJumpReleased()
+    {
+        checkBoost = false;
+        boost = false;
+    }
 
+    #endregion
+
+    private void Update()
+    {
+        if (NewManager.manager.currentGameState == GameState.Paused) return;
+        if (DialogueManager.getInstance().dialogueIsPlaying) return;
+        if (knockback.isBeingKnockedBack) return;
+
+
+        CheckIfGrounded();
+        xInput = InputManager.Instance.Move;
+        ani.SetBool("IsDashing", isDashing);
+
+        if (checkBoost)
+        {
+            if (rb.linearVelocityY >0 && !isDashing && !isGrounded)
+            {
+                boost = true;
+            }
+            else
+            {
+                boost = false;
+            }
+        }
     }
 
     void FixedUpdate()
     {
-        if (DialogueManager.getInstance().dialogueIsPlaying)
-        {
-            return;
-        }
+        if (DialogueManager.getInstance().dialogueIsPlaying) return;
 
-        if (knockback.isBeingKnockedBack)
-        {
-            return;
-        }
+        if (knockback.isBeingKnockedBack) return;
 
         XMovement();
+
         if (isGrounded == true)
         {
             ani.SetFloat("MoveX", Mathf.Abs(xInput));
@@ -142,18 +167,18 @@ public class PlayerController : DataPersistenceBehaviour
             coyoteTimer -= Time.deltaTime;
         }
 
-        if (jumpRequest == true)
+        if (jumpRequest)
         {
             jumpRequest = false;
             Jump();
             coyoteTimer = 0;
             jumpRequest = false;
         }
-        if (boost == true)
+        if (boost)
         {
             rb.AddForce(new Vector2(0, lowJumpMultiplier), ForceMode2D.Impulse);
         }
-        if (dashRequest == true)
+        if (dashRequest)
         {
             dashRequest = false;
             StartCoroutine(Dash());

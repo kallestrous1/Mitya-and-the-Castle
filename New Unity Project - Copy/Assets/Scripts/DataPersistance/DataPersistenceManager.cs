@@ -88,8 +88,10 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
 
-        foreach (var obj in registeredObjects)
-            obj.LoadData(gameData);
+        for (int i = 0; i < registeredObjects.Count; i++)
+        {
+            registeredObjects[i].LoadData(gameData);
+        }
 
     }
 

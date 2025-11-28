@@ -21,89 +21,89 @@ MonoBehaviour:
       locked: 0
       price: 5
       DefaultItem:
-        Id: 5
+        itemID: 
         name: Fancy Sword
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 0
       price: 3
       DefaultItem:
-        Id: 0
-        name: Dash Charm
+        itemID: 
+        name: DashCharm
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 1
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 1
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 1
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 1
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 1
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 1
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 1
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 
     - AllowedItems: 0
       locked: 1
       price: 0
       DefaultItem:
-        Id: -1
+        itemID: 
         name: 
       item:
-        Id: -1
+        itemID: 
         name: 

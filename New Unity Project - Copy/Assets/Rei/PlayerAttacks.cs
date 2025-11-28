@@ -8,124 +8,92 @@ public class PlayerAttacks : MonoBehaviour
     float holdDuration;
     bool resetWeapon;
 
+    private bool attackPressed;
+    private float UpOrDownTilt;
+    private bool heavy;
+
     public PlayerWeapon playerWeapon;
 
     void Start()
     {
-        StartCoroutine(ChargeWeapon());
         ani = GetComponent<Animator>();
     }
 
-    void Update()
+    #region InputHandlers
+    private void OnEnable()
     {
+        InputManager.Instance.AttackPressed += OnAttackPressed;
+        InputManager.Instance.AttackReleased += OnAttackReleased;
+        InputManager.Instance.HeavyAttackPressed += setHeavyModifier;
+        InputManager.Instance.HeavyAttackReleased += unsetHeavyModifier;
+    }
 
-        if (Input.GetMouseButtonDown(0))
+    private void OnDisable()
+    {
+        InputManager.Instance.AttackPressed -= OnAttackPressed;
+        InputManager.Instance.AttackReleased -= OnAttackReleased;
+        InputManager.Instance.HeavyAttackPressed -= setHeavyModifier;
+        InputManager.Instance.HeavyAttackReleased -= unsetHeavyModifier;
+    }
+
+    private void OnAttackPressed()
+    {
+        attackPressed = true;
+        HandleAttack();
+    }
+
+    private void OnAttackReleased()
+    {
+        attackPressed = false;
+    }
+
+    private void setHeavyModifier()
+    {
+        heavy = true;
+    }
+
+    private void unsetHeavyModifier()
+    {
+        heavy = false;
+    }
+
+    #endregion
+
+    private void HandleAttack()
+    {
+        UpOrDownTilt = InputManager.Instance.UpOrDownTilt;
+        playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon").GetComponent<PlayerWeapon>();
+
+        if (heavy)
         {
-            playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon").GetComponent<PlayerWeapon>();
-            if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-            {
-                if(playerWeapon.activeWeapon)
-                {
-                   /* if(playerWeapon.activeWeapon.heavyAttackSound)
-                    {
-                        AudioManager.Instance.Play(playerWeapon.activeWeapon.heavyAttackSound);
-                    }*/
-                }
-                ani.SetTrigger("HeavyAttack");
-                return;
-            }
             if (playerWeapon.activeWeapon)
             {
-                if (playerWeapon.activeWeapon.swingSound)
-                {
-                    AudioManager.Instance.Play(playerWeapon.activeWeapon.swingSound);
-                }
+                /* if (playerWeapon.activeWeapon.heavyAttackSound)
+                 {
+                     AudioManager.Instance.Play(playerWeapon.activeWeapon.heavyAttackSound);
+                 }*/
             }
-            if (Input.GetKey(KeyCode.UpArrow))
+            ani.SetTrigger("HeavyAttack");
+            return;
+        }
+        if (playerWeapon.activeWeapon)
+        {
+            if (playerWeapon.activeWeapon.swingSound)
             {
-                ani.SetTrigger("UpAttack");
-            }
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                ani.SetTrigger("DownAttack");
-            }
-            else
-            {
-                ani.SetTrigger("Attack");
+                AudioManager.Instance.Play(playerWeapon.activeWeapon.swingSound);
             }
         }
-
-        /*if (Input.GetKey(KeyCode.V))
+        if (UpOrDownTilt == 1)
         {
-            holdDuration += Time.deltaTime;
+            ani.SetTrigger("UpAttack");
         }
-        else if (Input.GetKeyUp(KeyCode.V))
+        else if (UpOrDownTilt == -1)
         {
-            if (holdDuration < 0.3f)
-            {
-                if (Input.GetKey(KeyCode.UpArrow))
-                {
-                    ani.SetTrigger("UpAttack");
-                }
-                else if (Input.GetKey(KeyCode.DownArrow))
-                {
-                    ani.SetTrigger("DownAttack");
-                }
-                else
-                {
-                    ani.SetTrigger("Attack");
-                }
-            }
-            else
-            {
-                ani.SetFloat("ChargeWeapon", 2);
-                resetWeapon = true;
-                StartCoroutine(ResetWeapon());
-            }
-            holdDuration = 0;
-        }*/
-    }
-
-    IEnumerator ChargeWeapon()
-    {
-        if (holdDuration > 0.3)
-        {
-            AddChargeWeapon();
-        }
-        yield return new WaitForSeconds(.02f);
-        StartCoroutine(ChargeWeapon());
-    }
-
-    IEnumerator ResetWeapon()
-    {
-        if (ani.GetFloat("ChargeWeapon") > 0f && resetWeapon)
-        {
-            ani.SetFloat("ChargeWeapon", ani.GetFloat("ChargeWeapon") - 0.03f);
-            yield return new WaitForSeconds(.01f);
-            StartCoroutine(ResetWeapon());
+            ani.SetTrigger("DownAttack");
         }
         else
         {
-            resetWeapon = false;
+            ani.SetTrigger("Attack");
         }
     }
-
-    void AddChargeWeapon()
-    {
-        if (ani.GetFloat("ChargeWeapon") < 1.0f)
-        ani.SetFloat("ChargeWeapon", ani.GetFloat("ChargeWeapon")+0.01f);       
-    }
-
-    public void setSwordColliderState(float state)
-    {
-       
-        playerWeapon.SetPlayerWeaponHitboxState(state);
-        
-    }
-
-    public void CastWeaponSpell()
-    {
-        playerWeapon.castBaseActiveSpell();
-    }
-
 }

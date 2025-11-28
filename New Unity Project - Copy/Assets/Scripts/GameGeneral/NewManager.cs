@@ -269,9 +269,9 @@ public class NewManager : DataPersistenceBehaviour
 
     #region Game Reset & save/load
 
-    private IEnumerator ResetStoryDelayed()
+    IEnumerator ResetStoriesDelayed()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(10.0f);
         DialogueManager.instance.ResetAllStories();
     }
 
@@ -330,12 +330,6 @@ public class NewManager : DataPersistenceBehaviour
     private void OnApplicationQuit()
     {
         DataPersistenceManager.instance.SaveGame();
-    }
-
-    IEnumerator ResetStoriesDelayed()
-    {
-        yield return new WaitForSeconds(10.0f);
-        DialogueManager.instance.ResetAllStories();
     }
 
     #endregion

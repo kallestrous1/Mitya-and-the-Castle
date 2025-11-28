@@ -19,33 +19,36 @@ public class DynamicInterface : UserInterface
 
     public GameObject itemBlockerPrefab;
 
+    public Transform slotParent;
+
 
 
     public override void CreateSlots()
     {
+        if(slotParent == null)
+        {
+            slotParent = this.transform;
+        }
         slotsOnInterface = new Dictionary<GameObject, InventorySlotObject>();
         for (int i = 0; i < inventory.GetSlots.Length; i++)
         {
             GameObject obj = null;
             if (inventory.GetSlots[i].AllowedItems == ItemType.All) { 
-                obj = Instantiate(inventoryPrefabWeapon, Vector3.zero, Quaternion.identity, transform);
+                obj = Instantiate(inventoryPrefabWeapon, Vector3.zero, Quaternion.identity, slotParent);
             }
             else if(inventory.GetSlots[i].AllowedItems == ItemType.Charm)
             {
-                obj = Instantiate(inventoryPrefabCharm, Vector3.zero, Quaternion.identity, transform);
+                obj = Instantiate(inventoryPrefabCharm, Vector3.zero, Quaternion.identity, slotParent);
             }
             else if (inventory.GetSlots[i].AllowedItems == ItemType.Weapon)
             {
-                obj = Instantiate(inventoryPrefabWeapon, Vector3.zero, Quaternion.identity, transform);
+                obj = Instantiate(inventoryPrefabWeapon, Vector3.zero, Quaternion.identity, slotParent);
             }
             else if (inventory.GetSlots[i].AllowedItems == ItemType.Spell)
             {
-                obj = Instantiate(inventoryPrefabSpell, Vector3.zero, Quaternion.identity, transform);
+                obj = Instantiate(inventoryPrefabSpell, Vector3.zero, Quaternion.identity, slotParent);
             }
-            if (inventory.GetSlots[i].locked)
-            {
-                itemBlockerPrefab = Instantiate(itemBlockerPrefab, Vector2.zero, Quaternion.identity, obj.transform);
-            }
+
                                        
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
            
@@ -64,7 +67,6 @@ public class DynamicInterface : UserInterface
             {
                 if (inventory.GetSlots[i].ItemObject)
                 {
-                    Debug.Log(inventory.GetSlots[i].ItemObject.price.ToString());
                     obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.GetSlots[i].ItemObject.price.ToString();
                 }
               

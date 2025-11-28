@@ -71,7 +71,6 @@ public abstract class ItemObject : ScriptableObject
 }
 
 [System.Serializable]
-//he calls this Item
 public class ItemData
 {
     public string itemID;

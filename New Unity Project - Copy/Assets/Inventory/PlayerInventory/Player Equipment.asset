@@ -26,7 +26,25 @@ MonoBehaviour:
       item:
         itemID: 
         name: 
-    - AllowedItems: 0
+    - AllowedItems: 3
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: ffba221b-7e8e-4e9c-8481-bd91de0ecdeb
+        name: DashCharm
+    - AllowedItems: 3
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: c663c723-8c4e-48f5-a597-0cba60e46eb0
+        name: New TurtleCharm
+    - AllowedItems: 3
       locked: 0
       price: 0
       DefaultItem:
@@ -35,25 +53,7 @@ MonoBehaviour:
       item:
         itemID: 
         name: 
-    - AllowedItems: 0
-      locked: 0
-      price: 0
-      DefaultItem:
-        itemID: 
-        name: 
-      item:
-        itemID: 
-        name: 
-    - AllowedItems: 0
-      locked: 0
-      price: 0
-      DefaultItem:
-        itemID: 
-        name: 
-      item:
-        itemID: 
-        name: 
-    - AllowedItems: 0
+    - AllowedItems: 2
       locked: 0
       price: 0
       DefaultItem:

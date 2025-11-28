@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using UnityEditor;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using UnityEditor;
+using UnityEngine;
+using static UnityEditor.Progress;
 
 public enum InterfaceType
 {
@@ -145,24 +146,25 @@ public class InventoryObject : ScriptableObject
 
         for (int i = 0; i < GetSlots.Length; i++)
         {
-            var savedSlot = newContainer.Slots[i];
+            InventorySlotObject savedSlot = newContainer.Slots[i];
 
-            // slot or item was null in old saves
-            if (savedSlot == null)
-                savedSlot = newContainer.Slots[i] = new InventorySlotObject(new ItemData());
+            savedSlot ??= newContainer.Slots[i] = new InventorySlotObject(new ItemData());
+            savedSlot.item ??= new ItemData();
 
-            if (savedSlot.item == null)
-                savedSlot.item = new ItemData();
-
-            // Convert legacy empty slot case
-            if (string.IsNullOrEmpty(savedSlot.item.itemID))
-            {
+            // Convert legacy empty slot or no GUID case
+            if (string.IsNullOrEmpty(savedSlot.item.name))
+            {               
                 GetSlots[i].UpdateSlot(new ItemData(), savedSlot.locked, savedSlot.price);
             }
-            else
+            else if(string.IsNullOrEmpty(savedSlot.item.itemID))
             {
                 GetSlots[i].UpdateSlot(savedSlot.item, savedSlot.locked, savedSlot.price);
+                Debug.Log(database.GetItemByName(savedSlot.item.name));
+                savedSlot.item.itemID = database.GetItemByName(savedSlot.item.name).itemID;
             }
+
+            GetSlots[i].UpdateSlot(savedSlot.item, savedSlot.locked, savedSlot.price);
+
         }
 
     }
@@ -274,7 +276,7 @@ public class InventorySlotObject
         }
     }
 
-    public void UpdateSlot(ItemData item, bool locked, float price)
+    public void UpdateSlot(ItemData item, bool locked = false, float price = 0)
     {
 
         if (OnBeforeUpdated != null)

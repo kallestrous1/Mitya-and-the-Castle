@@ -12,6 +12,7 @@ public class SceneDoorScript : MonoBehaviour
     bool unloaded;
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.tag != "Player") { return; }
         Rigidbody2D playerRB = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         playerRB.isKinematic = true;
         playerRB.linearVelocity = new Vector2(0, 0);
