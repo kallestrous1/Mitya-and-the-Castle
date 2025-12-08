@@ -25,6 +25,7 @@ public class StateChangingObject : DataPersistenceBehaviour
             active = newgameState;
             data.stateChangingObjects.Add(objectName, active);
         }
+        Debug.Log("Loading state for " + objectName + ": " + active);
         this.gameObject.SetActive(active);
     }
 

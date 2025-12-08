@@ -24,9 +24,17 @@ public class PauseMenu : MonoBehaviour
             {
                 Resume();
             }
-            else
+            else if (GameStateManager.instance.gameState == GameState.Play)
             {
                 Pause();
+            }
+            else if (GameStateManager.instance.gameState == GameState.inventory)
+            {
+                InventoryController.instance.ExitInventory();
+            }
+            else if (GameStateManager.instance.gameState == GameState.dialogue)
+            {
+                DialogueManager.instance.ForceExitDialogueMode();
             }
         }
     }
@@ -35,14 +43,14 @@ public class PauseMenu : MonoBehaviour
     {    
         pauseMenuUI.SetActive(false);
          Time.timeScale = 1.0f;
-        NewManager.manager.currentGameState = GameState.Play;
+        GameStateManager.instance.ChangeState(GameState.Play);
 
         gamePaused = false;
     }
     void Pause()
     {
         pauseMenuUI.SetActive(true);
-        NewManager.manager.currentGameState = GameState.Paused;
+        GameStateManager.instance.ChangeState(GameState.Paused);
         Time.timeScale = 0.0f;
         gamePaused = true;
     }
@@ -51,7 +59,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1.0f;
 
         gamePaused = false;
-        NewManager.manager.currentGameState = GameState.Play;
+        GameStateManager.instance.ChangeState(GameState.MainMenu);
         NewManager.manager.MoveToScene("Menu", SceneManager.GetActiveScene().name, false);
         if (SceneManager.GetSceneByName("Base Scene").isLoaded)
         {

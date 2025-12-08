@@ -10,7 +10,7 @@ public class GameData
     public  string playerSpawnScene = "Grandpa's Farm";
     public float playerMoney = 0f;
 
-    public List<ItemInGame> collectedItems;
+//    public List<ItemInGame> collectedItems;
     public List<int> itemsToDestroy;
     public SerializableDictionary<ItemObject, Vector2> activeItems;
 
@@ -27,7 +27,7 @@ public class GameData
         this.playerSpawnScene = "Grandpa's Farm";
         this.playerMoney = 0f;
 
-        this.collectedItems = new List<ItemInGame>();
+      //  this.collectedItems = new List<ItemInGame>();
         this.itemsToDestroy = new List<int>();
         this.activeItems = new SerializableDictionary<ItemObject, Vector2>();
         

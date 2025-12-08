@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum GameState { Play, Paused }
+//public enum GameState { Play, Paused }
 
 public class NewManager : DataPersistenceBehaviour
 {
@@ -38,7 +38,6 @@ public class NewManager : DataPersistenceBehaviour
     #endregion
 
     #region Runtime state
-    public GameState currentGameState;
     static bool gameStarted = false;
     private GameObject player;
     private bool respawnHandled = false;
@@ -71,8 +70,8 @@ public class NewManager : DataPersistenceBehaviour
     {
         DataPersistenceManager.instance.NewGame();
         StartCoroutine(ResetStoriesDelayed());
-        currentGameState = GameState.Paused;
-
+        GameStateManager.instance.ChangeState(GameState.movingScene);
+            
         defaultPlayerLocation = new Vector2(2, -59);
 
         // Load base scene first and then the player spawn scene
@@ -85,7 +84,7 @@ public class NewManager : DataPersistenceBehaviour
     /// </summary>
     public void MoveToScene(string newScene, string previousScene, bool upBoost)
     {
-        currentGameState = GameState.Paused;
+        GameStateManager.instance.ChangeState(GameState.movingScene);
         DataPersistenceManager.instance.SaveGame();
         // Pass the previous scene so we unload it after the transition finishes.
         StartCoroutine(SceneTransition(newScene, upBoost, false, previousScene));
@@ -93,7 +92,7 @@ public class NewManager : DataPersistenceBehaviour
 
     public void AddScene(string newScene, bool upBoost)
     {
-        currentGameState = GameState.Paused;
+        GameStateManager.instance.ChangeState(GameState.movingScene);
         DataPersistenceManager.instance.SaveGame();
         StartCoroutine(SceneTransition(newScene, upBoost, false, previousSceneToUnload: null)); // keep previous
     }
@@ -149,6 +148,7 @@ public class NewManager : DataPersistenceBehaviour
         }
         else
         {
+            Debug.Log("setting active scene to " + newScene);
             SceneManager.SetActiveScene(loadedScene);
         }
 
@@ -171,7 +171,7 @@ public class NewManager : DataPersistenceBehaviour
 
         if (loadingScreenPanel) loadingScreenPanel.SetActive(false);
 
-        currentGameState = GameState.Play;
+        GameStateManager.instance.ChangeState(GameState.Play);
     }
 
 

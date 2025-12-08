@@ -25,7 +25,8 @@ public class DynamicInterface : UserInterface
 
     public override void CreateSlots()
     {
-        if(slotParent == null)
+        Debug.Log("creating slots for " + inventory.name);
+        if (slotParent == null)
         {
             slotParent = this.transform;
         }

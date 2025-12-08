@@ -4,8 +4,26 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    bool inventoryActive = true;
+    #region Singleton
+    public static InventoryController instance { get; private set; }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
+    #endregion
+
+    bool inventoryActive = false;
     public GameObject inventory;
+    public GameObject[] inventoryPanels;
     public GameObject shop;
     [SerializeField] private GameObject ItemDetailDisplay;
     CanvasGroup inventoryCanvas;
@@ -33,26 +51,50 @@ public class InventoryController : MonoBehaviour
     {
         if (inventoryActive)
         {
-            if (closeInventory)
-            {
-                AudioManager.Instance.Play(closeInventory);
-            }
-            inventoryCanvas.interactable = false;
-            inventoryCanvas.alpha = 0;
-            inventoryActive = false;
-            inventory.SetActive(inventoryActive);
+            ExitInventory();
         }
-        else
+        else if(GameStateManager.instance.gameState == GameState.Play)
         {
-            if (openInventory)
-            {
-                AudioManager.Instance.Play(openInventory);
-            }
-            inventoryCanvas.interactable = true;
-            inventoryCanvas.alpha = 1;
-            inventoryActive = true;
-            inventory.SetActive(inventoryActive);
+           EnterInventory();
         }
+    }
+
+    public void ExitInventory()
+    {
+        if (closeInventory)
+        {
+            AudioManager.Instance.Play(closeInventory);
+        }
+        CloseItemDetailDisplay();
+        inventoryCanvas.interactable = false;
+        inventoryCanvas.alpha = 0;
+        GameStateManager.instance.ChangeState(GameState.Play);
+        inventoryActive = false;
+        Time.timeScale = 1.0f;
+        foreach(GameObject panel in inventoryPanels)
+        {
+            panel.SetActive(inventoryActive);
+        }
+        // inventory.SetActive(inventoryActive);
+    }
+
+    public void EnterInventory()
+    {
+        if (openInventory)
+        {
+            AudioManager.Instance.Play(openInventory);
+        }
+        OpenItemDetailDisplay();
+        inventoryCanvas.interactable = true;
+        inventoryCanvas.alpha = 1;
+        GameStateManager.instance.ChangeState(GameState.inventory);
+        Time.timeScale = 0.0f;
+        inventoryActive = true;
+        foreach (GameObject panel in inventoryPanels)
+        {
+            panel.SetActive(inventoryActive);
+        }
+        //inventory.SetActive(inventoryActive);
     }
 
     public void CloseItemDetailDisplay()

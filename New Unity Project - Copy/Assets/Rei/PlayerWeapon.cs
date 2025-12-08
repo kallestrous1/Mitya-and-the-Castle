@@ -14,13 +14,17 @@ public class PlayerWeapon : DataPersistenceBehaviour
 
 
     public WeaponObject activeWeapon;
-    
+    public WeaponObject defaultWeapon = null;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.gameObject.tag == "Enemy")
         {
+            if(activeWeapon == null)
+            {
+                activeWeapon = defaultWeapon;
+            }
             Rigidbody2D enemyrb = collision.GetComponent<Rigidbody2D>();
 
             if (activeWeapon.hitParticleEffect)
@@ -87,7 +91,7 @@ public class PlayerWeapon : DataPersistenceBehaviour
         player.GetComponent<Animator>().runtimeAnimatorController = baseAnimations;
         PlayerWeaponContainer = GameObject.FindGameObjectWithTag("Weapon Container");
         PlayerWeaponContainer.GetComponentInChildren<SpriteRenderer>().sprite = null;
-        PlayerWeaponContainer.GetComponentInChildren<PlayerWeapon>().activeWeapon = null;
+        PlayerWeaponContainer.GetComponentInChildren<PlayerWeapon>().activeWeapon = defaultWeapon;
     }
 
 }

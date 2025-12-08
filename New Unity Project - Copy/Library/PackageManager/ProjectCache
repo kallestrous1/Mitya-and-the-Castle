@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638971885639874578
-    m_Hash: 4172996306
+      ticks: 639000269147688839
+    m_Hash: 2042710474
   m_LockFileStatus:
     m_FilePath: C:/Users/Kalle/Documents/The-Unity-Game/New Unity Project - Copy/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638971885639897657
-    m_Hash: 51807689
+      ticks: 639000269147724580
+    m_Hash: 3172413145
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -164,6 +164,7 @@ m_ResolvedPackages:
     - 9.1.3
     - 9.2.0
     - 9.2.1
+    - 9.2.2
     - 10.0.0-pre.1
     - 10.0.0-pre.2
     - 10.0.0
@@ -177,16 +178,22 @@ m_ResolvedPackages:
     - 10.1.4
     - 10.2.0
     - 10.2.1
+    - 10.2.2
     - 11.0.0
     - 12.0.0
     - 12.0.1
     - 12.0.2
+    - 12.0.3
     - 13.0.0
     - 13.0.1
+    - 13.0.2
     - 14.0.0
+    - 14.0.1
+    - 14.0.2
     compatible:
     - 12.0.2
-    recommended: 12.0.2
+    - 12.0.3
+    recommended: 12.0.3
     deprecated: []
   dependencies:
   - name: com.unity.2d.common
@@ -597,11 +604,13 @@ m_ResolvedPackages:
     - 11.0.0
     - 12.0.0
     - 12.0.1
+    - 12.0.2
     - 13.0.0
     - 14.0.0
     compatible:
     - 12.0.1
-    recommended: 12.0.1
+    - 12.0.2
+    recommended: 12.0.2
     deprecated: []
   dependencies:
   - name: com.unity.2d.common
@@ -791,6 +800,175 @@ m_ResolvedPackages:
       scopePatternExpression: 
       message: 
       readMoreLink: 
+- packageId: com.unity.2d.tilemap.extras@5.0.2
+  testable: 0
+  isDirectDependency: 1
+  version: 5.0.2
+  source: 1
+  resolvedPath: C:\Users\Kalle\Documents\The-Unity-Game\New Unity Project - Copy\Library\PackageCache\com.unity.2d.tilemap.extras@20479734ca02
+  assetPath: Packages/com.unity.2d.tilemap.extras
+  name: com.unity.2d.tilemap.extras
+  displayName: 2D Tilemap Extras
+  author:
+    name: 
+    email: 
+    url: 
+  category: 2D
+  type: 
+  description: '2D Tilemap Extras is a package that contains extra scripts for use
+    with 2D Tilemap features in Unity. These include custom Tiles and Brushes for
+    the Tilemap feature.
+
+
+    The following are included in the package:
+
+    Brushes:
+    GameObject Brush, Group Brush, Line Brush, Random Brush
+
+    Tiles: Animated
+    Tile, Rule Tile, Rule Override Tile
+
+    Other: Grid Information, Custom Rules
+    for Rule Tile'
+  errors: []
+  versions:
+    all:
+    - 1.5.0-preview
+    - 1.6.0-preview.1
+    - 1.6.1-preview
+    - 1.6.2-preview
+    - 1.6.3-preview
+    - 1.6.4-preview
+    - 1.7.0-preview
+    - 1.8.0-preview
+    - 1.8.1-preview
+    - 1.8.2-preview
+    - 1.8.3-preview
+    - 1.8.4-preview
+    - 2.0.0-pre.1
+    - 2.0.0-pre.2
+    - 2.0.0
+    - 2.2.0
+    - 2.2.1
+    - 2.2.2
+    - 2.2.3
+    - 2.2.4
+    - 2.2.5
+    - 2.2.6
+    - 2.2.7
+    - 2.2.8
+    - 3.0.0
+    - 3.0.1
+    - 3.0.2
+    - 3.0.3
+    - 3.1.0
+    - 3.1.1
+    - 3.1.2
+    - 3.1.3
+    - 4.0.0-pre.1
+    - 4.0.0-pre.2
+    - 4.0.0-pre.3
+    - 4.0.0
+    - 4.0.1
+    - 4.0.2
+    - 4.1.0
+    - 4.2.1
+    - 4.3.0
+    - 4.3.1
+    - 5.0.0
+    - 5.0.1
+    - 5.0.2
+    - 6.0.0
+    - 6.0.1
+    - 7.0.0
+    compatible:
+    - 5.0.1
+    - 5.0.2
+    recommended: 5.0.2
+    deprecated: []
+  dependencies:
+  - name: com.unity.2d.tilemap
+    version: 1.0.0
+  - name: com.unity.modules.tilemap
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.2d.tilemap
+    version: 1.0.0
+  - name: com.unity.modules.tilemap
+    version: 1.0.0
+  - name: com.unity.modules.physics2d
+    version: 1.0.0
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.hierarchycore
+    version: 1.0.0
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  keywords:
+  - 2d
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+    compliance:
+      status: 0
+      violations: []
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638990359736290000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.2d.tilemap.extras@5.0/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/2d.git
+    revision: 27cd1e98fa94b5cc24ba387dd70ec2493491c485
+    path: 
+  unityLifecycle:
+    version: 5.0.1
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+    isDiscoverable: 1
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Added\n- [AutoTile] Add Has Physics Shape property
+    if Collider Type is set to Sprite. AutoTile will set Collider Type to Sprite
+    if the Sprite has physics shape and set Collider Type to None if the Sprite has
+    no physics shape.\n\n### Fixed\n- [AutoTileEditor] Fix minimum texture scale
+    size when texture is smaller than 256 pixels\n- [AutoTileEditor] Fix texture
+    display when texture is removed from AutoTile\n- [RuleTileEditor] Fix exception
+    thrown when a Rule is added to an empty RuleTile, removed and added again."}'
+  assetStore:
+    productId: 
+  fingerprint: 20479734ca029ad697e114aa9f7a8a1a6e79e1f4
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 5.0.1
+    minimumUnityVersion: 6000.2.0a1
+  compliance:
+    status: 0
+    violation:
+      scopePatternExpression: 
+      message: 
+      readMoreLink: 
 - packageId: com.unity.ai.navigation@2.0.9
   testable: 0
   isDirectDependency: 1
@@ -962,9 +1140,11 @@ m_ResolvedPackages:
     - 1.2.1
     - 1.3.0
     - 1.3.1
+    - 1.4.0
     compatible:
     - 1.3.0
     - 1.3.1
+    - 1.4.0
     recommended: 1.3.1
     deprecated: []
   dependencies:
@@ -1599,9 +1779,13 @@ m_ResolvedPackages:
     - 2.9.2
     - 2.9.3
     - 2.10.0
+    - 2.10.1
+    - 2.10.2
     compatible:
     - 2.9.3
     - 2.10.0
+    - 2.10.1
+    - 2.10.2
     recommended: 2.9.3
     deprecated: []
   dependencies: []
@@ -1722,9 +1906,11 @@ m_ResolvedPackages:
     - 4.2.1
     - 4.2.2
     - 4.2.3
+    - 4.2.4
     compatible:
     - 4.2.3
-    recommended: 4.2.3
+    - 4.2.4
+    recommended: 4.2.4
     deprecated: []
   dependencies:
   - name: com.unity.editorcoroutines
@@ -1920,12 +2106,12 @@ m_ResolvedPackages:
       scopePatternExpression: 
       message: 
       readMoreLink: 
-- packageId: com.unity.ide.visualstudio@2.0.23
+- packageId: com.unity.ide.visualstudio@2.0.25
   testable: 0
   isDirectDependency: 1
-  version: 2.0.23
+  version: 2.0.25
   source: 1
-  resolvedPath: C:\Users\Kalle\Documents\The-Unity-Game\New Unity Project - Copy\Library\PackageCache\com.unity.ide.visualstudio@198cdf337d13
+  resolvedPath: C:\Users\Kalle\Documents\The-Unity-Game\New Unity Project - Copy\Library\PackageCache\com.unity.ide.visualstudio@74aa435fc4bb
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -1974,7 +2160,7 @@ m_ResolvedPackages:
     deprecated: []
   dependencies:
   - name: com.unity.test-framework
-    version: 1.1.9
+    version: 1.1.31
   resolvedDependencies:
   - name: com.unity.test-framework
     version: 1.6.0
@@ -2000,13 +2186,13 @@ m_ResolvedPackages:
   entitlements:
     licensingModel: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638786696173840000
+  datePublishedTicks: 638954434425230000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.visualstudio@2.0/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
-    revision: 0fe3b29f9aff2b90b9f0962ae35036a824d3dd6b
+    revision: 3765e21a94ea1100e4b377121dbf771c3cbd874a
     path: 
   unityLifecycle:
     version: 2.0.23
@@ -2020,18 +2206,15 @@ m_ResolvedPackages:
   git:
     hash: 
     revision: 
-  upmReserved: '{"changelog":"Integration:\n\n- Monitor `additionalfile` extension
-    by default.\n- Try opening a Visual Studio Code workspace if there''s one (`.code-workspace`
-    file in the Unity project).\n\nProject generation:\n\n- Identify `asset`, `meta`,
-    `prefab` and `unity` files as `yaml` (Visual Studio Code).\n- Add `sln`/`csproj`
-    file nesting (Visual Studio Code).\n- Improve SDK style project generation."}'
+  upmReserved: '{"changelog":"Internal:\n\n- Fixes for release validation and release
+    process"}'
   assetStore:
     productId: 
-  fingerprint: 198cdf337d13c83ca953581515630d66b779e92b
+  fingerprint: 74aa435fc4bb41890f400130ec80f271d1292fd4
   editorCompatibility:
     compatibilityLevel: 0
     minimumPackageVersion: 2.0.23
-    minimumUnityVersion: 2019.4.25f1
+    minimumUnityVersion: 2021.3.0a1
   compliance:
     status: 0
     violation:
@@ -2219,9 +2402,13 @@ m_ResolvedPackages:
     - 1.14.1
     - 1.14.2
     - 1.15.0
+    - 1.16.0
+    - 1.17.0
     compatible:
     - 1.14.2
     - 1.15.0
+    - 1.16.0
+    - 1.17.0
     recommended: 1.14.2
     deprecated: []
   dependencies:
@@ -6243,7 +6430,7 @@ m_ResolvedPackages:
       violations: []
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
   datePublishedTicks: 638792046006940000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.settings-manager@2.1/manual/index.html
@@ -6441,9 +6628,11 @@ m_ResolvedPackages:
     - 1.8.23
     - 1.8.24
     - 1.8.25
+    - 1.8.26
     compatible:
     - 1.8.25
-    recommended: 1.8.25
+    - 1.8.26
+    recommended: 1.8.26
     deprecated: []
   dependencies:
   - name: com.unity.mathematics
@@ -6591,6 +6780,7 @@ m_ResolvedPackages:
     - 1.2.0
     - 1.2.1
     - 1.3.1
+    - 1.3.2
     - 2.0.0-pre.2
     - 2.0.0-pre.3
     - 2.0.0-pre.4
@@ -6613,15 +6803,19 @@ m_ResolvedPackages:
     - 2.0.0-pre.21
     - 2.0.0-pre.22
     - 2.0.0
+    - 2.0.1
     - 2.1.0-pre.1
     - 2.1.0-pre.2
     - 2.1.0-pre.3
     - 2.1.0
     - 2.1.1-pre.1
     - 2.1.1
+    - 2.1.2
     - 2.2.0-pre.1
+    - 2.2.0-pre.2
     compatible:
     - 1.3.1
+    - 1.3.2
     - 2.0.0-pre.2
     - 2.0.0-pre.3
     - 2.0.0-pre.4
@@ -6644,14 +6838,17 @@ m_ResolvedPackages:
     - 2.0.0-pre.21
     - 2.0.0-pre.22
     - 2.0.0
+    - 2.0.1
     - 2.1.0-pre.1
     - 2.1.0-pre.2
     - 2.1.0-pre.3
     - 2.1.0
     - 2.1.1-pre.1
     - 2.1.1
+    - 2.1.2
     - 2.2.0-pre.1
-    recommended: 1.3.1
+    - 2.2.0-pre.2
+    recommended: 1.3.2
     deprecated: []
   dependencies:
   - name: com.unity.modules.physics
@@ -6879,12 +7076,14 @@ m_ResolvedPackages:
     - 2.6.0-pre.3
     - 2.6.0-pre.4
     - 2.6.2
+    - 2.6.3
     compatible:
     - 2.5.7
     - 2.6.0-exp.2
     - 2.6.0-pre.3
     - 2.6.0-pre.4
     - 2.6.2
+    - 2.6.3
     recommended: 2.5.7
     deprecated: []
   dependencies:
@@ -7167,6 +7366,7 @@ m_ResolvedPackages:
     - 12.0.0
     - 12.0.1
     - 13.0.0
+    - 13.0.1
     compatible:
     - 11.0.1
     recommended: 11.0.1

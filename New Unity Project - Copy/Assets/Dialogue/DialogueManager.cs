@@ -68,7 +68,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (!dialogueIsPlaying)
+        if (GameStateManager.instance.gameState != GameState.dialogue)
         {
             return;
         }
@@ -89,8 +89,22 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON)
+    public void EnterDialogueMode(TextAsset inkJSON, GameObject dialogueCue = null)
     {
+        if(GameStateManager.instance.gameState == GameState.dialogue)
+        {
+            Debug.LogWarning("Trying to enter dialogue mode while already in dialogue mode");
+            return;
+        }
+        if(GameStateManager.instance.gameState != GameState.Play)
+        {
+            return;
+        }
+
+        if(dialogueCue != null)
+        {
+            dialogueCue.SetActive(false);
+        }
         currentStory = new Story(inkJSON.text);
         currentStoryName = inkJSON.name;
 
@@ -102,6 +116,7 @@ public class DialogueManager : MonoBehaviour
 
         dialogueVariables.StartListening(currentStory);
 
+        GameStateManager.instance.ChangeState(GameState.dialogue);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
@@ -153,6 +168,11 @@ public class DialogueManager : MonoBehaviour
         DisplayChoices();
     }
 
+    public void ForceExitDialogueMode()
+    {
+        StartCoroutine(ExitDialogueMode());
+    }
+
     private IEnumerator ExitDialogueMode()
     {
         yield return new WaitForSeconds(0.2f);
@@ -164,11 +184,13 @@ public class DialogueManager : MonoBehaviour
         dialogueVariables.StopListening(currentStory);
 
         dialogueIsPlaying = false;
+        GameStateManager.instance.ChangeState(GameState.Play);
         dialoguePanel.SetActive(false);
         AudioManager.Instance.Play(exitDialogueMode);
         dialogueText.text = "";
-        shopController.SetShopInactive();
-        inventoryController.OpenItemDetailDisplay();
+        if(shopController.currentShop != null)
+            shopController.SetShopInactive();
+        inventoryController.CloseItemDetailDisplay();
     }
 
     private void DisplayChoices()
@@ -190,7 +212,6 @@ public class DialogueManager : MonoBehaviour
         for (int i = index; i < choices.Length; i++)
         {
             choices[i].gameObject.transform.parent.gameObject.SetActive(false);
-           // choices[i].gameObject.SetActive(false);
         }
     }
 

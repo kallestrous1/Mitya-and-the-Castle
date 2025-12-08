@@ -24,8 +24,116 @@ MonoBehaviour:
         itemID: 
         name: 
       item:
-        itemID: d64143d5-f5bf-4936-ac7e-5b537f8bf84e
-        name: Fancy Sword
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
+    - AllowedItems: 0
+      locked: 0
+      price: 0
+      DefaultItem:
+        itemID: 
+        name: 
+      item:
+        itemID: 
+        name: 
     - AllowedItems: 0
       locked: 0
       price: 0

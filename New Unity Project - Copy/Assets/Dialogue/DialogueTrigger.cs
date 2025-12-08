@@ -10,6 +10,7 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
     private bool playerInRange;
+    private bool dialogueStarted = false;
 
     private void Awake()
     {
@@ -21,12 +22,16 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (playerInRange)
         {
-            visualCue.SetActive(true);
-            if (Input.GetButtonDown("Interact") && !DialogueManager.getInstance().dialogueIsPlaying)
+            if (!dialogueStarted)
             {
-                Debug.Log("starting dialogue");
-                StartCoroutine(talk());
+                visualCue.SetActive(true);
             }
+                if (Input.GetButtonDown("Interact") && GameStateManager.instance.gameState != GameState.dialogue)
+                {
+                    Debug.Log("starting dialogue");
+                    dialogueStarted = true;
+                    StartCoroutine(talk());
+                }            
         }
         else
         {
@@ -37,7 +42,7 @@ public class DialogueTrigger : MonoBehaviour
     private IEnumerator talk()
     {
         yield return new WaitForSeconds(0.2f);
-        DialogueManager.getInstance().EnterDialogueMode(inkJSON);
+        DialogueManager.getInstance().EnterDialogueMode(inkJSON, visualCue);
 
     }
 
@@ -54,6 +59,7 @@ public class DialogueTrigger : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerInRange = false;
+            dialogueStarted = false;
         }
     }
 

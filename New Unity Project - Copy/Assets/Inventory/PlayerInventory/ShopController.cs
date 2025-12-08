@@ -7,6 +7,7 @@ public class ShopController : MonoBehaviour
     public InventoryObject currentShop;
     public DynamicInterface shopInterface;
     public GameObject shop;
+    public GameObject ItemDetailDisplay;
 
  
 
@@ -42,6 +43,8 @@ public class ShopController : MonoBehaviour
         Debug.Log(currentShop);
         currentShop.Load();
         shop.SetActive(true);
+        if (ItemDetailDisplay != null)
+            ItemDetailDisplay.SetActive(true);
     }
 
     public void SetShopInactive()
@@ -51,7 +54,9 @@ public class ShopController : MonoBehaviour
             Debug.Log("No current shop to set inactive.");
             return;
         }
+        ItemDetailDisplay.SetActive(false);
         shop.SetActive(false);
         currentShop.Save();
+        currentShop = null;
     }
 }   

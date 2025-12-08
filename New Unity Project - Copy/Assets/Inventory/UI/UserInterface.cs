@@ -83,6 +83,11 @@ public abstract class UserInterface : MonoBehaviour
     protected void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
     {
         EventTrigger trigger = obj.GetComponent<EventTrigger>();
+        if (trigger == null)
+        {
+            Debug.Log(obj.name + " does not have event trigger component");
+        }
+
         var eventTrigger = new EventTrigger.Entry();
         eventTrigger.eventID = type;
         eventTrigger.callback.AddListener(action);
@@ -208,6 +213,7 @@ public abstract class UserInterface : MonoBehaviour
 
         if(FindAnyObjectByType<PlayerMoney>().playerMoney >= MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject.price)
         {
+            GameObject buyslot = MouseData.slotHoveredOver;
             if (buySound)
             {
                 AudioManager.Instance.Play(buySound);
@@ -216,7 +222,7 @@ public abstract class UserInterface : MonoBehaviour
             playerInventory.AddItem(MouseData.interfaceMouseIsOver.slotsOnInterface[obj].item);
             MouseData.interfaceMouseIsOver.slotsOnInterface[obj].locked = false;
             MouseData.interfaceMouseIsOver.slotsOnInterface[obj].UpdateSlot(new ItemData());
-            MouseData.slotHoveredOver.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            buyslot.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
         else
         {

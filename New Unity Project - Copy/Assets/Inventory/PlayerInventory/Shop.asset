@@ -27,83 +27,11 @@ MonoBehaviour:
         itemID: 
         name: 
     - AllowedItems: 0
-      locked: 0
+      locked: 1
       price: 3
       DefaultItem:
         itemID: 
         name: DashCharm
       item:
-        itemID: 
-        name: 
-    - AllowedItems: 0
-      locked: 1
-      price: 0
-      DefaultItem:
-        itemID: 
-        name: 
-      item:
-        itemID: 
-        name: 
-    - AllowedItems: 0
-      locked: 1
-      price: 0
-      DefaultItem:
-        itemID: 
-        name: 
-      item:
-        itemID: 
-        name: 
-    - AllowedItems: 0
-      locked: 1
-      price: 0
-      DefaultItem:
-        itemID: 
-        name: 
-      item:
-        itemID: 
-        name: 
-    - AllowedItems: 0
-      locked: 1
-      price: 0
-      DefaultItem:
-        itemID: 
-        name: 
-      item:
-        itemID: 
-        name: 
-    - AllowedItems: 0
-      locked: 1
-      price: 0
-      DefaultItem:
-        itemID: 
-        name: 
-      item:
-        itemID: 
-        name: 
-    - AllowedItems: 0
-      locked: 1
-      price: 0
-      DefaultItem:
-        itemID: 
-        name: 
-      item:
-        itemID: 
-        name: 
-    - AllowedItems: 0
-      locked: 1
-      price: 0
-      DefaultItem:
-        itemID: 
-        name: 
-      item:
-        itemID: 
-        name: 
-    - AllowedItems: 0
-      locked: 1
-      price: 0
-      DefaultItem:
-        itemID: 
-        name: 
-      item:
-        itemID: 
-        name: 
+        itemID: ffba221b-7e8e-4e9c-8481-bd91de0ecdeb
+        name: DashCharm

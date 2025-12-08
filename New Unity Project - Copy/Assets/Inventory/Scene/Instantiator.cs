@@ -41,7 +41,7 @@ public class Instantiator : MonoBehaviour
         {
             FindCurrentItemTracker().itemsInGame.Add(itemObject, item.GetComponent<Transform>().position);
         }
-        catch (System.ArgumentException e)
+        catch (System.ArgumentException)
         {
             Debug.LogError("Element already exists in savestate. Duplicate items re not yet accounted for");
         }

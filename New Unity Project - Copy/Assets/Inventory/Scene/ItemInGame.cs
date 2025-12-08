@@ -18,7 +18,6 @@ public class ItemInGame : DataPersistenceBehaviour
 
     private void Start()
     {
-        this.transform.parent.gameObject.SetActive(active);
         //this.id = item.data.Id;
         // Debug.Log(this.id);
         //this.id = 5;
@@ -27,6 +26,7 @@ public class ItemInGame : DataPersistenceBehaviour
     public void ChangeState(bool state)
     {
         active = state;
+        Debug.Log("Item " + itemName + " state changed to " + state);
         EventManager.OnItemStateChanged.Invoke(itemName, state);
     }
 
@@ -59,7 +59,7 @@ public class ItemInGame : DataPersistenceBehaviour
     {
         if (this)
         {
-            Debug.Log(active);
+            Debug.Log(itemName + "state saved as: " + active);
             if (data.itemStates.ContainsKey(itemName))
             {
                 data.itemStates[itemName] = active;

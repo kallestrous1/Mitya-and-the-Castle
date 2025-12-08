@@ -114,8 +114,13 @@ public class PlayerController : DataPersistenceBehaviour
 
     private void Update()
     {
-        if (NewManager.manager.currentGameState == GameState.Paused) return;
-        if (DialogueManager.getInstance().dialogueIsPlaying) return;
+   /*     if (GameStateManager.instance.gameState != GameState.Play)
+        {
+            ani.SetBool("IsDashing", false);
+            rb.linearVelocity = new Vector2(0, 0);
+            return;
+        }*/
+
         if (knockback.isBeingKnockedBack) return;
 
 

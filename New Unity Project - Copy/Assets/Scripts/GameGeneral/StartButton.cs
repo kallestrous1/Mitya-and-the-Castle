@@ -36,7 +36,7 @@ public class StartButton : BasicButton, IPointerEnterHandler
 
 
                 //    SceneManager.LoadSceneAsync("Base Scene", LoadSceneMode.Additive);
-                StartCoroutine(SetActiveScene(spawnScene));
+              //  StartCoroutine(SetActiveScene(spawnScene));
 
             }
             else
@@ -44,7 +44,7 @@ public class StartButton : BasicButton, IPointerEnterHandler
                 Debug.Log("Using default initial spawn scene");
                 SceneManager.LoadScene("Grandpa's Farm", LoadSceneMode.Additive);
                 SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
-                StartCoroutine(SetActiveScene("Grandpa's Farm"));
+             //   StartCoroutine(SetActiveScene("Grandpa's Farm"));
             }
         }
         
@@ -54,6 +54,7 @@ public class StartButton : BasicButton, IPointerEnterHandler
     {
         yield return new WaitForSeconds(0.1f);
         DataPersistenceManager.instance.SaveGame();
+        Debug.Log("Setting active scene to " + sceneName);
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
         NewManager.manager.UnloadScenePublic("Menu");
 
