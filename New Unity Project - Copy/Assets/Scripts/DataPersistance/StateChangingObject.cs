@@ -1,43 +1,64 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StateChangingObject : DataPersistenceBehaviour         
+public class StateChangingObject : EntityPersistenceBehaviour         
 {
+
     public bool active;
     public bool newgameState;
-    public string objectName = "boss bandit";
-
 
     public void ChangeObjectState(bool newState)
     {
+        if (active == newState) return;
+
         active = newState;
+
+        if (!DataPersistenceManager.instance.IsLoading)
+        {
+            DataPersistenceManager.instance.gameData.stateChangingObjects[DebugID] = active;
+        }
+
+        gameObject.SetActive(active);
     }
 
     public override void LoadData(GameData data)
     {
-        
-        if (data.stateChangingObjects.ContainsKey(objectName))
+
+        if (data == null)
         {
-            active = data.stateChangingObjects[objectName];
+            Debug.LogError($"{name}: GameData is null");
+            return;
+        }
+
+        if (data.stateChangingObjects == null)
+        {
+            Debug.LogError($"{name}: stateChangingObjects dictionary is null");
+            return;
+        }
+
+        if (data.stateChangingObjects.TryGetValue(DebugID, out bool savedState))
+        {
+            active = savedState;
         }
         else
         {
             active = newgameState;
-            data.stateChangingObjects.Add(objectName, active);
+            data.stateChangingObjects[DebugID] = active;
         }
-        Debug.Log("Loading state for " + objectName + ": " + active);
-        this.gameObject.SetActive(active);
+        if (!this) return;              
+        if (!gameObject) return;
+        gameObject.SetActive(active);
     }
 
     public override void SaveData(GameData data)
     {
-        if (data.stateChangingObjects.ContainsKey(objectName))
+        if (data.stateChangingObjects.ContainsKey(DebugID))
             {
-                data.stateChangingObjects[objectName] = active;
+                data.stateChangingObjects[DebugID] = active;
             }
             else
             {
-                data.stateChangingObjects.Add(objectName, active);
+                data.stateChangingObjects.Add(DebugID, active);
             }
         
     }
@@ -46,13 +67,13 @@ public class StateChangingObject : DataPersistenceBehaviour
     {
         active = newgameState;
 
-        if (data.stateChangingObjects.ContainsKey(objectName))
+        if (data.stateChangingObjects.ContainsKey(DebugID))
             {
-                data.stateChangingObjects[objectName] = active;
+                data.stateChangingObjects[DebugID] = active;
             }
             else
             {
-                data.stateChangingObjects.Add(objectName, active);
+                data.stateChangingObjects.Add(DebugID, active);
             }    
     }
 

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInventory : DataPersistenceBehaviour
 {
+
     public InventoryObject inventory;
     public InventoryObject equipment;
 
@@ -68,7 +69,7 @@ public class PlayerInventory : DataPersistenceBehaviour
 
         if (slot.ItemObject == null)
         {
-            return;
+            return;   
         }
         if (ignoreEquip)
         {

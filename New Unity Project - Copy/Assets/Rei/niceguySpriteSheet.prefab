@@ -1289,8 +1289,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -3.6014526, y: 2.8201325}
-  m_Size: {x: 7.7029514, y: 27.980684}
+  m_Offset: {x: -3.6014373, y: 1.1741623}
+  m_Size: {x: 7.7029414, y: 31.272594}
   m_Direction: 0
 --- !u!114 &8927405593207764433
 MonoBehaviour:
@@ -1322,6 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0c30ae97aef534681242b40c41afa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawnManager
+  playerHealth: {fileID: 5288524570132474603}
 --- !u!1 &403685491891853108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,7 +1763,7 @@ Transform:
   m_GameObject: {fileID: 5272563026931669246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66.5, y: 15.1, z: 0}
+  m_LocalPosition: {x: -3.2, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -10,6 +10,7 @@ public abstract class UserInterface : MonoBehaviour
 {
     public ItemDetailsInterface ItemDetailsInterface;
     public InventoryObject inventory;
+    public InventoryObject generalPlayerInventory;
     public InventoryObject equipment;
     public InventoryObject playerInventory;
     public Dictionary<GameObject, InventorySlotObject> slotsOnInterface = new Dictionary<GameObject, InventorySlotObject>();
@@ -201,10 +202,55 @@ public abstract class UserInterface : MonoBehaviour
 
     public void OnClick(GameObject obj)
     {
-
-        if (MouseData.interfaceMouseIsOver.slotsOnInterface[obj].locked)
+        if (MouseData.interfaceMouseIsOver.inventory.interfaceType == InterfaceType.Shop)
         {
-            TryToUnlockSlot(obj);
+            if (MouseData.interfaceMouseIsOver.slotsOnInterface[obj].locked)
+            {
+                TryToUnlockSlot(obj);
+            }
+        }
+        else if(MouseData.interfaceMouseIsOver.inventory.interfaceType == InterfaceType.Equipment)
+        {
+            InventorySlotObject emptyInventorySlot = generalPlayerInventory.FindEmptySlot();
+            if(emptyInventorySlot == null)
+            {
+                if (failToBuySound)
+                {
+                    AudioManager.Instance.Play(failToBuySound);
+                }
+                return;
+            }
+            inventory.SwapItems(slotsOnInterface[obj], emptyInventorySlot);
+
+            if (dragSound)
+            {
+                AudioManager.Instance.Play(dragSound);
+            }
+        }
+        else if(MouseData.interfaceMouseIsOver.inventory.interfaceType == InterfaceType.Inventory)
+        {
+            if (MouseData.interfaceMouseIsOver.slotsOnInterface[obj].item.itemID == "")
+            {
+                return;
+            }
+            ItemType type = MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject.type;
+            InventorySlotObject emptyEquipmentSlot = equipment.FindEmptySlotOfType(type);
+            if (emptyEquipmentSlot == null)
+            {
+                if (failToBuySound)
+                {
+                    AudioManager.Instance.Play(failToBuySound);
+                }
+                return;
+            }
+            else
+            {
+                inventory.SwapItems(slotsOnInterface[obj], emptyEquipmentSlot);
+                if (dragSound)
+                {
+                    AudioManager.Instance.Play(dragSound);
+                }
+            }
         }
     }
 
@@ -229,6 +275,19 @@ public abstract class UserInterface : MonoBehaviour
             if (failToBuySound)
             {
                 AudioManager.Instance.Play(failToBuySound);
+            }
+        }
+    }
+
+    public void UpdateAllSlots()
+    {
+        foreach (KeyValuePair<GameObject, InventorySlotObject> slot in slotsOnInterface)
+        {
+            if (!string.IsNullOrEmpty(slot.Value.item.itemID))
+            {
+                slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = slot.Value.ItemObject.uiDisplay;
+                slot.Value.UpdateSlot();
+                //code for full slot background // slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite.color = new Color(1, 1, 1, 1);
             }
         }
     }

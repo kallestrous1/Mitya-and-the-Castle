@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMoney :  DataPersistenceBehaviour
 {
+
     public float playerMoney = 0;
 
     private void Start()

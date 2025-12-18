@@ -7,30 +7,50 @@ VAR knotProgression = -> Start
 Hello grandson how are you?
     +[good]
     Oh that's wonderful to hear
-    ->MissingRing
+    ->Sunflowers
     +[bad]
     Oh man that sucks
-    ->MissingRing
+    ->Sunflowers
     
-===MissingRing===
-It seems I've lost my ring while I was out gathering mushrooms, would you go find it for me?
-    +[Of course]
-    ->WaitingForRing
+    
+===Sunflowers===
+The sunflowers look beautiful don't they
+water water water 
+and the sun yes the sun
+we must leave soon
+the mech
+but oh my son the ring
+bandits have stolen the activation ring
+you must retrieve it
+it's the only way we'll make it to the king's city
+the king's road has fallen
+the east isn't safe anymore
+we need the mech
+we need the ring
+->WaitingForRing
 
 ===WaitingForRing===
 ~knotProgression = -> WaitingForRing
-- have you found my ring?
+- have you found the ring?
 {hasRing:
     Oh wonderful!
+    we shall depart swiftly!
     ->test
   - else:
     Sigh, hopefully it'll turn up soon
-    ->MissingRing
+    ->WaitingForRing
 }
 
 ===test===
 ~knotProgression = -> test
-Mhm what a wonderful day we're having isnt it?
+mhm??
++[I found the ring in your shed]
+    what oh that is mighty strange
+    I must have misplaced it oh dear
+    what were you even doing back there
+    but we wil depart soon,
+    come back in an hour, pack your things
+    everything will be ready
 ->END
 
 

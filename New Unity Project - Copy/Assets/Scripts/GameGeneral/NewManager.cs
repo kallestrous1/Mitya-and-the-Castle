@@ -115,6 +115,35 @@ public class NewManager : DataPersistenceBehaviour
         CachePlayerReference();
         if (loadingScreenPanel) loadingScreenPanel.SetActive(true);
 
+        //save object data before scene change
+        DataPersistenceManager.instance.PrepareForSceneChange();
+
+        //code to manage reloading the same scene
+        #region reloading same scene
+        string activeSceneName = SceneManager.GetActiveScene().name;
+
+        bool isReloadingSameScene = (newScene == activeSceneName);
+        if (isReloadingSameScene)
+        {
+            Debug.Log($"Reloading scene: {newScene}");
+
+            // cache player data BEFORE unload
+            CachePlayerReference();
+
+            if (loadingScreenPanel) loadingScreenPanel.SetActive(true);
+
+            AsyncOperation unload = SceneManager.UnloadSceneAsync(activeSceneName);
+            if (unload != null)
+            {
+                while (!unload.isDone)
+                    yield return null;
+            }
+
+            // allow one frame for cleanup
+            yield return null;
+        }
+        #endregion
+
         // begin async load of the scene
         AsyncOperation loadScene = SceneManager.LoadSceneAsync(newScene, LoadSceneMode.Additive);
         if (loadScene == null)
@@ -159,11 +188,11 @@ public class NewManager : DataPersistenceBehaviour
         yield return StartCoroutine(HandlePlayerAfterSceneLoad_Coroutine(newScene, upBoost, newGame));
 
         // Unload previous scene only after new scene is loaded & player handled (if requested)
-        if (!string.IsNullOrEmpty(previousSceneToUnload))
+        if (!string.IsNullOrEmpty(previousSceneToUnload) && !isReloadingSameScene)
         {
             // only attempt unload if scene exists and is loaded
             Scene prev = SceneManager.GetSceneByName(previousSceneToUnload);
-            if (prev.IsValid() && prev.isLoaded && prev.name != newScene)
+            if (prev.IsValid() && prev.isLoaded)
             {
                 yield return UnloadScene(previousSceneToUnload);
             }

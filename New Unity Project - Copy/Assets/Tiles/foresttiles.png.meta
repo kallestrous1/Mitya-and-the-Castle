@@ -317,9 +317,9 @@ TextureImporter:
       name: foresttiles_9
       rect:
         serializedVersion: 2
-        x: 1168
+        x: 1155
         y: 384
-        width: 112
+        width: 125
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -581,9 +581,9 @@ TextureImporter:
       name: foresttiles_21
       rect:
         serializedVersion: 2
-        x: 1169
+        x: 1155
         y: 256
-        width: 111
+        width: 125
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -845,9 +845,9 @@ TextureImporter:
       name: foresttiles_33
       rect:
         serializedVersion: 2
-        x: 1162
+        x: 1154
         y: 128
-        width: 118
+        width: 126
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

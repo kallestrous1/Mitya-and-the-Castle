@@ -5,8 +5,9 @@ using UnityEditor;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class ItemInGame : DataPersistenceBehaviour
+public class ItemInGame : EntityPersistenceBehaviour
 {
+
     public ItemTracker itemTracker;
     public int id;
     public ItemObject item;
@@ -14,8 +15,12 @@ public class ItemInGame : DataPersistenceBehaviour
     public bool newgameState;
 
     public string homeScene;
-    public string itemName;
 
+    [ContextMenu("Validate Persistence IDs")]
+    void ValidateIDs()
+    {
+        Debug.Assert(!string.IsNullOrEmpty(DebugID), name);
+    }
     private void Start()
     {
         //this.id = item.data.Id;
@@ -23,21 +28,46 @@ public class ItemInGame : DataPersistenceBehaviour
         //this.id = 5;
     }
 
+    private void ApplyState()
+    {
+        if (transform.parent)
+            transform.parent.gameObject.SetActive(active);
+    }
+
+    private IEnumerator ApplyStateNextFrame()
+    {
+        yield return null;
+        ApplyState();
+    }
+
     public void ChangeState(bool state)
     {
+        if (active == state) return;
+
         active = state;
-        Debug.Log("Item " + itemName + " state changed to " + state);
-        EventManager.OnItemStateChanged.Invoke(itemName, state);
+        if (!DataPersistenceManager.instance.IsLoading)
+        {
+            Debug.Log("Registering state change for " + DebugID + "as" + active);
+            DataPersistenceManager.instance.gameData.stateChangingObjects[DebugID] = active;
+        }
+
+        StartCoroutine(ApplyStateNextFrame());
+        Debug.Log(DebugID + " state changed to: " + state);
+        if (!DataPersistenceManager.instance.IsLoading)
+        {
+            EventManager.OnItemStateChanged?.Invoke(DebugID, state);
+        }
     }
 
     public override void LoadData(GameData data)
     {
-        if (data.itemStates.ContainsKey(itemName))
-        {
-            Debug.Log("Loading item state for " + itemName + ": " + data.itemStates[itemName]);
-            active = data.itemStates[itemName];
-        }
-        this.transform.parent.gameObject.SetActive(active);
+        active = data.itemStates.TryGetValue(DebugID, out bool saved)
+       ? saved
+       : newgameState;
+        Debug.Log(DebugID + " state loaded as: " + active);
+        if (!this) return;
+        if( this.transform.parent)
+            this.transform.parent.gameObject.SetActive(active);
         /* foreach (int ID in data.itemsToDestroy)
          {
              if (ID == this.id)
@@ -57,18 +87,17 @@ public class ItemInGame : DataPersistenceBehaviour
 
     public override void SaveData(GameData data)
     {
-        if (this)
-        {
-            Debug.Log(itemName + "state saved as: " + active);
-            if (data.itemStates.ContainsKey(itemName))
+
+            Debug.Log(DebugID + "state saved as: " + active);
+            if (data.itemStates.ContainsKey(DebugID))
             {
-                data.itemStates[itemName] = active;
+                data.itemStates[DebugID] = active;
             }
             else
             {
-                data.itemStates.Add(itemName, active);
+                data.itemStates.Add(DebugID, active);
             }
-        }
+        
 
         /*     if (!isActive)
              {
@@ -83,14 +112,15 @@ public class ItemInGame : DataPersistenceBehaviour
         active = newgameState;
         if (this)
         {
-            if (data.itemStates.ContainsKey(itemName))
+            if (data.itemStates.ContainsKey(DebugID))
             {
-                data.itemStates[itemName] = active;
+                data.itemStates[DebugID] = active;
             }
             else
             {
-                data.itemStates.Add(itemName, active);
+                data.itemStates.Add(DebugID, active);
             }
         }
     }
 }
+   

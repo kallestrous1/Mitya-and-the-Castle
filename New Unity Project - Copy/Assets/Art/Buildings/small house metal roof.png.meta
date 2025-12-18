@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: 421ee380a89aa61418a8a4464b8ba353
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 862104120821114120
+    second: small house metal roof_0
+  - first:
+      213: -3153903674799575017
+    second: small house metal roof_1
+  - first:
+      213: -4193550704253683011
+    second: small house metal roof_2
+  - first:
+      213: -8704117859633148984
+    second: small house metal roof_3
+  - first:
+      213: -7817060451822688661
+    second: small house metal roof_4
+  - first:
+      213: 7958856311191476257
+    second: small house metal roof_5
+  - first:
+      213: 6603593215859848576
+    second: small house metal roof_6
+  - first:
+      213: 2177851585623828772
+    second: small house metal roof_7
+  - first:
+      213: -1563421363025227322
+    second: small house metal roof_8
+  - first:
+      213: -1879204321642658013
+    second: small house metal roof_9
+  - first:
+      213: 9186797276601954932
+    second: small house metal roof_10
+  - first:
+      213: -4822922316611285068
+    second: small house metal roof_11
+  - first:
+      213: -3053545785998398448
+    second: small house metal roof_12
+  - first:
+      213: -1843748564825598958
+    second: small house metal roof_13
+  - first:
+      213: -3689126855273951649
+    second: small house metal roof_14
+  - first:
+      213: -5900176659489688917
+    second: small house metal roof_15
+  - first:
+      213: -6595177287157561677
+    second: small house metal roof_16
+  - first:
+      213: -2000409435299257470
+    second: small house metal roof_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: small house metal roof_0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 3
+        width: 951
+        height: 1307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80561f8512fc6fb00800000000000000
+      internalID: 862104120821114120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 788
+        width: 26
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 710b5cf51551b34d0800000000000000
+      internalID: -3153903674799575017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_2
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 736
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbabe555ad38dc5c0800000000000000
+      internalID: -4193550704253683011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_3
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 698
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cbce6d4ce2c43780800000000000000
+      internalID: -8704117859633148984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_4
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 68
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b66aa558fe8348390800000000000000
+      internalID: -7817060451822688661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_5
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 78
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12891fea5a9837e60800000000000000
+      internalID: 7958856311191476257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_6
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 51
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0857180ea0da4ab50800000000000000
+      internalID: 6603593215859848576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_7
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 63
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42921a67a78493e10800000000000000
+      internalID: 2177851585623828772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_8
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 14
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1df9ebd8c9d4ae0800000000000000
+      internalID: -1563421363025227322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_9
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 14
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3274c1c30a9bbe5e0800000000000000
+      internalID: -1879204321642658013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_10
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 15
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 472b267037f0e7f70800000000000000
+      internalID: 9186797276601954932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_11
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 19
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bf841bb4b9811db0800000000000000
+      internalID: -4822922316611285068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_12
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 17
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01cac283940af95d0800000000000000
+      internalID: -3053545785998398448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_13
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 22
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2141f6ae270b966e0800000000000000
+      internalID: -1843748564825598958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_14
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 17
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5eca04cba69dccc0800000000000000
+      internalID: -3689126855273951649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_15
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 23
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba2f013b69c5e1ea0800000000000000
+      internalID: -5900176659489688917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_16
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 20
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b6cf3833393974a0800000000000000
+      internalID: -6595177287157561677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small house metal roof_17
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 9
+        width: 25
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 283e5ab973e1d34e0800000000000000
+      internalID: -2000409435299257470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      small house metal roof_0: 862104120821114120
+      small house metal roof_1: -3153903674799575017
+      small house metal roof_10: 9186797276601954932
+      small house metal roof_11: -4822922316611285068
+      small house metal roof_12: -3053545785998398448
+      small house metal roof_13: -1843748564825598958
+      small house metal roof_14: -3689126855273951649
+      small house metal roof_15: -5900176659489688917
+      small house metal roof_16: -6595177287157561677
+      small house metal roof_17: -2000409435299257470
+      small house metal roof_2: -4193550704253683011
+      small house metal roof_3: -8704117859633148984
+      small house metal roof_4: -7817060451822688661
+      small house metal roof_5: 7958856311191476257
+      small house metal roof_6: 6603593215859848576
+      small house metal roof_7: 2177851585623828772
+      small house metal roof_8: -1563421363025227322
+      small house metal roof_9: -1879204321642658013
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -31,6 +31,9 @@ public class InventoryController : MonoBehaviour
     public AudioClip openInventory;
     public AudioClip closeInventory;
 
+    public DynamicInterface inventoryObject;
+    public DynamicInterface equipmentObject;
+
     private void Start()
     {
         inventoryCanvas = inventory.GetComponent<CanvasGroup>();
@@ -83,6 +86,15 @@ public class InventoryController : MonoBehaviour
         if (openInventory)
         {
             AudioManager.Instance.Play(openInventory);
+        }
+
+        if(inventoryObject != null)
+        {
+            inventoryObject.UpdateAllSlots();
+        }
+        if(equipmentObject != null)
+        {
+            equipmentObject.UpdateAllSlots();
         }
         OpenItemDetailDisplay();
         inventoryCanvas.interactable = true;

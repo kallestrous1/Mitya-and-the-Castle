@@ -6,6 +6,8 @@ public class PlayerRespawnManager : MonoBehaviour
 {
     public static PlayerRespawnManager Instance { get; private set; }
 
+    public PlayerHealth playerHealth;
+
     private void Awake()
     {
         if (Instance && Instance != this)
@@ -23,14 +25,13 @@ public class PlayerRespawnManager : MonoBehaviour
 
     private IEnumerator RespawnRoutine()
     {
-
+        playerHealth.ResetHealth();
         string spawnScene = NewManager.manager.defaultPlayerScene;
         NewManager.manager.MoveToScene(spawnScene, SceneManager.GetActiveScene().name, false);
 
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         
-        //   NewManager.manager.MoveToScene("Base Scene", "Base Scene", false);
         if (player)
         {
             var pc = player.GetComponent<PlayerController>();
@@ -39,7 +40,6 @@ public class PlayerRespawnManager : MonoBehaviour
             playerHealth.changeHealth(playerHealth.maxHealth);
         }
         DataPersistenceManager.instance.SaveGame();
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(spawnScene));
         yield return null;
 
     }

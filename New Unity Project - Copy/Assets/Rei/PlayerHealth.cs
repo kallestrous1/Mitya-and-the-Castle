@@ -64,6 +64,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void ResetHealth()
+    {
+        died = false;
+        health = maxHealth;
+        UpdateUI();
+    }
     public void changeMaxHealth(int change)
     {
         maxHealth += change;

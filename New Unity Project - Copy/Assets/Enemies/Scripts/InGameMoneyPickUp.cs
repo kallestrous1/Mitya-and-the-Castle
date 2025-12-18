@@ -8,7 +8,7 @@ public class InGameMoneyPickUp : Interactable
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMoney>().ChangePlayerMoneyCount(Value);
         AudioManager.Instance.Play(pickUpMoneySound);
-        GetComponentInParent<StateChangingObject>().ChangeObjectState(false);
+        GetComponent<ItemInGame>().ChangeState(false);
         Destroy(this.transform.parent.gameObject);
     }
 

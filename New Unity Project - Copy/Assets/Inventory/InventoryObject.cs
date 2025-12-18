@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using static UnityEditor.Progress;
@@ -52,6 +53,30 @@ public class InventoryObject : ScriptableObject
         return true;
     }
 
+    public InventorySlotObject FindEmptySlot()
+    {
+        for (int i = 0; i < GetSlots.Length; i++)
+        {
+            if (string.IsNullOrEmpty(GetSlots[i].item.itemID))
+            {
+                return GetSlots[i];
+            }
+        }
+        return null;
+    }
+
+    public InventorySlotObject FindEmptySlotOfType(ItemType type)
+    {
+        for (int i = 0; i < GetSlots.Length; i++)
+        {
+            if (string.IsNullOrEmpty(GetSlots[i].item.itemID) && (GetSlots[i].AllowedItems == type || GetSlots[i].AllowedItems == ItemType.All))
+            {
+                return GetSlots[i];
+            }
+        }
+        return null;
+    }
+
     public int EmptySlotCount
     {
         get
@@ -95,8 +120,12 @@ public class InventoryObject : ScriptableObject
 
     public void SwapItems(InventorySlotObject draggedObj, InventorySlotObject itemTwo)
     {
+        Debug.Log("Swapping Items");
+        Debug.Log(draggedObj.ItemObject + " with itemtwo " + itemTwo.ItemObject);
+ 
         if (itemTwo.CanPlaceInSlot(draggedObj.ItemObject) && draggedObj.CanPlaceInSlot(itemTwo.ItemObject)) 
         {
+            Debug.Log("Can place in slot");
             InventorySlotObject temp = new InventorySlotObject(itemTwo.item);
             if(draggedObj.parent.inventory.interfaceType == itemTwo.parent.inventory.interfaceType)
             {
@@ -249,6 +278,12 @@ public class InventorySlotObject
     {
         UpdateSlot(item, true);
     }
+
+    public void UpdateSlot()
+    {
+        UpdateSlot(this.item, true);
+    }
+
     public void UpdateSlot(ItemData item)
     {
  
@@ -306,13 +341,15 @@ public class InventorySlotObject
     {
         if (AllowedItems == ItemType.All ||itemObject == null)
         {
+            Debug.Log("can place bc all");
             return true;
         }
        
         if (itemObject.type == AllowedItems){
+            Debug.Log("can place bc type match");
             return true;
             }          
-        
+        Debug.Log("cant place");
         return false;
     }
 }

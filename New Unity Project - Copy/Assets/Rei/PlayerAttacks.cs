@@ -38,6 +38,10 @@ public class PlayerAttacks : MonoBehaviour
 
     private void OnAttackPressed()
     {
+        if(GameStateManager.instance.gameState != GameState.Play)
+        {
+            return;
+        }
         attackPressed = true;
         HandleAttack();
     }

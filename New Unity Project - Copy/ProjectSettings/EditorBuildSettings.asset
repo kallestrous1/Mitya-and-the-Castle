@@ -12,25 +12,25 @@ EditorBuildSettings:
     path: Assets/Scenes/Base Scene.unity
     guid: d9800be08785e1c4b916e88e43ab73e4
   - enabled: 1
-    path: Assets/Scenes/OldScenes/RoomOne.unity
+    path: Assets/Scenes/Old asset folders/OldScenes/RoomOne.unity
     guid: 304cae637b960d1448393f78160b3528
   - enabled: 1
-    path: Assets/Scenes/OldScenes/CharmRoom.unity
+    path: Assets/Scenes/Old asset folders/OldScenes/CharmRoom.unity
     guid: a0a0fd7263362de408beaa55abd00007
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 4275e8ebe25619048875e07f9e38f9fd
   - enabled: 1
-    path: Assets/Scenes/OldScenes/RightRoom.unity
+    path: Assets/Scenes/Old asset folders/OldScenes/RightRoom.unity
     guid: 4daeefab7808a8144ab0e64f6b2b4264
   - enabled: 1
     path: Assets/Scenes/Grandpa's Farm.unity
     guid: 3fc7b9811ca95df459a8e1a91f019466
   - enabled: 0
-    path: Assets/Scenes/OldScenes/SampleScene.unity
+    path: Assets/Scenes/Old asset folders/OldScenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/OldScenes/BoosterRoom.unity
+    path: Assets/Scenes/Old asset folders/OldScenes/BoosterRoom.unity
     guid: 8b955ac7240ac134ea4a20fd969cd90a
   - enabled: 1
     path: Assets/Scenes/Farm Exit.unity
@@ -39,7 +39,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ringroomlarge.unity
     guid: 8e04470a3ab872746b26a22c9ad2e33f
   - enabled: 1
-    path: Assets/Scenes/OldScenes/farmexitdrop.unity
+    path: Assets/Scenes/Old asset folders/OldScenes/farmexitdrop.unity
     guid: 15b7ed2672d1dea488988c02dd3b011a
   - enabled: 1
     path: Assets/Scenes/LoadScreen.unity
