@@ -47,12 +47,10 @@ public class ItemInGame : EntityPersistenceBehaviour
         active = state;
         if (!DataPersistenceManager.instance.IsLoading)
         {
-            Debug.Log("Registering state change for " + DebugID + "as" + active);
             DataPersistenceManager.instance.gameData.stateChangingObjects[DebugID] = active;
         }
 
         StartCoroutine(ApplyStateNextFrame());
-        Debug.Log(DebugID + " state changed to: " + state);
         if (!DataPersistenceManager.instance.IsLoading)
         {
             EventManager.OnItemStateChanged?.Invoke(DebugID, state);
@@ -64,7 +62,6 @@ public class ItemInGame : EntityPersistenceBehaviour
         active = data.itemStates.TryGetValue(DebugID, out bool saved)
        ? saved
        : newgameState;
-        Debug.Log(DebugID + " state loaded as: " + active);
         if (!this) return;
         if( this.transform.parent)
             this.transform.parent.gameObject.SetActive(active);
@@ -88,7 +85,6 @@ public class ItemInGame : EntityPersistenceBehaviour
     public override void SaveData(GameData data)
     {
 
-            Debug.Log(DebugID + "state saved as: " + active);
             if (data.itemStates.ContainsKey(DebugID))
             {
                 data.itemStates[DebugID] = active;

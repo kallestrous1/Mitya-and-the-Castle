@@ -140,7 +140,6 @@ public class DataPersistenceManager : MonoBehaviour
         if (instance == null) return;
         if (!instance.registeredObjects.Contains(obj))
         {
-            Debug.Log("Registering object: " + obj);
             instance.registeredObjects.Add(obj);
         }
             
@@ -155,7 +154,6 @@ public class DataPersistenceManager : MonoBehaviour
         }
         if (instance.IsLoading)
             return;
-        Debug.Log("Unregistering object: " + obj);
         instance.registeredObjects.Remove(obj);
     }
 
@@ -171,7 +169,6 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (IsLoading)
         {
-            Debug.Log("Currently loading, not updating item state");
             return;
         }
         gameData.itemStates[itemID] = state;

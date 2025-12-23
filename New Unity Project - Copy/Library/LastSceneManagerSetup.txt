@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/BanditCampEntrance.unity
+- path: Assets/Scenes/SuperScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -5,7 +5,7 @@ VAR knotProgression = -> Start
 -> knotProgression
 
 === Start ===
-Hello grandson how are you?
+Grandson how are you?
     +[good]
     Oh that's wonderful to hear
     ->MissingRing
@@ -14,7 +14,14 @@ Hello grandson how are you?
     ->MissingRing
     
 ===MissingRing===
-It seems I've lost my ring while I was out gathering mushrooms, would you go find it for me?
+We need to leave soon
+it's getting dangerous
+the kings road has fallen
+but we need the ring
+the activation ring for our mech
+it's the only way we'll make it
+you must retrieve it from the bandits who stole it
+do you think you're up for it?
     +[Of course]
     ~knotProgression = -> WaitingForRing
     ->inBetween
@@ -25,7 +32,7 @@ Anyways...
 
 
 ===WaitingForRing===
-- have you found my ring?
+- have you got the ring?
 {hasRing:
     Oh wonderful!
     ->test
@@ -36,7 +43,19 @@ Anyways...
 
 ===test===
 ~knotProgression = -> test
-Mhm what a wonderful day we're having isnt it?
+I'm glad you're alright
+We will depart soon
+Come back in an hour
+I will have everything ready
+mhm?
++[I found the ring in your shed]
+    What?
+    how curious
+    I mustve lost it
+    what were you even doing back there
+    Anyways it doesn't matter
+    come back in an hour
+    we're getting out of here
 ->END
 
 

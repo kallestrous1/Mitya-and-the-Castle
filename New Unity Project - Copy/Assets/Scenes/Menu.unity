@@ -395,7 +395,7 @@ MonoBehaviour:
   buttonHoverSound: {fileID: 8300000, guid: 6f5c2819f5fe99641844728f1bce5a69, type: 3}
   buttonClickSound: {fileID: 0}
   scaleMultiplier: 1.1
-  startGameSound: {fileID: 0}
+  startGameSound: {fileID: 8300000, guid: 588cd8e01f43e9749953d7d35630ff5f, type: 3}
 --- !u!114 &57906151
 MonoBehaviour:
   m_ObjectHideFlags: 0

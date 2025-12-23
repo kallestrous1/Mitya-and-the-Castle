@@ -229,7 +229,15 @@ public abstract class UserInterface : MonoBehaviour
         }
         else if(MouseData.interfaceMouseIsOver.inventory.interfaceType == InterfaceType.Inventory)
         {
+            if(slotsOnInterface[obj].item.itemID == "")
+            {
+                return;
+            }
             if (MouseData.interfaceMouseIsOver.slotsOnInterface[obj].item.itemID == "")
+            {
+                return;
+            }
+            if(MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject == null)
             {
                 return;
             }

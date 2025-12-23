@@ -11,7 +11,7 @@ public class Interactable : MonoBehaviour
     }
     
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerInteract player = collision.gameObject.GetComponent<PlayerInteract>();
         if (player != null)
@@ -19,7 +19,7 @@ public class Interactable : MonoBehaviour
             textBox.SetActive(true);
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    public void OnTriggerExit2D(Collider2D collision)
     {
         PlayerInteract player = collision.gameObject.GetComponent<PlayerInteract>();
         if (player != null)

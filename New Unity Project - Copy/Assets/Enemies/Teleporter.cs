@@ -29,15 +29,17 @@ public class Teleporter : Interactable
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    new private void OnTriggerEnter2D(Collider2D collision)
     {
+        base.OnTriggerEnter2D(collision);
         PlayerController player = collision.GetComponent<PlayerController>();
         if (player != null)
             playerInRange = player;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    new private void OnTriggerExit2D(Collider2D collision)
     {
+        base.OnTriggerExit2D(collision);
         PlayerController player = collision.GetComponent<PlayerController>();
         if (player != null && player == playerInRange)
             playerInRange = null;

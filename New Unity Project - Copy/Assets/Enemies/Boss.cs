@@ -25,9 +25,9 @@ public class Boss : Enemy
                 wall.SetActive(false);
             }
         }
-        if (GetComponent<StateChangingObject>())
+        if (GetComponentInParent<StateChangingObject>())
         {
-            GetComponent<StateChangingObject>().ChangeObjectState(false);
+            GetComponentInParent<StateChangingObject>().ChangeObjectState(false);
            // DataPersistenceManager.instance.SaveGame();
         }
         AudioManager.Instance.fadeMusic(10f, null);

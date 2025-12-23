@@ -8,13 +8,11 @@ public abstract class DataPersistenceBehaviour : MonoBehaviour, IDataPersistence
 
     protected virtual void OnEnable()
     {
-        Debug.Log("Registering " + this.GetType().Name + " to Data Persistence Manager.");
         DataPersistenceManager.Register(this);
     }
 
     protected virtual void OnDisable()
     {
-        Debug.Log("Unregistering " + this.GetType().Name + " from Data Persistence Manager.");
         DataPersistenceManager.Unregister(this);
     }
 

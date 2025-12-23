@@ -19,8 +19,17 @@ public class NewGameButton : BasicButton
             {
                 AudioManager.Instance.Play(startGameSound);
             }
-
-            NewManager.manager.NewGame();          
+            StartCoroutine(LoadSceneAfterSound());
         }
+    }
+
+
+    IEnumerator LoadSceneAfterSound()
+    {
+        yield return null;
+        yield return new WaitForSeconds(0.05f);
+
+        NewManager.manager.NewGame();
+
     }
 }

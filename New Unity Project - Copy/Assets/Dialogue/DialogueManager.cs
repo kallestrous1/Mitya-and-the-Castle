@@ -269,7 +269,8 @@ public class DialogueManager : MonoBehaviour
 
     public void ResetAllStories()
     {
-        for(int i =0; i<allStories.Length; i++)
+        Debug.Log("Resetting all stories");
+        for (int i =0; i<allStories.Length; i++)
         {
             Story story = new Story(allStories[i].text);
             currentStoryName = allStories[i].name;

@@ -5508,9 +5508,9 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 2e1b53a8ff758f8459c7578d976aca3e, type: 3}
   - {fileID: 4900000, guid: be388f4977608de4e9a208d2a28bee30, type: 3}
   - {fileID: 4900000, guid: 1e8b557b5661aa44680b26bd8a3bc80d, type: 3}
-  - {fileID: 4900000, guid: 1b38845fb1887d348882c99b06238fe9, type: 3}
-  - {fileID: 4900000, guid: 25e522b0f92f65f4bbdfd1012af5d418, type: 3}
-  - {fileID: 4900000, guid: 58a108d7ad09ed34286b1b373ac365d3, type: 3}
+  - {fileID: 4900000, guid: fa85ba152e335de4685a13c6493787c3, type: 3}
+  - {fileID: 4900000, guid: c0779f0c365122446ad48b57601704bf, type: 3}
+  - {fileID: 4900000, guid: 7fe7757d5abbdfb49956087309d4c80c, type: 3}
   - {fileID: 4900000, guid: bab1309ae210d8d47851b238490e7e26, type: 3}
   - {fileID: 4900000, guid: 9ada5ed805f6399478feec2c457ec1cd, type: 3}
   enterDialogueMode: {fileID: 8300000, guid: fe319744cbf3ddf47b819a8aff736ef7, type: 3}

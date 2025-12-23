@@ -27,7 +27,7 @@ MonoBehaviour:
   data:
     itemID: 
     name: 
-  BaseParticleEffect: {fileID: 3249134206516532379, guid: df7aa967003cd1c4ab4d87e4f37e7e12, type: 3}
+  BaseParticleEffect: {fileID: 2659240962462058314, guid: 20000892e914f1f4eb59391c3ed26630, type: 3}
   spellSpeed: 700
   manaCost: 10
   chargeTime: 1

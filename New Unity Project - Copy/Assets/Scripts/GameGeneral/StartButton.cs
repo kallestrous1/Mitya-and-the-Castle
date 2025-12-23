@@ -26,28 +26,31 @@ public class StartButton : BasicButton, IPointerEnterHandler
             {
                 AudioManager.Instance.Play(startGameSound);
             }
-            if (getSpawnScene() != null)
-            {             
-                string spawnScene = getSpawnScene();
-                // SceneManager.LoadScene(spawnScene, LoadSceneMode.Additive);
-                NewManager.manager.AddScene("Base Scene", false);
-
-                NewManager.manager.MoveToScene(spawnScene, "Menu", false);
-
-
-                //    SceneManager.LoadSceneAsync("Base Scene", LoadSceneMode.Additive);
-              //  StartCoroutine(SetActiveScene(spawnScene));
-
-            }
-            else
-            {
-                Debug.Log("Using default initial spawn scene");
-                SceneManager.LoadScene("Grandpa's Farm", LoadSceneMode.Additive);
-                SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
-             //   StartCoroutine(SetActiveScene("Grandpa's Farm"));
-            }
+            StartCoroutine(LoadSceneAfterSound());
         }
         
+    }
+
+    IEnumerator LoadSceneAfterSound()
+    {
+        // Wait one frame minimum
+        yield return null;
+
+        // Optional: small delay so the sound is clearly audible
+        yield return new WaitForSeconds(0.05f);
+
+        if (getSpawnScene() != null)
+        {
+            string spawnScene = getSpawnScene();
+            NewManager.manager.AddScene("Base Scene", false);
+            NewManager.manager.MoveToScene(spawnScene, "Menu", false);
+        }
+        else
+        {
+            Debug.Log("Using default initial spawn scene");
+            SceneManager.LoadScene("Grandpa's Farm", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Base Scene", LoadSceneMode.Additive);
+        }
     }
 
     IEnumerator SetActiveScene(string sceneName)

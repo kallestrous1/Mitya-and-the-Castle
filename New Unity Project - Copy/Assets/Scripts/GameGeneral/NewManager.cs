@@ -188,13 +188,20 @@ public class NewManager : DataPersistenceBehaviour
         yield return StartCoroutine(HandlePlayerAfterSceneLoad_Coroutine(newScene, upBoost, newGame));
 
         // Unload previous scene only after new scene is loaded & player handled (if requested)
+        Debug.Log("previousSceneToUnload: " + previousSceneToUnload);
         if (!string.IsNullOrEmpty(previousSceneToUnload) && !isReloadingSameScene)
         {
             // only attempt unload if scene exists and is loaded
             Scene prev = SceneManager.GetSceneByName(previousSceneToUnload);
+            Debug.Log("unloading scene " + previousSceneToUnload);
             if (prev.IsValid() && prev.isLoaded)
             {
+                Debug.Log("Unloading scene: " + previousSceneToUnload);
                 yield return UnloadScene(previousSceneToUnload);
+            }
+            else
+            {
+                Debug.LogWarning($"Previous scene to unload is not valid or not loaded: {previousSceneToUnload}");
             }
         }
 
@@ -300,7 +307,7 @@ public class NewManager : DataPersistenceBehaviour
 
     IEnumerator ResetStoriesDelayed()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(2.5f);
         DialogueManager.instance.ResetAllStories();
     }
 

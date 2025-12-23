@@ -3,9 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class StateChangingObject : EntityPersistenceBehaviour         
 {
-
+    [SerializeField] private GameObject visualRoot;
     public bool active;
     public bool newgameState;
+
+    private void ApplyVisualState()
+    {
+        if (visualRoot != null)
+            visualRoot.SetActive(active);
+    }
 
     public void ChangeObjectState(bool newState)
     {
@@ -18,7 +24,8 @@ public class StateChangingObject : EntityPersistenceBehaviour
             DataPersistenceManager.instance.gameData.stateChangingObjects[DebugID] = active;
         }
 
-        gameObject.SetActive(active);
+        ApplyVisualState();
+
     }
 
     public override void LoadData(GameData data)
@@ -47,7 +54,7 @@ public class StateChangingObject : EntityPersistenceBehaviour
         }
         if (!this) return;              
         if (!gameObject) return;
-        gameObject.SetActive(active);
+        ApplyVisualState();
     }
 
     public override void SaveData(GameData data)

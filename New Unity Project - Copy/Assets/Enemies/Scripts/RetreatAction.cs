@@ -28,6 +28,14 @@ public partial class RetreatAction : Action
 
     protected override Status OnUpdate()
     {
+        if(rb == null)
+        {
+            return Status.Failure;
+        }
+        if (Player.Value == null)
+        {
+            return Status.Failure;
+        }
         float distanceToPlayer = Vector2.Distance(Agent.Value.transform.position, Player.Value.transform.position);
         if (distanceToPlayer > 10f || distanceToPlayer <4f)
         {
