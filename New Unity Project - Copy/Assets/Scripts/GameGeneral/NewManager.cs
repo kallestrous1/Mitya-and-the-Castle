@@ -38,19 +38,23 @@ public class NewManager : DataPersistenceBehaviour
     #endregion
 
     #region Runtime state
-    static bool gameStarted = false;
+    public static bool gameStarted = false;
     private GameObject player;
     private bool respawnHandled = false;
     #endregion
 
     private void Start()
     {
+        CachePlayerReference();
+        DataPersistenceManager.instance.LoadGame(true);
+    }
+
+    public void BootStrapAfterDataLoaded()
+    {
         if (!gameStarted)
         {
-            gameStarted = true;
-            SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
+            IntroVideoPlayer.instance.PlayLogoSequence();
         }
-        CachePlayerReference();
     }
 
     private void CachePlayerReference()
@@ -73,6 +77,8 @@ public class NewManager : DataPersistenceBehaviour
         GameStateManager.instance.ChangeState(GameState.movingScene);
             
         defaultPlayerLocation = new Vector2(2, -59);
+
+        TelemetryManager.instance.LogEvent("Session", "new_game_started");
 
         // Load base scene first and then the player spawn scene
         StartCoroutine(SceneTransition("Base Scene", false, true, previousSceneToUnload: "Menu"));
@@ -112,6 +118,13 @@ public class NewManager : DataPersistenceBehaviour
     /// </summary>
     private IEnumerator SceneTransition(string newScene, bool upBoost, bool newGame = false, string previousSceneToUnload = null)
     {
+        TelemetryManager.instance.LogEvent("Session", $"Attempting_SceneTransition_to:_{newScene}_from:_{previousSceneToUnload}_newGame:_{newGame}",
+            new SceneTransitionPayload
+            {
+                fromScene = previousSceneToUnload,
+                toScene = newScene,
+                newGame = newGame
+            });
         CachePlayerReference();
         if (loadingScreenPanel) loadingScreenPanel.SetActive(true);
 
@@ -126,8 +139,8 @@ public class NewManager : DataPersistenceBehaviour
         if (isReloadingSameScene)
         {
             Debug.Log($"Reloading scene: {newScene}");
-
-            // cache player data BEFORE unload
+            TelemetryManager.instance.LogEvent("Session", $"Reloading scene:_{newScene}");
+            // cache player data before unload
             CachePlayerReference();
 
             if (loadingScreenPanel) loadingScreenPanel.SetActive(true);
@@ -149,6 +162,7 @@ public class NewManager : DataPersistenceBehaviour
         if (loadScene == null)
         {
             Debug.LogError($"Failed to start loading scene: {newScene}");
+            TelemetryManager.instance.LogError($"Failed to start loading scene:_{newScene}");
             yield break;
         }
 
@@ -174,6 +188,7 @@ public class NewManager : DataPersistenceBehaviour
         if (!loadedScene.IsValid())
         {
             Debug.LogError($"Loaded scene is not valid: {newScene}");
+            TelemetryManager.instance.LogError($"Loaded scene is not valid:_{newScene}");
         }
         else
         {

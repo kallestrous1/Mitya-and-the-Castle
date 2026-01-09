@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
     private Story currentStory;
     private string currentStoryName;
     private string currentStorySavePath = null;
+    List<Choice> currentchoices;
 
     public static DialogueManager instance;
 
@@ -119,6 +120,8 @@ public class DialogueManager : MonoBehaviour
         GameStateManager.instance.ChangeState(GameState.dialogue);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+        TelemetryManager.instance.LogEvent("Dialogue", "entering story: " + currentStoryName);
+
 
         AudioManager.Instance.Play(enterDialogueMode);
 
@@ -178,7 +181,7 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         Debug.Log("exiting dialoguemode, exiting "+ currentStoryName);
-
+        TelemetryManager.instance.LogEvent("Dialogue", "exiting story: "+ currentStoryName);
         SerializeCurrentStory(currentStory);
 
         dialogueVariables.StopListening(currentStory);
@@ -195,7 +198,7 @@ public class DialogueManager : MonoBehaviour
 
     private void DisplayChoices()
     {
-        List<Choice> currentchoices = currentStory.currentChoices;
+        currentchoices = currentStory.currentChoices;
 
         if(currentchoices.Count > choices.Length)
         {
@@ -218,6 +221,7 @@ public class DialogueManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         Debug.Log(choiceIndex);
+        TelemetryManager.instance.LogEvent("Dialogue", "making choice: " + currentchoices[choiceIndex].text + " in story: " + currentStoryName);
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
     }
@@ -234,21 +238,29 @@ public class DialogueManager : MonoBehaviour
 
     private Story DeserializeCurrentStory(ref Story enteredStory)
     {
-        // Create internal JSON string.
-        string JSONContents;
-
-        // Does the file exist?
-        if (File.Exists(currentStorySavePath))
-        {
-            Debug.Log("story found at " + currentStorySavePath);
-            // Read the entire file.
-            JSONContents = File.ReadAllText(currentStorySavePath);
-            // Overwrite current Story based on saved StoryState data.
-            enteredStory.state.LoadJson(JSONContents);
-        }
-        else
+        if (!File.Exists(currentStorySavePath))
         {
             Debug.Log("story save file not found");
+            return enteredStory;
+        }
+
+        try
+        {
+            Debug.Log("story found at " + currentStorySavePath);
+            string json = File.ReadAllText(currentStorySavePath);
+            enteredStory.state.LoadJson(json);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogWarning(
+                $"Ink save incompatible for '{currentStoryName}', resetting story.\n{e.Message}"
+            );
+
+            // Delete the broken save so it doesn't keep crashing
+            File.Delete(currentStorySavePath);
+
+            // Fresh state
+            enteredStory.ResetState();
         }
 
         return enteredStory;

@@ -10,6 +10,13 @@ public class StartButton : BasicButton, IPointerEnterHandler
     bool clicked = false;
     public AudioClip startGameSound;
 
+    private void Start()
+    {
+        if (!DataPersistenceManager.instance.gameData.saveFileExists)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
 
     public string getSpawnScene()
     {
@@ -33,11 +40,12 @@ public class StartButton : BasicButton, IPointerEnterHandler
 
     IEnumerator LoadSceneAfterSound()
     {
-        // Wait one frame minimum
+        // Wait one frame for sound
         yield return null;
 
-        // Optional: small delay so the sound is clearly audible
         yield return new WaitForSeconds(0.05f);
+
+        TelemetryManager.instance.LogEvent("Session", "Game_loaded");
 
         if (getSpawnScene() != null)
         {

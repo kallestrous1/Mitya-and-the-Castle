@@ -80,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
         UpdateSliderSize(maxHealth);*/
     }
 
-    public void changeHealth(int amount)
+    public void changeHealth(int amount, string cause = "unknown")
     {
 
         if (IsInvincible && amount < 0) return;
@@ -95,20 +95,40 @@ public class PlayerHealth : MonoBehaviour
         {
             died = true;
             AudioManager.Instance.Play(playerDeathSound);
-            StartCoroutine(DeathRoutine());
+            StartCoroutine(DeathRoutine(cause));
         }
         else if (amount < 0)
         {
             AudioManager.Instance.Play(playerDamageSound);
+            TelemetryManager.instance.LogEvent(
+                "PlayerDamaged",
+                "Player took damage. " +
+                "Scene:_" + SceneManager.GetActiveScene().name 
+                + ", Location: " + this.gameObject.transform.position,
+                new PlayerDamagedPayload {
+                    source = cause,
+                    sceneName = SceneManager.GetActiveScene().name,
+                    damagePosition = this.gameObject.transform.position
+                });
             StartCoroutine(BloodFlash());
         }
 
         OnHealthChanged?.Invoke(health, maxHealth);
     }
 
-    private IEnumerator DeathRoutine()
+    private IEnumerator DeathRoutine(string cause)
     {
         deathDisplay.SetActive(true);
+
+        TelemetryManager.instance.LogEvent(
+            "Death", 
+            "Player died. " +
+            "Scene:_" + SceneManager.GetActiveScene().name 
+            + ", Location: " + this.gameObject.transform.position,
+            new PlayerDeathPayload { causeOfDeath = cause,
+            sceneName = SceneManager.GetActiveScene().name,
+            deathPosition = this.gameObject.transform.position
+            });
         yield return new WaitForSeconds(1f);
         deathDisplay.SetActive(false);
         PlayerRespawnManager.Instance.RespawnPlayer();

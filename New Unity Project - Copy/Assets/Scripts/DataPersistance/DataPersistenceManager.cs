@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.IO;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
@@ -41,6 +43,7 @@ public class DataPersistenceManager : MonoBehaviour
         instance = this;
 
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+
     }
 
     private void OnEnable()
@@ -80,6 +83,11 @@ public class DataPersistenceManager : MonoBehaviour
         Debug.Log("Starting new game");
         isNewGame = true;
         this.gameData = new GameData();
+        if(!gameData.sessionStarted)
+        {
+            gameData.sessionStarted = true;
+            TelemetrySession.StartSession();
+        }
         //   FindAllDataPersistenceObjects();
         foreach (var obj in registeredObjects.ToArray())
         {
@@ -97,20 +105,39 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }
 
-    public void LoadGame()
+
+
+    public void LoadGame(bool startup = false)
     {
         IsLoading = true;
 
-        this.gameData = dataHandler.Load();
-        Debug.Log("loading game");
-
-        if (gameData == null)
+        if (!dataHandler.HasValidSave())
         {
             Debug.Log("No data found, creating new game");
             IsLoading = false;
             NewGame();
             return;
         }
+
+        this.gameData = dataHandler.Load();
+        if (!gameData.sessionStarted)
+        {
+            gameData.sessionStarted = true;
+            TelemetrySession.StartSession();
+        }
+
+        if (string.IsNullOrEmpty(gameData.playerId))
+        {
+#if UNITY_EDITOR
+            gameData.playerId = "DEV_PLAYER_EDITOR";
+#else
+        gameData.playerId = Guid.NewGuid().ToString();
+#endif
+        }
+
+        Debug.Log("loading game");
+
+
 
         var snapshot = registeredObjects.ToArray();
 
@@ -121,6 +148,11 @@ public class DataPersistenceManager : MonoBehaviour
         }
 
         IsLoading = false;
+
+        if (startup)
+        {
+            NewManager.manager.BootStrapAfterDataLoaded();
+        }
 
     }
 

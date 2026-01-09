@@ -9,7 +9,8 @@ public class Boss : Enemy
     public void StartFight()
     {
         fightStarted = true;
-        foreach(GameObject wall in BossWalls)
+        TelemetryManager.instance.LogEvent("BossFight", $"Boss fight started:_{this.name}");
+        foreach (GameObject wall in BossWalls)
         {
             wall.SetActive(true);
         }

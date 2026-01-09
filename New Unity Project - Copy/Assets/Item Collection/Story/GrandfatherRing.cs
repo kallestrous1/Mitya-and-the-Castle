@@ -13,6 +13,7 @@ public class GrandfatherRing : ItemObject
    
     public override void EquipItem()
     {
+        base.EquipItem();
         grandfatherStory = new Story(itemStory.text);
         grandfatherStory.variablesState[hasRing] = true;
         DialogueManager.instance.dialogueVariables.ChangeVariable(hasRing, new Ink.Runtime.BoolValue(true));
@@ -20,6 +21,7 @@ public class GrandfatherRing : ItemObject
 
     public override void UnequipItem()
     {
+        base.UnequipItem();
         grandfatherStory = new Story(itemStory.text);
         grandfatherStory.variablesState[hasRing] = false;
         DialogueManager.instance.dialogueVariables.ChangeVariable(hasRing, new Ink.Runtime.BoolValue(false));

@@ -5,11 +5,11 @@ public class LetterToBandits : ItemObject
 {
     public override void EquipItem()
     {
-        throw new System.NotImplementedException();
+        base.EquipItem();
     }
 
     public override void UnequipItem()
     {
-        throw new System.NotImplementedException();
+        base.UnequipItem();
     }
 }

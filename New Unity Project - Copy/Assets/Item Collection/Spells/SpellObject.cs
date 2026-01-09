@@ -46,12 +46,14 @@ public class CopyOfSpellObject : ItemObject
 
     public override void EquipItem()
     {
+        base.EquipItem();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         //   player.GetComponentInChildren<Animator>().runtimeAnimatorController = animations;  
     }
 
     public override void UnequipItem()
     {
+        base.UnequipItem();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         // player.GetComponentInChildren<Animator>().runtimeAnimatorController = baseAnimations;
 

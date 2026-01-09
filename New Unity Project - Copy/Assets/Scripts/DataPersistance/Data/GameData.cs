@@ -5,6 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class GameData 
 {
+    private const string EDITOR_PLAYER_ID = "DEV_PLAYER_EDITOR";
+    public string playerId;
+    public string runId;
+    public bool sessionStarted = false;
+
+    public bool saveFileExists = false;
+    public bool hasSeenIntro = false; 
+
     public int totalJumps;
     public  Vector2 playerSaveLocation;
     public  string playerSpawnScene = "Grandpa's Farm";
@@ -22,6 +30,19 @@ public class GameData
 
     public GameData()
     {
+#if UNITY_EDITOR
+        this.playerId = EDITOR_PLAYER_ID;
+#else
+        this.playerId = Guid.NewGuid().ToString();
+#endif
+
+#if UNITY_EDITOR
+        this.runId = EDITOR_PLAYER_ID;
+#else
+        this.runId = Guid.NewGuid().ToString();
+#endif
+        this.saveFileExists = true;
+        this.sessionStarted = false;
         this.totalJumps = 0;
         this.playerSaveLocation = new Vector2(2, -59);
         this.playerSpawnScene = "Grandpa's Farm";

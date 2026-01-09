@@ -53,6 +53,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/town.unity
     guid: a34541a9407971645b89c0f0cb3314a2
+  - enabled: 1
+    path: Assets/Scenes/IntroVideo.unity
+    guid: 629c780d81e54a343b6f6197c9e24412
+  - enabled: 1
+    path: Assets/Scenes/StudioLogo.unity
+    guid: 835766b2f178e4d45b5d5a857626eeab
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 99f9c9493070a9d4c979a8fec7c5a8d3, type: 2}
   m_UseUCBPForAssetBundles: 0

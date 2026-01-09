@@ -34,10 +34,11 @@ public class DynamicInterface : UserInterface
         for (int i = 0; i < inventory.GetSlots.Length; i++)
         {
             GameObject obj = null;
-            if (inventory.GetSlots[i].AllowedItems == ItemType.All) { 
+            if (inventory.GetSlots[i].AllowedItems == ItemType.All)
+            {
                 obj = Instantiate(inventoryPrefabWeapon, Vector3.zero, Quaternion.identity, slotParent);
             }
-            else if(inventory.GetSlots[i].AllowedItems == ItemType.Charm)
+            else if (inventory.GetSlots[i].AllowedItems == ItemType.Charm)
             {
                 obj = Instantiate(inventoryPrefabCharm, Vector3.zero, Quaternion.identity, slotParent);
             }
@@ -50,9 +51,9 @@ public class DynamicInterface : UserInterface
                 obj = Instantiate(inventoryPrefabSpell, Vector3.zero, Quaternion.identity, slotParent);
             }
 
-                                       
+
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-           
+
 
             AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
             AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
@@ -64,14 +65,16 @@ public class DynamicInterface : UserInterface
             slotsOnInterface.Add(obj, inventory.GetSlots[i]);
 
             inventory.GetSlots[i].parent = this;
-            if (obj.GetComponentInChildren<TextMeshProUGUI>())
-            {
-                if (inventory.GetSlots[i].ItemObject)
-                {
-                    obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.GetSlots[i].ItemObject.price.ToString();
-                }
-              
-            }
+            if (interfaceType == InterfaceType.Shop) { 
+                 if (obj.GetComponentInChildren<TextMeshProUGUI>())
+                  {
+                    if (inventory.GetSlots[i].ItemObject)
+                     {
+                     obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.GetSlots[i].ItemObject.price.ToString();
+                     }
+
+                  }
+             }
 
             
         }

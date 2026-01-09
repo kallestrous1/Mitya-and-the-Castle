@@ -65,8 +65,15 @@ public abstract class ItemObject : ScriptableObject
             data = new ItemData();
     }
 
-    public abstract void EquipItem();
-    public abstract void UnequipItem();
+    public virtual void EquipItem() 
+    {
+        TelemetryManager.instance.LogEvent("item_equip", "equipping: " + this.name);
+    }
+    public virtual void UnequipItem()
+    {
+        TelemetryManager.instance.LogEvent("item_equip", "unequipping: " + this.name);
+
+    }
 
 }
 

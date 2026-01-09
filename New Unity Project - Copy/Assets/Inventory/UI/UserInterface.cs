@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 public abstract class UserInterface : MonoBehaviour
 {
+    public InterfaceType interfaceType;
     public ItemDetailsInterface ItemDetailsInterface;
     public InventoryObject inventory;
     public InventoryObject generalPlayerInventory;
@@ -272,6 +273,13 @@ public abstract class UserInterface : MonoBehaviour
             {
                 AudioManager.Instance.Play(buySound);
             }
+            TelemetryManager.instance.LogEvent("Shop", "Bought item: " + MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject.name,
+                new ItemPurchasedPayload
+                {
+                    itemType = MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject.itemID,              
+                    cost = ((int)MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject.price),
+                    totalMoney = ((int)FindAnyObjectByType<PlayerMoney>().playerMoney)
+                });
             FindAnyObjectByType<PlayerMoney>().ChangePlayerMoneyCount(-MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject.price);
             playerInventory.AddItem(MouseData.interfaceMouseIsOver.slotsOnInterface[obj].item);
             MouseData.interfaceMouseIsOver.slotsOnInterface[obj].locked = false;

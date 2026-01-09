@@ -133,6 +133,13 @@ public class PlayerInventory : DataPersistenceBehaviour
             {
                 ItemData thisItem = new ItemData(item.item);
                 pickupRequest = false;
+                TelemetryManager.instance.LogEvent("ItemPickup", $" picked up {item.item}",
+                    new ItemCollectedPayload
+                    {
+                        itemType = item.item.ToString(),
+                        sceneName = SceneManager.GetActiveScene().name,
+                        collectPosition = collision.transform.position
+                    });
                 if (inventory.AddItem(thisItem))
                 {
                     GetComponent<PlayerSound>().PlayPickUpItem();

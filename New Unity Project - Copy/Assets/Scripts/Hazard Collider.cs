@@ -16,7 +16,7 @@ public class HazardCollider : MonoBehaviour
                 KnockBack knockBack = collision.gameObject.GetComponent<KnockBack>();
                 Vector2 knockBackDirection = (collision.transform.position - transform.position).normalized;
 
-                playerHealth.changeHealth(-damage);
+                playerHealth.changeHealth(-damage, this.gameObject.name);
                 knockBack.StartPlayerKnockback(knockBackDirection);
 
                 if (hitSound)
@@ -43,7 +43,7 @@ public class HazardCollider : MonoBehaviour
 
                 Vector2 knockBackDirection = (collision.transform.position - transform.position).normalized;
 
-                playerHealth.changeHealth(-damage);
+                playerHealth.changeHealth(-damage, this.gameObject.name);
                 knockBack.StartPlayerKnockback(knockBackDirection);
 
 

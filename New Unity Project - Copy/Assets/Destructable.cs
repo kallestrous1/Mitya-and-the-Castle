@@ -44,6 +44,15 @@ public class Destructable : MonoBehaviour
 
             if (currentHealth <= 0)
             {
+                TelemetryManager.instance.LogEvent("gameplay", $"{ this.name} destroyed") ;
+                TelemetryManager.instance.LogEvent("destructable_destroyed", $"{ this.name} destroyed at position {transform.position}",
+                    new EnemyDefeatedPayload
+                    {
+                        enemyType = this.name,
+                        weaponUsed = FindFirstObjectByType<PlayerAttacks>().playerWeapon.activeWeapon.name,
+                        sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
+                        defeatPosition = transform.position
+                    });
                 GameObject deathEffect = Instantiate(deathParticleEffect, transform.position, Quaternion.identity);
                 deathEffect.transform.parent = null;
               

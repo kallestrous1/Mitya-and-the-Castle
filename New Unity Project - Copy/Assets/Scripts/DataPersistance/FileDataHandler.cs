@@ -19,6 +19,7 @@ public class FileDataHandler
 
     public GameData Load()
     {
+        Debug.Log("Loading data from file");
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         GameData loadedData = null;
         if (File.Exists(fullPath))
@@ -30,6 +31,7 @@ public class FileDataHandler
                 {
                     using(StreamReader reader = new StreamReader(stream))
                     {
+                        Debug.Log("data to load: " +dataToLoad);
                         dataToLoad = reader.ReadToEnd();
                     }
                 }
@@ -42,9 +44,19 @@ public class FileDataHandler
 
             }
         }
-
+        Debug.Log(loadedData == null ? "no data found at " + fullPath : "data loaded from " + fullPath);
         return loadedData; 
         
+    }
+
+    public bool HasValidSave()
+    {
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
+
+        if (!File.Exists(fullPath)) return false;
+        if (new FileInfo(fullPath).Length == 0) return false;
+
+        return true;
     }
 
     public void Save(GameData data)

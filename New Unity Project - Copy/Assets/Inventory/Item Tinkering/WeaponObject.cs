@@ -29,6 +29,7 @@ public abstract class WeaponObject : ItemObject
 
     public override void EquipItem()
     {
+        base.EquipItem();
         Debug.Log("equipping item");
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Animator>().runtimeAnimatorController = animations;
@@ -40,6 +41,7 @@ public abstract class WeaponObject : ItemObject
 
     public override void UnequipItem()
     {
+        base.UnequipItem();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Animator>().runtimeAnimatorController = baseAnimations;
         PlayerWeaponContainer = GameObject.FindGameObjectWithTag("Weapon Container");
