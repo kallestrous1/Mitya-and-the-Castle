@@ -21,6 +21,9 @@ public abstract class WeaponObject : ItemObject
     public float weaponForce = 10;
     public int baseSpellMagicCost = 0;
 
+    public float lightAttackCommitTime = 0.4f;
+    public float heavyAttackCommitTime = 0.8f;
+
     public void Awake()
     {
         type = ItemType.Weapon;                

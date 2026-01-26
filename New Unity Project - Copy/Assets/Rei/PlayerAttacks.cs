@@ -11,6 +11,7 @@ public class PlayerAttacks : MonoBehaviour
     private bool attackPressed;
     private float UpOrDownTilt;
     private bool heavy;
+    public bool isAttacking { get; private set; } = false;
 
     public PlayerWeapon playerWeapon;
 
@@ -42,9 +43,14 @@ public class PlayerAttacks : MonoBehaviour
         {
             return;
         }
-        attackPressed = true;
-        HandleAttack();
+        if(isAttacking)
+        {
+            return;
+        }
+        StartCoroutine(AttackRoutine());
     }
+
+
 
     private void OnAttackReleased()
     {
@@ -63,11 +69,23 @@ public class PlayerAttacks : MonoBehaviour
 
     #endregion
 
-    private void HandleAttack()
+    private IEnumerator AttackRoutine()
     {
-        UpOrDownTilt = InputManager.Instance.UpOrDownTilt;
+        isAttacking = true;
         playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon").GetComponent<PlayerWeapon>();
 
+        HandleAttack(); // triggers animation 
+
+        float commitTime = heavy ? playerWeapon.activeWeapon.heavyAttackCommitTime : playerWeapon.activeWeapon.lightAttackCommitTime;
+        yield return new WaitForSeconds(commitTime);
+
+        isAttacking = false;
+    }
+
+    private void HandleAttack()
+    {
+    
+        UpOrDownTilt = InputManager.Instance.UpOrDownTilt;
         if (heavy)
         {
             if (playerWeapon.activeWeapon)

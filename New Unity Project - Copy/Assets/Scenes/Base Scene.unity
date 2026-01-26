@@ -1469,8 +1469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3dc7d69a38f1748b3bee229573bca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackButton
-  buttonHoverSound: {fileID: 0}
-  buttonClickSound: {fileID: 0}
+  buttonHoverSound: {fileID: 8300000, guid: eb86820397028d64d90acd75a28d74aa, type: 3}
+  buttonClickSound: {fileID: 8300000, guid: 940a99d275640234dac79cced850e411, type: 3}
   scaleMultiplier: 1.1
   displaysToClose:
   - {fileID: 1428224769}
@@ -12158,7 +12158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b07a75db936ff740b08ea1325e0bbc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingButton
-  buttonHoverSound: {fileID: 8300000, guid: 6f5c2819f5fe99641844728f1bce5a69, type: 3}
+  buttonHoverSound: {fileID: 8300000, guid: eb86820397028d64d90acd75a28d74aa, type: 3}
   buttonClickSound: {fileID: 8300000, guid: 940a99d275640234dac79cced850e411, type: 3}
   scaleMultiplier: 1.1
   SettingsMenus: {fileID: 1428224769}

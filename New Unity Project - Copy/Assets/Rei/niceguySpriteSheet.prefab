@@ -849,7 +849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90648bd5bfffb5a458f6fe5fc5b04968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpells
-  currentSpell: {fileID: 11400000, guid: 98ceb84a61ce0b64fa27e584d1ff58e2, type: 2}
+  currentSpell: {fileID: 0}
   minScale: 0.3
   maxScale: 0.5
   lifeTime: 3
@@ -1156,8 +1156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackTime: 0.2
-  hitDirectionForce: 75
-  constForce: 150
+  extraInvincibilityTime: 0.5
+  hitDirectionForce: 50
+  constForce: 100
   freezeTime: 0.02
   knockbackForceCurve:
     serializedVersion: 2

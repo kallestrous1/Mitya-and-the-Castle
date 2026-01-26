@@ -11,6 +11,12 @@ public partial class DetectorSeesPlayerCondition : Condition
 
     public override bool IsTrue()
     {
+        if(!Detector.Value)
+        {
+            Debug.LogWarning("Detector is not assigned in DetectorSeesPlayerCondition");
+            return false;
+        }
+
         if (Detector.Value.playerDetected)
         {
             Player.Value = Detector.Value.Player;

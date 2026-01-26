@@ -33,7 +33,7 @@ MonoBehaviour:
   baseAttackDamage: 2
   upAttackDamage: 2
   downAttackDamage: 2
-  swingSound: {fileID: 0}
+  swingSound: {fileID: 8300000, guid: fae81b01a743dc242894618e36ccfe84, type: 3}
   hitParticleEffect: {fileID: 0}
   baseSpellParticle: {fileID: 0}
   weaponForce: 10

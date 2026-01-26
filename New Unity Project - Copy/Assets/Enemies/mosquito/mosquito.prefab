@@ -564,7 +564,7 @@ MonoBehaviour:
           m_Value0: 11564666006284088051
           m_Value1: 8743530080975742063
         Name: AlertAreaScript
-        m_Value: {fileID: 6910478715744496812}
+        m_Value: {fileID: 471655032554007237}
     - rid: 7236404407082156523
       type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -841,8 +841,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6687275479890349149}
   - component: {fileID: 6136894417997799683}
-  - component: {fileID: 6910478715744496812}
   - component: {fileID: 3902308626844452200}
+  - component: {fileID: 471655032554007237}
   m_Layer: 10
   m_Name: AlertArea
   m_TagString: Untagged
@@ -911,20 +911,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 13.945751, y: 11.91371}
   m_EdgeRadius: 0
---- !u!114 &6910478715744496812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8248285080576983298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5793c7d211b2641a202ab29170899c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDetected: 0
-  Player: {fileID: 0}
 --- !u!50 &3902308626844452200
 Rigidbody2D:
   serializedVersion: 5
@@ -952,6 +938,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &471655032554007237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8248285080576983298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19623b5a4f21574695e90d704e7d44f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AlertAreaScript
+  playerDetected: 0
+  Player: {fileID: 0}
 --- !u!1 &8656545816303845976
 GameObject:
   m_ObjectHideFlags: 0

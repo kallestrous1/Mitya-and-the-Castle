@@ -317,13 +317,13 @@ TextureImporter:
       name: foresttiles_9
       rect:
         serializedVersion: 2
-        x: 1155
+        x: 1152
         y: 384
-        width: 125
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 6, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -581,13 +581,13 @@ TextureImporter:
       name: foresttiles_21
       rect:
         serializedVersion: 2
-        x: 1155
+        x: 1152
         y: 256
-        width: 125
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 9, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -845,13 +845,13 @@ TextureImporter:
       name: foresttiles_33
       rect:
         serializedVersion: 2
-        x: 1154
+        x: 1152
         y: 128
-        width: 126
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 6, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -1049,7 +1049,7 @@ TextureImporter:
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 20, y: 24, z: 18, w: 16}
       customData: 
       outline: []
       physicsShape: []
@@ -1087,7 +1087,7 @@ TextureImporter:
       name: foresttiles_44
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1022
         y: 0
         width: 128
         height: 128

@@ -6,7 +6,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public enum InterfaceType
 {

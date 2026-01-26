@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 98b2a748b288fcb4c9adcd5d8beaeab5, type: 3}
+  m_Sprite: {fileID: 5484041422094046752, guid: 7a3d327447194fe4b9d06c02bddde43f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,7 +117,7 @@ Transform:
   m_GameObject: {fileID: 6472784040092735802}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.106, y: 0.395, z: 0}
+  m_LocalPosition: {x: 0.046, y: 2.24, z: 0}
   m_LocalScale: {x: 0.32115102, y: 0.3083404, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -138,12 +138,12 @@ MonoBehaviour:
   m_ComponentVersion: 2
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 0.6226415, g: 0.51642615, b: 0.119829096, a: 1}
-  m_Intensity: 2
+  m_FalloffIntensity: 1
+  m_Color: {r: 0.6698113, g: 0.5971678, b: 0.3254272, a: 1}
+  m_Intensity: 10
   m_LightVolumeIntensity: 0
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: fb41f7babbbf595800000000c97e903a
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -161,10 +161,10 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 124.98
-  m_PointLightOuterAngle: 124.98
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 2
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0.5
+  m_PointLightOuterRadius: 8
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1

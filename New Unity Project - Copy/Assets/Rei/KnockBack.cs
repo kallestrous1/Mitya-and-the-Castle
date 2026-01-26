@@ -5,9 +5,11 @@ public class KnockBack : MonoBehaviour
 {
 
     public float knockbackTime = 0.4f;
+    public float extraInvincibilityTime = 0.2f;
     public float hitDirectionForce = 25f;
     public float constForce = 10f;
     public float freezeTime = 0.02f;
+    
 
     public AnimationCurve knockbackForceCurve;
 
@@ -18,6 +20,7 @@ public class KnockBack : MonoBehaviour
     private Coroutine knockbackCoroutine;
 
     public bool isBeingKnockedBack { get; private set; }
+    public bool isInvincible { get; private set; }
 
     private void Start()
     {
@@ -28,7 +31,9 @@ public class KnockBack : MonoBehaviour
 
     public IEnumerator KnockbackAction(Vector2 hitDirection)
     {
+        Debug.Log("Knockback started");
         isBeingKnockedBack = true;
+        isInvincible = true;
         Physics2D.IgnoreLayerCollision(9, 10, true);
         ani.SetTrigger("Hurt");
 
@@ -67,23 +72,39 @@ public class KnockBack : MonoBehaviour
             rb.AddForce(_combinedForce, ForceMode2D.Impulse);
 
             yield return new WaitForFixedUpdate();
-        }       
+        }
+        _elapsedTime = 0f;
         StopPlayerKnockback();
+        while ( _elapsedTime < extraInvincibilityTime)
+        {
+            _elapsedTime += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        StopPlayerInvincibility();
     }
 
     public void StartPlayerKnockback(Vector2 hitDirection)
     {
-        if (!isBeingKnockedBack)
+        if (!isBeingKnockedBack && !isInvincible)
         {
             knockbackCoroutine = StartCoroutine(KnockbackAction(hitDirection));
+        }
+        else
+        {
+            Debug.Log("Player is already being knocked back");
         }
        
     }
 
     public void StopPlayerKnockback()
     {
-        Physics2D.IgnoreLayerCollision(9, 10, false);
         isBeingKnockedBack = false;       
+    }
+
+    public void StopPlayerInvincibility()
+    {
+        isInvincible = false;
+        Physics2D.IgnoreLayerCollision(9, 10, false);
     }
 
 

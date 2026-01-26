@@ -31,6 +31,99 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2980209683750580646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1537229830899436021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2007076907323281454}
+  - component: {fileID: 1026106268139879589}
+  - component: {fileID: 1286941715762963737}
+  m_Layer: 0
+  m_Name: Playerinrangedetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2007076907323281454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537229830899436021}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9998351, z: -0, w: -0.018161561}
+  m_LocalPosition: {x: 1.0214413, y: 1.375267, z: -0.07889058}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5107616849254025606}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1026106268139879589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537229830899436021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5469213946d0e6a4e8c2ed7b62a0545c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInRangeDetector
+  playerInRange: 1
+  Player: {fileID: 0}
+--- !u!61 &1286941715762963737
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537229830899436021}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 2.0699043, y: -1.435955}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 45.622902, y: 20.19114}
+  m_EdgeRadius: 0
 --- !u!1 &1669680733231285690
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +387,7 @@ Transform:
   - {fileID: 272279645487230509}
   - {fileID: 6346419260650941650}
   - {fileID: 4245643057347554065}
+  - {fileID: 2007076907323281454}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -182.081, z: 0}
 --- !u!212 &4483074900584760212
@@ -423,7 +517,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.29584444, y: -0.23552597}
+  m_Offset: {x: -0.29584444, y: -0.12497735}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -433,7 +527,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.79386306, y: 3.3486857}
+  m_Size: {x: 0.79386306, y: 3.1275883}
   m_EdgeRadius: 0
 --- !u!50 &4625294757065075584
 Rigidbody2D:
@@ -576,11 +670,20 @@ MonoBehaviour:
   - rid: 8785344323364586254
   - rid: 8785344323364586255
   - rid: 8785344467539854155
+  - rid: 4729598250626318415
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
+    - rid: 4729598250626318415
+      type: {class: 'BlackboardVariable`1[[PlayerInRangeDetector, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 5405076144365054278
+          m_Value1: 684523982444765725
+        Name: Player In Range Detector
+        m_Value: {fileID: 1026106268139879589}
     - rid: 8785344323364586253
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -596,7 +699,7 @@ MonoBehaviour:
           m_Value0: 16291929464022281677
           m_Value1: 9195975742851422483
         Name: Alert Area Script
-        m_Value: {fileID: 8679375955823512477}
+        m_Value: {fileID: 6451207876523511507}
     - rid: 8785344323364586255
       type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -915,8 +1018,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6346419260650941650}
-  - component: {fileID: 8679375955823512477}
   - component: {fileID: 1031248999351503782}
+  - component: {fileID: 6451207876523511507}
   m_Layer: 0
   m_Name: AlertArea
   m_TagString: Untagged
@@ -939,20 +1042,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5107616849254025606}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8679375955823512477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8684110643046201524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5793c7d211b2641a202ab29170899c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDetected: 0
-  Player: {fileID: 0}
 --- !u!61 &1031248999351503782
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -999,6 +1088,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6451207876523511507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684110643046201524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19623b5a4f21574695e90d704e7d44f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AlertAreaScript
+  playerDetected: 0
+  Player: {fileID: 0}
 --- !u!1 &8900025548284657138
 GameObject:
   m_ObjectHideFlags: 0
