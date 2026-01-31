@@ -2,7 +2,7 @@
 > employers and developers. A player-focused page and release build will be
 > available on Steam soon.
 
-This is a game called Toki and the Castle that I've worked on for several years. This project is a 100% solo effort; I designed and implemented all gameplay
+This is a game called Mitya and the Castle that I've worked on for several years. This project is a 100% solo effort; I designed and implemented all gameplay
 systems, tooling, persistence, telemetry, art, and animations.
 
 <img width="1572" height="858" alt="image" src="https://github.com/user-attachments/assets/af28b226-2242-4ae7-8ff2-3fa8424ec9df" />
