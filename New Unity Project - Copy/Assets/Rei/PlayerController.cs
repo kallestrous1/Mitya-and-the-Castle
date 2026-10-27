@@ -272,10 +272,9 @@ public class PlayerController : DataPersistenceBehaviour
     {
         if ((isGrounded || coyoteTimer > 0) && isDashing == false)
         {
-            playerSound.PlayJumpSound();
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
+            //playerSound.PlayJumpSound();
+            //rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
-            totalJumps++;
         }
         else if (jumpCount > 0 && isDashing == false)
         {

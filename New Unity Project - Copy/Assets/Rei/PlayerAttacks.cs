@@ -115,6 +115,19 @@ public class PlayerAttacks : MonoBehaviour
         }
     }
 
+    public void TurnOnWeaponSwoosh()
+    {
+        playerWeapon.startSwoosh = true;
+        playerWeapon.swooshActive = true;
+    }
+
+    public void TurnOffWeaponSwoosh()
+    {
+        playerWeapon.startSwoosh = false;
+        playerWeapon.swooshActive = false;
+
+    }
+
     public void CastEquippedWeaponSpell()
     {
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMagicJuice>().currentMagic >= playerWeapon.activeWeapon.baseSpellMagicCost)

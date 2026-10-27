@@ -10,6 +10,13 @@ public class ClubBandit : Enemy
     public AudioClip footStep;
     public AudioClip yell;
 
+    AlertAreaScript alertArea;
+
+    public override void Start()
+    {
+        base.Start();
+        alertArea = GetComponentInChildren<AlertAreaScript>();
+    }
 
     public override void Update()
     {
@@ -19,14 +26,58 @@ public class ClubBandit : Enemy
         }
     }
 
+    void LateUpdate()
+    {
+        if (!PlayerIsInRange())
+            StopCombat();
+    }
+
+    public override void OnPlayerLeftRange()
+    {
+        StopCombat();
+    }
+
+    public override bool IsPlayerInCombatRange()
+    {
+        return PlayerIsInRange();
+    }
+
+    void StopCombat()
+    {
+        StopAllCoroutines();
+        if (audioSource && audioSource.isPlaying)
+            audioSource.Stop();
+        if (rb)
+            rb.linearVelocity = Vector2.zero;
+        if (!ani)
+            return;
+
+        ani.ResetTrigger("OverheadSwing");
+        ani.ResetTrigger("JumpAttack");
+        ani.ResetTrigger("Dodge");
+        ani.SetBool("Run", false);
+        ani.SetBool("Taunt", false);
+        if (!ani.GetCurrentAnimatorStateInfo(0).IsName("clubbanditidle"))
+            ani.Play("clubbanditidle");
+    }
+
+    bool PlayerIsInRange()
+    {
+        return alertArea != null && alertArea.playerDetected;
+    }
+
     public void PlayYell()
     {
+        if (!PlayerIsInRange() || !yell)
+            return;
         audioSource.clip = yell;
         audioSource.Play();
     }
 
     public void playFootStep()
     {
+        if (!PlayerIsInRange())
+            return;
         if (footStep)
         {
             audioSource.clip = footStep;
@@ -35,6 +86,8 @@ public class ClubBandit : Enemy
     }
     public void playClubSwing()
     {
+        if (!PlayerIsInRange())
+            return;
         if (clubSwing)
         {
             audioSource.clip = clubSwing;
@@ -44,6 +97,8 @@ public class ClubBandit : Enemy
 
     public void playClubHitGround()
     {
+        if (!PlayerIsInRange())
+            return;
         if (clubHitGround)
         {
             audioSource.clip = clubHitGround;
@@ -53,6 +108,8 @@ public class ClubBandit : Enemy
 
     public void Jump()
     {
+        if (!PlayerIsInRange())
+            return;
         StartCoroutine(ApplyJumpForce());
     }
 
@@ -76,6 +133,8 @@ public class ClubBandit : Enemy
 
     public void Dodge()
     {
+        if (!PlayerIsInRange())
+            return;
         StartCoroutine(DodgeForce());
 
     }

@@ -21,7 +21,8 @@ MonoBehaviour:
   baseAnimations: {fileID: 0}
   inGameSprite: {fileID: 0}
   itemStory: {fileID: 4900000, guid: 7fab0cfcb10ec734db4f72705bb40e98, type: 3}
-  description: A golden ring!
+  description: 'A golden ring. Mech Activation number four point seven. Avoid the
+    kingsroad at all costs. They will be coming. '
   type: 3
   price: 0
   data:

@@ -465,8 +465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2de0d4570379c04ebe9205637b0a0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 200
-  maxHealth: 200
+  currentHealth: 90
+  maxHealth: 90
   hitSoundEffect: {fileID: 8300000, guid: 2ae0ee7337955c14cb70938e5e90bd4a, type: 3}
   hitParticleEffect: {fileID: 0}
   deathParticleEffect: {fileID: 5139032375640867512, guid: 1cb0d2d7c244a62449a7ad5b48c7ccc8, type: 3}
@@ -1012,6 +1012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlertAreaScript
   playerDetected: 0
+  releaseWhenPlayerExits: 0
   Player: {fileID: 0}
 --- !u!1 &8299116231459025673
 GameObject:

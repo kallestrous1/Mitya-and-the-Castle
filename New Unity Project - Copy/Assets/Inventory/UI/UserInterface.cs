@@ -243,8 +243,12 @@ public abstract class UserInterface : MonoBehaviour
                 return;
             }
             ItemType type = MouseData.interfaceMouseIsOver.slotsOnInterface[obj].ItemObject.type;
-            InventorySlotObject emptyEquipmentSlot = equipment.FindEmptySlotOfType(type);
-            if (emptyEquipmentSlot == null)
+            InventorySlotObject equipmentSlot = equipment.FindEmptySlotOfType(type);
+            if (equipmentSlot == null && (type == ItemType.Weapon || type == ItemType.Spell))
+            {
+                equipmentSlot = equipment.FindOccupiedSlotOfType(type);
+            }
+            if (equipmentSlot == null)
             {
                 if (failToBuySound)
                 {
@@ -254,7 +258,7 @@ public abstract class UserInterface : MonoBehaviour
             }
             else
             {
-                inventory.SwapItems(slotsOnInterface[obj], emptyEquipmentSlot);
+                inventory.SwapItems(slotsOnInterface[obj], equipmentSlot);
                 if (dragSound)
                 {
                     AudioManager.Instance.Play(dragSound);

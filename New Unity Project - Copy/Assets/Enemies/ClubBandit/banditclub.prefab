@@ -463,7 +463,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.607
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -472,7 +472,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -507,7 +507,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.673
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -967,7 +967,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -2.9635906, y: 2.2444458}
+  m_Offset: {x: -0.43347836, y: 6.672138}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -977,7 +977,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.9271812, y: 7.835434}
+  m_Size: {x: 29.872663, y: 18.435722}
   m_EdgeRadius: 0
 --- !u!114 &4894590540808986560
 MonoBehaviour:
@@ -992,6 +992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlertAreaScript
   playerDetected: 0
+  releaseWhenPlayerExits: 1
   Player: {fileID: 0}
 --- !u!1 &8695513715924764372
 GameObject:

@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5469213946d0e6a4e8c2ed7b62a0545c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInRangeDetector
-  playerInRange: 1
+  playerInRange: 0
   Player: {fileID: 0}
 --- !u!61 &1286941715762963737
 BoxCollider2D:
@@ -112,7 +112,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.84804344, y: -0.97824097}
+  m_Offset: {x: 1.156805, y: 3.7545242}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -122,7 +122,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 14.154835, y: 6.6884766}
+  m_Size: {x: 36.701183, y: 24.830734}
   m_EdgeRadius: 0
 --- !u!1 &1669680733231285690
 GameObject:
@@ -537,14 +537,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6894368731155885280}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 500
-  m_LinearDamping: 0
+  m_Mass: 30
+  m_LinearDamping: 5
   m_AngularDamping: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -652,6 +652,8 @@ MonoBehaviour:
   audioSource: {fileID: 421088379224129143}
   drawBowSound: {fileID: 8300000, guid: 468d5196efe80dc47b542bb856db5fdf, type: 3}
   shootBowSound: {fileID: 8300000, guid: e514cf9b4bd6b794e8d8a2852c8b5af6, type: 3}
+  retreatForce: 20
+  retreatDistance: 8
 --- !u!114 &5581312645649521326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,7 +731,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.471
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -738,7 +740,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -773,7 +775,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.668
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1076,7 +1078,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.8117027, y: 4.574981}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1086,7 +1088,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 31.519966, y: 11.902062}
   m_EdgeRadius: 0
 --- !u!114 &6451207876523511507
 MonoBehaviour:
@@ -1101,6 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlertAreaScript
   playerDetected: 0
+  releaseWhenPlayerExits: 0
   Player: {fileID: 0}
 --- !u!1 &8900025548284657138
 GameObject:

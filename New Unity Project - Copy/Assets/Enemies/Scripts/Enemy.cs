@@ -53,6 +53,13 @@ public class Enemy : MonoBehaviour
 
     public virtual void processHit() { }
 
+    public virtual void OnPlayerLeftRange() { }
+
+    public virtual bool IsPlayerInCombatRange()
+    {
+        return true;
+    }
+
     public virtual void EnemyBehaviour() { }
 
     void OnTriggerEnter2D(Collider2D trigger)

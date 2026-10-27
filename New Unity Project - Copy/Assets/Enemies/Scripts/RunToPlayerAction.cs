@@ -28,6 +28,13 @@ public partial class RunToPlayerAction : Action
 
     protected override Status OnUpdate()
     {
+        if (enemy != null && !enemy.IsPlayerInCombatRange())
+        {
+            Animator.Value.SetBool(Run.Value, false);
+            rb.linearVelocity = Vector2.zero;
+            return Status.Running;
+        }
+
         float distanceToPlayer = Vector2.Distance(Agent.Value.transform.position, Player.Value.transform.position);
         if (distanceToPlayer < 4f)
         {

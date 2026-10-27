@@ -17,6 +17,9 @@ public class AudioManager : MonoBehaviour
 	// Singleton instance.
 	public static AudioManager Instance = null;
 
+	float musicVolume = 1f;
+	Coroutine musicFade;
+
 	// Initialize the singleton instance.
 	private void Awake()
 	{
@@ -24,6 +27,8 @@ public class AudioManager : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
+			if (MusicSource != null)
+				musicVolume = MusicSource.volume;
 		}
 		//If an instance already exists, destroy whatever this object is to enforce the singleton.
 		else if (Instance != this)
@@ -69,8 +74,32 @@ public class AudioManager : MonoBehaviour
 	// Play a single clip through the music source.
 	public void PlayMusic(AudioClip clip)
 	{
+		CancelMusicFade();
 		MusicSource.clip = clip;
+		MusicSource.volume = musicVolume;
 		MusicSource.Play();
+	}
+
+	public void ResetMusic()
+	{
+		CancelMusicFade();
+		if (MusicSource != null)
+		{
+			MusicSource.Stop();
+			MusicSource.volume = musicVolume;
+		}
+		SceneMusicPlayer.PlayAll();
+	}
+
+	void CancelMusicFade()
+	{
+		if (musicFade != null)
+		{
+			StopCoroutine(musicFade);
+			musicFade = null;
+		}
+		if (MusicSource != null)
+			MusicSource.volume = musicVolume;
 	}
 
 	// Play a random clip from an array, and randomize the pitch slightly.
@@ -86,26 +115,27 @@ public class AudioManager : MonoBehaviour
 
 	public void fadeMusic(float duration, AudioClip newMusic)
     {
-		StartCoroutine(FadeOutMusic(duration, newMusic));
+		CancelMusicFade();
+		musicFade = StartCoroutine(FadeOutMusic(duration, newMusic));
     }
 
-	public static IEnumerator FadeOutMusic(float duration, AudioClip newMusic)
+	IEnumerator FadeOutMusic(float duration, AudioClip newMusic)
     {
 		float currentTime = 0;
-		float start = AudioManager.Instance.MusicSource.volume;
 		while(currentTime < duration)
         {
 			currentTime += Time.deltaTime;
-			AudioManager.Instance.MusicSource.volume = Mathf.Lerp(start, 0, currentTime / duration);
+			MusicSource.volume = Mathf.Lerp(musicVolume, 0, currentTime / duration);
 			yield return null;
 		}
-		AudioManager.Instance.MusicSource.Stop();
-		AudioManager.Instance.MusicSource.volume = start;
+
+		musicFade = null;
         if (newMusic)
+			PlayMusic(newMusic);
+		else if (MusicSource != null)
         {
-			AudioManager.Instance.PlayMusic(newMusic);
+			MusicSource.Stop();
+			MusicSource.volume = musicVolume;
         }
-
-
 	}
 }

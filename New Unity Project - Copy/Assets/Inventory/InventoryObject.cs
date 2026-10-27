@@ -76,6 +76,18 @@ public class InventoryObject : ScriptableObject
         return null;
     }
 
+    public InventorySlotObject FindOccupiedSlotOfType(ItemType type)
+    {
+        for (int i = 0; i < GetSlots.Length; i++)
+        {
+            if (!string.IsNullOrEmpty(GetSlots[i].item.itemID) && GetSlots[i].AllowedItems == type)
+            {
+                return GetSlots[i];
+            }
+        }
+        return null;
+    }
+
     public int EmptySlotCount
     {
         get

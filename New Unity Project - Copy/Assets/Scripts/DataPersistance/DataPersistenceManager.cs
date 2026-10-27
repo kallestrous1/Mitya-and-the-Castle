@@ -129,6 +129,8 @@ public class DataPersistenceManager : MonoBehaviour
             Debug.Log("No data found, creating new game");
             IsLoading = false;
             NewGame();
+            if (startup)
+                NewManager.manager.BootStrapAfterDataLoaded();
             return;
         }
 

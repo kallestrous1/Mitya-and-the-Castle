@@ -13,6 +13,7 @@ public partial class FollowPlayerAction : Action
     [SerializeReference] public BlackboardVariable<float> Speed;
 
     private float stoppingDistance = 10;
+    private Enemy enemy;
 
     protected override Status OnStart()
     {
@@ -21,11 +22,20 @@ public partial class FollowPlayerAction : Action
             LogFailure("no agent assigned");
             return Status.Failure;
         }
+        enemy = Agent.Value.GetComponent<Enemy>();
         return Status.Running;
     }
 
     protected override Status OnUpdate()
     {
+        if (enemy != null && !enemy.IsPlayerInCombatRange())
+        {
+            Rigidbody2D body = Agent.Value.GetComponent<Rigidbody2D>();
+            if (body)
+                body.linearVelocity = Vector2.zero;
+            return Status.Running;
+        }
+
         Vector2 playerpos = Player.Value.transform.position;
         return(MoveTowardsTarget(playerpos));
     

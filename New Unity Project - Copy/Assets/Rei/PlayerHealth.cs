@@ -16,12 +16,14 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int health;
 
 
+
     [Header("UI")]
     [SerializeField] private Slider healthSlider;
     [SerializeField] private Slider maxHealthSlider;
     [SerializeField] private RectTransform maxHealthRectTransform;
     private Vector2 maxHealthSliderInitialSize;
     private float initialWidth;
+    [SerializeField] private float scaleMultiplier;
 
     [Header("Displays")]
     [SerializeField] private GameObject bloodDisplay;
@@ -96,12 +98,14 @@ public class PlayerHealth : MonoBehaviour
     }
     public void changeMaxHealth(int change)
     {
+        Debug.Log("changing max health by " + change);
         maxHealth += change;
         health = Mathf.Min(health, maxHealth);
         UpdateUI();
-       /* maxHealthSlider.maxValue = maxHealth;
-        maxHealthSlider.value = maxHealth;
-        UpdateSliderSize(maxHealth);*/
+        UpdateMaxHealthUI();
+        /* maxHealthSlider.maxValue = maxHealth;
+         maxHealthSlider.value = maxHealth;
+         UpdateSliderSize(maxHealth);*/
     }
 
     public void changeHealth(int amount, string cause = "unknown")
@@ -118,6 +122,8 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0 && !died)
         {
             died = true;
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.ResetMusic();
             AudioManager.Instance.Play(playerDeathSound);
             StartCoroutine(DeathRoutine(cause));
         }
@@ -180,23 +186,30 @@ public class PlayerHealth : MonoBehaviour
 
         if (maxHealthSlider)
             maxHealthSlider.maxValue = maxHealth;
-
-        UpdateMaxHealthUI();
     }
 
     public void UpdateMaxHealthUI()
     {
         if (maxHealthRectTransform == null) return;
 
-        float scaleFactor = (float)maxHealth / startingHealth;
+        float scaleFactor = (float)maxHealth / startingHealth ;
+
+        if(scaleFactor!=1)
+            scaleFactor *= scaleMultiplier;
         /*   Vector2 newSize = new Vector2(
                maxHealthSliderInitialSize.x * scaleFactor,
                maxHealthSliderInitialSize.y
            );
 
            maxHealthRectTransform.sizeDelta = newSize;*/
-        float newWidth = initialWidth * scaleFactor;
+        float newWidth = 100 * scaleFactor;
 
         maxHealthRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
+        Debug.Log("initial width: " + initialWidth);
+        Debug.Log(
+  $"[MaxHealthUI] maxHealth={maxHealth} startingHealth={startingHealth} " +
+  $"scale={(float)maxHealth / startingHealth} initialWidth={initialWidth} " +
+  $"rectWidth(before)={maxHealthRectTransform.rect.width}"
+);
     }
 }

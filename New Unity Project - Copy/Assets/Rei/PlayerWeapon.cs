@@ -16,6 +16,48 @@ public class PlayerWeapon : DataPersistenceBehaviour
     public WeaponObject activeWeapon;
     public WeaponObject defaultWeapon = null;
 
+    public bool startSwoosh = false;
+    public bool swooshActive = false;
+    [SerializeField] private SwooshMeshTrail swoosh;
+    [SerializeField] private Transform bladeBase;
+    [SerializeField] private Transform bladeTip;
+
+    private void Update()
+    {
+        if(startSwoosh)
+        {
+            if(activeWeapon != null)
+            {
+                swoosh.StartSwoosh();
+                startSwoosh = false;
+            }
+        }
+        else if (!swooshActive)                   
+        {
+            swoosh.StopSwoosh();
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (!swoosh) return;
+
+
+
+        // Important: sample in LateUpdate so bone poses are final this frame
+        if (swooshActive)
+        {
+            swoosh.GenerateSwoosh(bladeBase.position, bladeTip.position);
+            swoosh.TickFadeOnly();
+
+        }
+        else
+        {
+            // still update mesh so it can fade out while not emitting
+            swoosh.TickFadeOnly();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -71,6 +113,9 @@ public class PlayerWeapon : DataPersistenceBehaviour
             gameObject.GetComponentInParent<PlayerMagicJuice>().changeMagic(-activeWeapon.baseSpellMagicCost);
         }
     }
+
+
+
 
     public override void LoadData(GameData data)
     {

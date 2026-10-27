@@ -196,6 +196,8 @@ public class NewManager : DataPersistenceBehaviour
         // Allow one frame for scene root objects to initialize
         yield return null;
 
+        SceneMusicPlayer.PlayForScene(loadedScene);
+
         // Wait for player to exist and finalize placement, with timeout to avoid infinite loops
         yield return StartCoroutine(HandlePlayerAfterSceneLoad_Coroutine(newScene, upBoost, newGame));
 
